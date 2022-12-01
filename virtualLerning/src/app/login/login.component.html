@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="box">
+    <div class="logo">
+      <img src=" assets/logo_splash.png" alt="logo" />
+    </div>
+    <div class="dataForgot" *ngIf="login" >
+                            <div class="username">
+                                <mat-form-field class="example-full-width">
+                                <mat-label>User Name</mat-label>
+                                <input matInput />
+                                </mat-form-field>
+                            </div>
+                            <div class="pass">
+                                <mat-form-field class="example-full-width">
+                                <mat-label>Password</mat-label>
+                                <input
+                                    class="password"
+                                    type="password"
+                                    style="-webkit-text-security: square"
+                                    matInput
+                                />
+                                </mat-form-field>
+                            </div>
+                            <div class="box1">
+                                <div class="Forgo" (click)="forgot()">Forgot Password?</div>
+                            </div>
+                            <div class="button">
+                                <button class="loginButn">Login</button>
+                            </div>
+        </div>
+         <div class="dataForgot" *ngIf="forgotPassword" >
+                <div class="title">
+                    Forgot Password
+                </div>
+                <div class="discription">
+                    Please enter your Email ID. You will receive a code to create a new password.
+                </div>
+                <div class="username">
+                                <mat-form-field class="example-full-width">
+                                <mat-label>Email ID</mat-label>
+                                <input type="email" matInput />
+                                </mat-form-field>
+                </div>
+         </div>
+  </div>
+</div>
