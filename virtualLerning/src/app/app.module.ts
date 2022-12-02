@@ -12,6 +12,7 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { SettingsComponent } from './settings/settings.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SettingsComponent } from './settings/settings.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
