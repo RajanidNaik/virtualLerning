@@ -16,7 +16,7 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { SettingsComponent } from './settings/settings.component';
 import { OtpComponent } from './otp/otp.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
-
+import { AddCoursenavComponent } from './add-coursenav/add-coursenav.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     SettingsComponent,
     LoginComponent,
     OtpComponent,
-    PasswordChangeComponent
+    PasswordChangeComponent,
+    AddCoursenavComponent,
   ],
   imports: [
     MaterialModule,

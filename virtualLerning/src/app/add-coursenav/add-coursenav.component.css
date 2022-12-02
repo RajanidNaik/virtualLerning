@@ -1,0 +1,28 @@
+.nav{
+    cursor: default;
+    display: flex;
+    justify-content: flex-start;
+    gap: 70px;  
+    padding-left: 41px;
+}
+
+.item{
+    cursor: pointer;
+     /* border: 3px solid violet;   */
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+color: #B0B0B0;
+height: 32px;
+padding-bottom: 4px;
+}
+.item:hover{
+     border-bottom: 3px solid #EE5C4D;;
+     font-weight: 600;
+font-size: 24px;
+line-height: 29px;
+color: #232323; 
+
+}

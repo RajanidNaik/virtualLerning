@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent implements OnInit {
-
+  plus = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  show(){
+    this.plus = !this.plus;
   }
 
 }
