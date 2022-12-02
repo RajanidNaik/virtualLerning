@@ -1,0 +1,58 @@
+/* .contentBox{
+    box-sizing: border-box;
+    position: absolute;
+   
+    border-radius: 38px 0px 0px 38px;
+    border:1px solid #000;
+} */
+.navbar{
+    position: absolute;
+   
+    top:0%
+}
+.dialogBox{
+position: absolute;
+width: 40%;
+height: 30%;
+bottom: 30%;
+left:35%;
+background: #FFFFFF;
+/* border: 1px solid #000; */
+}
+.delete{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 32px;
+text-align: center;
+color: #1A1A1A;
+}
+.para{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 32px;
+text-align: center;
+color: #1A1A1A;
+margin:1%
+
+
+}
+.button {
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin: 5%;
+}
+.button button{
+    background: #fff;
+border-radius: 6px;
+padding: 1%;
+padding-left: 5%;
+padding-right: 5%;
+}
+.button button:hover{
+    background: rgba(9, 41, 99, 0.2);
+}

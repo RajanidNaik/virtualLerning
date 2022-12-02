@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
-
-const materialComponent=[]
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+const materialComponent=[MatSlideToggleModule,MatInputModule,MatProgressBarModule,MatIconModule,MatDialogModule]
 
 @NgModule({
-  exports: [MatInputModule],
-  imports: [MatInputModule],
+  exports: [materialComponent],
+  imports: [materialComponent],
 })
 export class MaterialModule {}

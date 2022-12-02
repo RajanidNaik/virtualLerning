@@ -10,12 +10,13 @@ import { SecondHeadComponent } from './second-head/second-head.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material/material.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import {MatIconModule} from '@angular/material/icon';
+
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { SettingsComponent } from './settings/settings.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { DialogDashboardComponent } from './dialog-dashboard/dialog-dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -27,15 +28,17 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     AddCourseComponent,
     StudentListComponent,
     SettingsComponent,
-    LoginComponent
+    LoginComponent,
+    DialogDashboardComponent
   ],
   imports: [
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatProgressBarModule
+    
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

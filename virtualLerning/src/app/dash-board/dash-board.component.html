@@ -1,47 +1,262 @@
 <div class="container">
-    <div class="navbar">
-        <app-side-nav></app-side-nav>
+  <div class="navbar">
+    <app-side-nav></app-side-nav>
+  </div>
+  <div class="head">
+    <app-header></app-header>
+  </div>
+  <div class="contentBox" >
+    <div *ngIf="first">
+    <div class="day">
+      <div class="week">Today</div>
+      <div class="date">Wed&nbsp;15,2022&nbsp;|&nbsp;10:00&nbsp;Am</div>
     </div>
-    <div class="head">
-<app-header></app-header>
+    <div class="recentBox">
+      <div class="recent">
+        <div class="recentAdd">Recently&nbsp;courses&nbsp;added</div>
+        <div class="view" (click)="onRecent()">View&nbsp;all</div>
+      </div>
+      <div class="videoUpload">
+        <div class="video">
+          <div class="videoBox">
+            <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" />
+            <div class="play">
+              <mat-icon>play_arrow</mat-icon>
+            </div>
+          </div>
+
+          <div>Poster&nbsp;design&nbsp;tutorial</div>
+          <div class="done">
+            <mat-icon>done</mat-icon>
+          </div>
+        </div>
+        <div class="icondelete">
+          <mat-icon>delete_outline</mat-icon>
+        </div>
+      </div>
+      <div class="video">
+        <div class="videoBox">
+          <img class="image" src="/assets/unsplash_ubIWo074QlU.png" />
+        </div>
+        <div class="videoname">
+          <div>Graphic&nbsp;design&nbsp;part&nbsp;1</div>
+          <div class="progressbar">
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="contentBox">
-       
-            <div class="day">
-                <div class="week">Today</div>
-                <div class="date">Wed&nbsp;15,2022&nbsp;|&nbsp;10:00&nbsp;Am</div>
-            </div>
-            <div class="recentBox">
-                <div class="recent">
-                    <div class="recentAdd">Recently&nbsp;courses&nbsp;added</div>
-                    <div class="view">View&nbsp;all</div>
-                </div>
-                <div class="videoUpload">
-                <div class="video">
-                    <div class="videoBox">
-                        <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png"> 
-                    </div>
-                    <div>Poster&nbsp;design&nbsp;tutorial</div>
-                    <div>
-                        <mat-icon>done</mat-icon>
-                    </div>
-                </div>
-                <div class="icondelete">
-                    <mat-icon>delete</mat-icon>
-                </div>
-            </div>
-            <div class="video">
-                <div class="videoBox">
-                    <img class="image" src="/assets/unsplash_ubIWo074QlU.png"> 
-                </div>
-                <div class="videoname">
-                    <div>Graphic&nbsp;design&nbsp;part&nbsp;1</div>
-                    <div class="progressbar">
-                        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-                    </div>
-                </div>
-            </div>
-            </div>
+    <div class="count">
+      <div class="studentCount1">
+        <div class="studentnumber">
+          <div class="student">Total&nbsp;Student</div>
+          <div class="number">1500</div>
+        </div>
+        <div class="studentimage">
+          <img src="/assets/Group 74.png" />
+        </div>
+      </div>
+      <div class="studentCount2">
+        <div class="studentnumber">
+          <div class="student">Overall&nbsp;Rseult</div>
+          <div class="number">75%</div>
+        </div>
+        <div class="studentimage">
+          <img src="/assets/cup.png" />
+        </div>
+      </div>
+      <div class="studentCount3">
+        <div class="studentnumber">
+          <div class="student">Total&nbsp;Courses</div>
+          <div class="number">500</div>
+        </div>
+        <div class="studentimage">
+          <img src="/assets/course.png" />
+        </div>
+      </div>
+    </div>
+    <div class="studentDetails">
+      <div class="aboveTable">
+        <div class="above">Total&nbsp;Student</div>
+        <div class="people">1500&nbsp;people</div>
+      </div>
+      <div class="studentList">
+        <table>
+          <tr>
+            <th><p></p></th>
+            <th>
+              <div class="tablehead">
+                <p>Name</p>
+                <p class="icon">
+                  <mat-icon>keyboard_arrow_up</mat-icon>
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </p>
+              </div>
+            </th>
+            <th>
+              <div class="tablehead">
+                <p>Joined&nbsp;date</p>
+                <p class="icon">
+                  <mat-icon>keyboard_arrow_up</mat-icon>
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </p>
+              </div>
+            </th>
+            <th>
+              <div class="tablehead">
+                <p>course&nbsp;title</p>
+                <p class="icon">
+                  <mat-icon>keyboard_arrow_up</mat-icon>
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </p>
+              </div>
+            </th>
+            <th>
+              <div class="tablehead">
+                <p>Completed&nbsp;date</p>
+                <p class="icon">
+                  <mat-icon>keyboard_arrow_up</mat-icon>
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </p>
+              </div>
+            </th>
+            <th>
+              <div class="tablehead">
+                <p>Status</p>
+                <p class="icon">
+                  <mat-icon>keyboard_arrow_up</mat-icon>
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </p>
+              </div>
+            </th>
+            <th>
+              <div class="tablehead">
+                <p>Subscribe</p>
+                <p class="icon">
+                  <mat-icon>keyboard_arrow_up</mat-icon>
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </p>
+              </div>
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <div class="btn">
+                <mat-icon>radio_button_unchecked</mat-icon>
+              </div>
+            </td>
+            <td>
+              <div class="profile">
+                <img class="proimage" src="/assets/mg 1.png" />
+                <p>Virat&nbsp;Kohli</p>
+              </div>
+            </td>
+            <td><div class="startdate">10/12/2022</div></td>
+            <td>
+              <div class="cline">
+                The&nbsp;drawing&nbsp;course&nbsp;Beginer&nbsp;to&nbsp;advanced
+              </div>
+            </td>
+            <td><div class="startdate">10/12/2022</div></td>
+            <td>
+              <div class="complete">
+                <div class="color"><mat-icon>lens</mat-icon></div>
+                <div class="comline">Completed</div>
+              </div>
+            </td>
+            <td>
+              <div>
+                <mat-slide-toggle color="primary"></mat-slide-toggle>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+   </div>
+
+
+<div class="secondBlock" *ngIf="second">
+    <div class="back">
+        <div class="backIcon">
+            <mat-icon (click)="onBack()">keyboard_arrow_left</mat-icon>
+        </div>
+        <div class="backline">Recently&nbsp;courses&nbsp;added</div>
         
     </div>
+    <div class="recentAddVideo">
+        <div class="gap">
+        <div class="video">
+            <div class="videoBox">
+              <img class="image" src="/assets/unsplash_ubIWo074QlU.png" />
+            </div>
+            <div class="videoname">
+              <div class="videoLine">Python&nbsp;programming&nbsp;for&nbsp;school&nbsp;students</div>
+              <div class="progressbar">
+                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+              </div>
+            </div>
+            
+          </div>
+          <div class="iconclose">
+            <mat-icon>close</mat-icon>
+          </div>
+        </div>
+        <div  class="gap">
+            <div class="video">
+              <div class="videoBox">
+                <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" />
+                <div class="play">
+                  <mat-icon>play_arrow</mat-icon>
+                </div>
+              </div>
+    
+              <div class="videoLine">Poster&nbsp;design&nbsp;tutorial</div>
+              <div class="done">
+                <mat-icon>done</mat-icon>
+              </div>
+            </div>
+            <div class="iconclose">
+              <mat-icon>delete_outline</mat-icon>
+            </div>
+          </div>
+
+          <div class="gap" >
+            <div class="video">
+              <div class="videoBox">
+                <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" />
+                <div class="play">
+                  <mat-icon>play_arrow</mat-icon>
+                </div>
+              </div>
+    
+              <div class="videoLine">Poster&nbsp;design&nbsp;tutorial&nbsp;for&nbsp;beginers</div>
+              
+            </div>
+            <div class="iconList">
+                <div class="error">
+                    <div class="errorimage">
+                        <img src="/assets/error.png">
+                    </div>
+                    <div class="errorline">Upload&nbsp;failed</div>
+                </div>
+            <div class="iconclose">
+                <mat-icon>refresh</mat-icon>
+              </div>
+            <div class="iconclose">
+              <mat-icon (click)="openDialog()">delete_outline</mat-icon>
+            </div>
+        </div>
+            
+            
+          </div>
+          
+          
+    </div>
+
+    
+</div>
+
+
+  </div>
 </div>
