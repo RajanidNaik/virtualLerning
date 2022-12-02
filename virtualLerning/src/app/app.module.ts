@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
+
 import { SecondHeadComponent } from './second-head/second-head.component';
+import { LoginComponent } from './login/login.component';
+import { MaterialModule } from './material/material.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import {MatIconModule} from '@angular/material/icon';
 import { DashBoardComponent } from './dash-board/dash-board.component';
@@ -23,9 +26,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     DashBoardComponent,
     AddCourseComponent,
     StudentListComponent,
-    SettingsComponent
+    SettingsComponent,
+    LoginComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -33,6 +38,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatProgressBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
