@@ -11,5 +11,5 @@ export class OtpComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+resend(){}
 }

@@ -15,6 +15,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { SettingsComponent } from './settings/settings.component';
 import { OtpComponent } from './otp/otp.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { OtpComponent } from './otp/otp.component';
     StudentListComponent,
     SettingsComponent,
     LoginComponent,
-    OtpComponent
+    OtpComponent,
+    PasswordChangeComponent
   ],
   imports: [
     MaterialModule,

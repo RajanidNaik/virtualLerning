@@ -1,62 +1,61 @@
-.sideNav{
-    position: absolute;
-/* width: 345px;
+.sideNav {
+  position: absolute;
+  /* width: 345px;
 height: 1186px; */
-width: 19.8%;
-height: 100%;
-top: 0px;
+  width: 19.8%;
+  height: 100%;
+  top: 0px;
 
-background: #FFFFFF;
-border-radius: 2px;
-border: 1px solid #000;
+  background: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #000;
 }
-.logo{
-   position: absolute;
-    width:45%;
-    left:28%
+.logo {
+  position: absolute;
+  width: 45%;
+  left: 28%;
 }
-.dashboard{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:1.5rem;
-    font-family: 'Proxima Nova Soft';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 22px;
-padding: 15%;
-    padding-left: 30%;
-    padding-right: 30%;
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: "Proxima Nova Soft";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 15%;
+  padding-left: 30%;
+  padding-right: 30%;
 
-color: #232323;
+  color: #232323;
 }
-.dashboard mat-icon{
-    color: rgba(0,0,0,0.3);
+.dashboard mat-icon {
+  color: rgba(0, 0, 0, 0.3);
 }
-.nav{
-    position: absolute;
-    top:15%;
-    left: 28%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap:2.5rem
+.nav {
+  position: absolute;
+  top: 15%;
+  left: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
 }
-.dashboard:hover{
-    background: #092963;
-    border-radius: 18px;
-    color:#fff;
-   
+.dashboard:hover {
+  background: #092963;
+  border-radius: 18px;
+  color: #fff;
 }
-.dashboard:hover mat-icon{
-    color: #fff;
+.dashboard:hover mat-icon {
+  color: #fff;
 }
-.active{
-    background: #092963;
-    border-radius: 18px;
-    color:#fff;
+.active {
+  background: #092963;
+  border-radius: 18px;
+  color: #fff;
 }
-.active mat-icon{
-    color:#fff;
+.active mat-icon {
+  color: #fff;
 }
