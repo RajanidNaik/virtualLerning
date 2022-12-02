@@ -7,7 +7,7 @@
 .box{
     width: 31.25%;
     height: 58.70%;
-    margin:20.64% 34.37%;
+    margin:12.64% 34.37%;
     background-color: white;
     border-radius: 4px;
     /* align-items: center;  */
@@ -42,6 +42,13 @@ mat-form-field {
   ::ng-deep.mat-form-field-underline {
 color: #072D5B!important;
 } 
+  ::ng-deep.mat-form-field-input {
+color: #072D5B!important;
+font-size: 18px;
+} 
+#mat-input-0 {
+font-size: 20px;
+}
 .Forgo {
 cursor: pointer;
 float: right;
@@ -53,7 +60,7 @@ color: #EE5C4D;
    height: 44px;
 margin: 0;
 border: 0;
-margin-top:39% ;
+margin-top: 31%;
 color: white;
 background: #EE5C4D;
 border-radius: 6px;
@@ -70,4 +77,19 @@ font-weight: 700;
 font-size: 32px;
 text-align: center;
 color: #092963;
+margin-top: 9.06%;
+line-height: 39px;
+}
+.dataForgot .discription{
+    margin-top: 5.03%;
+    margin-bottom: 6.25%;
+    color: #092963;
+    line-height: 26px;
+
+} 
+mat-input , input{
+font-size: 20px;
+}
+.button1{
+    margin-top: 43px;
 }
