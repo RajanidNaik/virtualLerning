@@ -60,7 +60,8 @@ color: #EE5C4D;
    height: 44px;
 margin: 0;
 border: 0;
-margin-top: 31%;
+font-size: 18px;
+font-weight: 700;
 color: white;
 background: #EE5C4D;
 border-radius: 6px;
@@ -90,6 +91,6 @@ line-height: 39px;
 mat-input , input{
 font-size: 20px;
 }
-.button1{
-    margin-top: 43px;
+.button1 {
+  margin-top: 31%;
 }
