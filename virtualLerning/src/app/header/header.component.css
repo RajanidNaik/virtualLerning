@@ -1,0 +1,44 @@
+.head {
+  position: absolute;
+  width: 80%;
+  height: 12vh;
+  /* width: 1582px; */
+  right: 0;
+  top: 0px;
+  background: #ffffff;
+  border-radius: 50px 0px 0px 0px;
+  border: 1px solid #000;
+}
+.navPosition {
+  position: absolute;
+  top: 35%;
+  left: 5%;
+  font-family: "Proxima Nova Soft";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  color: #292929;
+}
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: absolute;
+  right: 5%;
+  top: 15%;
+}
+.personImg {
+  background-color: rgb(230, 169, 56);
+  border-radius: 50%;
+}
+.personName {
+  font-family: "Proxima Nova Soft";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: right;
+  color: #292929;
+}
