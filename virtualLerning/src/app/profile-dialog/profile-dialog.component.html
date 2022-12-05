@@ -1,0 +1,102 @@
+<div class="whole">
+<div class="container">
+    <div *ngIf="firstBlock">
+    <div class="close"><mat-icon mat-dialog-close  (click)="onclose()">clear</mat-icon></div>
+    <div class="profile">
+        <div class="line">Profile</div>
+        <div class="edit"><mat-icon (click)="onedit()">edit</mat-icon></div>
+    </div>
+    <div class="profileImage">
+<div class="image">
+    <img src="/assets/mg 1.png">
+</div>
+<div class="name">Virat&nbsp;Kohli</div>
+    </div>
+    <div class="border"></div>
+    <div class="content">
+        <div class="inside">
+            <div class="person">Name</div>
+            <div class="personName">Virat&nbsp;Kohli</div>
+        </div>
+        <div class="inside1">
+            <div class="person">Email&nbsp;ID</div>
+            <div class="personName">viratk@gmail.com</div>
+        </div>
+        <div class="inside2">
+            <div class="person">Mobile&nbsp;number</div>
+            <div class="personName">+91&nbsp;9844635685</div>
+        </div>
+        <div class="inside3">
+            <div class="personName">Change&nbsp;password</div>
+            <div  class="move"><mat-icon (click)="onchange()">keyboard_arrow_right</mat-icon></div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="secondBlock">
+    <div class="back">
+        <mat-icon (click)="onback()">arrow_back</mat-icon>
+    </div>
+    <div class="edits">Edit&nbsp;Profile</div>
+    <div class="photo">
+        <img class="changePhoto" src="/assets/mg 1.png">
+        <div class="cphoto"><mat-icon>camera_alt</mat-icon></div>
+    </div>
+    <div class="lineCopy"></div>
+    <div class="details">
+        <div class="none">
+            <label class="noneName">Full&nbsp;Name</label>
+            <input placeholder="" >
+        </div>
+        <div class="none">
+            <label class="noneName">Email&nbsp;ID</label>
+            <input placeholder="" >
+        </div>
+        <div class="none">
+            <label class="noneName">Mobile&nbsp;Number</label>
+            <input placeholder="" >
+        </div>
+        <div class="save">
+            <button type="submit">Save</button>
+        </div>
+    </div>
+    
+
+</div>
+
+
+<div *ngIf="thirdBlock">
+    <div class="back">
+        <mat-icon (click)="onback()">arrow_back</mat-icon>
+    </div>
+    <div class="edits1">Change&nbsp;Password</div>
+    <div class="lineCopy1"></div>
+    <div class="detailsCopy">
+        <div class="none">
+            <label class="noneName">Current&nbsp;Password</label>
+            <input placeholder="" type="password" >
+        </div>
+        <div class="none">
+            <label class="noneName">New&nbsp;Password</label>
+            <input placeholder="" type="password" >
+        </div>
+        <div class="none">
+            <label class="noneName">Confirm&nbsp;Password</label>
+            <input placeholder="" type="password" >
+        </div>
+        <div class="save">
+            <button type="submit" (click)=" onSave()">Save</button>
+        </div>
+    </div>
+
+    
+</div>
+
+
+</div>
+<div class="success" *ngIf="save">
+    <div class="right"><mat-icon (click)="onClose()">check_circle</mat-icon></div>
+    <div class="lines">password&nbsp;changed&nbsp;successfully</div>
+    <div class="left"><mat-icon (click)="onClose()">clear</mat-icon></div>
+</div>
+</div>

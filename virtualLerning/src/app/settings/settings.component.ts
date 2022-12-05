@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
+success:boolean=false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+onSave(){
+  this.success =true;
+}
+onclose(){
+  this.success =false;
+}
 }

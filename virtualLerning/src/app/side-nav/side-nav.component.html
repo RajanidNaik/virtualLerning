@@ -1,8 +1,18 @@
+
+{{ onCheck()}}
+<div class="sideNav" *ngIf="!active">
+    
+<div>
+    <img class="logo"  src="/assets/logo_splash.png">
+</div>
+<div class="nav" >
+
 <div class="sideNav">
   <div>
     <img class="logo" src="assets/logo_splash.png" />
   </div>
   <div class="nav">
+
     <div class="dashboard" routerLink="/dashboard" routerLinkActive="active">
       <div>
         <!-- <img src="/assets/Vector(3).png"> -->
@@ -32,3 +42,46 @@
     </div>
   </div>
 </div>
+
+</div>
+
+
+
+<div class="sideNav1" *ngIf="active">
+   
+    <div>
+        <img class="logo"  src="/assets/img_virtuallearn logo_splash 2.png">
+    </div>
+    <div class="nav" >
+        <div class="dashboard1" routerLink="/dashboard" routerLinkActive="active1">
+            <div>
+                <!-- <img src="/assets/Vector(3).png"> -->
+                <mat-icon>dashboard</mat-icon>
+            </div>
+            <div>Dashboard</div>
+        </div>
+        <div class="dashboard1" routerLink="/addcourse" routerLinkActive="active1">
+            <div>
+                <!-- <img src="/assets/Vector(4).png"> -->
+                <mat-icon >library_add</mat-icon>
+            </div>
+            <div>Add&nbsp;courses</div>
+        </div>
+        <div class="dashboard1" routerLink="/studentlist" routerLinkActive="active1">
+            <div>
+                <!-- <img src="/assets/Vector(5).png"> -->
+                <mat-icon>list</mat-icon>
+            </div>
+            <div>Student&nbsp;list</div>
+        </div>
+        <div class="dashboard1" routerLink="/settings" routerLinkActive="active1">
+            <div>
+                <mat-icon>settings</mat-icon>
+            </div>
+            <div>Settings</div>
+        </div>
+    </div>
+    </div>
+<!-- <app-header></app-header> -->
+
+
