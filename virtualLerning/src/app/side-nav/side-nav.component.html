@@ -1,3 +1,4 @@
+
 {{ onCheck()}}
 <div class="sideNav" *ngIf="!active">
     
@@ -5,34 +6,43 @@
     <img class="logo"  src="/assets/logo_splash.png">
 </div>
 <div class="nav" >
+
+<div class="sideNav">
+  <div>
+    <img class="logo" src="assets/logo_splash.png" />
+  </div>
+  <div class="nav">
+
     <div class="dashboard" routerLink="/dashboard" routerLinkActive="active">
-        <div>
-            <!-- <img src="/assets/Vector(3).png"> -->
-            <mat-icon>dashboard</mat-icon>
-        </div>
-        <div>Dashboard</div>
+      <div>
+        <!-- <img src="/assets/Vector(3).png"> -->
+        <mat-icon>dashboard</mat-icon>
+      </div>
+      <div>Dashboard</div>
     </div>
     <div class="dashboard" routerLink="/addcourse" routerLinkActive="active">
-        <div>
-            <!-- <img src="/assets/Vector(4).png"> -->
-            <mat-icon >library_add</mat-icon>
-        </div>
-        <div>Add&nbsp;courses</div>
+      <div>
+        <!-- <img src="/assets/Vector(4).png"> -->
+        <mat-icon>library_add</mat-icon>
+      </div>
+      <div>Add&nbsp;courses</div>
     </div>
     <div class="dashboard" routerLink="/studentlist" routerLinkActive="active">
-        <div>
-            <!-- <img src="/assets/Vector(5).png"> -->
-            <mat-icon>list</mat-icon>
-        </div>
-        <div>Student&nbsp;list</div>
+      <div>
+        <!-- <img src="/assets/Vector(5).png"> -->
+        <mat-icon>list</mat-icon>
+      </div>
+      <div>Student&nbsp;list</div>
     </div>
     <div class="dashboard" routerLink="/settings" routerLinkActive="active">
-        <div>
-            <mat-icon>settings</mat-icon>
-        </div>
-        <div>Settings</div>
+      <div>
+        <mat-icon>settings</mat-icon>
+      </div>
+      <div>Settings</div>
     </div>
+  </div>
 </div>
+
 </div>
 
 
@@ -73,3 +83,5 @@
     </div>
     </div>
 <!-- <app-header></app-header> -->
+
+

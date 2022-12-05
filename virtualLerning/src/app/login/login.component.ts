@@ -16,5 +16,6 @@ export class LoginComponent implements OnInit {
     this.login = false;
     this.forgotPassword = true;
   }
+  loginCheck(){}
 
 }

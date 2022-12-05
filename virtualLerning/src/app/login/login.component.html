@@ -24,8 +24,8 @@
                             <div class="box1">
                                 <div class="Forgo" (click)="forgot()">Forgot Password?</div>
                             </div>
-                            <div class="button">
-                                <button class="loginButn">Login</button>
+                            <div class="button1" routerLink="/dashboard">
+                                <button class="loginButn" (click)="loginCheck()">Login</button>
                             </div>
         </div>
          <div class="dataForgot" *ngIf="forgotPassword" >
@@ -37,10 +37,13 @@
                 </div>
                 <div class="username">
                                 <mat-form-field class="example-full-width">
-                                <mat-label>Email ID</mat-label>
+                                <mat-label>Enter Email ID</mat-label>
                                 <input type="email" matInput />
                                 </mat-form-field>
                 </div>
-         </div>
+                 <div class="button" routerLink="/otp">
+                                <button class="loginButn">Send</button>
+                            </div>
+                </div>
   </div>
 </div>
