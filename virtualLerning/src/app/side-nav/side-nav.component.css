@@ -2,18 +2,22 @@
     position: absolute;
 /* width: 345px;
 height: 1186px; */
-width: 19.8%;
+width: 20%;
 height: 100%;
-top: 0px;
+top: 0;
+left: 0;
 
 background: #FFFFFF;
 border-radius: 2px;
-border: 1px solid #000;
+/* border: 1px solid #000; */
 }
-.logo{
-   position: absolute;
+img.logo{
+    /* position: absolute; */
     width:45%;
-    left:28%
+    left:28%;
+    margin-left:25% ;
+  
+    /* border:1px solid red; */
 }
 .dashboard{
     display: flex;
@@ -37,9 +41,10 @@ color: #232323;
 .nav{
     position: absolute;
     top:15%;
-    left: 28%;
+    left: 25%;
     display: flex;
     flex-direction: column;
+    
     align-items: center;
     gap:2.5rem
 }
@@ -59,4 +64,65 @@ color: #232323;
 }
 .active mat-icon{
     color:#fff;
+}
+
+
+
+.sideNav1{
+    position: absolute;
+/* width: 345px;
+height: 1186px; */
+width: 20%;
+height: 100%;
+top: 0;
+left: 0;
+
+background: #092963;
+border-radius: 2px;
+}
+.dashboard1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:1.5rem;
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 22px;
+padding: 15%;
+    padding-left: 30%;
+    padding-right: 30%;
+
+color: #fff;
+}
+.dashboard1 mat-icon{
+    color: #fff;
+}
+.nav{
+    position: absolute;
+    top:15%;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    gap:2.5rem
+}
+.dashboard1:hover{
+    background: #fff;
+    border-radius: 18px;
+    color:#092963;
+   
+}
+.dashboard1:hover mat-icon{
+    color:#092963 ;
+}
+.active1{
+    background: #fff;
+    border-radius: 18px;
+    color:#092963;
+}
+.active1 mat-icon{
+    color:#092963;
 }

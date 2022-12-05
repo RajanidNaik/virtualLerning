@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="icondelete">
-          <mat-icon>delete_outline</mat-icon>
+          <mat-icon (click)="openDialog()">delete_outline</mat-icon>
         </div>
       </div>
       <div class="video">
@@ -163,6 +163,10 @@
                 <div class="color"><mat-icon>lens</mat-icon></div>
                 <div class="comline">Completed</div>
               </div>
+              <!-- <div class="ongoing">
+                    <div class="color1"><mat-icon>lens</mat-icon></div>
+                    <div class="comline1">on&nbsp;Going</div>
+                  </div> -->
             </td>
             <td>
               <div>
@@ -217,7 +221,7 @@
               </div>
             </div>
             <div class="iconclose">
-              <mat-icon>delete_outline</mat-icon>
+              <mat-icon (click)="openDialog()">delete_outline</mat-icon>
             </div>
           </div>
 

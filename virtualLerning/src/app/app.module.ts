@@ -16,6 +16,8 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DialogDashboardComponent } from './dialog-dashboard/dialog-dashboard.component';
+import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
+import { HeadDialogComponent } from './head-dialog/head-dialog.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { DialogDashboardComponent } from './dialog-dashboard/dialog-dashboard.co
     StudentListComponent,
     SettingsComponent,
     LoginComponent,
-    DialogDashboardComponent
+    DialogDashboardComponent,
+    ProfileDialogComponent,
+    HeadDialogComponent
   ],
   imports: [
     MaterialModule,

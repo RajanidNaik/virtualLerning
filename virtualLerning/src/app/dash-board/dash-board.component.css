@@ -13,7 +13,7 @@ top: 12%;
 
 background: #F9F9F9;
 border-radius: 38px 0px 0px 38px;
-border:1px solid #000;
+/* border:1px solid #000; */
 }
 
 .day{
@@ -39,7 +39,7 @@ border:1px solid #000;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 600;
-font-size: 24px;
+font-size: 22px;
 line-height: 29px;
 color: #292929;
 }
@@ -63,7 +63,7 @@ cursor: pointer;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 600;
-font-size: 54px;
+font-size: 48px;
 line-height: 65px;
 
 color: #292929;
@@ -72,7 +72,7 @@ color: #292929;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 500;
-font-size: 28px;
+font-size: 24px;
 line-height: 34px;
 
 color: #292929;
@@ -170,7 +170,7 @@ border-radius: 34px;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 500;
-font-size: 28px;
+font-size: 24px;
 line-height: 34px;
 color: #292929;
 }
@@ -178,7 +178,7 @@ color: #292929;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 700;
-font-size: 44px;
+font-size: 34px;
 line-height: 53px;
 color: #292929;
 }
@@ -243,7 +243,7 @@ color: #B3B3B3;
 .tablehead{
     display:flex;
     align-items: center;
-    gap:8.2rem;
+    gap:6.5rem;
     margin-left: 2%;
     
     
@@ -317,7 +317,7 @@ color: #1A1A1A;
 color: #1EAB0D;
 font-size: .5rem;
 }
-.complete{
+.complete,.ongoing{
     display: flex;
     align-items: center;
 }
@@ -347,7 +347,14 @@ font-size: 14px;
 line-height: 17px;
 color: #1EAB0D;
 }
-
+.comline1{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #666666;
+}
 
 
 /*second Block*/
