@@ -1,15 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-@import url('https://fonts.googleapis.com/css?family=Proxima+Nova');
-.mat-progress-bar-fill::after {
-    background-color: red;
-}
- /* .mat-progress-bar-buffer {
-    background: #E4E8EB;
-}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Proxima Nova Soft";
 
-::ng-deep .mat-progress-bar {
-    border-radius: 2px;
-} */
+  background: #f9f9f9;
+
+}
+@import url("https://fonts.googleapis.com/css?family=Proxima+Nova");
+.mat-progress-bar-fill::after {
+  background-color: red;
+}

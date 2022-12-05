@@ -3,12 +3,12 @@
   /* width: 345px;
 height: 1186px; */
   width: 19.8%;
-  height: 100%;
+  height: 78%;
   top: 0px;
 
   background: #ffffff;
   border-radius: 2px;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 .logo {
   position: absolute;
@@ -25,9 +25,7 @@ height: 1186px; */
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  padding: 15%;
-  padding-left: 30%;
-  padding-right: 30%;
+  padding :12px 14px;
 
   color: #232323;
 }
@@ -36,8 +34,8 @@ height: 1186px; */
 }
 .nav {
   position: absolute;
-  top: 15%;
-  left: 28%;
+  top: 131.4px;
+left: 52.2px;
   display: flex;
   flex-direction: column;
   align-items: center;

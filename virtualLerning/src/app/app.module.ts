@@ -16,7 +16,6 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { SettingsComponent } from './settings/settings.component';
 import { OtpComponent } from './otp/otp.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
-import { AddCoursenavComponent } from './add-coursenav/add-coursenav.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { AddCoursenavComponent } from './add-coursenav/add-coursenav.component';
     LoginComponent,
     OtpComponent,
     PasswordChangeComponent,
-    AddCoursenavComponent,
   ],
   imports: [
     MaterialModule,
@@ -43,3 +41,11 @@ import { AddCoursenavComponent } from './add-coursenav/add-coursenav.component';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+
+
+
+    // AddCoursenavComponent,
+    // QAndAComponent,
+    // CertificateComponent,
+    // VideoComponent,
