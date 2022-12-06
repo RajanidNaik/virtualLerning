@@ -16,7 +16,8 @@ img.logo{
     /* position: absolute; */
     width:45%;
     left:28%;
-    margin-left:25% ;
+   margin-left: 0px;
+top: 2vw; ;
   
     /* border:1px solid red; */
 }
@@ -41,8 +42,8 @@ color: #232323;
 }
 .nav{
     position: absolute;
-    top:15%;
-    left: 25%;
+    left: 26.2px;
+top: 115.4px;
     display: flex;
     flex-direction: column;
     
