@@ -1,0 +1,60 @@
+<div class="item">
+        <div class="chapName">Select Chapter Name</div>
+        <div class="input /">
+          <div>
+            <input class="titleInput" type="list" list="browsers" />
+            <datalist id="browsers">
+              <option value="Internet Explorer"></option>
+              <option value="Firefox"></option>
+              <option value="Google Chrome"></option>
+              <option value="Opera"></option>
+              <option value="Safari"></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="currPage">5 of 44</div>
+      </div>
+      <div class="question">
+        <div class="Qnum">Question 1</div>
+        <div class="details">
+          <div>
+            What is load balancing, and why is it important to system design?
+          </div>
+          <div class="deleteChoice">
+            <div style="margin-right: 2vw;">
+              <mat-icon>delete</mat-icon>
+            </div>
+            <div class="more" (click)="show()">
+              <mat-icon *ngIf="!plus">add</mat-icon>
+              <mat-icon *ngIf="plus"> remove</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div class="options" *ngIf="plus">
+          <div class="opt">
+            <div>Load balance,L1</div>
+            <div class="transform">
+                  <mat-slide-toggle color="primary"></mat-slide-toggle>
+            </div>
+          </div>
+          <div class="opt">5</div>
+          <div class="opt">5</div>
+          <div class="opt">5</div>
+        </div>
+      </div>
+      <!-- <div class="border"> -->
+      <div class="footer">
+        <div class="prev">
+          <button class="previous">PREVIOUS</button>
+        </div>
+        <div class="pageNo">
+          <div class="roundPage">1</div>
+          <div class="roundPage">2</div>
+          <div class="roundPage">3</div>
+        </div>
+        <div class="nxt1">
+          <button class="next1">NEXT</button>
+        </div>
+        <div>
+          <button class="buttonSave">Save</button>
+        </div>

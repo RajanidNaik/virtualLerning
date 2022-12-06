@@ -24,6 +24,9 @@ import { HeadDialogComponent } from './head-dialog/head-dialog.component';
 
 import { OtpComponent } from './otp/otp.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { VideoComponent } from './video/video.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { QAndAComponent } from './q-and-a/q-and-a.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,9 +41,12 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 
     DialogDashboardComponent,
     ProfileDialogComponent,
-    HeadDialogComponent
+    HeadDialogComponent,
     OtpComponent,
     PasswordChangeComponent,
+    VideoComponent,
+    CertificateComponent,
+    QAndAComponent,
 
   ],
   imports: [

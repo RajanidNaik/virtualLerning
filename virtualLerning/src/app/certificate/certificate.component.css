@@ -1,0 +1,69 @@
+.border {
+  height: auto;
+  background-color: white;
+}
+.border input {
+  padding: 12px;
+  width: 34vw;
+  height: 3vh;
+  background: #fdfdfd;
+  border: 1px solid #d5d4dc;
+  border-radius: 8px;
+}
+
+.border .title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #232323;
+}
+.row {
+  margin: 20px 4vw;
+}
+
+.joining {
+  display: flex;
+  margin-left: 4vw;
+  gap: 20px;
+}
+.addnew {
+height: fit-content;
+margin-top: 2vw;
+} 
+
+.joining input {
+  width: 15vw;
+  height: 4vh;
+}
+.Cnotitle {
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 30px;
+
+  /* identical to box height, or 214% */
+
+  color: #111111;
+}
+.certificteFooter {
+  height: 120px;
+  width: 100%;
+  background-color: #042c5c;
+ margin-top: 50px;
+}
+
+.footlogo{
+   margin-top: 3vh;
+  margin-left: 4vw;
+}
+
+.cup{
+  position: fixed;
+
+top: 39vh;
+width: 361px;
+height: 375.417px;
+right: 5.5vw;
+
+}
