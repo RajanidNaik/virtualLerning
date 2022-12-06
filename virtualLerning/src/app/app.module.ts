@@ -27,6 +27,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { VideoComponent } from './video/video.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { QAndAComponent } from './q-and-a/q-and-a.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,14 +53,9 @@ import { QAndAComponent } from './q-and-a/q-and-a.component';
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-
     BrowserAnimationsModule,
-    
-    
-    
-
-    BrowserAnimationsModule
-
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

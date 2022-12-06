@@ -27,11 +27,16 @@ border-radius: 38px 0px 0px 38px;
 .tablehead{
     display:flex;
     align-items: center;
-    gap:7rem;
+    justify-content: space-between;
+    /* gap:7rem; */
    
     
     
    
+}
+table{
+    width: 96%;
+    margin:2%
 }
 .tablehead p:first-child{
     font-family: 'Proxima Nova Soft';
@@ -50,15 +55,13 @@ border-radius: 38px 0px 0px 38px;
     height: 70%;
     overflow: scroll;
     background-color: #fff;
-    padding: 1%;
+    /* border: 1px solid #000; */
 }
 .studentList::-webkit-scrollbar{
     display: none;
 }
 
-table{
-    margin-left: 2%;
-}
+
 
 table, th,td {
     border: 1px solid rgba(102, 102, 102, 0.08);
@@ -96,6 +99,7 @@ font-weight: 600;
 font-size: 14px;
 line-height: 17px;
 color: #1A1A1A;
+margin: 1%;
 }
 .btn mat-icon {
     font-size: 1rem;
@@ -105,6 +109,7 @@ color: #1A1A1A;
 .color mat-icon{
 color: #1EAB0D;
 font-size: .5rem;
+text-align: center;
 }
 .color1 mat-icon{
     color:#F7B055;

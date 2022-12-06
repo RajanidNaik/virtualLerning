@@ -307,5 +307,10 @@ color: #FFFFFF;
 
 
 }
-
+.none input.ng-invalid.ng-touched{
+    border-bottom:1px solid red;
+}
+.require{
+    color:red;
+}
 
