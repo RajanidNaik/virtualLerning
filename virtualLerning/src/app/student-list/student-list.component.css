@@ -1,0 +1,172 @@
+.contentBox{
+    box-sizing: border-box;
+
+position: absolute;
+width: 80.1%;
+height: 88%;
+right: 0;
+top: 12%;
+background: #F9F9F9;
+border-radius: 38px 0px 0px 38px;
+/* border:1px solid #000; */
+
+}
+.icon {
+    height: 3vh;
+    display: flex;
+    flex-direction: column;
+   gap:0;
+    font-size: 1rem;
+    /* border: 1px solid #000; */
+   
+}
+.icon mat-icon{
+    font-size: 1rem;
+    color: #B3B3B3;
+}
+.tablehead{
+    display:flex;
+    align-items: center;
+    gap:7rem;
+   
+    
+    
+   
+}
+.tablehead p:first-child{
+    font-family: 'Proxima Nova Soft';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #B3B3B3;
+}
+
+.studentList{
+    position: absolute;
+    top:10%;
+    left: 2%;
+    width:95%;
+    height: 70%;
+    overflow: scroll;
+    background-color: #fff;
+    padding: 1%;
+}
+.studentList::-webkit-scrollbar{
+    display: none;
+}
+
+table{
+    margin-left: 2%;
+}
+
+table, th,td {
+    border: 1px solid rgba(102, 102, 102, 0.08);
+    border-collapse: collapse;
+    
+    
+    
+  }
+  td div{
+    
+    text-align: center;
+  }
+  td{
+    padding: 7px;
+  }
+.proimage{
+    height: 15%;
+    width:15%;
+border: 1px solid rgba(102, 102, 102, 0.24);
+border-radius: 100px;
+}
+/* td{
+    padding: 1%;
+} */
+.profile{
+display: flex;
+flex-direction: row;
+gap:1rem;
+align-items: center;
+}
+.profile p{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+color: #1A1A1A;
+}
+.btn mat-icon {
+    font-size: 1rem;
+    color: #B3B3B3;
+}
+
+.color mat-icon{
+color: #1EAB0D;
+font-size: .5rem;
+}
+.color1 mat-icon{
+    color:#F7B055;
+    font-size: .5rem;
+    }
+.complete,.ongoing{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+}
+.startdate{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #666666;
+}
+.cline{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #1A1A1A;
+align-items: flex-start;
+
+}
+.comline{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #1EAB0D;
+}
+.comline1{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #666666;
+}
+.load{
+    position: absolute;
+    bottom: 5%;
+    left:50%;
+   
+}
+.load button{
+    padding: 20%;
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 30px;
+color: #092963;
+background: rgba(9, 41, 99, 0.11);
+border-radius: 4px;
+outline: none;
+border: none;
+cursor: pointer;
+}
