@@ -38,11 +38,9 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     StudentListComponent,
     SettingsComponent,
     LoginComponent,
-
     DialogDashboardComponent,
     ProfileDialogComponent,
-    HeadDialogComponent
-
+    HeadDialogComponent,
     OtpComponent,
     PasswordChangeComponent
 
