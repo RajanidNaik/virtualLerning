@@ -9,25 +9,30 @@
         <div class="change">
             Change&nbsp;password
         </div>
-        <div class="contentCover">
+        
+        <form class="contentCover" [formGroup]="changeForm">
         <div class="content">
             <div class="input">
             <label>Current&nbsp;password</label>
-            <input placeholder="placeholder text">
+            <input placeholder="placeholder text" formControlName="oldpassword">
+            <div *ngIf="changeForm.get('oldpassword')?.errors?.['required'] && changeForm.get('oldpassword')?.touched" class="require">This is required field*</div>
+        </div>
+        
+        <div class="input">
+            <label>New&nbsp;password</label>
+            <input placeholder=" placeholder text" formControlName="newpassword">
+            <div *ngIf="changeForm.get('newpassword')?.errors?.['required'] && changeForm.get('newpassword')?.touched" class="require">This is required field*</div>
         </div>
         <div class="input">
-            <label>Current&nbsp;password</label>
-            <input placeholder=" placeholder text">
-        </div>
-        <div class="input">
-            <label>Current&nbsp;password</label>
-            <input placeholder="placeholder text">
+            <label>Confirm&nbsp;password</label>
+            <input placeholder="placeholder text" formControlName="confirmpassword">
+            <div *ngIf="changeForm.get('confirmpassword')?.errors?.['required'] && changeForm.get('confirmpassword')?.touched" class="require">This is required field*</div>
         </div>
         <div class="save">
-            <button (click)="onSave()">Save</button>
+            <button (click)="onSave()"[disabled]="!changeForm.valid">Save</button>
         </div>
         </div>
-    </div>
+    </form>
     <div class="success" *ngIf="success">
         <div class="right"><mat-icon (click)="onclose()">check_circle</mat-icon></div>
         <div class="line" >password&nbsp;changed&nbsp;successfully</div>

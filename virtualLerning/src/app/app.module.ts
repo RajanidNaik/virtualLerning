@@ -20,8 +20,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { VideoComponent } from './video/video.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { QAndAComponent } from './q-and-a/q-and-a.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +32,6 @@ import { FormsModule } from '@angular/forms';
     StudentListComponent,
     SettingsComponent,
     LoginComponent,
-
     DialogDashboardComponent,
     ProfileDialogComponent,
     HeadDialogComponent,
@@ -48,21 +46,12 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+
     BrowserAnimationsModule,
     FormsModule,
-    BrowserAnimationsModule
-
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-
-
-
-    // AddCoursenavComponent,
-    // QAndAComponent,
-    // CertificateComponent,
-    // VideoComponent,
