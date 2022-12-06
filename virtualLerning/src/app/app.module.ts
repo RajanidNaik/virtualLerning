@@ -24,9 +24,6 @@ import { HeadDialogComponent } from './head-dialog/head-dialog.component';
 
 import { OtpComponent } from './otp/otp.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +39,8 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     DialogDashboardComponent,
     ProfileDialogComponent,
     HeadDialogComponent
-
     OtpComponent,
-    PasswordChangeComponent
+    PasswordChangeComponent,
 
   ],
   imports: [
@@ -64,3 +60,11 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+
+
+
+    // AddCoursenavComponent,
+    // QAndAComponent,
+    // CertificateComponent,
+    // VideoComponent,
