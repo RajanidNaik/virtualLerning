@@ -1,0 +1,88 @@
+.container{
+    box-sizing: border-box;
+    
+   width:100%;
+   height: 100%;
+    
+}
+
+.dialogBox{
+position: absolute;
+width: 40%;
+height: 52%;
+bottom: 20%;
+left:40%;
+background: #FFFFFF;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.17));
+border-radius: 6px;
+/* border:1px solid #000; */
+}
+.delete{
+text-align: right;
+margin:2%;
+color: #000;
+}
+.para{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 32px;
+text-align: start;
+color: rgba(0,0,0,0.7);
+margin:3%;
+}
+.name{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 700;
+font-size: 28px;
+line-height: 32px;
+    text-align: start;
+    margin:3%;
+    color:#EE5C4D;
+}
+.course{
+    font-family: 'Proxima Nova Soft';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 28px;
+    line-height: 32px;
+        text-align: start;
+        margin-left:3%;
+        color:#000;
+}
+.time{
+    display: flex;
+    gap:1%;
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 32px;
+text-align: start;
+color: rgba(0,0,0,0.7);
+margin-left: 3%;
+margin-block-start: 5%;
+}
+.footer{
+    position: absolute;
+    width:100%;
+    margin-block-start: 5%;
+    background: #042C5C;
+    
+}
+.image{
+    width: 15%;
+    margin: 1%;
+}
+.cup{
+    position: absolute;
+    top:45%;
+   left:70%;
+   z-index: 1;
+}
+.cup img{
+    width:92%;
+
+}

@@ -16,10 +16,18 @@ img.logo{
     /* position: absolute; */
     width:45%;
     left:28%;
-   margin-left: 0px;
-top: 2vw; ;
+
+    /* margin-left:25% ; */
+
+  
+
   
     /* border:1px solid red; */
+}
+.logo {
+  position: absolute;
+  width: 45%;
+  left: 28%;
 }
 .dashboard{
     display: flex;
@@ -71,14 +79,11 @@ top: 115.4px;
 
 
 .sideNav1{
-    position: absolute;
-/* width: 345px;
-height: 1186px; */
+position: absolute;
 width: 20%;
 height: 100%;
 top: 0;
 left: 0;
-
 background: #092963;
 border-radius: 2px;
 }
@@ -101,16 +106,7 @@ color: #fff;
 .dashboard1 mat-icon{
     color: #fff;
 }
-.nav{
-    position: absolute;
-    top:15%;
-    left: 25%;
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
-    gap:2.5rem
-}
+
 .dashboard1:hover{
     background: #fff;
     border-radius: 18px;
@@ -136,6 +132,8 @@ color: #fff;
   border-radius: 2px;
   /* border: 1px solid #000; */
 }
+
+
 .logo {
   position: absolute;
   width: 45%;
@@ -153,8 +151,8 @@ color: #fff;
   line-height: 22px;
   padding :12px 14px;
 
-  color: #232323;
-}
+
+
 .dashboard mat-icon {
   color: rgba(0, 0, 0, 0.3);
 }

@@ -10,12 +10,10 @@ import { ProfileDialogComponent } from './profile-dialog/profile-dialog.componen
 import { SecondHeadComponent } from './second-head/second-head.component';
 import { OtpComponent } from './otp/otp.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
-
-
-
-
 import { SettingsComponent } from './settings/settings.component';
 import { StudentListComponent } from './student-list/student-list.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { HeadDialogComponent } from './head-dialog/head-dialog.component';
 
 const routes: Routes = [
 { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -27,7 +25,9 @@ const routes: Routes = [
   {path:'studentlist',component:StudentListComponent},
   {path:'settings',component:SettingsComponent},
   {path:'dialogDashboard',component:DialogDashboardComponent},
-  {path:'profileDialog',component:ProfileDialogComponent}
+  {path:'profileDialog',component:ProfileDialogComponent},
+  {path:'sideNav',component:SideNavComponent},
+  {path:'head',component:HeadDialogComponent}
 ];
 
 @NgModule({

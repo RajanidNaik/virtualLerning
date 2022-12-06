@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
-
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
@@ -9,7 +8,8 @@ const materialComponent=[MatSlideToggleModule,MatInputModule,MatProgressBarModul
 
 @NgModule({
   exports: [materialComponent],
-  imports: [materialComponent],
+  imports: [materialComponent]
+ 
 })
 
 export class MaterialModule {}

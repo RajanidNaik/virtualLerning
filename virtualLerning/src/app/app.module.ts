@@ -38,7 +38,6 @@ import { QAndAComponent } from './q-and-a/q-and-a.component';
     StudentListComponent,
     SettingsComponent,
     LoginComponent,
-
     DialogDashboardComponent,
     ProfileDialogComponent,
     HeadDialogComponent,
