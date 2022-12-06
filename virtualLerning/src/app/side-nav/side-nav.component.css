@@ -3,48 +3,38 @@
   /* width: 345px;
 height: 1186px; */
 
-width: 20%;
-height: 100%;
-top: 0;
-left: 0;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  left: 0;
 
 background: #FFFFFF;
 border-radius: 2px;
 /* border: 1px solid #000; */
 }
-img.logo{
-    /* position: absolute; */
-    width:45%;
-    left:28%;
 
-    /* margin-left:25% ; */
-
-  
-
-  
-    /* border:1px solid red; */
-}
 .logo {
   position: absolute;
-  width: 45%;
-  left: 28%;
-  margin:3%;
+ top: 5vh;
+right: 0vw;
+left: 0px;
+width: 59%;
+  margin:auto;
 }
-.dashboard{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:1.5rem;
-    font-family: 'Proxima Nova Soft';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 22px;
-padding: 15%;
-    padding-left: 35%;
-    padding-right: 35%;
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: "Proxima Nova Soft";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  width: 14vw;
+  padding: 14% 14%;
 
-color: #232323;
+  color: #232323;
 }
 .dashboard mat-icon{
     color: rgba(0,0,0,0.3);
@@ -77,6 +67,29 @@ color: #232323;
     color:#fff;
 }
 
+
+.dashboard mat-icon {
+  color: rgba(0, 0, 0, 0.3);
+}
+.nav {
+  position: absolute;
+  left: 46.2px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 2.5rem;
+  top: 251px;
+}
+
+.active {
+  background: #092963;
+  border-radius: 18px;
+  color: #fff;
+}
+.active mat-icon {
+  color: #fff;
+}
 
 
 .sideNav1{
@@ -133,14 +146,6 @@ color: #fff;
   border-radius: 2px;
   /* border: 1px solid #000; */
 }
-
-
-.logo {
-  position: absolute;
-  width: 45%;
-  left: 28%;
-}
-
 .dashboard mat-icon {
   color: rgba(0, 0, 0, 0.3);
 }
@@ -160,5 +165,4 @@ color: #fff;
 }
 .active mat-icon {
   color: #fff;
-
 }
