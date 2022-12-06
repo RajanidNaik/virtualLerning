@@ -9,6 +9,7 @@ const materialComponent=[MatSlideToggleModule,MatInputModule,MatProgressBarModul
 @NgModule({
   exports: [materialComponent],
   imports: [materialComponent]
-
+ 
 })
+
 export class MaterialModule {}
