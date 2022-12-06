@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -7,14 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 success:boolean=false;
-  constructor() { }
+changeForm !:FormGroup;
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.changeForm = this.fb.group({
+      oldpassword:['',Validators.required ],
+      newpassword:['',Validators.required],
+      confirmpassword:['',Validators.required]
+    })
   }
 onSave(){
   this.success =true;
+  this.onReset();
 }
 onclose(){
   this.success =false;
+}
+onReset(){
+  console.log(this.changeForm.value);
+  this.changeForm.reset();
 }
 }

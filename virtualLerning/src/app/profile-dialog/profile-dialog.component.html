@@ -71,23 +71,31 @@
     </div>
     <div class="edits1">Change&nbsp;Password</div>
     <div class="lineCopy1"></div>
-    <div class="detailsCopy">
+    <form [formGroup]="changeForm" (ngSubmit)="onsubmit()">
+    <div class="detailsCopy" >
         <div class="none">
             <label class="noneName">Current&nbsp;Password</label>
-            <input placeholder="" type="password" >
+            <input placeholder="" type="password" formControlName="oldpassword">
+            
         </div>
+        <div *ngIf="changeForm.get('oldpassword')?.errors?.['required'] && changeForm.get('oldpassword')?.touched" class="require">This is required field*</div>
         <div class="none">
             <label class="noneName">New&nbsp;Password</label>
-            <input placeholder="" type="password" >
+            <input placeholder="" type="password" formControlName="newpassword">
         </div>
+        <div *ngIf="changeForm.get('newpassword')?.errors?.['required'] && changeForm.get('newpassword')?.touched" class="require">This is required field*</div>
         <div class="none">
             <label class="noneName">Confirm&nbsp;Password</label>
-            <input placeholder="" type="password" >
+            <input placeholder="" formControlName="confirmpassword" type="password" >
         </div>
+        <div *ngIf="changeForm.get('confirmpassword')?.errors?.['required'] && changeForm.get('confirmpassword')?.touched" class="require">This is required field*</div>
         <div class="save">
-            <button type="submit" (click)=" onSave()">Save</button>
+            <button type="submit" (click)=" onSave()" [disabled]="!changeForm.valid">Save</button>
         </div>
     </div>
+     <!-- <div *ngIf="!changeForm.get('oldpassword').valid">required field</div> -->
+     
+</form>
 
     
 </div>

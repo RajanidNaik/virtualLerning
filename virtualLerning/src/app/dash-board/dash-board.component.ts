@@ -12,6 +12,8 @@ import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.compone
 export class DashBoardComponent implements OnInit {
 first:boolean=true;
 second:boolean=false;
+isSubscribed:boolean=true;
+value=70;
   constructor(private dialog:MatDialog) { }
 
   ngOnInit(): void {

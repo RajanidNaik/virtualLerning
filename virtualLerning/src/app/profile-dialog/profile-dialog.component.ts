@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-dialog',
@@ -10,9 +11,15 @@ firstBlock:boolean=true;
 secondBlock:boolean=false;
 thirdBlock:boolean=false;
 save:boolean=false;
-  constructor() { }
+changeForm !:FormGroup;
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.changeForm = this.fb.group({
+      oldpassword:['',Validators.required ],
+      newpassword:['',Validators.required],
+      confirmpassword:['',Validators.required]
+    })
   }
   onedit(){
     this.firstBlock=false;
@@ -31,12 +38,20 @@ save:boolean=false;
   }
   onSave(){
     this.save =true;
+    this.onReset();
   }
   onClose(){
     this.save =false;
   }
   onclose(){
     sessionStorage.removeItem('active');
+  }
+  onsubmit(){
+    console.log(this.changeForm);
+  }
+  onReset(){
+    console.log(this.changeForm.value);
+    this.changeForm.reset();
   }
 
 }

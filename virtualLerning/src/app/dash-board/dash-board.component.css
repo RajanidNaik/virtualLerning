@@ -202,6 +202,7 @@ top: 50%;
 
 background: #FFFFFF;
 border-radius: 4px 4px 0px 0px;
+
 }
 .aboveTable{
     display: flex;
@@ -242,8 +243,9 @@ color: #B3B3B3;
 }
 .tablehead{
     display:flex;
+    justify-content: space-between;
     align-items: center;
-    gap:6.5rem;
+    /* gap:6.5rem; */
     margin-left: 2%;
     
     
@@ -265,11 +267,14 @@ color: #B3B3B3;
     width:95%;
     height: 70%;
     overflow: scroll;
+    
 }
 .studentList::-webkit-scrollbar{
     display: none;
 }
-
+table {
+    width: 100%;
+  }
 
 table, th,td {
     border: 1px solid rgba(102, 102, 102, 0.08);
@@ -289,24 +294,24 @@ table, th,td {
     height: 15%;
     width:15%;
 border: 1px solid rgba(102, 102, 102, 0.24);
-border-radius: 100px;
+border-radius: 50%;
+
 }
-/* td{
-    padding: 1%;
-} */
 .profile{
-display: flex;
-flex-direction: row;
-gap:1rem;
+    display: flex;
+    flex-direction: row;
 align-items: center;
+gap:3%
 }
 .profile p{
-    font-family: 'Proxima Nova Soft';
+ font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
 line-height: 17px;
 color: #1A1A1A;
+text-align: center;
+margin:1%;
 }
 .btn mat-icon {
     font-size: 1rem;
@@ -316,10 +321,12 @@ color: #1A1A1A;
 .color mat-icon{
 color: #1EAB0D;
 font-size: .5rem;
+justify-content: center;
 }
 .complete,.ongoing{
     display: flex;
     align-items: center;
+   
 }
 .startdate{
     font-family: 'Proxima Nova Soft';

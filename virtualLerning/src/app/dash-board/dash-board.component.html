@@ -41,7 +41,7 @@
         <div class="videoname">
           <div>Graphic&nbsp;design&nbsp;part&nbsp;1</div>
           <div class="progressbar">
-            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@
             </td>
             <td>
               <div>
-                <mat-slide-toggle color="primary"></mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"></mat-slide-toggle>
               </div>
             </td>
           </tr>
@@ -197,7 +197,7 @@
             <div class="videoname">
               <div class="videoLine">Python&nbsp;programming&nbsp;for&nbsp;school&nbsp;students</div>
               <div class="progressbar">
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
               </div>
             </div>
             
