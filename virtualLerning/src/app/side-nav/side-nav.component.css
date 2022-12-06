@@ -3,130 +3,120 @@
   /* width: 345px;
 height: 1186px; */
 
-width: 20%;
-height: 100%;
-top: 0;
-left: 0;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  left: 0;
 
-background: #FFFFFF;
-border-radius: 2px;
-/* border: 1px solid #000; */
+  background: #ffffff;
+  border-radius: 2px;
+  /* border: 1px solid #000; */
 }
-img.logo{
-    /* position: absolute; */
-    width:45%;
-    left:28%;
-   margin-left: 0px;
-top: 2vw; ;
-  
-    /* border:1px solid red; */
-}
-.dashboard{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:1.5rem;
-    font-family: 'Proxima Nova Soft';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 22px;
-padding: 15%;
-    padding-left: 30%;
-    padding-right: 30%;
+img.logo {
+  /* position: absolute; */
+  width: 206px;
+  height: 131px;
+  left: 76.933px;
+  margin-left: 0px;
+  top: 2vw;
 
-color: #232323;
-}
-.dashboard mat-icon{
-    color: rgba(0,0,0,0.3);
-}
-.nav{
-    position: absolute;
-    left: 26.2px;
-top: 115.4px;
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
-    gap:2.5rem
-}
-.dashboard:hover{
-    background: #092963;
-    border-radius: 18px;
-    color:#fff;
-   
-}
-.dashboard:hover mat-icon{
-    color: #fff;
-}
-.active{
-    background: #092963;
-    border-radius: 18px;
-    color:#fff;
-}
-.active mat-icon{
-    color:#fff;
+  /* border:1px solid red; */
 }
 
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: "Proxima Nova Soft";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  width: 14vw;
+  padding: 15%;
+  padding-left: 30%;
+  padding-right: 30%;
 
+  color: #232323;
+}
+.dashboard mat-icon {
+  color: rgba(0, 0, 0, 0.3);
+}
+.nav {
+  position: absolute;
+  left: 46.2px;
+  display: flex;
+  flex-direction: column;
 
-.sideNav1{
-    position: absolute;
-/* width: 345px;
+  align-items: center;
+  gap: 2.5rem;
+  top: 251px;
+}
+.dashboard:hover {
+  background: #092963;
+  border-radius: 18px;
+  color: #fff;
+}
+.dashboard:hover mat-icon {
+  color: #fff;
+}
+.active {
+  background: #092963;
+  border-radius: 18px;
+  color: #fff;
+}
+.active mat-icon {
+  color: #fff;
+}
+
+.sideNav1 {
+  position: absolute;
+  /* width: 345px;
 height: 1186px; */
-width: 20%;
-height: 100%;
-top: 0;
-left: 0;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  left: 0;
 
-background: #092963;
-border-radius: 2px;
+  background: #092963;
+  border-radius: 2px;
 }
-.dashboard1{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:1.5rem;
-    font-family: 'Proxima Nova Soft';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 22px;
-padding: 15%;
-    padding-left: 30%;
-    padding-right: 30%;
+.dashboard1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: "Proxima Nova Soft";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 15%;
+  padding-left: 30%;
+  padding-right: 30%;
 
-color: #fff;
+  color: #fff;
 }
-.dashboard1 mat-icon{
-    color: #fff;
+.dashboard1 mat-icon {
+  color: #fff;
 }
-.nav{
-    position: absolute;
-    top:15%;
-    left: 25%;
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
-    gap:2.5rem
+
+.dashboard1:hover {
+  background: #fff;
+  border-radius: 18px;
+  color: #092963;
 }
-.dashboard1:hover{
-    background: #fff;
-    border-radius: 18px;
-    color:#092963;
-   
+.dashboard1:hover mat-icon {
+  color: #092963;
 }
-.dashboard1:hover mat-icon{
-    color:#092963 ;
+.active1 {
+  background: #fff;
+  border-radius: 18px;
+  color: #092963;
 }
-.active1{
-    background: #fff;
-    border-radius: 18px;
-    color:#092963;
-}
-.active1 mat-icon{
-    color:#092963;
+.active1 mat-icon {
+  color: #092963;
 
   width: 19.8%;
   height: 78%;
@@ -151,22 +141,14 @@ color: #fff;
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  padding :12px 14px;
+  padding: 12px 14px;
 
   color: #232323;
 }
 .dashboard mat-icon {
   color: rgba(0, 0, 0, 0.3);
 }
-.nav {
-  position: absolute;
-  top: 131.4px;
-left: 52.2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
-}
+
 .dashboard:hover {
   background: #092963;
   border-radius: 18px;
@@ -182,5 +164,4 @@ left: 52.2px;
 }
 .active mat-icon {
   color: #fff;
-
 }

@@ -10,15 +10,63 @@
         ID.
       </div>
       <div class="otpVal">
-          <div class="otpInput"><input class="otpUser"type="text"></div>
-          <div class="otpInput"><input class="otpUser"type="text"></div>
-          <div class="otpInput"><input class="otpUser"type="text"></div>
-          <div class="otpInput"><input class="otpUser"type="text"></div>
-      </div>
-      <div class="resend">Didn’t receive a code? <span (click)="resend()">Resend</span> </div>
-       <div class="button1" routerLink="/password">
-                <button class="loginButn">Verify</button>
+        <div class="otpInput">
+          <input class="otpUser" [(ngModel)]="val1" #one type="text" maxlength="1" (keypress)="checkNum($event)" (keyup)="jump($event, '',one,two)">
         </div>
+        <div class="otpInput">
+
+          <input class="otpUser" #two type="text"  maxlength="1" [(ngModel)]="val2" (keypress)="checkNum($event)" (keyup)="jump($event, one,two,three)" >
+        </div>
+        <div class="otpInput">
+          <input class="otpUser"  required [(ngModel)]="val3" #three type="text" maxlength="1"  required (keypress)="checkNum($event)" (keyup)="jump($event,two,three,four)">
+        </div>
+        <div class="otpInput">
+          <input class="otpUser" [(ngModel)]="val4" #four type="text" maxlength="1" (keyup)="jump($event,three,four,four)" />
+        </div>
+      </div>
+      <div class="resend">
+        Didn’t receive a code? <span (click)="resend()">Resend</span>
+      </div>
+      <div class="button1">
+        <button class="loginButn" (click)="verify()">Verify</button>
+        {{val1}}{{val2}}{{val3}}{{val4}}
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <input class="otpUser" [(ngModel)]="val1" #one type="text" maxlength="1" (keypress)="checkNum($event)" (keyup)="jump($event, '',one,two)">
+        </div>
+        <div class="otpInput">
+
+          <input class="otpUser" #two type="text"  maxlength="1" [(ngModel)]="val2" (keypress)="checkNum($event)" (keyup)="jump($event, one,two,three)" >
+        </div>
+        <div class="otpInput">
+          <input class="otpUser"  required [(ngModel)]="val3" #three type="text" maxlength="1"  required (keypress)="checkNum($event)" (keyup)="jump($event,two,three,four)">
+        </div>
+        <div class="otpInput">
+          <input class="otpUser" [(ngModel)]="val4" #four type="text" maxlength="1" (keyup)="jump($event,three,four,four)" />
+        </div>
+      </div>
+      <div class="resend">
+        Didn’t receive a code? <span (click)="resend()">Resend</span>
+      </div>
+      <div class="button1">
+        <button class="loginButn" (click)="verify()">Verify</button>
+        {{val1}}{{val2}}{{val3}}{{val4}}
+      </div>
+    </div> -->
