@@ -1,9 +1,12 @@
 .border {
   height: auto;
   background-color: white;
+  padding-top: 1.5vh;
 }
 .border input {
   padding: 12px;
+ font-size: 18px;
+ color: #2B2B2B;
   width: 34vw;
   height: 3vh;
   background: #fdfdfd;
@@ -25,11 +28,18 @@
 .joining {
   display: flex;
   margin-left: 4vw;
+  margin-top: 44px;
   gap: 20px;
 }
 .addnew {
 height: fit-content;
 margin-top: 2vw;
+} 
+.time {
+  display: flex;
+  align-items: center;
+/* height: fit-content;
+margin-top: 43px; */
 } 
 
 .joining input {
@@ -41,6 +51,7 @@ margin-top: 2vw;
   font-weight: 700;
   font-size: 14px;
   line-height: 30px;
+  margin-left: 16px;
 
   /* identical to box height, or 214% */
 
@@ -59,9 +70,9 @@ margin-top: 2vw;
 }
 
 .cup{
-  position: fixed;
+  position: absolute;
 
-top: 39vh;
+top: 50vh;
 width: 361px;
 height: 375.417px;
 right: 5.5vw;
@@ -69,6 +80,7 @@ right: 5.5vw;
 .submisson{
   margin-top: 5vh ;
   float: right;
+  margin-bottom: 2vh;
 }
 .save ,.preview{
   /* position: absolute;
@@ -82,5 +94,4 @@ right: 5.5vw;
 .preview{
   background: rgba(9, 41, 99, 0.2);
   margin-right: 3vw;
-
 }

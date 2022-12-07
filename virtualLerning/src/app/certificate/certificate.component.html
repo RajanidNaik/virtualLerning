@@ -1,26 +1,26 @@
-<div class="border">
+<div class="border" [formGroup]="certForm">
         <div class="row">
           <div class="title">Certification title</div>
-          <input type="text" />
+          <input type="text" formControlName="title" />
         </div>
         <div class="row">
           <div class="title">Students Name</div>
-          <input type="text" />
+          <input type="text" formControlName="name" />
         </div>
         <div class="row">
           <div class="title">Courses title</div>
-          <input type="text" />
+          <input type="text" formControlName="course"  />
         </div>
         <div class="joining">
           <div class="row1">
             <div class="title">Joined Date</div>
-            <input type="date" />
+            <input type="date" formControlName="join" />
           </div>
           <div class="row1">
             <div class="title"> Completed Date</div>
-            <input type="date" />
+            <input type="date"  formControlName="end"/>
           </div>
-          <div>
+          <div class="time">
             00h:00m
           </div>
         </div>
@@ -30,11 +30,11 @@
         <div class="trophy">
           <img src="assets/image 1.png" alt="" class="cup">
         </div>
-        <div class="certificteFooter" (click)="openDialog()">
+        <div class="certificteFooter" >
             <img src="assets/footerLogo.png" alt="" class="footlogo">
         </div>
         <div class="submisson">
-          <button class="preview">Preview</button>
-          <button class="save">Save</button>
+          <button class="preview" (click)="openDialog()">Preview</button>
+          <button class="save" (click)="show()">Save</button>
         </div>
       </div>
