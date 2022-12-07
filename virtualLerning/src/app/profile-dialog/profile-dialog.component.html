@@ -76,19 +76,22 @@
         <div class="none">
             <label class="noneName">Current&nbsp;Password</label>
             <input placeholder="" type="password" formControlName="oldpassword">
-            
         </div>
         <div *ngIf="changeForm.get('oldpassword')?.errors?.['required'] && changeForm.get('oldpassword')?.touched" class="require">This is required field*</div>
+        <div *ngIf="changeForm.get('oldpassword')?.errors?.['currentMatch'] && changeForm.get('oldpassword')?.touched" class="require">Incorrect password</div>
         <div class="none">
             <label class="noneName">New&nbsp;Password</label>
             <input placeholder="" type="password" formControlName="newpassword">
         </div>
         <div *ngIf="changeForm.get('newpassword')?.errors?.['required'] && changeForm.get('newpassword')?.touched" class="require">This is required field*</div>
+        <div *ngIf="changeForm.get('newpassword')?.errors?.['minlength']" class="require" >your password must have atleast 6 or more characters</div>
+        <div *ngIf="changeForm.get('newpassword')?.errors?.['doNotMatch']" class="require">your password cannot be same as old password</div>
         <div class="none">
             <label class="noneName">Confirm&nbsp;Password</label>
             <input placeholder="" formControlName="confirmpassword" type="password" >
         </div>
         <div *ngIf="changeForm.get('confirmpassword')?.errors?.['required'] && changeForm.get('confirmpassword')?.touched" class="require">This is required field*</div>
+        <div *ngIf="changeForm.get('confirmpassword')?.errors?.['mustMatch']" class="require">confirm password didn't match</div>
         <div class="save">
             <button type="submit" (click)=" onSave()" [disabled]="!changeForm.valid">Save</button>
         </div>

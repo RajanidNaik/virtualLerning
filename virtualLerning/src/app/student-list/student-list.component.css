@@ -3,9 +3,10 @@
 
 position: absolute;
 width: 80.1%;
-height: 88%;
+/* height: 88%; */
+height: 67rem;
 right: 0;
-top: 12%;
+top: 6.5rem;
 background: #F9F9F9;
 border-radius: 38px 0px 0px 38px;
 /* border:1px solid #000; */
@@ -36,23 +37,26 @@ border-radius: 38px 0px 0px 38px;
 }
 table{
     width: 96%;
-    margin:2%
+    margin:2%;
+   
+    
 }
 .tablehead p:first-child{
     font-family: 'Proxima Nova Soft';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
     color: #B3B3B3;
 }
 
 .studentList{
     position: absolute;
-    top:10%;
+    top:5%;
     left: 2%;
     width:95%;
-    height: 70%;
+    height: 80%;
+    /* height: 50rem; */
     overflow: scroll;
     background-color: #fff;
     /* border: 1px solid #000; */
@@ -81,11 +85,9 @@ table, th,td {
     height: 15%;
     width:15%;
 border: 1px solid rgba(102, 102, 102, 0.24);
-border-radius: 100px;
+border-radius: 50%;
 }
-/* td{
-    padding: 1%;
-} */
+
 .profile{
 display: flex;
 flex-direction: row;
@@ -96,8 +98,8 @@ align-items: center;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 600;
-font-size: 14px;
-line-height: 17px;
+font-size: .875rem;
+line-height: 1rem;
 color: #1A1A1A;
 margin: 1%;
 }
@@ -125,16 +127,16 @@ text-align: center;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 400;
-font-size: 14px;
-line-height: 17px;
+font-size: .875rem;
+line-height: 1rem;
 color: #666666;
 }
 .cline{
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 400;
-font-size: 14px;
-line-height: 17px;
+font-size: 0.875rem;
+line-height: 1rem;
 color: #1A1A1A;
 align-items: flex-start;
 
@@ -143,16 +145,16 @@ align-items: flex-start;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 400;
-font-size: 14px;
-line-height: 17px;
+font-size: 0.875rem;
+line-height: 1rem;
 color: #1EAB0D;
 }
 .comline1{
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 400;
-font-size: 14px;
-line-height: 17px;
+font-size: 0.875rem;
+line-height: 1rem;
 color: #666666;
 }
 .load{
@@ -166,8 +168,8 @@ color: #666666;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 500;
-font-size: 14px;
-line-height: 30px;
+font-size: 0.875rem;
+line-height: 1.875rem;
 color: #092963;
 background: rgba(9, 41, 99, 0.11);
 border-radius: 4px;

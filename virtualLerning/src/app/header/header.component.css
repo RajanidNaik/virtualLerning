@@ -1,10 +1,11 @@
 .head {
   position: absolute;
   width: 80%;
-  height: 12vh;
+  /* height: 12vh; */
+  height: 7.5rem;
   /* width: 1582px; */
   right: 0;
-  top: 0px;
+  top: 0;
   background: #ffffff;
   border-radius: 50px 0px 0px 0px;
   /* border: 1px solid #000; */
@@ -16,8 +17,8 @@
   font-family: "Proxima Nova Soft";
   font-style: normal;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 34px;
+  font-size: 1.75rem;
+  line-height: 2.125rem;
   color: #292929;
 }
 .person {
@@ -37,8 +38,8 @@
   font-family: "Proxima Nova Soft";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.1875rem;
   text-align: right;
   color: #292929;
 }
