@@ -3,54 +3,54 @@
 
 position: absolute;
 width: 80.1%;
-height: 88%;
-
+/* height: 88%; */
+height: 67rem;
 right: 0;
-top: 12%;
-
+top: 6.5rem;
 background: #F9F9F9;
-border-radius: 38px 0px 0px 38px;
-/* border:1px solid #000; */
+border-radius: 2.375rem 0rem 0rem 2.375rem;
+/* border: 1px solid #000; */
+
 }
 .change{
     position: absolute;
     top:3%;
-    left: 3%;
+    left: 3rem;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 600;
-font-size: 24px;
-line-height: 29px;
+font-size: 1.5rem;
+line-height: 1.8125rem;
 color: #232323;
 padding: .5%;
 border-bottom: 3px solid #EE5C4D;
 
 
 }
+.contentCover{
+    position: relative;
+    top:10rem;
+   
+}
 .content{
-    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    
 }
-.contentCover{
-    position: relative;
-    top:15%
-}
+
 .input{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap:.5rem
+    gap:.5rem;
+    height: 4rem;
 }
 .input input{
-    /* width:100%; */
     padding: .5rem;
     background: #FFFFFF;
 border: 1px solid #D5D4DC;
-border-radius: 8px;
+border-radius: .5rem;
 
 
 }
@@ -58,8 +58,8 @@ border-radius: 8px;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 700;
-font-size: 14px;
-line-height: 20px;
+font-size: 0.875rem;
+line-height: 1.25rem;
 letter-spacing: 0.4px;
 
 color: #232323;
@@ -68,10 +68,18 @@ color: #232323;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 500;
-font-size: 16px;
-line-height: 24px;
+font-size: 1rem;
+line-height: 1.5rem;
 letter-spacing: 0.2px;
-
+color: #8B849B;
+}
+.input input{
+    font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 1.5rem;
+letter-spacing: 0.2px;
 color: #8B849B;
 }
 .save button{
@@ -81,17 +89,20 @@ border: none;
 font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 500;
-font-size: 18px;
-line-height: 35px;
+font-size: 1.125rem;
+line-height: 2.18rem;
 text-align: center;
 color: #FFFFFF;
 padding-left: 3rem;
 padding-right: 3rem;
 cursor: pointer;
 }
+.save{
+    margin-top: 2%;
+}
 .success{
     position: relative;
-    top: 70%;
+    top: 50%;
     left:35%;
     display: flex;
     align-items: center;
@@ -106,7 +117,7 @@ cursor: pointer;
 .right mat-icon{
     color:#1EAB0D;
     cursor: pointer;
-    /* position: absolute; */
+    
    
 
 }
@@ -118,46 +129,8 @@ cursor: pointer;
     font-family: 'PingFang SC';
 font-style: normal;
 font-weight: 500;
-font-size: 16px;
-line-height: 24px;
-color: #FFFFFF;
-
-
-}
-
-
-
-.success{
-    position: relative;
-    top: 70%;
-    left:35%;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-   justify-content: space-around;
-    width:30%;
-    background: rgba(70, 208, 36, 0.95);
-    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-   
-}
-.right mat-icon{
-    color:#1EAB0D;
-    cursor: pointer;
-    /* position: absolute; */
-   
-
-}
-.left mat-icon{
-    color: #fff;
-    cursor: pointer;
-}
-.line{
-    font-family: 'PingFang SC';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 24px;
+font-size: 1rem;
+line-height: 1.5rem;
 color: #FFFFFF;
 
 
