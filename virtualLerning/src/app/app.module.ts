@@ -53,6 +53,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     // CKEditorModule,
     ReactiveFormsModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],
