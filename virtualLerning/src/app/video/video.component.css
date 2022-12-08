@@ -18,7 +18,10 @@
 }
 
 
-
+ckeditor {
+height: 34vh;
+overflow-y: scroll;
+}
 .titleInputV {
   width: 316px;
   height: 22px;
