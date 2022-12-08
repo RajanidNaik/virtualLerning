@@ -30,14 +30,15 @@
         <button class="btn" (click)="add()">Add New +</button>
       </div>
     </div>
-    <div *ngFor="let item of array">
-    <div class="item">
-       <!-- *ngFor="let line of videoForm.get('chapter'); let i=index">
-      <div   [formGroupName]="i"> -->
+    <div formArrayName="chapter" *ngFor="let item of getControl;let i=index"  >
+    <div class="item"  >
+       <!-- *ngFor="let line of videoForm.get('chapter'); let i=index"> -->
+      <div  > 
       <div class="chapName">Chapter Name</div>
-      <div class="input">
+      <div class="input" [formGroupName]="i">
         <div>
-          <input class="titleInput" type="text" />
+          <!--[formControlName]="i"-->
+          <input class="titleInput" type="text" formControlName="chaptername" >
         </div>
         <div>
           <div class="options" *ngIf="false">
@@ -53,7 +54,7 @@
             <div>Upload failed</div>
           </div>
         </div>
-        <div class="more" (click)="show()">
+        <div class="more" (click)="show(i)">
           <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
           <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
         </div>
@@ -90,8 +91,8 @@
         </div>
         <div class="Subchap">
           <div class="name">Sub Chapter Name</div>
-          <div>
-            <input class="titleInput" type="text"  />
+          <div [formGroupName]="i">
+            <input class="titleInput" type="text" formControlName="sub" />
           </div>
           <div class="btns">
             <div>
@@ -110,5 +111,5 @@
       <button *ngIf="false" class="nextbtn">Save</button>
       <button class="nextbtn">Publish</button>
     </div>
-  <!-- </div> -->
+   </div> 
 </form>

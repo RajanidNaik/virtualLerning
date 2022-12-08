@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
+// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -9,40 +9,61 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class VideoComponent implements OnInit {
   plus = false;
   array=["v"]
-  videoForm: any;
+  videoForm!:FormGroup;
   skills = new FormArray([]);
-  public Editor = ClassicEditor;
+  count:any;
+  // public Editor = ClassicEditor;
   constructor(public fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.videoForm = this.fb.group({
+    // this.videoForm = this.fb.group({
+    //   videoTitle: new FormControl(''),
+    //   category: new FormControl(''),
+    //   chapter: this.fb.array([
+    //   ]),
+    // });
+    this.videoForm = new FormGroup({
       videoTitle: new FormControl(''),
       category: new FormControl(''),
-      chapter: this.fb.array([
-        this.fb.group({
-          chaptername: [''],
-              subChapter: this.fb.array([
-                 this.fb.group({
-                subChapterName:new FormGroup(''),
-            })
-          ])
-        }),
-      ]),
-
-      // ({
-      //   chaptername: new FormControl(''),
-      //   subChapter: this.fb.group({
-      //     subChapterName: new FormControl(''),
-      //   }),
-      // }),
+      chapter: this.fb.array([ ]),
     });
+    this.add() ;
   }
 
-  show() {
+  show(i:any) {
+ this.count=0;
+ if(this.videoForm.controls['chapter'].touched){
+  if(this.count == i){
     this.plus = !this.plus;
+    console.log(this.count)
+  }else{
+    this.plus=false
+  }
+ }
+   
+  
+  console.log(i);
+  
+      //this.plus = !this.plus;
+    
+    
   }
   add() {
-    console.log(this.videoForm.value);
-    this.array.push("v");
+    // this.array.push("v");
+    //   const control =new FormControl('', Validators.required);
+    //   (<FormArray>this.videoForm.get('chapter')).push(control);
+    //   console.log(this.videoForm.value);
+      
+      let lan = new FormGroup({
+        chaptername:new FormControl(''),
+        sub: new FormControl('')
+      });
+      (<FormArray>this.videoForm.controls['chapter']).push(lan);
+      console.log(this.videoForm.value);
+      console.log(this.videoForm.value);
+  }
+  get getControl(){
+    return (<FormArray>this.videoForm.controls['chapter']).controls;
+    
   }
 }

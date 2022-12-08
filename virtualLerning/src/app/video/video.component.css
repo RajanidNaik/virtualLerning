@@ -200,3 +200,9 @@ mat-icon {
   width: 209.81px;
   background-color: #D4D4D4;
 }
+div.item.ng-invalid{
+  border:1px solid red;
+}
+div.item.ng-invalid.ng-touched{
+  border:1px solid red;
+}
