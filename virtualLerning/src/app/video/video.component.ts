@@ -13,11 +13,13 @@ export class VideoComponent implements OnInit {
   skills = new FormArray([]);
   public Editor = ClassicEditor;
   constructor(public fb: FormBuilder) {}
+  category:Array<string>=["Design","Development","Business","Music","Finance","Health","IT","Marketting","LifeStyle","Photogrphy"];
 
   ngOnInit(): void {
     this.videoForm = this.fb.group({
       videoTitle: new FormControl(''),
       category: new FormControl(''),
+      overview:new FormControl(''),
       chapter: this.fb.array([
         this.fb.group({
           chaptername: [''],
@@ -42,7 +44,10 @@ export class VideoComponent implements OnInit {
     this.plus = !this.plus;
   }
   add() {
-    console.log(this.videoForm.value);
+   
     this.array.push("v");
+  }
+  publish(){
+     console.log(this.videoForm.value);
   }
 }

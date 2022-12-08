@@ -1,4 +1,4 @@
- <form [formGroup]="videoForm">
+<form [formGroup]="videoForm">
   <div class="videodata">
     <div class="title">
       <div class="text">Video Title</div>
@@ -8,8 +8,13 @@
     </div>
     <div class="category">
       <div class="text">Video Category</div>
-      <div>
-        <input class="titleInputV" formControlName="category"  type="text"  />
+      <div  class="titleInputV" >
+        <select formControlName="category" type="text">
+          <option value="" selected > Select Category </option>
+          <option *ngFor="let item of category" [value]="item" [selected]="item === 'Design'">
+            {{ item }}
+          </option>
+        </select>
       </div>
     </div>
   </div>
@@ -17,11 +22,8 @@
   <div class="videoDiscription">
     <div class="overview">Add Discription / Overview</div>
     <div class="file">
-      <ckeditor [editor]="Editor" data="<p>Hello, lorem200</p>"></ckeditor>
-
-
+      <ckeditor [editor]="Editor" formControlName="overview" data=""></ckeditor>
     </div>
-    
   </div>
   <div class="videoUpload">
     <div class="top">
@@ -31,51 +33,56 @@
       </div>
     </div>
     <div *ngFor="let item of array">
-    <div class="item">
-       <!-- *ngFor="let line of videoForm.get('chapter'); let i=index">
+      <div class="item">
+        <!-- *ngFor="let line of videoForm.get('chapter'); let i=index">
       <div   [formGroupName]="i"> -->
-      <div class="chapName">Chapter Name</div>
-      <div class="input">
-        <div>
-          <input class="titleInput" type="text" />
-        </div>
-        <div>
-          <div class="options" *ngIf="false">
-            <div>
-              <mat-icon class="green">check_circle</mat-icon>
-            </div>
-            <div class="green">Videos upload successful</div>
+        <div class="chapName">Chapter Name</div>
+        <div class="input">
+          <div>
+            <input class="titleInput" type="text" />
           </div>
-          <div class="options" *ngIf="true">
-            <div class="green" style="color: red">
-              <mat-icon>error</mat-icon>
+          <div>
+            <div class="options" *ngIf="false">
+              <div>
+                <mat-icon class="green">check_circle</mat-icon>
+              </div>
+              <div class="green">Videos upload successful</div>
             </div>
-            <div>Upload failed</div>
+            <div class="options" *ngIf="true">
+              <div class="green" style="color: red">
+                <mat-icon>error</mat-icon>
+              </div>
+              <div>Upload failed</div>
+            </div>
+          </div>
+          <div class="more" (click)="show()">
+            <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="more" (click)="show()">
-          <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
-          <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
-        </div>
-      </div>
-      <div class="imgUpload" *ngIf="plus">
-        <div class="add">
-          <div class="available">
-            <div>
-              <div class="img">
-                <div class="notUpload">
-                  <div>
-                    <img src="assets/add-course/Vector.png" alt="" />
-                  </div>
-                  <div class="dragAndDrop">Drag and drop multiple files</div>
-                  <div class="browse">
-                    or <span><u>browse</u></span> to choose files
+        <div class="imgUpload" *ngIf="plus">
+          <div class="add">
+            <div class="available">
+              <div>
+                <div class="img">
+                  <div class="notUpload">
+                    <div>
+                      <img src="assets/add-course/Vector.png" alt="" />
+                    </div>
+                    <div class="dragAndDrop">Drag and drop multiple files</div>
+                    <div class="browse">
+                      or
+                      <input type="file" name="photo" id="upload" /><label
+                        for="upload"
+                        >Browse</label
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+                      choose files
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="more">
-                <div class="videoItem"></div>
-                <!-- <div class="videoItem"></div>
+                <div class="more">
+                  <div class="videoItem"></div>
+                  <!-- <div class="videoItem"></div>
                 <div class="videoItem"></div>
                 <div class="videoItem"></div>
                 <div class="videoItem"></div>
@@ -84,31 +91,31 @@
                 <div class="videoItem"></div>
                 <div class="videoItem"></div>
                 <div class="videoItem"></div> -->
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="Subchap">
-          <div class="name">Sub Chapter Name</div>
-          <div>
-            <input class="titleInput" type="text"  />
-          </div>
-          <div class="btns">
+          <div class="Subchap">
+            <div class="name">Sub Chapter Name</div>
             <div>
-              <button class="buttonP">Previous</button>
+              <input class="titleInput" type="text" />
             </div>
-            <div>
-              <button class="buttonN">Next</button>
+            <div class="btns">
+              <div>
+                <button class="buttonP">Previous</button>
+              </div>
+              <div>
+                <button class="buttonN">Next</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    <div class="next">
-      <button *ngIf="false" class="nextbtn">Save</button>
-      <button class="nextbtn">Publish</button>
-    </div>
+  </div>
+  <div class="next">
+    <button *ngIf="false" class="nextbtn">Save</button>
+    <button class="nextbtn" (click)="publish()">Publish</button>
+  </div>
   <!-- </div> -->
 </form>

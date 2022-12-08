@@ -22,6 +22,7 @@ import { CertificateComponent } from './certificate/certificate.component';
 import { QAndAComponent } from './q-and-a/q-and-a.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     FormsModule,
     CKEditorModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent],
