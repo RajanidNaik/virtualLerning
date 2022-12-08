@@ -39,8 +39,8 @@ left:5%;
 font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 700;
-font-size: 28px;
-line-height: 35px;
+font-size: 1.75rem;
+line-height: 2.18rem;
 color: #FFFFFF;
 }
 .profileImage{
@@ -72,8 +72,8 @@ color: #FFFFFF;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 700;
-font-size: 22px;
-line-height: 26px;
+font-size: 1.375rem;
+line-height: 1.625rem;
 color: #FFFFFF;
 
 
@@ -122,16 +122,16 @@ color: #FFFFFF;
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 700;
-font-size: 20px;
-line-height: 26px;
+font-size: 1.25rem;
+line-height: 1.625rem;
 color: rgba(255, 255, 255, 0.5);
 }
 .personName{
     font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 700;
-font-size: 20px;
-line-height: 26px;
+font-size: 1.25rem;
+line-height: 1.625rem;
 text-align: right;
 color: #FFFFFF;
 }
@@ -156,8 +156,8 @@ left:5%;
     font-family: 'Proxima Nova Soft';
     font-style: normal;
    font-weight: 700;
-font-size: 28px;
-line-height: 35px;
+font-size: 1.75rem;
+line-height: 2.18rem;
 color: #FFFFFF;
 }
 .changePhoto{
@@ -212,8 +212,8 @@ color: #FFFFFF;
     font-family: 'Avenir';
 font-style: normal;
 font-weight: 400;
-font-size: 16px;
-line-height: 22px;
+font-size: 1rem;
+line-height: 1.375rem;
 letter-spacing: 0.4px;
 color: #FFFFFF;
 opacity: 0.5;
@@ -222,8 +222,8 @@ opacity: 0.5;
     font-family: 'Avenir';
 font-style: normal;
 font-weight: 500;
-font-size: 20px;
-line-height: 27px;
+font-size: 1.25rem;
+line-height: 1.6875rem;
 letter-spacing: 0.4px;
 color: #FFFFFF;
 }
@@ -233,8 +233,8 @@ color: #FFFFFF;
     font-family: 'Proxima Nova Soft';
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 35px;
+    font-size: 1.125rem;
+    line-height: 2.18rem;
     color: #FFFFFF;
     background: #EE5C4D;
     cursor: pointer;
@@ -301,8 +301,8 @@ color: #FFFFFF;
     font-family: 'PingFang SC';
 font-style: normal;
 font-weight: 500;
-font-size: 16px;
-line-height: 24px;
+font-size: 1rem;
+line-height: 1.5rem;
 color: #FFFFFF;
 
 

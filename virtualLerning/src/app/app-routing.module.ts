@@ -27,7 +27,8 @@ const routes: Routes = [
   {path:'dialogDashboard',component:DialogDashboardComponent},
   {path:'profileDialog',component:ProfileDialogComponent},
   {path:'sideNav',component:SideNavComponent},
-  {path:'head',component:HeadDialogComponent}
+  {path:'head',component:HeadDialogComponent},
+  {path:'header',component:HeaderComponent}
 ];
 
 @NgModule({

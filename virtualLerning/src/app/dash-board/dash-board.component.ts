@@ -31,11 +31,15 @@ openDialog(){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus = true;
-  dialogConfig.height='0%';
-  dialogConfig.width='0%';
+  dialogConfig.height='100%';
+  dialogConfig.width='100%';
+  dialogConfig.maxHeight='100vh';
+  dialogConfig.maxWidth = '100vw';
+  dialogConfig.panelClass = 'full-screen-modal',
   dialogConfig.position ={
     right:'0%',
-    top:'0%'
+    top:'0%',
+    
   }
   this.dialog.open(DialogDashboardComponent,dialogConfig)   
   
