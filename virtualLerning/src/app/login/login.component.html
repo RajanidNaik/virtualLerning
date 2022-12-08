@@ -29,7 +29,7 @@
       </div>
       
       <div class="button1"  >
-        <button class="loginButn" [disabled]="loginForm.invalid" (click)="loginCheck()">Login</button>
+        <button class="loginButn" [disabled]="loginForm.invalid" (click)="adminLogin()">Login</button>
       </div>
       <div style="color: red ;" *ngIf="!valid" ><span>Invalid User Credentials</span></div>
     </div>

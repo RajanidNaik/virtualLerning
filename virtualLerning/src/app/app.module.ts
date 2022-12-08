@@ -23,6 +23,7 @@ import { QAndAComponent } from './q-and-a/q-and-a.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
   ],
 
   imports: [
+    HttpClientModule,
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
