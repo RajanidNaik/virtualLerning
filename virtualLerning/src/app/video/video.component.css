@@ -73,6 +73,7 @@
   height: fit-content;
   border-radius: 8px;
   background-color: #ffffff;
+  margin-bottom: 10px;
 }
 .chapName {
   font-weight: 700;
@@ -113,7 +114,7 @@ mat-icon {
   height: 621px;
 }
 .img {
-  height: 59vh;
+  height: 50vh;
   width: 46.9vw;
   text-align: center;
   background: rgba(236, 236, 236, 0.17);
@@ -138,7 +139,7 @@ mat-icon {
   margin-top: 30px;
   height: 44px;
   /* border: 2px solid violet; */
-  margin-bottom: 200px;
+  margin-bottom: 8vh;
 }
 .nextbtn {
   font-size: 18px;
@@ -190,4 +191,12 @@ mat-icon {
 .Addnew {
   position: absolute;
   right: 4vw;
+} 
+.videoErr{
+   font-size: 18px;
+  color: white;
+  float: right;
+  height: 44px;
+  width: 209.81px;
+  background-color: #D4D4D4;
 }
