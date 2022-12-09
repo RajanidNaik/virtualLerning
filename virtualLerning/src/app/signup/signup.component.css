@@ -1,0 +1,93 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+    background: #092963;
+    position: fixed;
+}
+.box{
+    width: 75.25%;
+    height: 75.70%;
+    margin:8% auto;
+    background-color: white;
+    border-radius: 4px;
+    /* align-items: center;  */
+}
+
+.personal{
+    height: 100%;
+    width: 50%;
+    text-align: center;
+}
+.logo {
+    padding-top: 41px;
+    display: flex;
+    justify-content: center;
+}
+.dp{
+    height: 95px;
+    width: 95px;
+    background-color: #d3ff0d;
+    border-radius: 50px;
+    margin-bottom: 40px;
+}
+.button3{
+    display: flex;
+    justify-content: center;
+}
+.loginButn{
+   width: fit-content;
+   height: 44px;
+margin: 0;
+border: 0;
+font-size: 18px;
+font-weight: 700;
+color: white;
+background: #EE5C4D;
+border-radius: 6px;
+}
+
+.dataForgot{
+    margin-top: 40px;
+    display: flex;
+    height: 100%;
+}
+.mat-form-field{
+    font-size: 16px;    
+}
+    
+.description{
+    width: 45%;
+    margin: 1px solid ;
+
+}
+.textArea{
+width: 100%;
+}
+#mat-input-3 {
+max-height: 40vh;
+}
+.dataIn{
+    margin: 0 22.5%;
+    margin-top:10.15%;
+}
+.username{
+    margin-bottom: 13px;
+}
+input{
+    color: #072D5B;
+}
+textarea{
+     min-width: 510px;
+   max-width: 510px;
+    min-height: 250px;
+   max-height: 250px;
+   overflow-y: scroll;
+   font-size: 18px;
+   margin-bottom: 10px;
+}
+
+.about{
+    font-size: 20px;
+    font-weight: 700;
+}
+

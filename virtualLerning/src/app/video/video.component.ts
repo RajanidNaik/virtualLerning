@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
-// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { 
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  FormArray,
+  Validators,
+} from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { DialogCategoryComponent } from '../dialog-category/dialog-category.component';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -8,68 +16,90 @@ import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@ang
 })
 export class VideoComponent implements OnInit {
   plus = false;
-  array=["v"]
-  videoForm!:FormGroup;
+  isChecked: any;
+  array = ['v'];
+  selected: any;
+  videoForm!: FormGroup;
   skills = new FormArray([]);
-  count:any;
-  // public Editor = ClassicEditor;
-  constructor(public fb: FormBuilder) {}
-  category:Array<string>=["Design","Development","Business","Music","Finance","Health","IT","Marketting","LifeStyle","Photogrphy"];
+  count: any;
+  public Editor = ClassicEditor;
+  constructor(public fb: FormBuilder, private dialog: MatDialog) {}
+  category:any;
 
   ngOnInit(): void {
-    // this.videoForm = this.fb.group({
-    //   videoTitle: new FormControl(''),
-    //   category: new FormControl(''),
-    //   chapter: this.fb.array([
-    //   ]),
-    // });
+    this.category=localStorage.getItem('category');
+    this.category=JSON.parse(this.category);
     this.videoForm = new FormGroup({
       videoTitle: new FormControl(''),
       category: new FormControl(''),
+      overview: new FormControl(''),
+      duration: new FormControl(''),
+      certifcate: new FormControl(''),
+      learning: this.fb.array([this.fb.control('')]),
+      requirement: this.fb.array([this.fb.control('')]),
 
-      chapter: this.fb.array([ ]),
+      chapter: this.fb.array([]),
     });
-    this.add() ;
+    this.add();
+    // this.addSub();
   }
 
-  show(i:any) {
- this.count=0;
- if(this.videoForm.controls['chapter'].touched){
-  if(this.count == i){
-    this.plus = !this.plus;
-    console.log(this.count)
-  }else{
-    this.plus=false
+  show(i: any) {
+    this.count = 0;
+    if (this.videoForm.controls['chapter'].dirty) {
+      if (this.count == i) {
+        this.plus = !this.plus;
+        console.log(this.count);
+      } else {
+        this.plus = false;
+      }
+    }
   }
- }
-   
-  
-  console.log(i);
-  
-      //this.plus = !this.plus;
-    
-    
-  }
+
   add() {
+    let lan = new FormGroup({
+      chaptername: new FormControl(''),
+      sub: new FormControl(''),
+    });
+    (<FormArray>this.videoForm.controls['chapter']).push(lan);
+    console.log(this.videoForm.value);
+  }
 
-    // this.array.push("v");
-    //   const control =new FormControl('', Validators.required);
-    //   (<FormArray>this.videoForm.get('chapter')).push(control);
-    //   console.log(this.videoForm.value);
-      
-      let lan = new FormGroup({
-        chaptername:new FormControl(''),
-        sub: new FormControl('')
-      });
-      (<FormArray>this.videoForm.controls['chapter']).push(lan);
-      console.log(this.videoForm.value);
-      console.log(this.videoForm.value);
-  }
-  get getControl(){
+  get getControl() {
     return (<FormArray>this.videoForm.controls['chapter']).controls;
-    
   }
-  publish(){
-     console.log(this.videoForm.value);
+  get requirement() {
+    return this.videoForm.get('requirement') as FormArray;
+  }
+  get learning() {
+    return this.videoForm.get('learning') as FormArray;
+  }
+
+  addReq() {
+    let lan = new FormControl('');
+    (<FormArray>this.videoForm.controls['requirement']).push(lan);
+  }
+
+  addLear() {
+    let lan = new FormControl('');
+    (<FormArray>this.videoForm.controls['learning']).push(lan);
+  }
+
+  publish() {
+    console.log(this.videoForm.value);
+  }
+
+  uploadVideo(event: any) {
+    this.selected = event.target.files[0];
+    console.log(this.selected);
+  }
+
+  checkBox(event: any) {
+    console.log(event.checked);
+    console.log(event.checked);
+  }
+
+  addCategory() {
+    this.dialog.open(DialogCategoryComponent);
   }
 }
