@@ -12,6 +12,7 @@ export class VideoComponent implements OnInit {
   videoForm!:FormGroup;
   skills = new FormArray([]);
   count:any;
+  info:any;
   // public Editor = ClassicEditor;
   constructor(public fb: FormBuilder) {}
 
@@ -28,39 +29,43 @@ export class VideoComponent implements OnInit {
       chapter: this.fb.array([ ]),
     });
     this.add() ;
+    
+  }
+  data(i:any){
+    sessionStorage.setItem('plus',JSON.stringify(i));
+    this.count =i;
+    if(sessionStorage.getItem('plus')){
+      this.info =JSON.parse(sessionStorage.getItem('plus') || '[]');
+      console.log(this.info);
+     }
+     
   }
 
-  show(i:any) {
- this.count=0;
- if(this.videoForm.controls['chapter'].touched){
-  if(this.count == i){
-    this.plus = !this.plus;
-    console.log(this.count)
-  }else{
-    this.plus=false
-  }
- }
+  show(id:any) {
+    console.log(id)
    
-  
-  console.log(i);
-  
-      //this.plus = !this.plus;
-    
-    
+      if(this.info === id ){
+              this.plus = !this.plus;
+            }
+    else{
+      this.plus =false
+    }
+      
+   
+
   }
   add() {
     // this.array.push("v");
     //   const control =new FormControl('', Validators.required);
     //   (<FormArray>this.videoForm.get('chapter')).push(control);
     //   console.log(this.videoForm.value);
-      
+      sessionStorage.removeItem('plus')
       let lan = new FormGroup({
         chaptername:new FormControl(''),
         sub: new FormControl('')
       });
       (<FormArray>this.videoForm.controls['chapter']).push(lan);
-      console.log(this.videoForm.value);
-      console.log(this.videoForm.value);
+      // this.videoForm.reset();
   }
   get getControl(){
     return (<FormArray>this.videoForm.controls['chapter']).controls;

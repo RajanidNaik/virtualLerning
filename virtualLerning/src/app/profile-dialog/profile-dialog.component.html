@@ -1,5 +1,7 @@
 <div class="whole">
-<div class="container">
+    
+    <!-- <button (click)="sub()">sub</button> -->
+<div class="container" [class.trans]="trans" >
     <div *ngIf="firstBlock">
     <div class="close"><mat-icon mat-dialog-close  (click)="onclose()">clear</mat-icon></div>
     <div class="profile">

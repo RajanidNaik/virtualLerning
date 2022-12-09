@@ -15,13 +15,18 @@ export class HeaderComponent implements OnInit {
   }
   openDialogProfile(){
     sessionStorage.setItem('active',JSON.stringify('yes'));
+      sessionStorage.setItem('trans',JSON.stringify(true))
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.height='100%';
-    dialogConfig.width='25%';
+    dialogConfig.width='0%';
+    dialogConfig.panelClass = 'trans',
+   
     dialogConfig.position ={
       right:'0%',
+     
     }
     
     this.dialog.open(ProfileDialogComponent,dialogConfig)   
