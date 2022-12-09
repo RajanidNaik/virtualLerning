@@ -13,9 +13,16 @@ thirdBlock:boolean=false;
 save:boolean=false;
 changeForm !:FormGroup;
 pass:any;
+trans:boolean=false;
   constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    
+    if(sessionStorage.getItem('trans')){
+      this.trans = true;
+     
+    }
+   
     if (localStorage.getItem('password')) {
       this.pass = JSON.parse(localStorage.getItem('password') || '[]');
       console.log(this.pass)
@@ -96,6 +103,7 @@ pass:any;
   }
   onclose(){
     sessionStorage.removeItem('active');
+    sessionStorage.removeItem('trans');
   }
   onsubmit(){
     console.log(this.changeForm);
@@ -105,4 +113,7 @@ pass:any;
     this.changeForm.reset();
   }
 
+  // sub(){
+  //   this.trans =true;
+  // }
 }
