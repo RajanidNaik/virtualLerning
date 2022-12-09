@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,FormArray,FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminLoginService } from '../services/admin-login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,14 +12,13 @@ export class LoginComponent implements OnInit {
   login = true;
   forgotPassword = false;
   loginForm = new FormGroup({
-    user: new FormControl('Name', [Validators.required]),
-    password: new FormControl('123456789', [
+    user: new FormControl('admin', [Validators.required]),
+    password: new FormControl('admin@123', [
       Validators.required,
       Validators.minLength(6),
     ]),
-    email: new FormControl('abc@gmail.com', [Validators.email]),
   });
-  constructor(private router: Router) {}
+  constructor(private router: Router, private al:AdminLoginService){}
 
   ngOnInit(): void {}
   forgot() {
@@ -38,5 +38,19 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
 
     // this.router.navigateByUrl('/otp');
+  }
+
+  adminLogin(){
+
+    const body = {
+      "userName" : this.loginForm.value.user,
+      "password" : this.loginForm.value.password
+    }
+
+    console.log(body);
+    this.al.adminLogin(body).subscribe(data => {
+      console.log(data);
+      
+    })
   }
 }

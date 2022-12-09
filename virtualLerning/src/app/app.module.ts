@@ -21,7 +21,10 @@ import { VideoComponent } from './video/video.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { QAndAComponent } from './q-and-a/q-and-a.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -46,6 +49,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
 
   imports: [
+    HttpClientModule,
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
@@ -53,7 +57,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     // CKEditorModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent],

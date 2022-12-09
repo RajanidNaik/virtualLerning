@@ -14,6 +14,7 @@ export class VideoComponent implements OnInit {
   count:any;
   // public Editor = ClassicEditor;
   constructor(public fb: FormBuilder) {}
+  category:Array<string>=["Design","Development","Business","Music","Finance","Health","IT","Marketting","LifeStyle","Photogrphy"];
 
   ngOnInit(): void {
     // this.videoForm = this.fb.group({
@@ -25,6 +26,7 @@ export class VideoComponent implements OnInit {
     this.videoForm = new FormGroup({
       videoTitle: new FormControl(''),
       category: new FormControl(''),
+
       chapter: this.fb.array([ ]),
     });
     this.add() ;
@@ -49,6 +51,7 @@ export class VideoComponent implements OnInit {
     
   }
   add() {
+
     // this.array.push("v");
     //   const control =new FormControl('', Validators.required);
     //   (<FormArray>this.videoForm.get('chapter')).push(control);
@@ -65,5 +68,8 @@ export class VideoComponent implements OnInit {
   get getControl(){
     return (<FormArray>this.videoForm.controls['chapter']).controls;
     
+  }
+  publish(){
+     console.log(this.videoForm.value);
   }
 }

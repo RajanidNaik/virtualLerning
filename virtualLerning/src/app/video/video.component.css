@@ -6,8 +6,31 @@
   font-size: 14px;
   line-height: 20px;
 }
+
+select{
+  font-size: 19px;
+width: fit-content;
+padding: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border:none;
+  margin-top: 8px;
+  background: #FCBE4B;
+  text-align: center;
+}
+input[type="file"]{
+  display: none;
+}
+label{
+  color:#1E1AF0;
+  background-color: white;
+  position: absolute;
+}
+
 .titleInput {
   width: 24.3vw;
+  font-size: 20px;
   height: 22px;
   background: #ffffff;
   border: 1px solid #d5d4dc;
@@ -16,20 +39,39 @@
   padding: 12px;
   align-self: stretch;
 }
+#upload{
+  width: 5vw; 
+}
 
+.dragAndDrop{
+  font-weight: 600;
+font-size: 24px;
+line-height: 20px;
+}
+.browse{
+  font-weight: 400;
+font-size: 18px;
+line-height: 20px;
+}
 
-ckeditor {
+.uploader{
+  color: #1E1AF0;
+}
+
+.ck.ckeditor {
 height: 34vh;
 overflow-y: scroll;
 }
 .titleInputV {
   width: 316px;
-  height: 22px;
+  font-size: 16px;
+  height: 36px;
   background: #ffffff;
   border: 1px solid #d5d4dc;
   border-radius: 8px;
   order: 1;
   padding: 12px;
+  padding-top: 0;
   align-self: stretch;
 }
 .title {
@@ -154,7 +196,7 @@ mat-icon {
 }
 
 .notUpload {
-  margin-top: 33%;
+  margin-top: 20%;
   color: #232323;
 }
 .Subchap {
