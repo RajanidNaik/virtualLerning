@@ -6,7 +6,12 @@
   font-size: 14px;
   line-height: 20px;
 }
-
+.transparent{
+  background-color: #ffffff;
+}
+.videoUpload{
+  margin-top: 10px;
+}
 select{
   font-size: 19px;
 width: fit-content;
@@ -14,11 +19,14 @@ padding: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border:none;
+  border:none;  
+ background-color: #FCBE4B;
   margin-top: 8px;
-  background: #FCBE4B;
   text-align: center;
 }
+/* select option{
+  
+} */
 input[type="file"]{
   display: none;
 }
@@ -29,7 +37,7 @@ label{
 }
 
 .titleInput {
-  width: 24.3vw;
+  width: 18.3vw;
   font-size: 20px;
   height: 22px;
   background: #ffffff;
@@ -63,7 +71,7 @@ height: 34vh;
 overflow-y: scroll;
 }
 .titleInputV {
-  width: 316px;
+  width: 272px;
   font-size: 16px;
   height: 36px;
   background: #ffffff;
@@ -80,6 +88,7 @@ overflow-y: scroll;
 .videoDiscription {
   margin-top: 40px;
   margin-bottom: 64px;
+  overflow-y: scroll;
 }
 .videoDiscription .overview {
   color: #10002e;
@@ -246,3 +255,23 @@ mat-icon {
   background-color: #D4D4D4;
 }
 
+.mat-form-field {
+width: 41vw;
+font-size: 20px;
+}
+.userview{
+  margin-top: 20px;
+}
+
+
+.title1{
+  margin: 25px;
+  font-size: 20px;
+}
+.title1 input{
+  font-size: 18px;
+}
+.check{
+  height: 25px;
+  width: 25px;
+}

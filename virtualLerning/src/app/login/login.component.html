@@ -30,6 +30,10 @@
       
       <div class="button1"  >
         <button class="loginButn" [disabled]="loginForm.invalid" (click)="adminLogin()">Login</button>
+        <button class="loginButn" routerLink="/signUp" >SignUp</button>
+      </div>
+      <div class="button2">
+         <button class="loginButn" (click)="superAdmin()" >Super Admin Login</button>
       </div>
       <div style="color: red ;" *ngIf="!valid" ><span>Invalid User Credentials</span></div>
     </div>
@@ -43,12 +47,41 @@
          <form [formGroup]="loginForm">
         <mat-form-field class="example-full-width">
           <mat-label>Enter Email ID</mat-label>
-          <input type="email" matInput formControlName="email" />
+          <input type="email" matInput  />
         </mat-form-field>
         </form>
       </div>
       <div class="button" >
         <button class="loginButn" [disabled]="loginForm.invalid"  (click)="emailCheck()">Send</button>
+      </div>
+    </div>
+    <div class="dataForgot" *ngIf="superAdmins">
+      <form [formGroup]="loginForm">
+        <div class="username">
+          <mat-form-field class="example-full-width">
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="user" />
+          </mat-form-field>
+        </div>
+        <div class="pass">
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input
+              class="password"
+              type="password"
+              formControlName="password" 
+              style="-webkit-text-security: square"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+          </form>
+      <div class="box1">
+        <div class="Forgo" (click)="forgot()">Forgot Password?</div>
+      </div>
+      <div style="color: red ;" *ngIf="!valid" ><span>Invalid User Credentials</span></div>
+      <div class="button3">
+         <button class="loginButn" [disabled]="loginForm.invalid" (click)="adminLogin()">Login</button>
       </div>
     </div>
   </div>

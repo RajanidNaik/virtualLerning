@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="box">
+    <div class="logo">
+      <img src=" assets/logo_splash.png" alt="logo" />
+    </div>
+    <form [formGroup]="signUpForm">
+      <div class="dataForgot">
+        <div class="personal">
+          <div class="bg">
+            <img class="dp" src="/assets/mg 1.png" alt="" />
+          </div>
+          <div class="username">
+            <mat-form-field class="example-full-width">
+              <mat-label>User Name</mat-label>
+              <input matInput formControlName="userName" />
+            </mat-form-field>
+          </div>
+          <div class="username">
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+            </mat-form-field>
+          </div>
+          <div class="username">
+            <mat-form-field class="example-full-width">
+              <mat-label>Phone</mat-label>
+              <span matPrefix>+91 &nbsp;</span>
+              <input
+                matInput
+                maxlength="10"
+                formControlName="mob"
+                (keypress)="checkNum($event)"
+              />
+            </mat-form-field>
+          </div>
+          <div class="username">
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="description">
+          <div>
+            <span class="about">About You</span>
+            <textarea class="textArea"></textarea>
+            <div class="username">
+            <mat-form-field class="example-full-width">
+              <mat-label>Designation</mat-label>
+              <input matInput formControlName="designation" />
+            </mat-form-field>
+          </div>
+          <div class="username">
+            <mat-form-field class="example-full-width">
+              <mat-label>Link</mat-label>
+              <input matInput formControlName="urlLink" />
+            </mat-form-field>
+          </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="button3">
+      <button
+        class="loginButn"
+        [disabled]="signUpForm.invalid"
+        routerLink="/"
+        (click)="request()"
+      >
+        Send Request
+      </button>
+    </div>
+  </div>
+</div>
+lorem400
