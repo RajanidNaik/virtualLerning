@@ -6,7 +6,12 @@
   font-size: 14px;
   line-height: 20px;
 }
-
+.transparent{
+  background-color: #ffffff;
+}
+.videoUpload{
+  margin-top: 10px;
+}
 select{
   font-size: 19px;
 width: fit-content;
@@ -14,11 +19,14 @@ padding: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border:none;
+  border:none;  
+ background-color: #FCBE4B;
   margin-top: 8px;
-  background: #FCBE4B;
   text-align: center;
 }
+/* select option{
+  
+} */
 input[type="file"]{
   display: none;
 }
@@ -29,7 +37,7 @@ label{
 }
 
 .titleInput {
-  width: 24.3vw;
+  width: 18.3vw;
   font-size: 20px;
   height: 22px;
   background: #ffffff;
@@ -63,7 +71,7 @@ height: 34vh;
 overflow-y: scroll;
 }
 .titleInputV {
-  width: 316px;
+  width: 272px;
   font-size: 16px;
   height: 36px;
   background: #ffffff;
@@ -80,6 +88,7 @@ overflow-y: scroll;
 .videoDiscription {
   margin-top: 40px;
   margin-bottom: 64px;
+  overflow-y: scroll;
 }
 .videoDiscription .overview {
   color: #10002e;
@@ -98,6 +107,11 @@ overflow-y: scroll;
   font-size: 20px;
   line-height: 30px;
 }
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .addNew .btn {
   width: 142px;
   height: 50px;
@@ -106,10 +120,16 @@ overflow-y: scroll;
   line-height: 30px;
   color: #092963;
 }
+.white{
+  background-color: white;
+}
+
 .top {
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 23px;
+   background-color: #ffffff; 
 }
 .item {
   height: fit-content;
@@ -134,6 +154,9 @@ mat-icon {
   transform: scale(1.5);
   margin-left: 35px;
 }
+.icon{
+  display: flex;
+}
 
 .item .input {
   display: flex;
@@ -142,6 +165,9 @@ mat-icon {
 }
 .options {
   display: flex;
+  justify-content: space-between;
+  margin-top: 9vh;
+  margin-bottom: 4vh;
 }
 .green {
   margin-left: 13px;
@@ -179,6 +205,11 @@ mat-icon {
   background: rgba(236, 236, 236, 0.17);
   border: 1px dashed #d5d4dc;
 }
+
+.videos{
+    display: flex;
+}
+
 
 .next {
   margin-top: 30px;
@@ -246,3 +277,23 @@ mat-icon {
   background-color: #D4D4D4;
 }
 
+.mat-form-field {
+width: 41vw;
+font-size: 20px;
+}
+.userview{
+  margin-top: 20px;
+}
+
+
+.title1{
+  margin: 25px;
+  font-size: 20px;
+}
+.title1 input{
+  font-size: 18px;
+}
+.check{
+  height: 25px;
+  width: 25px;
+}

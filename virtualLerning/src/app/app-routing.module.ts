@@ -14,21 +14,22 @@ import { SettingsComponent } from './settings/settings.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HeadDialogComponent } from './head-dialog/head-dialog.component';
-
+import { SignupComponent } from './signup/signup.component';
 const routes: Routes = [
-{ path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  {path:'dashboard',component:DashBoardComponent},
-  {path:'addcourse',component:AddCourseComponent},
-   {path:'otp',component:OtpComponent},
-   {path:'password',component:PasswordChangeComponent},
-  {path:'studentlist',component:StudentListComponent},
-  {path:'settings',component:SettingsComponent},
-  {path:'dialogDashboard',component:DialogDashboardComponent},
-  {path:'profileDialog',component:ProfileDialogComponent},
-  {path:'sideNav',component:SideNavComponent},
-  {path:'head',component:HeadDialogComponent},
-  {path:'header',component:HeaderComponent}
+  { path: 'dashboard', component: DashBoardComponent },
+  { path: 'addcourse', component: AddCourseComponent },
+  { path: 'otp', component: OtpComponent },
+  { path: 'password', component: PasswordChangeComponent },
+  { path: 'studentlist', component: StudentListComponent },
+  { path: 'signUp', component: SignupComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: 'dialogDashboard', component: DialogDashboardComponent },
+  { path: 'profileDialog', component: ProfileDialogComponent },
+  { path: 'sideNav', component: SideNavComponent },
+  { path: 'head', component: HeadDialogComponent },
+  { path: 'header', component: HeaderComponent },
 ];
 
 @NgModule({
