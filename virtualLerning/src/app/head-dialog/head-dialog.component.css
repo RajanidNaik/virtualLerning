@@ -15,8 +15,10 @@ left:40%;
 background: #FFFFFF;
 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.17));
 border-radius: 6px;
+ 
 
 }
+
 .delete{
 text-align: right;
 margin:2%;

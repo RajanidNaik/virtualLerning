@@ -21,10 +21,15 @@ export class VideoComponent implements OnInit {
   selected: any;
   videoForm!: FormGroup;
   skills = new FormArray([]);
+
   count: any;
   public Editor = ClassicEditor;
   constructor(public fb: FormBuilder, private dialog: MatDialog) {}
   category:any;
+
+  count:any;
+  info:any;
+
 
   ngOnInit(): void {
     this.category=localStorage.getItem('category');
@@ -40,29 +45,46 @@ export class VideoComponent implements OnInit {
 
       chapter: this.fb.array([]),
     });
-    this.add();
-    // this.addSub();
+
+    this.add() ;
+    
+  }
+  data(i:any){
+    sessionStorage.setItem('plus',JSON.stringify(i));
+    this.count =i;
+    if(sessionStorage.getItem('plus')){
+      this.info =JSON.parse(sessionStorage.getItem('plus') || '[]');
+      console.log(this.info);
+     }
+     
   }
 
-  show(i: any) {
-    this.count = 0;
-    if (this.videoForm.controls['chapter'].dirty) {
-      if (this.count == i) {
-        this.plus = !this.plus;
-        console.log(this.count);
-      } else {
-        this.plus = false;
-      }
+  show(id:any) {
+    console.log(id)
+   
+      if(this.info === id ){
+              this.plus = !this.plus;
+            }
+    else{
+      this.plus =false
     }
-  }
+      
+   
 
+  }
   add() {
-    let lan = new FormGroup({
-      chaptername: new FormControl(''),
-      sub: new FormControl(''),
-    });
-    (<FormArray>this.videoForm.controls['chapter']).push(lan);
-    console.log(this.videoForm.value);
+
+    // this.array.push("v");
+    //   const control =new FormControl('', Validators.required);
+    //   (<FormArray>this.videoForm.get('chapter')).push(control);
+    //   console.log(this.videoForm.value);
+      sessionStorage.removeItem('plus')
+      let lan = new FormGroup({
+        chaptername:new FormControl(''),
+        sub: new FormControl('')
+      });
+      (<FormArray>this.videoForm.controls['chapter']).push(lan);
+      // this.videoForm.reset();
   }
 
   get getControl() {

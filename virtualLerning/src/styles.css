@@ -32,5 +32,9 @@ body,html {
  
   background-color: transparent !important;
 }
+.trans .mat-dialog-container{
+  
+  transition: all 100s ease-in-out 100s;
+}
 
 

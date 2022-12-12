@@ -100,9 +100,19 @@
       </div>
     </div>
 
-    <div formArrayName="chapter" *ngFor="let item of getControl; let i = index">
-      <div class="item">
-        <!-- *ngFor="let line of videoForm.get('chapter'); let i=index"> -->
+
+    <div formArrayName="chapter" *ngFor="let item of getControl;let i=index"  >
+      
+    <div class="item" [formGroupName]="i"   >
+     
+       <!-- *ngFor="let line of videoForm.get('chapter'); let i=index"> -->
+      <div  > 
+      <div class="chapName" >Chapter Name</div>
+      <div class="input" >
+        <div (click)="data(i)">
+          <!--[formControlName]="i"-->
+          <input class="titleInput" type="text" formControlName="chaptername" >
+        </div>
         <div>
           <div class="chapName">Chapter Name</div>
           <div class="input" [formGroupName]="i">
@@ -203,10 +213,22 @@
                 </div>
               </div>
             </div>
-            <div class="Subchap">
-              <div class="name">Sub Chapter Name</div>
-              <div [formGroupName]="i">
-                <input class="titleInput" type="text" formControlName="sub" />
+
+          </div>
+
+        </div>
+        <div class="Subchap">
+          <div class="name">Sub Chapter Name</div>
+          <div>
+            <input class="titleInput" type="text" formControlName="sub" />
+          </div>
+          <div class="btns">
+            <div>
+              <input class="titleInput" type="text" />
+            </div>
+            <div class="btns">
+              <div>
+                <button class="buttonP">Previous</button>
               </div>
               <div class="btns">
                 <div>
