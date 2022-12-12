@@ -1,3 +1,10 @@
 .dialogue{
     display:flex;
 }
+.textIn{
+    margin-bottom: 2vw;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}

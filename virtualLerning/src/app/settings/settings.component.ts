@@ -13,6 +13,7 @@ pass:any;
   constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    localStorage.setItem('curr', JSON.stringify('Settings')); 
     localStorage.setItem('password', JSON.stringify('123456'));
     if (localStorage.getItem('password')) {
       this.pass = JSON.parse(localStorage.getItem('password') || '[]');

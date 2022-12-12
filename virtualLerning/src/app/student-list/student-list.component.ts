@@ -10,6 +10,7 @@ isSubscribed:boolean=true;
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem('curr', JSON.stringify('Student List'));
   }
 
 }

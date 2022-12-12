@@ -23,7 +23,7 @@ import { QAndAComponent } from './q-and-a/q-and-a.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NgxFileDropModule } from 'ngx-file-drop';  
 import { HttpClientModule } from '@angular/common/http';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { SignupComponent } from './signup/signup.component';
@@ -64,7 +64,7 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
     // CKEditorModule,
     ReactiveFormsModule,
     CKEditorModule,
-    NgxDropzoneModule
+    NgxFileDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
