@@ -1,105 +1,157 @@
-<div class="item" >
-<form [formGroup]="chapForm">
-        <div class="chapName">Select Chapter Name</div>
-        <div class="input /" >
-          <div>
-            <input class="titleInput" type="list" list="browsers" formControlName="chaptername"/>
-            <div *ngIf="chapForm.get('chaptername')?.errors?.['required'] && chapForm.get('chaptername')?.touched" class="require">Please select the chapter name</div>
-            <datalist id="browsers">
-              <option value="Internet Explorer"></option>
-              <option value="Firefox"></option>
-              <option value="Google Chrome"></option>
-              <option value="Opera"></option>
-              <option value="Safari"></option>
-            </datalist>
-          </div>
+<div class="item">
+  <form [formGroup]="chapForm">
+    <div class="chapName">Select Chapter Name</div>
+    <div class="input /">
+      <div>
+        <input
+          class="titleInput"
+          type="list"
+          list="browsers"
+          formControlName="chaptername"
+        />
+        <div
+          *ngIf="chapForm.get('chaptername')?.errors?.['required'] && chapForm.get('chaptername')?.touched"
+          class="require"
+        >
+          Please select the chapter name
         </div>
-        <div class="chapName">Duration</div>
-        <div>
-          <input class="titleInput" formControlName="duration">
-        </div>
-        <div *ngIf="chapForm.get('duration')?.errors?.['required'] && chapForm.get('duration')?.touched" class="require">This is required field*</div>
-        <div class="chapName">Module&nbsp;Test</div>
-        <div>
-          <input class="titleInput" formControlName="moduleTest" >
-        </div>
-        <div *ngIf="chapForm.get('moduleTest')?.errors?.['required'] && chapForm.get('moduleTest')?.touched" class="require">This is required field*</div>
-        <div class="currPage">5 of 44</div>
-      </form>
+        <datalist id="browsers">
+          <option value="Internet Explorer"></option>
+          <option value="Firefox"></option>
+          <option value="Google Chrome"></option>
+          <option value="Opera"></option>
+          <option value="Safari"></option>
+        </datalist>
       </div>
-      <!-- <div class="question" *ngFor="let qn of questionList;let i=index"> -->
-        <div class="question" [formGroup]="questionForm" *ngFor="let optionForm of question.controls; let i = index">
-          
-          <ng-container formArrayName="questionText" >
-         
-          <div  [formGroupName]="i">
-        <!-- <div class="Qnum">Question {{i+1}}</div> -->
-        <div class="Qnum">Question {{i+1}}</div>
-        <div class="details" >
-          <div class="qn">
-            <!-- {{qn?.questionText}}  -->
-            <input placeholder="Enter the question" formControlName="question">
-            <div *ngIf="optionForm.get('question')?.errors?.['required'] && optionForm.get('question')?.touched" class="require">Please enter the question</div>
-            <!-- What is load balancing, and why is it important to system design? -->
+    </div>
+    <div class="chapName">Duration</div>
+    <div>
+      <input class="titleInput" formControlName="duration" />
+    </div>
+    <div
+      *ngIf="chapForm.get('duration')?.errors?.['required'] && chapForm.get('duration')?.touched"
+      class="require"
+    >
+      This is required field*
+    </div>
+    <div class="chapName">Module&nbsp;Test</div>
+    <div>
+      <input class="titleInput" formControlName="moduleTest" />
+    </div>
+    <div
+      *ngIf="chapForm.get('moduleTest')?.errors?.['required'] && chapForm.get('moduleTest')?.touched"
+      class="require"
+    >
+      This is required field*
+    </div>
+    <div class="currPage">5 of 44</div>
+  </form>
+</div>
+<!-- <div class="question" *ngFor="let qn of questionList;let i=index"> -->
+<div
+  class="question"
+  [formGroup]="questionForm"
+  *ngFor="let optionForm of question.controls; let i = index"
+>
+  <ng-container formArrayName="questionText">
+    <div [formGroupName]="i">
+      <!-- <div class="Qnum">Question {{i+1}}</div> -->
+      <div class="Qnum">Question {{ i + 1 }}</div>
+      <div class="details">
+        <div class="qn">
+          <!-- {{qn?.questionText}}  -->
+          <input placeholder="Enter the question" formControlName="question" />
+          <div
+            *ngIf="optionForm.get('question')?.errors?.['required'] && optionForm.get('question')?.touched"
+            class="require"
+          >
+            Please enter the question
           </div>
-          <div class="deleteChoice">
-            <div style="margin-right: 2vw;">
-              <mat-icon (click)="deleteOption(i)">delete</mat-icon>
-            </div>
-            <div class="more" (click)="show(i)" >
-              <mat-icon *ngIf="!plus" >add</mat-icon>
-              <mat-icon *ngIf="plus"> remove</mat-icon>
-            </div>
-          </div>
+          <!-- What is load balancing, and why is it important to system design? -->
         </div>
-        <div class="options" *ngIf="plus">
-          <!-- <div class="opt" *ngFor="let option of questionList[i]?.options"> -->
-            <div class="opt" >
-            <!-- <div>{{option.text}}</div> -->
-           <input placeholder="option" formControlName="opt1" >
-            <div class="transform">
-                  <mat-slide-toggle color="primary" formControlName="true1"></mat-slide-toggle>
-            </div>
+        <div class="deleteChoice">
+          <div style="margin-right: 2vw">
+            <mat-icon (click)="deleteOption(i)">delete</mat-icon>
           </div>
-          <div class="opt">
-            <input placeholder="option" formControlName="opt2">
-            <div class="transform">
-                  <mat-slide-toggle color="primary" formControlName="true2"></mat-slide-toggle>
-            </div>
+          <div class="more" (click)="show(i)">
+            <mat-icon *ngIf="!plus">add</mat-icon>
+            <mat-icon *ngIf="plus"> remove</mat-icon>
           </div>
-          <div class="opt">
-            <input placeholder="option" formControlName="opt3">
-            <div class="transform">
-                  <mat-slide-toggle color="primary" formControlName="true3"></mat-slide-toggle>
-            </div>
-          </div>
-          <div class="opt">
-            <input placeholder="option" formControlName="opt4">
-            <div class="transform">
-                  <mat-slide-toggle color="primary" formControlName="true4"></mat-slide-toggle>
-            </div>
-          </div>
-          <div *ngIf="(optionForm.get('opt1')?.errors?.['required'] || optionForm.get('opt2')?.errors?.['required'] || optionForm.get('opt3')?.errors?.['required'] || optionForm.get('opt4')?.errors?.['required']) && (optionForm.get('opt1')?.touched || optionForm.get('opt2')?.touched || optionForm.get('opt3')?.touched || optionForm.get('opt4')?.touched  )" class="require">Please enter the option</div>
-          <div *ngIf="(optionForm.get('true1')?.errors?.['required'] || optionForm.get('true2')?.errors?.['required'] || optionForm.get('true3')?.errors?.['required'] || optionForm.get('true4')?.errors?.['required']) && (optionForm.get('true1')?.touched || optionForm.get('true2')?.touched || optionForm.get('true3')?.touched || optionForm.get('true4')?.touched  )" class="require">Please select the correct answer</div>
         </div>
       </div>
-      </ng-container>
-     
-      <button class="sub" (click)="add()" [disabled]="!optionForm.valid">add+</button>
+      <div class="options" *ngIf="plus">
+        <!-- <div class="opt" *ngFor="let option of questionList[i]?.options"> -->
+        <div class="opt">
+          <!-- <div>{{option.text}}</div> -->
+          <input placeholder="option" formControlName="opt1" />
+          <div class="transform">
+            <mat-slide-toggle
+              color="primary"
+              formControlName="true1"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div class="opt">
+          <input placeholder="option" formControlName="opt2" />
+          <div class="transform">
+            <mat-slide-toggle
+              color="primary"
+              formControlName="true2"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div class="opt">
+          <input placeholder="option" formControlName="opt3" />
+          <div class="transform">
+            <mat-slide-toggle
+              color="primary"
+              formControlName="true3"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div class="opt">
+          <input placeholder="option" formControlName="opt4" />
+          <div class="transform">
+            <mat-slide-toggle
+              color="primary"
+              formControlName="true4"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div
+          *ngIf="(optionForm.get('opt1')?.errors?.['required'] || optionForm.get('opt2')?.errors?.['required'] || optionForm.get('opt3')?.errors?.['required'] || optionForm.get('opt4')?.errors?.['required']) && (optionForm.get('opt1')?.touched || optionForm.get('opt2')?.touched || optionForm.get('opt3')?.touched || optionForm.get('opt4')?.touched  )"
+          class="require"
+        >
+          Please enter the option
+        </div>
+        <div
+          *ngIf="(optionForm.get('true1')?.errors?.['required'] || optionForm.get('true2')?.errors?.['required'] || optionForm.get('true3')?.errors?.['required'] || optionForm.get('true4')?.errors?.['required']) && (optionForm.get('true1')?.touched || optionForm.get('true2')?.touched || optionForm.get('true3')?.touched || optionForm.get('true4')?.touched  )"
+          class="require"
+        >
+          Please select the correct answer
+        </div>
       </div>
-      <!-- <div class="border"> -->
-      <div class="footer">
-        <div class="prev">
-          <button class="previous">PREVIOUS</button>
-        </div>
-        <div class="pageNo">
-          <div class="roundPage">1</div>
-          <div class="roundPage">2</div>
-          <div class="roundPage">3</div>
-        </div>
-        <div class="nxt1">
-          <button class="next1">NEXT</button>
-        </div>
-        <div>
-          <button class="buttonSave">Save</button>
-        </div>
+    </div>
+  </ng-container>
+
+  <button class="sub" (click)="add()" [disabled]="!optionForm.valid">
+    add+
+  </button>
+</div>
+<!-- <div class="border"> -->
+<div class="footer">
+  <div class="prev">
+    <button class="previous">PREVIOUS</button>
+  </div>
+  <div class="pageNo">
+    <div class="roundPage">1</div>
+    <div class="roundPage">2</div>
+    <div class="roundPage">3</div>
+  </div>
+  <div class="nxt1">
+    <button class="next1">NEXT</button>
+  </div>
+  <div>
+    <button class="buttonSave">Save</button>
+  </div>
+</div>
