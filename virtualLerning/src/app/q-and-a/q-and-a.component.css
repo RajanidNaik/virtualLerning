@@ -129,3 +129,50 @@
 height: fit-content;
 margin-top: 2vw;
 }
+.qn input{
+  outline: none;
+  border:none;
+  font-family: 'Proxima Nova Soft';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  /* border:1px solid #000; */
+  width:40rem;
+  color: #2B2B2B;
+}
+.opt input{
+  outline: none;
+  border:none;
+  font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.2px;
+
+color: #2B2B2B;
+
+
+}
+ button.sub{
+ margin-block-start: 2%;
+  background: #DFE2E9;
+  border: none;
+  font-family: 'Proxima Nova';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+padding: 1%;
+color: #092963;
+ }
+ .titleInput.ng-invalid.ng-touched{
+  border:1px solid red;
+}
+.require{
+  color:red;
+}

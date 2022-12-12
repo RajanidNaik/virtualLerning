@@ -61,7 +61,6 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    // CKEditorModule,
     ReactiveFormsModule,
     CKEditorModule,
     NgxDropzoneModule

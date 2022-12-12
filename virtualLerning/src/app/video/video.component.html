@@ -1,4 +1,5 @@
-<form [formGroup]="videoForm">
+
+<!-- <form [formGroup]="videoForm">
   <div class="videodata">
     <div class="title">
       <div class="text">Video Title</div>
@@ -100,7 +101,7 @@
         <button class="btn" (click)="add()">Add New +</button>
       </div>
     </div>
-
+    
      <div class="white"  formArrayName="chapter" *ngFor="let item of getControl; let i = index">
       <!-- <div class="item" [formGroupName]="i"> -->
         <div class="top">
@@ -162,6 +163,7 @@
               </div>
             <div class="Subchap">
               <div class="name">Sub Chapter Name</div>
+
               <div>
                 <input class="titleInput" type="text" formControlName="sub" />
               </div>
@@ -184,6 +186,17 @@
                 </div>
               </div>
             </div>
+
+          </div>
+          <div class="more" (click)="show(i)">
+            <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
+          </div>
+        </div>
+      <div class="imgUpload" *ngIf="plus">
+          <div class="add">
+            <div class="available">
+
             </div> -->
   <!-- <div class="next">
     <button *ngIf="false" class="nextbtn">Save</button>
@@ -236,6 +249,7 @@
                   <input class="titleInput" type="text" formControlName="chaptername"/>
                 </div>
               </div>
+
               <div>
                   <div class="icon" *ngIf="false">
                       <div><mat-icon class="green">check_circle</mat-icon></div>
@@ -271,6 +285,30 @@
                       >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                       choose files
                     </div> 
+
+      </div>
+      <div class="more">
+        <div class="videoItem"></div>
+      </div>
+      <div class="imgUpload" *ngIf="plus">
+        <div class="add">
+          <div class="available">
+            <div>
+              <div class="img">
+                <div class="notUpload">
+                  <div>
+                    <img src="assets/add-course/Vector.png" alt="" />
+                  </div>
+                  <div class="dragAndDrop">Drag and drop multiple files</div>
+                  <div class="browse">
+                    or <span><u>browse</u></span> to choose files
+                  </div>
+                </div>
+                <div class="more">
+                  <div class="videoItem"></div>
+                 
+                </div>
+
               <div class="imgUpload" *ngIf="plus">
                 <div class="add">
                   <div class="available">
@@ -311,6 +349,7 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
             <div class="Subchap">
@@ -337,6 +376,34 @@
                 </div>
               </div>
             </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="next">
+    <button *ngIf="false" class="nextbtn">Save</button>
+    <button class="nextbtn" (click)="publish()">Publish</button>
+  </div> !-->
+  <!-- </div>
+    </div>
+    </div>
+    <div class="next">
+      <button *ngIf="false" class="nextbtn">Save</button>
+      <button class="nextbtn">Publish</button>
+    </div>
+   </div> 
+   </div>
+   </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    
+</form>
+   -->
+
             </div>
   <div class="next">
     <button *ngIf="false" class="nextbtn">Save</button>
@@ -351,3 +418,4 @@
         </div>
       </div> -->
   <!-- </form> -->
+
