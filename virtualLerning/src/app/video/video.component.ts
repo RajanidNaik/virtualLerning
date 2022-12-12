@@ -26,8 +26,6 @@ export class VideoComponent implements OnInit {
   public Editor = ClassicEditor;
   constructor(public fb: FormBuilder, private dialog: MatDialog) {}
   category:any;
-
-  count:any;
   info:any;
 
 
@@ -59,15 +57,15 @@ export class VideoComponent implements OnInit {
      
   }
 
-  show(id:any) {
-    console.log(id)
+  show() {
+    // console.log(id)
    
-      if(this.info === id ){
+      // if(this.info === id ){
               this.plus = !this.plus;
-            }
-    else{
-      this.plus =false
-    }
+            // }
+    // else{
+    //   this.plus =false
+    // }
       
    
 
