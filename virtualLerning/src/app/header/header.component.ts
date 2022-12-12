@@ -9,8 +9,10 @@ import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.compone
 export class HeaderComponent implements OnInit {
 
   constructor(private dialog:MatDialog) { }
-
+  head:any;
   ngOnInit(): void {
+    this.head = localStorage.getItem('curr');
+    this.head = JSON.parse(this.head);
 
   }
   openDialogProfile(){

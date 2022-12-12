@@ -18,6 +18,7 @@ export class DialogCategoryComponent implements OnInit {
       console.log(this.category);
       
       localStorage.setItem('category', JSON.stringify(this.category));
+      window.location.reload();
   }
   close(){
     

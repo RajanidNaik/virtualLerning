@@ -17,7 +17,9 @@ value=70;
   constructor(private dialog:MatDialog) { }
 
   ngOnInit(): void {
+    localStorage.setItem('curr',JSON.stringify("Dashboard"));
   }
+
 onBack(){
   this.first=true;
   this.second=false;

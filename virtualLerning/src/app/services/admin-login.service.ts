@@ -8,7 +8,7 @@ export class AdminLoginService {
   constructor(private http: HttpClient) {}
 
   adminLogin(body: any) {
-    return this.http.post(
+    return this.http.put(
       'http://admin-env.eba-mh8pph25.ap-south-1.elasticbeanstalk.com/admin/login',
       body,
       { responseType: 'text' }

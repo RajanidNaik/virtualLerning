@@ -13,6 +13,7 @@ export class AddCourseComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem('curr', JSON.stringify('Add Courses'));
   }
   show(){
     this.plus = !this.plus;

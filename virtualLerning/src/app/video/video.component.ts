@@ -3,6 +3,8 @@ import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@ang
 import { MatDialog } from '@angular/material/dialog';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { DialogCategoryComponent } from '../dialog-category/dialog-category.component';
+import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -19,13 +21,12 @@ export class VideoComponent implements OnInit {
   count: any;
   public Editor = ClassicEditor;
   constructor(public fb: FormBuilder, private dialog: MatDialog) {}
-  category:any;
-  info:any;
-
+  category: any;
+  info: any;
 
   ngOnInit(): void {
-    this.category=localStorage.getItem('category');
-    this.category=JSON.parse(this.category);
+    this.category = localStorage.getItem('category');
+    this.category = JSON.parse(this.category);
     this.videoForm = new FormGroup({
       videoTitle: new FormControl(''),
       category: new FormControl(''),
@@ -34,50 +35,53 @@ export class VideoComponent implements OnInit {
       certifcate: new FormControl(''),
       learning: this.fb.array([this.fb.control('')]),
       requirement: this.fb.array([this.fb.control('')]),
-
       chapter: this.fb.array([]),
     });
 
-    this.add() ;
-    
+    this.add();
   }
-  data(i:any){
-    sessionStorage.setItem('plus',JSON.stringify(i));
-    this.count =i;
-    if(sessionStorage.getItem('plus')){
-      this.info =JSON.parse(sessionStorage.getItem('plus') || '[]');
+  videoAdd(){
+    this.array.push('v')
+  }
+  data(i: any) {
+    sessionStorage.setItem('plus', JSON.stringify(i));
+    this.count = i;
+    if (sessionStorage.getItem('plus')) {
+      this.info = JSON.parse(sessionStorage.getItem('plus') || '[]');
       console.log(this.info);
-     }
-     
+    }
   }
 
   show() {
     // console.log(id)
-   
-      // if(this.info === id ){
-              this.plus = !this.plus;
-            // }
+
+    // if(this.info === id ){
+    this.plus = !this.plus;
+    // }
     // else{
     //   this.plus =false
     // }
-      
-   
-
   }
   add() {
-
     // this.array.push("v");
     //   const control =new FormControl('', Validators.required);
     //   (<FormArray>this.videoForm.get('chapter')).push(control);
     //   console.log(this.videoForm.value);
-      sessionStorage.removeItem('plus')
-      let lan = new FormGroup({
-        chaptername:new FormControl(''),
-        sub: new FormControl('')
-      });
-      (<FormArray>this.videoForm.controls['chapter']).push(lan);
-      // this.videoForm.reset();
+    sessionStorage.removeItem('plus');
+    let lan = new FormGroup({
+      chaptername: new FormControl(''),
+      sub: this.fb.array([
+        this.fb.group({
+          subChapterName: new FormControl(''),
+          videoLink: new FormControl(''),
+          supportDoc: new FormControl(''),
+        })
+      ]),
+    });
+    (<FormArray>this.videoForm.controls['chapter']).push(lan);
+    // this.videoForm.reset();
   }
+
 
   get getControl() {
     return (<FormArray>this.videoForm.controls['chapter']).controls;
