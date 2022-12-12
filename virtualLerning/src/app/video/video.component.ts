@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
-// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -13,7 +13,7 @@ export class VideoComponent implements OnInit {
   skills = new FormArray([]);
   count:any;
   info:any;
-  // public Editor = ClassicEditor;
+  public Editor = ClassicEditor;
   constructor(public fb: FormBuilder) {}
   category:Array<string>=["Design","Development","Business","Music","Finance","Health","IT","Marketting","LifeStyle","Photogrphy"];
 

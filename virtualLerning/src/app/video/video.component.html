@@ -1,4 +1,13 @@
-<form [formGroup]="videoForm">
+
+
+
+
+
+
+
+
+
+<!-- <form [formGroup]="videoForm">
   <div class="videodata">
     <div class="title">
       <div class="text">Video Title</div>
@@ -33,16 +42,16 @@
       </div>
     </div>
 
-    <div formArrayName="chapter" *ngFor="let item of getControl;let i=index"  >
+    <div formArrayName="chapter" *ngFor="let item of getControl;let i=index">
       
     <div class="item" [formGroupName]="i"   >
      
-       <!-- *ngFor="let line of videoForm.get('chapter'); let i=index"> -->
+       *ngFor="let line of videoForm.get('chapter'); let i=index">
       <div  > 
       <div class="chapName" >Chapter Name</div>
       <div class="input" >
         <div (click)="data(i)">
-          <!--[formControlName]="i"-->
+          [formControlName]="i"
           <input class="titleInput" type="text" formControlName="chaptername" >
         </div>
         <div>
@@ -66,12 +75,12 @@
               <div>Upload failed</div>
             </div>
           </div>
-          <div class="more" (click)="show()">
+          <div class="more" (click)="show(i)">
             <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
             <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
           </div>
         </div>
-     <!--  <div class="imgUpload" *ngIf="plus">
+      <div class="imgUpload" *ngIf="plus">
           <div class="add">
             <div class="available">
               <div>
@@ -88,11 +97,10 @@
                         >Browse</label
                       >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                       choose files
-                    </div> !-->
-        <div class="more" (click)="show(i)">
-          <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
-          <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
-        </div>
+                    </div> 
+      </div>
+      <div class="more">
+        <div class="videoItem"></div>
       </div>
       <div class="imgUpload" *ngIf="plus">
         <div class="add">
@@ -110,15 +118,7 @@
                 </div>
                 <div class="more">
                   <div class="videoItem"></div>
-                  <!-- <div class="videoItem"></div>
-                <div class="videoItem"></div>
-                <div class="videoItem"></div>
-                <div class="videoItem"></div>
-                <div class="videoItem"></div>
-                <div class="videoItem"></div>
-                <div class="videoItem"></div>
-                <div class="videoItem"></div>
-                <div class="videoItem"></div> -->
+                 
                 </div>
               </div>
             </div>
@@ -146,12 +146,12 @@
         </div>
       </div>
     </div>
-  <!-- </div>
+  </div>
   <div class="next">
     <button *ngIf="false" class="nextbtn">Save</button>
     <button class="nextbtn" (click)="publish()">Publish</button>
   </div> !-->
-  <!-- </div> -->
+  <!-- </div>
     </div>
     </div>
     <div class="next">
@@ -159,4 +159,12 @@
       <button class="nextbtn">Publish</button>
     </div>
    </div> 
+   </div>
+   </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    
 </form>
+   -->

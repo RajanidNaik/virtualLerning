@@ -55,7 +55,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    // CKEditorModule,
     ReactiveFormsModule,
     CKEditorModule,
     NgxDropzoneModule
