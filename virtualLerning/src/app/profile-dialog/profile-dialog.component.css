@@ -189,13 +189,17 @@ color: #FFFFFF;
     background-color: #EE5C4D;
     padding: .3rem;
     border-radius: 50%;
+    
+    
 }
 .cphoto{
     position: absolute;
     width:10%;
     top:22%;
     left:57%;
-  
+    /* border-radius: 50%;
+    border:1px solid #fff; */
+    /* background-color: #EE5C4D; */
     
 }
 .lineCopy{
@@ -322,6 +326,9 @@ color: #FFFFFF;
 
 
 }
+input[type="file"]{
+    display: none;
+  }
 .none input.ng-invalid.ng-touched{
     border-bottom:1px solid red;
 }

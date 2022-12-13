@@ -81,65 +81,70 @@
       </div>
       <div class="options" *ngIf="plus">
         <!-- <div class="opt" *ngFor="let option of questionList[i]?.options"> -->
-        <div class="opt">
+        <div class="opt" formGroupName="option1">
           <!-- <div>{{option.text}}</div> -->
-          <input placeholder="option" formControlName="opt1" />
+          <input placeholder="a" formControlName="opt" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="true1"
+              formControlName="ans"
             ></mat-slide-toggle>
           </div>
         </div>
-        <div class="opt">
-          <input placeholder="option" formControlName="opt2" />
+        <div class="opt" formGroupName="option2">
+          <input placeholder="b" formControlName="opt" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="true2"
+              formControlName="ans"
             ></mat-slide-toggle>
           </div>
         </div>
-        <div class="opt">
-          <input placeholder="option" formControlName="opt3" />
+        <div class="opt" formGroupName="option3">
+          <input placeholder="c" formControlName="opt" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="true3"
+              formControlName="ans"
             ></mat-slide-toggle>
           </div>
         </div>
-        <div class="opt">
-          <input placeholder="option" formControlName="opt4" />
+        <div class="opt" formGroupName="option4">
+          <input placeholder="d" formControlName="opt" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="true4"
+              formControlName="ans"
             ></mat-slide-toggle>
           </div>
         </div>
         <div
-          *ngIf="(optionForm.get('opt1')?.errors?.['required'] || optionForm.get('opt2')?.errors?.['required'] || optionForm.get('opt3')?.errors?.['required'] || optionForm.get('opt4')?.errors?.['required']) && (optionForm.get('opt1')?.touched || optionForm.get('opt2')?.touched || optionForm.get('opt3')?.touched || optionForm.get('opt4')?.touched  )"
+          *ngIf="questionForm.get('opt')?.errors?.['required']&& questionForm.get('opt')?.touched "
           class="require"
         >
           Please enter the option
         </div>
+        
         <div
-          *ngIf="(optionForm.get('true1')?.errors?.['required'] || optionForm.get('true2')?.errors?.['required'] || optionForm.get('true3')?.errors?.['required'] || optionForm.get('true4')?.errors?.['required']) && (optionForm.get('true1')?.touched || optionForm.get('true2')?.touched || optionForm.get('true3')?.touched || optionForm.get('true4')?.touched  )"
+          *ngIf="(newQuestion().get('ans')?.errors?.['required']) && (newQuestion().get('ans')?.touched  )"
           class="require"
         >
           Please select the correct answer
         </div>
+        
       </div>
+      
     </div>
   </ng-container>
-
+<div>
   <button class="sub" (click)="add()" [disabled]="!optionForm.valid">
-    add+
+    Add+
   </button>
 </div>
+  
+</div>
 <!-- <div class="border"> -->
-<div class="footer">
+<!-- <div class="footer">
   <div class="prev">
     <button class="previous">PREVIOUS</button>
   </div>
@@ -154,4 +159,4 @@
   <div>
     <button class="buttonSave">Save</button>
   </div>
-</div>
+</div> -->

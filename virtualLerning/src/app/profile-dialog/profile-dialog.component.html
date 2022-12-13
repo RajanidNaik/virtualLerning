@@ -40,29 +40,43 @@
         <mat-icon (click)="onback()">arrow_back</mat-icon>
     </div>
     <div class="edits">Edit&nbsp;Profile</div>
+    <form [formGroup]="chageProfile">
     <div class="photo">
         <img class="changePhoto" src="/assets/mg 1.png">
-        <div class="cphoto"><mat-icon>camera_alt</mat-icon></div>
+        <div class="cphoto">
+            <input type="file" name="photo" id="upload" formControlName="profile"/> <label for="upload"><mat-icon >camera_alt</mat-icon></label>
+            
+        </div>
     </div>
     <div class="lineCopy"></div>
+    
     <div class="details">
         <div class="none">
             <label class="noneName">Full&nbsp;Name</label>
-            <input placeholder="" >
+            <input placeholder="" formControlName="name">
         </div>
+        <div>
+            <small *ngIf="chageProfile.get('name')?.errors?.['required'] && chageProfile.get('name')?.touched " class="require"> This is required field*</small>
+            <small *ngIf="chageProfile.get('name')?.errors?.['pattern']" class="require">  name cannot contain number</small>
+          </div>
         <div class="none">
             <label class="noneName">Email&nbsp;ID</label>
-            <input placeholder="" >
+            <input placeholder="" formControlName="email" readonly>
         </div>
         <div class="none">
             <label class="noneName">Mobile&nbsp;Number</label>
-            <input placeholder="" >
+            <input placeholder="" formControlName="mobileNumber" >
         </div>
+        <div >
+            <small *ngIf="chageProfile.get('mobileNumber')?.errors?.['pattern']" class="require" >
+              Please, Enter 10 digit Mobile Number.
+            </small>
+          </div>
         <div class="save">
-            <button type="submit">Save</button>
+            <button type="submit" (click)="proSave()">Save</button>
         </div>
     </div>
-    
+</form>
 
 </div>
 
@@ -106,6 +120,11 @@
 </div>
 
 
+</div>
+<div class="success" *ngIf="savePro">
+    <div class="right"><mat-icon (click)="onClose()">check_circle</mat-icon></div>
+    <div class="lines">profile&nbsp;edited&nbsp;successfully</div>
+    <div class="left"><mat-icon (click)="onClose()">clear</mat-icon></div>
 </div>
 <div class="success" *ngIf="save">
     <div class="right"><mat-icon (click)="onClose()">check_circle</mat-icon></div>
