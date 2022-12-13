@@ -69,11 +69,12 @@ export class LoginComponent implements OnInit {
           alert(this.logindata.body.message);
           console.log('else');
         },
-        error: (data) => {
-          data = JSON.parse(data.error);
-          console.log(data.error);
+        error: (data) => {  
+          this.message=data.error.message;
           console.log(this.message);
-        },
+          
+          
+        }
       });
 }
 
