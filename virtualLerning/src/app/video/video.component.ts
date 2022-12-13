@@ -53,35 +53,26 @@ export class VideoComponent implements OnInit {
   }
 
   show() {
-    // console.log(id)
 
-    // if(this.info === id ){
     this.plus = !this.plus;
-    // }
-    // else{
-    //   this.plus =false
-    // }
+
   }
   add() {
-    // this.array.push("v");
-    //   const control =new FormControl('', Validators.required);
-    //   (<FormArray>this.videoForm.get('chapter')).push(control);
-    //   console.log(this.videoForm.value);
-    sessionStorage.removeItem('plus');
     let lan = new FormGroup({
       chaptername: new FormControl(''),
-      sub: this.fb.array([
-        this.fb.group({
-          subChapterName: new FormControl(''),
-          videoLink: new FormControl(''),
-          supportDoc: new FormControl(''),
-        })
-      ]),
+      sub: this.fb.array([this.addSubChapter()]),
     });
     (<FormArray>this.videoForm.controls['chapter']).push(lan);
     // this.videoForm.reset();
   }
 
+  addSubChapter(){
+      let subArray=new FormGroup({
+          subChapterName: new FormControl(''),
+          videoLink: new FormControl(''),
+          supportDoc: new FormControl(''),
+        })
+  } 
 
   get getControl() {
     return (<FormArray>this.videoForm.controls['chapter']).controls;
