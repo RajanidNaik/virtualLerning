@@ -1,4 +1,3 @@
-
 <form [formGroup]="videoForm">
   <div class="videodata">
     <div class="title">
@@ -68,7 +67,6 @@
     </div>
   </div>
 
-  <!--///////////////////////// Requirement \\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
   <div class="userview">
     <div class="uploadSection">Requirements</div>
@@ -119,7 +117,7 @@
             <div class="green">Videos upload successful</div>
           </div>
           <div class="icon" *ngIf="true">
-            <div class="green" style="color: red">
+            <div class="green">
               <mat-icon>error</mat-icon>
             </div>
             <div>Upload failed</div>
