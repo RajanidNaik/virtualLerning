@@ -24,11 +24,7 @@
       </div>
     </div>
   </div>
-  <!-- Top PRT
-  
-  
-  
--->
+  <!-- Top PRT -->
 
   <!--////////////////////////// TEXT EDITOR \\\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="videoDiscription">
@@ -101,11 +97,13 @@
       </div>
     </div>
 
+
     <div class="white" formArrayName="chapter" *ngFor="let item of getControl; let i = index">
       <div class="top" [formGroupName]="i">
         <div class="chapName">
           Chapter Name
           <div class="input">
+
             <input
               class="titleInput"
               type="text"
@@ -121,6 +119,7 @@
           <div class="icon" *ngIf="true">
             <div class="green" style="color: red">
               <mat-icon>error</mat-icon>
+
             </div>
             <div>Upload failed</div>
           </div>
@@ -129,6 +128,7 @@
           <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
           <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
         </div>
+
       </div>
       <div class="imgUpload" *ngIf="plus">
         <div class="add">
@@ -136,6 +136,7 @@
 
             <div class="notUpload">
                
+
               <div>
                 
                   <ngx-file-drop> </ngx-file-drop>
@@ -149,6 +150,7 @@
                   >Browse</label
                 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                 choose files
+
               </div>
             </div>
           </div>
