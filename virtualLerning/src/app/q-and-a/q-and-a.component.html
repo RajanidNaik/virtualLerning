@@ -74,12 +74,12 @@
             <mat-icon (click)="deleteOption(i)">delete</mat-icon>
           </div>
           <div class="more" (click)="show(i)">
-            <mat-icon *ngIf="!plus">add</mat-icon>
-            <mat-icon *ngIf="plus"> remove</mat-icon>
+            <mat-icon *ngIf="!shows[i]">add</mat-icon>
+            <mat-icon *ngIf="shows[i]"> remove</mat-icon>
           </div>
         </div>
       </div>
-      <div class="options" *ngIf="plus">
+      <div class="options" *ngIf="shows[i]">
         <!-- <div class="opt" *ngFor="let option of questionList[i]?.options"> -->
         <div class="opt">
           <!-- <div>{{option.text}}</div> -->

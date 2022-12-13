@@ -6,9 +6,15 @@
     <form [formGroup]="signUpForm">
       <div class="dataForgot">
         <div class="personal">
-          <div class="bg">
-            <img class="dp" src="/assets/mg 1.png" alt="" />
-          </div>
+          <label for="upLoadProfile">
+            
+            <div class="default">
+              <mat-icon class="addButton">add_a_photo</mat-icon>
+              <img class=dp [src]="url" *ngIf="imageAvail" alt="">
+              <img class="dp"  *ngIf="!imageAvail" src="/assets/mg 1.png" alt="" />
+            </div>  
+          </label>
+          <input type="file" name="" id="upLoadProfile" type="file" accept=""  (change)="onSelectDp($event)">
           <div class="username">
             <mat-form-field class="example-full-width">
               <mat-label>User Name</mat-label>
@@ -39,34 +45,32 @@
               <input type="password" matInput formControlName="password" />
             </mat-form-field>
           </div>
+          
         </div>
 
         <div class="description">
           <div>
-            <span class="about">About You</span>
+            <div class="about">About You</div>
             <textarea class="textArea"></textarea>
+            
             <div class="username">
-            <mat-form-field class="example-full-width">
-              <mat-label>Designation</mat-label>
-              <input matInput formControlName="designation" />
-            </mat-form-field>
-          </div>
-          <div class="username">
-            <mat-form-field class="example-full-width">
-              <mat-label>Link</mat-label>
-              <input matInput formControlName="urlLink" />
-            </mat-form-field>
-          </div>
+              <mat-form-field class="example-full-width">
+                <mat-label>Designation</mat-label>
+                <input matInput formControlName="designation" />
+              </mat-form-field>
+            </div>
+            <div class="username">
+              <mat-form-field class="example-full-width">
+                <mat-label>Link</mat-label>
+                <input matInput formControlName="urlLink" />
+              </mat-form-field>
+            </div>
           </div>
         </div>
       </div>
     </form>
     <div class="button3">
-      <button
-        class="loginButn"
-        routerLink="/"
-        (click)="request()"
-      >
+      <button class="loginButn" routerLink="/" (click)="request()">
         Send Request
       </button>
     </div>

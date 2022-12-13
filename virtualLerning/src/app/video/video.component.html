@@ -1,4 +1,3 @@
-
 <form [formGroup]="videoForm">
   <div class="videodata">
     <div class="title">
@@ -23,9 +22,30 @@
         </select>
       </div>
     </div>
+    <div class="suBcategory">
+      <div class="text">Sub Category</div>
+      <div class="titleInputV">
+        <select formControlName="subCategory" type="text">
+          <option value="" selected>Sub Category</option>
+          <option
+            *ngFor="let item of category"
+            [value]="item"
+            [selected]="item === 'Design'"
+          >
+            {{ item }}
+          </option>
+          <option (click)="addCategory()" value="">Add new +</option>
+        </select>
+      </div>
+    </div>
   </div>
   <!-- Top PRT -->
-
+  <div class="userview">
+    <div class="uploadSection">Head Text</div>
+    <div>
+      <textarea class="textarea" formControlName="formatText"></textarea>
+    </div>
+  </div>
   <!--////////////////////////// TEXT EDITOR \\\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="videoDiscription">
     <div class="overview">Add Discription / Overview</div>
@@ -37,34 +57,21 @@
   <!-- /////// -->
 
   <div class="title1">
-    <div class="text">Total Hours</div>
-    <div>
-      <input class="title1Input" type="text" formControlName="duration" />
+    <div class="uploadSection">
+      Upload Support Document *
+      <input
+        id="upload"
+        type="file"
+        accept=""
+        (change)="supportUpload($event)"
+      /><label for="upload">Browse</label>
     </div>
   </div>
-  <div class="title1">
-    <div>
-      <input class="check" formControlName="certifcate" type="checkbox" />
-      <span>Certification Provided</span>
-    </div>
-  </div>
-
   <!--///////////////////////////// LEARNING \\\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="userview">
     <div class="uploadSection">What they gain</div>
-    <div
-      formArrayName="learning"
-      *ngFor="let val of learning.controls; let j = index"
-    >
-      <div class="username">
-        <mat-form-field class="totalBox">
-          <mat-label>Gain-{{ j + 1 }}</mat-label>
-          <input matInput [formControlName]="j" />
-        </mat-form-field>
-      </div>
-    </div>
     <div>
-      <button class="transparent" (click)="addLear()">Add Gains</button>
+      <textarea class="textarea2" formControlName="learning"></textarea>
     </div>
   </div>
 
@@ -72,23 +79,32 @@
 
   <div class="userview">
     <div class="uploadSection">Requirements</div>
-    <div
-      formArrayName="requirement"
-      *ngFor="let item of requirement.controls; let i = index"
-    >
-      <div class="username">
-        <mat-form-field class="totalBox">
-          <mat-label>Requirment-{{ i + 1 }}</mat-label>
-          <input matInput [formControlName]="i" />
-        </mat-form-field>
-      </div>
-    </div>
     <div>
-      <button class="transparent" (click)="addReq()">Add Requirement</button>
+      <textarea class="textarea2" formControlName="requirement"></textarea>
     </div>
   </div>
-  <!--///////////////////////// Requirement \\\\\\\\\\\\\\\\\\\\\\\\\\-->
+  <div class="title">
+    <div class="uploadSection">Keywords</div>
+    <div>
+      <input class="titleInput" type="text" formControlName="keyWords" />
+    </div>
+  </div>
+  <div class="userview">
+    <div class="uploadSection">Difficulty</div>
+    <div>
+      <select formControlName="level" type="text">
+        <option value="" selected>Select Category</option>
+        <option [selected] value="Advance">Advance</option>
+        <option [selected] value="Advance">Beginner</option>
+      </select>
+    </div>
+  </div>
+  <!-- ///////////////////////////////
 
+Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="videoUpload">
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
@@ -102,76 +118,55 @@
       formArrayName="chapter"
       *ngFor="let item of getControl; let i = index"
     >
-      <div class="top" [formGroupName]="i">
-        <div class="chapName">
-          Chapter Name
-          <div class="input">
-            <input
-              class="titleInput"
-              type="text"
-              formControlName="chaptername"
-            />
-          </div>
-        </div>
-        <div class="center">
-          <div class="icon" *ngIf="false">
-            <div><mat-icon class="green">check_circle</mat-icon></div>
-            <div class="green">Videos upload successful</div>
-          </div>
-          <div class="icon" *ngIf="true">
-            <div class="green" style="color: red">
-              <mat-icon>error</mat-icon>
+      <div [formGroupName]="i">
+        <div class="top">
+          <div class="chapName">
+            Chapter Name
+            <div class="input">
+              <input
+                class="titleInput"
+                type="text"
+                formControlName="chaptername"
+              />
             </div>
-            <div>Upload failed</div>
           </div>
-        </div>
-        <div class="more" class="center" (click)="show()">
-          <mat-icon *ngIf="!plus">keyboard_arrow_down</mat-icon>
-          <mat-icon *ngIf="plus">keyboard_arrow_up</mat-icon>
-        </div>
-      </div>
-      <div class="imgUpload" *ngIf="plus">
-        <div class="add">
-          <div class="img">
-            <div class="notUpload">
-              <div>
-                <ngx-file-drop> </ngx-file-drop>
-                <img src="assets/add-course/Vector.png" alt="" />
+          <div class="center">
+            <div class="icon" *ngIf="false">
+              <div><mat-icon class="green">check_circle</mat-icon></div>
+              <div class="green">Videos upload successful</div>
+            </div>
+            <div class="icon" *ngIf="true">
+              <div class="green">
+                <mat-icon>error</mat-icon>
               </div>
-              <div class="dragAndDrop">Drag and drop multiple files</div>
-              <div class="browse">
-                or
-                <input type="file" name="photo" id="upload" /><label
-                  for="upload"
-                  >Browse</label
-                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
-                choose files
-              </div>
+              <div>Upload failed</div>
             </div>
           </div>
-          <!-- <div formArrayName="subSections" *ngFor="let k of field.get('subSections').controls; let y = index;"></div> -->
-          <div class="videos">
-            <div class="videoItem" *ngFor="let vide of array"></div>
+          <div class="more" class="center" (click)="show(i)">
+            <mat-icon *ngIf="!shows[i]">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="shows[i]">keyboard_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="Subchap">
-          <div class="name">Sub Chapter Name</div>
-          <div>
-            <input class="titleInput" type="text" />
+        <div class="imgUpload" *ngIf="shows[i]">
+          <div class="container" *ngIf="true">
+            <div class="previw"></div>
+            <div class="selection"></div>
           </div>
-          <div>
-            Upload Support Document * <input id="input" type="file" /><label
-              for="upload"
-              >Browse</label
-            >
-          </div>
-          <div class="btns">
-            <div>
-              <button class="buttonP">Previous</button>
-            </div>
-            <div class="btnX">
-              <div>
-                <button class="buttonN">Next</button>
+          <div class="container">
+            <div class="text">
+              <div class="name">Sub Chapter Name</div>
+              <div class="inputSubChap">
+                <input class="titleInput" type="text" />
+              </div>
+              <div class="btn">
+                <div>
+                  <button class="buttonP">Previous</button>
+                </div>
+                <div class="btnX">
+                  <div>
+                    <button class="buttonN">Next</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

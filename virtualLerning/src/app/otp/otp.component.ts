@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 
@@ -13,7 +14,11 @@ export class OtpComponent implements OnInit {
   val3:any;
   val4:any;
   otp:any
+  email:any
   ngOnInit(): void {
+    this.email=sessionStorage.getItem('email');
+    console.log(this.email);
+    
   }
    
 resend(){
@@ -40,10 +45,18 @@ checkNum(event:any){
 verify(){
   this.otp = this.val1+this.val2+this.val3+this.val4;
   console.log("OTP"+this.otp);
-  this.router.navigateByUrl('/password');
+  // this.router.navigateByUrl('/password');
+  const body = {
+      emailId: this.email,
+      otp: this.otp
+    };
+    console.log(body);
+    // this.al.adminLogin(body).subscribe((data) => {
+    //   console.log(data);
+    // });
+  }
+  
 }
 
-
-}
 
 

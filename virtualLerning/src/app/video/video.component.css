@@ -1,4 +1,4 @@
-.test{
+.test {
   width: 180px;
   height: 120px;
 }
@@ -9,34 +9,34 @@
   font-size: 14px;
   line-height: 20px;
 }
-.transparent{
+.transparent {
   background-color: #ffffff;
- height: 38px;
-width: 128px;
+  height: 38px;
+  width: 128px;
 }
-.videoUpload{
+.videoUpload {
   margin-top: 10px;
 }
-select{
+select {
   font-size: 19px;
-width: fit-content;
-padding: 5px;
+  width: fit-content;
+  padding: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border:none;  
- background-color: #FCBE4B;
+  border: none;
+  background-color: #fcbe4b;
   margin-top: 8px;
   text-align: center;
 }
 /* select option{
   
 } */
-input[type="file"]{
+input[type="file"] {
   display: none;
 }
-label{
-  color:#1E1AF0;
+label {
+  color: #1e1af0;
   background-color: white;
   position: absolute;
 }
@@ -52,31 +52,32 @@ label{
   padding: 12px;
   align-self: stretch;
 }
-#upload{
-  width: 5vw; 
+#upload {
+  width: 5vw;
 }
 
-.dragAndDrop{
+.dragAndDrop {
   font-weight: 600;
-font-size: 24px;
-line-height: 20px;
+  font-size: 24px;
+  line-height: 20px;
 }
-.browse{
+.browse {
   font-weight: 400;
-font-size: 18px;
-line-height: 20px;
+  font-size: 18px;
+  line-height: 20px;
 }
 
-.uploader{
-  color: #1E1AF0;
+.uploader {
+  color: #1e1af0;
 }
 
 .ck.ckeditor {
-height: 34vh;
-overflow-y: scroll;
+  height: 34vh;
+  overflow-y: scroll;
 }
 .titleInputV {
-  width: 272px;
+  margin-right: 15px;
+  width: 165px;
   font-size: 16px;
   height: 36px;
   background: #ffffff;
@@ -112,7 +113,7 @@ overflow-y: scroll;
   font-size: 20px;
   line-height: 30px;
 }
-.center{
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,14 +126,13 @@ overflow-y: scroll;
   line-height: 30px;
   color: #092963;
 }
-.white{
+.white {
   background-color: white;
   margin-bottom: 4vh;
   padding: 18px;
-
 }
 .notUpload > div:nth-child(1) {
-height: 133.5px;
+  height: 133.5px;
 }
 
 .top {
@@ -140,7 +140,7 @@ height: 133.5px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 0px;
-   background-color: #ffffff; 
+  background-color: #ffffff;
 }
 .item {
   height: fit-content;
@@ -165,7 +165,7 @@ mat-icon {
   transform: scale(1.5);
   margin-left: 35px;
 }
-.icon{
+.icon {
   display: flex;
 }
 
@@ -189,58 +189,70 @@ mat-icon {
   margin-top: 40px;
   width: 100%;
   padding-bottom: 10px;
-  height: 39vw; 
-  /* border: 2px solid turquoise; */
+  height: 39vw;
 }
-.add {
-  width: 46.9vw;
-  height: 621px;
+.container {
+  width: 50%;
+  border: 2px solid turquoise;
 }
-.notUpload img{
-  position: relative;
-  top: -91px;
+.previw {
+  border: 2px solid rgb(250, 124, 6);
+  height: 80%;
 }
- .dropzone.dz-wrapper .dz-message {
-    border: none !important;
+.selection {
+  border: 2px solid rgb(137, 34, 255);
+  height: 19%;
+}
+.text {
+  padding: 15px;
+}
+.inputSubChap {
+  margin-bottom: 30px;
+}
+.buttonP,
+.buttonN {
+  background-color: #ffffff;
+  border: 1px solid #d5d4dc;
+  width: 10.5vw;
+  height: 40px;
+  border-radius: 8px;
+}
+.buttonN {
+  background: rgba(9, 41, 99, 0.2);
 }
 
-.img {
-  height: 50vh;
-  width: 46.9vw;
-  text-align: center;
-  background: rgba(236, 236, 236, 0.17);
-  border: 1px dashed #d5d4dc;
-}
-.available .more {
-  height: 5vh;
-  width: 46.9vw;
+.btn {
+  padding: 8px;
+  padding-left: 19px;
+  margin-top: 25px;
   display: flex;
-  gap: 2px;
-  margin-top: 30px;
-  margin-bottom: 110px;
+  justify-content: space-between;
 }
-.videoItem {
-   min-width: 112px;
-   margin-right: 10px;
-  height: 61px;
-  background: rgba(236, 236, 236, 0.17);
-  border: 1px dashed #d5d4dc;
+.title1 {
+  margin: 10px 0;
+}
+.userview {
+  margin: 35px 0;
+}
+textarea {
+  min-width: 510px;
+  max-width: 510px;
+  min-height: 250px;
+  max-height: 250px;
+  overflow-y: scroll;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.textarea2 {
+  min-width: 510px;
+  max-width: 510px;
+  min-height: 150px;
+  max-height: 150px;
+  overflow-y: scroll;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-.videos{
-  height: 88.233px;
-  margin-top: 14px;
-    display: flex;
-    overflow: scroll;
-}
-
-
-.next {
-  margin-top: 30px;
-  height: 44px;
-  /* border: 2px solid violet; */
-  margin-bottom: 8vh;
-}
 .nextbtn {
   font-size: 18px;
   color: white;
@@ -248,76 +260,4 @@ mat-icon {
   height: 44px;
   width: 209.81px;
   background-color: #ee5c4d;
-}
-
-.notUpload {
-  margin-top: 20%;
-  color: #232323;
-}
-.Subchap {
-  /* border: 2px solid tomato; */
-  width: 39vw;
-  margin-left: 2vw;
-  height: 59vh;
-}
-
-.Subchap .name {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
-}
-.Subchap .titleInput {
-  margin-top: 10px;
-  border-color: #d5d4dc;
-  max-width: 20.3vw;
-}
-
-.btns {
-  display: flex;
-  gap: 7vw;
-  margin-top: 3vh;
-}
-.buttonP,
-.buttonN {
-  background-color: #ffffff;
-  border: 1px solid #d5d4dc;
-  width: 7.5vw;
-  height: 44px;
-  border-radius: 8px;
-}
-.buttonN {
-  background: rgba(9, 41, 99, 0.2);
-}
-.Addnew {
-  position: absolute;
-  right: 4vw;
-} 
-.videoErr{
-   font-size: 18px;
-  color: white;
-  float: right;
-  height: 44px;
-  width: 209.81px;
-  background-color: #D4D4D4;
-}
-
-.mat-form-field {
-width: 41vw;
-font-size: 20px;
-}
-.userview{
-  margin-top: 20px;
-}
-
-
-.title1{
-  margin: 25px;
-  font-size: 20px;
-}
-.title1 input{
-  font-size: 18px;
-}
-.check{
-  height: 25px;
-  width: 25px;
 }

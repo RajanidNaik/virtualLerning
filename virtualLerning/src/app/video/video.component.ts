@@ -17,12 +17,13 @@ export class VideoComponent implements OnInit {
   selected: any;
   videoForm!: FormGroup;
   skills = new FormArray([]);
-
+  selectedFile: any;
   count: any;
   public Editor = ClassicEditor;
   constructor(public fb: FormBuilder, private dialog: MatDialog) {}
   category: any;
   info: any;
+  shows: any = [];
 
   ngOnInit(): void {
     this.category = localStorage.getItem('category');
@@ -30,19 +31,18 @@ export class VideoComponent implements OnInit {
     this.videoForm = new FormGroup({
       videoTitle: new FormControl(''),
       category: new FormControl(''),
+      subCategory: new FormControl(''),
+      formatText: new FormControl(''),
       overview: new FormControl(''),
-      duration: new FormControl(''),
-      certifcate: new FormControl(''),
-      learning: this.fb.array([this.fb.control('')]),
-      requirement: this.fb.array([this.fb.control('')]),
+      learning: new FormControl(''),
+      requirement: new FormControl(''),
+      keyWords: new FormControl(''),
+      level: new FormControl(''),
       chapter: this.fb.array([]),
     });
-
     this.add();
   }
-  videoAdd(){
-    this.array.push('v')
-  }
+
   data(i: any) {
     sessionStorage.setItem('plus', JSON.stringify(i));
     this.count = i;
@@ -52,60 +52,34 @@ export class VideoComponent implements OnInit {
     }
   }
 
-  show() {
 
-    this.plus = !this.plus;
+  supportUpload(event:any){
+    console.log(this.selectedFile);
+    this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile);
+    
+  }
 
+  show(pos: any) {
+    this.shows[pos] = !this.shows[pos];
   }
   add() {
+    this.shows?.push(false);
+    console.log(this.shows);
     let lan = new FormGroup({
       chaptername: new FormControl(''),
-      sub: this.fb.array([this.addSubChapter()]),
+      sub: this.fb.array([]),
     });
     (<FormArray>this.videoForm.controls['chapter']).push(lan);
     // this.videoForm.reset();
   }
 
-  addSubChapter(){
-      let subArray=new FormGroup({
-          subChapterName: new FormControl(''),
-          videoLink: new FormControl(''),
-          supportDoc: new FormControl(''),
-        })
-  } 
-
   get getControl() {
     return (<FormArray>this.videoForm.controls['chapter']).controls;
-  }
-  get requirement() {
-    return this.videoForm.get('requirement') as FormArray;
-  }
-  get learning() {
-    return this.videoForm.get('learning') as FormArray;
-  }
-
-  addReq() {
-    let lan = new FormControl('');
-    (<FormArray>this.videoForm.controls['requirement']).push(lan);
-  }
-
-  addLear() {
-    let lan = new FormControl('');
-    (<FormArray>this.videoForm.controls['learning']).push(lan);
   }
 
   publish() {
     console.log(this.videoForm.value);
-  }
-
-  uploadVideo(event: any) {
-    this.selected = event.target.files[0];
-    console.log(this.selected);
-  }
-
-  checkBox(event: any) {
-    console.log(event.checked);
-    console.log(event.checked);
   }
 
   addCategory() {

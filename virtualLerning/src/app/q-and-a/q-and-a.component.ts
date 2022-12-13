@@ -11,6 +11,7 @@ export class QAndAComponent implements OnInit {
   plus = false;
   public questionList: any = [];
   qndeatails: any = [];
+  shows:any=[];
   public currentQuestion: number = 0;
   questionForm!: FormGroup;
   chapForm!: FormGroup;
@@ -32,6 +33,7 @@ export class QAndAComponent implements OnInit {
     return this.questionForm.controls['questionText'] as FormArray;
   }
   add() {
+    this.shows?.push(false);
     console.log(this.questionForm.value);
     console.log(this.chapForm.value);
     const optionForm = this.fb.group({
@@ -46,14 +48,15 @@ export class QAndAComponent implements OnInit {
       true4: [false, Validators.required],
     });
     this.question.push(optionForm);
+    console.log(this.shows);
+    
+    
   }
   deleteOption(lessonIndex: number) {
     this.question.removeAt(lessonIndex);
   }
   show(i: any) {
-    console.log(this.question.controls[i]);
-
-    this.plus = !this.plus;
+    this.shows[i] = !this.shows[i];
   }
   // getAllQuestions() {
   //   this.service.getQuestionJson()

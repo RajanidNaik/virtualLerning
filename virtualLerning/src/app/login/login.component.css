@@ -12,6 +12,10 @@
     border-radius: 4px;
     /* align-items: center;  */
 }
+.error{
+    margin: 10px 0;
+    color: red;
+}
 .logo{
     margin: 0 auto;
 }
