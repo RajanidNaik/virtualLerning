@@ -55,7 +55,7 @@ table{
     top:5%;
     left: 2%;
     width:95%;
-    height: 80%;
+    height: 75%;
     /* height: 50rem; */
     overflow: scroll;
     background-color: #fff;
@@ -159,10 +159,11 @@ color: #666666;
 }
 .load{
     position: absolute;
-    bottom: 5%;
+    bottom: 12%;
     left:50%;
    
 }
+
 .load button{
     padding: 20%;
     font-family: 'Proxima Nova Soft';
@@ -171,9 +172,16 @@ font-weight: 500;
 font-size: 0.875rem;
 line-height: 1.875rem;
 color: #092963;
-background: rgba(9, 41, 99, 0.11);
+background: rgba(9, 41, 99, 0.5);
 border-radius: 4px;
 outline: none;
 border: none;
 cursor: pointer;
 }
+
+    .disable button{
+        background: rgba(9, 41, 99, 0.1);
+        color: #697894;
+        
+        
+    }

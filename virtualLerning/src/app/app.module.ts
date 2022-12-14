@@ -24,11 +24,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NgxFileDropModule } from 'ngx-file-drop';  
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { DialogCategoryComponent } from './dialog-category/dialog-category.component';
 import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
+import { AuthserviceInterceptor } from './authservice.interceptor';
 
 
 @NgModule({
@@ -67,7 +68,11 @@ import { SuperAdmindashboardComponent } from './super-admindashboard/super-admin
     CKEditorModule,
     NgxFileDropModule,
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthserviceInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

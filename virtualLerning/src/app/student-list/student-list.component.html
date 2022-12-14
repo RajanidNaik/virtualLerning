@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="navbar">
         <app-side-nav></app-side-nav>
@@ -6,8 +7,8 @@
 <app-header></app-header>
     </div>
     <div class="contentBox">
-        <div class="studentList">
-            <table>
+        <div class="studentList" >
+            <table >
               <tr>
                 <th><p></p></th>
                 <th>
@@ -65,7 +66,7 @@
                   </div>
                 </th>
               </tr>
-              <tr>
+              <tr *ngFor="let d of data">
                 <td>
                   <div class="btn">
                     <mat-icon>check_box_outline_blank</mat-icon>
@@ -73,26 +74,26 @@
                 </td>
                 <td>
                   <div class="profile">
-                    <img class="proimage" src="/assets/mg 1.png" />
-                    <p>Virat&nbsp;Kohli</p>
+                    <img class="proimage" src="{{d.profilePhoto}}" />
+                    <p>{{d.fullName}}</p>
                   </div>
                 </td>
-                <td><div class="startdate">10/12/2022</div></td>
+                <td><div class="startdate">{{d.joinDate}}</div></td>
                 <td>
                   <div class="cline">
-                    The&nbsp;drawing&nbsp;course&nbsp;Beginer&nbsp;to&nbsp;advanced
+                    {{d.courseName}}
                   </div>
                 </td>
-                <td><div class="startdate">10/12/2022</div></td>
+                <td><div class="startdate">{{d.completedDate}}</div></td>
                 <td>
-                  <div class="complete">
+                  <div class="complete" *ngIf="complete">
                     <div class="color"><mat-icon>lens</mat-icon></div>
                     <div class="comline">Completed</div>
                   </div>
-                  <!-- <div class="ongoing">
+                  <div class="ongoing" *ngIf="ongoing">
                     <div class="color1"><mat-icon>lens</mat-icon></div>
                     <div class="comline1">on&nbsp;Going</div>
-                  </div> -->
+                  </div>
                 </td>
                 <td>
                   <div>
@@ -101,9 +102,10 @@
                 </td>
               </tr>
             </table>
-            <div class="load">
-              <button type="submit">Load&nbsp;more</button>
-            </div>
+           
+          </div>
+          <div class="load" [class.disable]="data.message == null">
+            <button type="submit" (click)="load()" [disabled]="data.message == null"  >Load&nbsp;more</button>
           </div>
           
     </div>
