@@ -17,6 +17,14 @@
 .videoUpload {
   margin-top: 10px;
 }
+.error1 {
+  color: red;
+  margin-top: 20px;
+}
+.error{
+  color: red;
+  margin: 5px 0;
+}
 select {
   font-size: 19px;
   width: fit-content;

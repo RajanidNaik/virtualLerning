@@ -38,11 +38,13 @@ export class PasswordChangeComponent implements OnInit {
         emailId: this.email,
         password: this.passwordForm.value.password,
       };
+      console.log(body);
+      
       this.al.reset(body).subscribe({
         next: (data: any) => {
           alert('PasswordChange');
           console.log(data);
-          this.router.navigateByUrl('/');
+          // this.router.navigateByUrl('/');
         },
         error: (data: any) => {
           console.log(data);

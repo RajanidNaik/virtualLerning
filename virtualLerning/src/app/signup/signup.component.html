@@ -20,12 +20,14 @@
               <mat-label>Full Name</mat-label>
               <input matInput formControlName="userName" />
             </mat-form-field>
+            <div class="error" *ngIf="signUpForm.get('userName')?.hasError('pattern')"> Only characters</div>
           </div>
           <div class="username">
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
               <input matInput formControlName="email" />
             </mat-form-field>
+            <div class="error" *ngIf="signUpForm.get('email')?.hasError('email')"> Email required</div>
           </div>
           <div class="username">
             <mat-form-field class="example-full-width">
@@ -38,12 +40,14 @@
                 (keypress)="checkNum($event)"
               />
             </mat-form-field>
+            <div class="error" *ngIf="signUpForm.get('mob')?.hasError('minlength')"> Must be 10 digits</div>
           </div>
           <div class="username">
             <mat-form-field class="example-full-width">
               <mat-label>Password</mat-label>
               <input type="password" matInput formControlName="password" />
             </mat-form-field>
+            <div class="error" *ngIf="signUpForm.get('password')?.hasError('minlength')"> Must be 6 characters </div>
           </div>
           
         </div>
@@ -51,26 +55,41 @@
         <div class="description">
           <div>
             <div class="about">About You</div>
-            <textarea class="textArea"></textarea>
-            
+            <textarea class="textArea" formControlName="textArea"></textarea>
+             <div class="error" *ngIf="signUpForm.get('textArea')?.hasError('minlength')"> Must contain more than 10 characters </div>
+             <div
+      *ngIf="signUpForm.get('textArea')?.errors?.['required'] && signUpForm.get('textArea')?.touched"
+      class="error"
+    >Field is required 
+            </div>
+          </div>
             <div class="username">
               <mat-form-field class="example-full-width">
                 <mat-label>Designation</mat-label>
                 <input matInput formControlName="designation" />
               </mat-form-field>
+               <div
+      *ngIf="signUpForm.get('designation')?.errors?.['required'] && signUpForm.get('designation')?.touched"
+      class="error"
+    >Field is required 
+            </div>
             </div>
             <div class="username">
               <mat-form-field class="example-full-width">
                 <mat-label>Link</mat-label>
                 <input matInput formControlName="urlLink" />
               </mat-form-field>
+              <div
+      *ngIf="signUpForm.get('urlLink')?.errors?.['required'] && signUpForm.get('urlLink')?.touched"
+      class="error"
+    >Field is required 
             </div>
-          </div>
+            </div>
         </div>
       </div>
     </form>
     <div class="button3">
-      <button class="loginButn"  (click)="request()">
+      <button class="loginButn" [disabled]="signUpForm.invalid" (click)="request()">
         Send Request
       </button>
     </div>
