@@ -74,12 +74,11 @@ line-height: 4rem;
 color: #292929;
 }
 .date{
-    font-family: 'Proxima Nova Soft';
+font-family: 'Proxima Nova Soft';
 font-style: normal;
 font-weight: 500;
 font-size: 1.5rem;
 line-height: 2rem;
-
 color: #292929;
 }
 .videoBox{
@@ -335,6 +334,7 @@ justify-content: center;
     align-items: center;
    
 }
+
 .startdate{
     font-family: 'Proxima Nova Soft';
 font-style: normal;
@@ -477,3 +477,7 @@ color: #FF0031;
   .errorimage img{
     width:60%;
   }
+  .color1 mat-icon{
+    color:#F7B055;
+    font-size: .5rem;
+    }

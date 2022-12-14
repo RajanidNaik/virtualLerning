@@ -9,7 +9,7 @@
     <div *ngIf="first">
     <div class="day">
       <div class="week">Today</div>
-      <div class="date">Wed&nbsp;15,2022&nbsp;|&nbsp;10:00&nbsp;Am</div>
+      <div class="date">{{date | date:'ccc dd'}},&nbsp;{{date | date:'yyyy'}}&nbsp;|&nbsp;{{date|date:'h:mm a'}}</div>
     </div>
     <div class="recentBox">
       <div class="recent">
@@ -52,7 +52,7 @@
       <div class="studentCount1">
         <div class="studentnumber">
           <div class="student">Total&nbsp;Student</div>
-          <div class="number">1500</div>
+          <div class="number">{{data.totalStudentsEnrolled}}</div>
         </div>
         <div class="studentimage">
           <img src="/assets/Group 74.png" />
@@ -61,7 +61,7 @@
       <div class="studentCount2">
         <div class="studentnumber">
           <div class="student">Overall&nbsp;Rseult</div>
-          <div class="number">75%</div>
+          <div class="number">{{data.overallResult?data.overallResult:0}}%</div>
         </div>
         <div class="studentimage">
           <img src="/assets/cup.png" />
@@ -70,7 +70,7 @@
       <div class="studentCount3">
         <div class="studentnumber">
           <div class="student">Total&nbsp;Courses</div>
-          <div class="number">500</div>
+          <div class="number">{{data.totalCoursesAdded}}</div>
         </div>
         <div class="studentimage">
           <img src="/assets/course.png" />
@@ -80,7 +80,7 @@
     <div class="studentDetails">
       <div class="aboveTable">
         <div class="above">Total&nbsp;Student</div>
-        <div class="people">1500&nbsp;people</div>
+        <div class="people">{{data.totalStudentsEnrolled}}&nbsp;people</div>
       </div>
       <div class="studentList">
         <table>
@@ -141,7 +141,7 @@
               </div>
             </th>
           </tr>
-          <tr>
+          <tr *ngFor="let d of student">
             <td>
               <div class="btn">
                 <mat-icon>radio_button_unchecked</mat-icon>
@@ -149,26 +149,26 @@
             </td>
             <td>
               <div class="profile">
-                <img class="proimage" src="/assets/mg 1.png" />
-                <p>Virat&nbsp;Kohli</p>
+                <img class="proimage" src="{{d.profilePhoto}}" />
+                <p>{{d.fullName}}</p>
               </div>
             </td>
-            <td><div class="startdate">10/12/2022</div></td>
+            <td><div class="startdate">{{d.joinDate}}</div></td>
             <td>
               <div class="cline">
-                The&nbsp;drawing&nbsp;course&nbsp;Beginer&nbsp;to&nbsp;advanced
+                {{d.courseName}}
               </div>
             </td>
-            <td><div class="startdate">10/12/2022</div></td>
+            <td><div class="startdate">{{d.completedDate}}</div></td>
             <td>
-              <div class="complete">
+              <div class="complete" *ngIf="complete">
                 <div class="color"><mat-icon>lens</mat-icon></div>
                 <div class="comline">Completed</div>
               </div>
-              <!-- <div class="ongoing">
+              <div class="ongoing" *ngIf="ongoing">
                     <div class="color1"><mat-icon>lens</mat-icon></div>
                     <div class="comline1">on&nbsp;Going</div>
-                  </div> -->
+                  </div>
             </td>
             <td>
               <div>
