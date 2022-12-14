@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { DialogCategoryComponent } from './dialog-category/dialog-category.component';
+import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
     SuperAdminComponent,
     SignupComponent,
     DialogCategoryComponent,
+    SuperAdmindashboardComponent,
   ],
 
   imports: [
