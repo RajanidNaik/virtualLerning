@@ -9,27 +9,32 @@
         Please fill in the verification code that has been sent to your Email
         ID.
       </div>
+          <form [formGroup]="login">
       <div class="otpVal">
         <div class="otpInput">
-          <input class="otpUser" [(ngModel)]="val1" #one type="text" maxlength="1" (keypress)="checkNum($event)" (keyup)="jump($event, '',one,two)">
+          <input class="otpUser" formControlName="val1" #one type="text" maxlength="1" (keypress)="checkNum($event)" (keyup)="jump($event, '',one,two)">
         </div>
         <div class="otpInput">
 
-          <input class="otpUser" #two type="text"  maxlength="1" [(ngModel)]="val2" (keypress)="checkNum($event)" (keyup)="jump($event, one,two,three)" >
+          <input class="otpUser" #two type="text"  maxlength="1" formControlName="val2" (keypress)="checkNum($event)" (keyup)="jump($event, one,two,three)" >
         </div>
         <div class="otpInput">
-          <input class="otpUser"  required [(ngModel)]="val3" #three type="text" maxlength="1"  required (keypress)="checkNum($event)" (keyup)="jump($event,two,three,four)">
+          <input class="otpUser"  formControlName="val3" #three type="text" maxlength="1"  required (keypress)="checkNum($event)" (keyup)="jump($event,two,three,four)">
         </div>
         <div class="otpInput">
-          <input class="otpUser" [(ngModel)]="val4" #four type="text" maxlength="1" (keyup)="jump($event,three,four,four)" />
+          <input class="otpUser" formControlName="val4" #four type="text" maxlength="1" (keyup)="jump($event,three,four,four)" />
         </div>
       </div>
+      </form>
+      <div class="error" >{{message}}</div>
+      <div div class="error"
+          *ngIf="login.invalid && login.get('val1')?.touched && login.get('val2')?.touched && login.get('val3')?.touched && login.get('val4')?.touched"
+        >Enter Only Numbers</div>
       <div class="resend">
         Didn’t receive a code? <span (click)="resend()">Resend</span>
       </div>
-      <div class="button1">
-        <button class="loginButn" (click)="verify()">Verify</button>
-        {{val1}}{{val2}}{{val3}}{{val4}}
+      <div class="button1" >
+        <button class="loginButn" [disabled]="!login.valid" (click)="verify()">Verify</button>
       </div>
     </div>
   </div>

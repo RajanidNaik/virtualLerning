@@ -3,6 +3,7 @@
   width: 100vw;
   background: #092963;
   position: fixed;
+  cursor: default;
 }
 .box {
   width: 31.25%;
@@ -11,6 +12,13 @@
   background-color: white;
   border-radius: 4px;
   /* align-items: center;  */
+}
+.error{
+    margin: 10px 0;
+    color: red;
+} 
+.resend span{
+  cursor: pointer;
 }
 .logo {
   margin: 0 auto;

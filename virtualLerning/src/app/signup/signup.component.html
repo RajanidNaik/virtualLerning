@@ -6,18 +6,18 @@
     <form [formGroup]="signUpForm">
       <div class="dataForgot">
         <div class="personal">
-          <label for="upLoadProfile">
+          <!-- <label for="upLoadProfile">
             
             <div class="default">
               <mat-icon class="addButton">add_a_photo</mat-icon>
               <img class=dp [src]="url" *ngIf="imageAvail" alt="">
               <img class="dp"  *ngIf="!imageAvail" src="/assets/mg 1.png" alt="" />
             </div>  
-          </label>
+          </label> -->
           <input type="file" name="" id="upLoadProfile" type="file" accept=""  (change)="onSelectDp($event)">
           <div class="username">
             <mat-form-field class="example-full-width">
-              <mat-label>User Name</mat-label>
+              <mat-label>Full Name</mat-label>
               <input matInput formControlName="userName" />
             </mat-form-field>
           </div>
@@ -70,7 +70,7 @@
       </div>
     </form>
     <div class="button3">
-      <button class="loginButn" routerLink="/" (click)="request()">
+      <button class="loginButn"  (click)="request()">
         Send Request
       </button>
     </div>
