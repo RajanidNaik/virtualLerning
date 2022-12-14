@@ -33,13 +33,21 @@ export class SignupComponent implements OnInit {
     else return true;
   }
   onSelectDp(event: any) {
-      console.log(this.selectedFile);
         this.selectedFile = <File>event.target.files[0];
         console.log(this.selectedFile);
                        
   }
   request() {
-    console.log(this.signUpForm.value);
     alert('Request Sent Succefully');
+    const body = {
+      emailId: this.signUpForm.value.email,
+      fullName: this.signUpForm.value.userName,
+      mobileNumber: this.signUpForm.value.mob,
+      designation: this.signUpForm.value.designation,
+      description:this.signUpForm.value.textArea,
+      url:this.signUpForm.value.urlLink,
+    };
+    console.log(body);
+    
   }
 }

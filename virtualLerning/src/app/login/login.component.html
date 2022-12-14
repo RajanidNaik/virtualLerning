@@ -8,7 +8,7 @@
         <div class="username">
           <mat-form-field class="example-full-width">
             <mat-label>User Name</mat-label>
-            <input matInput formControlName="user" type="text" />
+            <input matInput formControlName="user" type="text" placeholder="abc@gmail.com" />
           </mat-form-field>
         </div>
         <div class="pass">
@@ -20,8 +20,12 @@
               formControlName="password" 
               style="-webkit-text-security: square"
               matInput
+              placeholder="123456"
             />
           </mat-form-field>
+        </div>
+        <div div class="error" *ngIf="loginForm.invalid &&   (loginForm.get('user')?.touched && loginForm.get('user')?.dirty)  && (loginForm.get('user')?.touched && loginForm.get('user')?.dirty)">
+            Enter the Values
         </div>
           </form>
           <div class="error" ><span>{{message}}</span></div>
@@ -44,7 +48,7 @@
         password.
       </div>
       <div class="username">
-         <form [formGroup]="loginForm">
+         <form [formGroup]="emailForm">
         <mat-form-field class="example-full-width">
           <mat-label>Enter Email ID</mat-label>
           <input type="email" formControlName="email" matInput  />
@@ -53,7 +57,7 @@
       </div>
        <div class="error" ><span>{{message}}</span></div>
       <div class="button" >
-        <button class="loginButn" [disabled]="loginForm.invalid"  (click)="emailCheck()">Send</button>
+        <button class="loginButn" [disabled]="!emailForm.valid"  (click)="emailCheck()">Send</button>
       </div>
     </div>
     <div class="dataForgot" *ngIf="superAdmins">

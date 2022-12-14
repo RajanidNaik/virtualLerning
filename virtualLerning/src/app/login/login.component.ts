@@ -21,14 +21,20 @@ export class LoginComponent implements OnInit {
   superAdmins = false;
   loginForm = new FormGroup({
     user: new FormControl('', [Validators.required]),
-    email: new FormControl('CHANDANAKGOWDA33@GMAIL.COM', [Validators.required]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
     ]),
   });
+  emailForm = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ])
+  });
+
   logindata: any;
-  message:any;
+  message: any;
   constructor(private router: Router, private al: AdminLoginService) {}
 
   ngOnInit(): void {
@@ -38,7 +44,7 @@ export class LoginComponent implements OnInit {
     this.login = false;
     this.forgotPassword = true;
     this.superAdmins = false;
-    this.message="";
+    this.message = '';
   }
 
   superAdmin() {
@@ -57,39 +63,42 @@ export class LoginComponent implements OnInit {
   }
 
   emailCheck() {
-    sessionStorage.setItem('email', this.loginForm.value.email!);
-    
-      const body = {
-        emailId: this.loginForm.value.email,
-      };
-      this.al.resetPass(body).subscribe({
-        next: (data) => {
-          this.logindata = data;
-          localStorage.setItem('save', JSON.stringify(this.logindata));
-          alert(this.logindata.body.message);
-          console.log('else');
-        },
-        error: (data) => {  
-          this.message=data.error.message;
-          console.log(this.message);
-          
-          
-        }
-      });
-}
+    sessionStorage.setItem('email', this.emailForm.value.email!);
+    this.message=""
+    const body = {
+      emailId: this.emailForm.value.email,
+    };
+    this.al.resetPass(body).subscribe({
+      next: (data) => {
+        this.logindata = data;
+        localStorage.setItem('save', JSON.stringify(this.logindata));
+        alert(this.logindata.body.message);
+        console.log('else');
+        this.router.navigateByUrl('/otp');
+      },
+      error: (data) => {
+        this.message = data.error.message;
+        console.log(this.message);
+      },
+    });
+  }
 
   adminLogin() {
+    this.message="";
     const body = {
       userName: this.loginForm.value.user,
       password: this.loginForm.value.password,
     };
     console.log(body);
-    this.al.adminLogin(body).subscribe( {
-      next: (data) => this.router.navigateByUrl('/dashboard'),
-    error: (data) => {
-      this.message =JSON.parse(data.error);
-      this.message=this.message.error;
-    }
+    this.al.adminLogin(body).subscribe({
+      next: (data) => {
+        // this.router.navigateByUrl('/dashboard');
+        console.log(data);
+      },
+      error: (data) => {
+        this.message = JSON.parse(data.error);
+        this.message = this.message.error;
+      },
     });
   }
 }

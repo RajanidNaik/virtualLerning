@@ -17,8 +17,10 @@
 }
 .addButton {
   position: absolute;
-  top: 389.433px;
-  left: 474.333px;
+top: 75px;
+left: 62px;
+bottom: 0px;
+right: 0px;
 }
 .personal {
   height: 100%;
@@ -29,6 +31,11 @@
   padding-top: 35px;
   display: flex;
   justify-content: center;
+}
+.default {
+width: fit-content;
+position: relative;
+left: 321px;
 }
 .dp {
   height: 95px;
