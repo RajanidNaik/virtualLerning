@@ -11,13 +11,21 @@ firstBlock:boolean=true;
 secondBlock:boolean=false;
 thirdBlock:boolean=false;
 save:boolean=false;
+savePro:boolean=false;
 changeForm !:FormGroup;
+chageProfile !: FormGroup;
 pass:any;
 trans:boolean=false;
   constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    
+    this.chageProfile = this.fb.group({
+      name:['Virat',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]],
+      email:['viratK@123',Validators.required],
+      mobileNumber:['8989898989',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      profile:['',Validators.required]
+    })
+   
     if(sessionStorage.getItem('trans')){
       this.trans = true;
      
@@ -96,10 +104,12 @@ trans:boolean=false;
   }
   onSave(){
     this.save =true;
+    
     this.onReset();
   }
   onClose(){
     this.save =false;
+    this.savePro =false;
   }
   onclose(){
     sessionStorage.removeItem('active');
@@ -112,7 +122,10 @@ trans:boolean=false;
     console.log(this.changeForm.value);
     this.changeForm.reset();
   }
-
+proSave(){
+  console.log(this.chageProfile.value);
+  this.savePro =true;
+}
   // sub(){
   //   this.trans =true;
   // }

@@ -15,6 +15,7 @@ export class QAndAComponent implements OnInit {
   public currentQuestion: number = 0;
   questionForm!: FormGroup;
   chapForm!: FormGroup;
+  ans:any;
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -24,34 +25,52 @@ export class QAndAComponent implements OnInit {
       moduleTest: ['', Validators.required],
     });
     this.questionForm = this.fb.group({
-      questionText: this.fb.array([]),
+      questionText: this.fb.array([
+        
+      ]),
     });
     // this.getAllQuestions();
     this.add();
+    
   }
-  get question() {
+  get question(): FormArray {
     return this.questionForm.controls['questionText'] as FormArray;
   }
+
+  newQuestion(): FormGroup {
+    return this.fb.group({
+      question: ['', Validators.required],
+     option1:this.fb.group({
+      opt:['', Validators.required],
+      ans: [false, Validators.required]
+     }),
+     option2:this.fb.group({
+      opt:['', Validators.required],
+      ans: [false, Validators.required]
+     }),
+     option3:this.fb.group({
+      opt:['', Validators.required],
+      ans: [false, Validators.required]
+     }),
+     option4:this.fb.group({
+      opt:['', Validators.required],
+      ans: [false, Validators.required]
+     })
+    });
+  }
   add() {
-    this.shows?.push(false);
+
+    this.question.push(this.newQuestion());
     console.log(this.questionForm.value);
     console.log(this.chapForm.value);
-    const optionForm = this.fb.group({
-      question: ['', Validators.required],
-      opt1: ['', Validators.required],
-      opt2: ['', Validators.required],
-      opt3: ['', Validators.required],
-      opt4: ['', Validators.required],
-      true1: [false, Validators.required],
-      true2: [false, Validators.required],
-      true3: [false, Validators.required],
-      true4: [false, Validators.required],
-    });
-    this.question.push(optionForm);
-    console.log(this.shows);
-    
-    
+    // sessionStorage.setItem('ans',JSON.stringify(this.questionForm.value));
+    // if(sessionStorage.getItem('ans')){
+    //   this.ans = sessionStorage.getItem('ans');
+    //   this.ans = JSON.parse(this.ans);
+    //   console.log(this.ans.questionText);
+    //       }
   }
+
   deleteOption(lessonIndex: number) {
     this.question.removeAt(lessonIndex);
   }

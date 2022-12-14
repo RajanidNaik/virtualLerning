@@ -13,6 +13,7 @@
   height: fit-content;
   border-radius: 8px;
   background-color: white;
+  /* border:1px solid #000; */
 }
 .Qnum {
   font-weight: 700;
