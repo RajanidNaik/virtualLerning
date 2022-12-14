@@ -11,6 +11,7 @@ export class QAndAComponent implements OnInit {
   plus = false;
   public questionList: any = [];
   qndeatails: any = [];
+  shows:any=[];
   public currentQuestion: number = 0;
   questionForm!: FormGroup;
   chapForm!: FormGroup;
@@ -58,6 +59,7 @@ export class QAndAComponent implements OnInit {
     });
   }
   add() {
+
     this.question.push(this.newQuestion());
     console.log(this.questionForm.value);
     console.log(this.chapForm.value);
@@ -73,8 +75,7 @@ export class QAndAComponent implements OnInit {
     this.question.removeAt(lessonIndex);
   }
   show(i: any) {
-    console.log(this.question.valid)
-    this.plus = !this.plus;
+    this.shows[i] = !this.shows[i];
   }
   // getAllQuestions() {
   //   this.service.getQuestionJson()

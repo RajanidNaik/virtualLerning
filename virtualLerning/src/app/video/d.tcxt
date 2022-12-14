@@ -1,0 +1,56 @@
+
+
+div class="imgUpload" *ngIf="plus">
+        <div class="add">
+          <div class="img">
+            <div class="notUpload">
+              <div>
+                <ngx-file-drop> </ngx-file-drop>
+                <img src="assets/add-course/Vector.png" alt="" />
+              </div>
+              <div class="dragAndDrop">Drag and drop multiple files</div>
+              <div class="browse">
+                or
+                <input type="file" name="photo" id="upload" /><label
+                  for="upload"
+                  >Browse</label
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+                choose files
+              </div>
+            </div>
+          </div>
+          <!-- <div formArrayName="subSections" *ngFor="let k of field.get('subSections').controls; let y = index;"></div> -->
+          <div class="videos">
+            <div class="videoItem" *ngFor="let vide of array"></div>
+          </div>
+        </div>
+        <div class="Subchap">
+          <div class="name">Sub Chapter Name</div>
+          <div>
+            <input class="titleInput" type="text" />
+          </div>
+          <div>
+            Upload Support Document * <input id="input" type="file" /><label
+              for="upload"
+              >Browse</label
+            >
+          </div>
+          <div class="btns">
+            <div>
+              <button class="buttonP">Previous</button>
+            </div>
+            <div class="btnX">
+              <div>
+                <button class="buttonN">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="next">
+    <button *ngIf="false" class="nextbtn">Save</button>
+    <button class="nextbtn" (click)="publish()">Publish</button>
+  </div>
+</form>
