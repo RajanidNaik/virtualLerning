@@ -15,6 +15,7 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HeadDialogComponent } from './head-dialog/head-dialog.component';
 import { SignupComponent } from './signup/signup.component';
+import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'sideNav', component: SideNavComponent },
   { path: 'head', component: HeadDialogComponent },
   { path: 'header', component: HeaderComponent },
+  {path:'super',component:SuperAdmindashboardComponent}
 ];
 
 @NgModule({
