@@ -18,12 +18,14 @@ data:any;
 date=new Date();
 limit=2;
 student:any;
+token:any;
 ongoing:any;
 complete:any;
   constructor(private dialog:MatDialog,public service:QuestionService) { }
 
   ngOnInit(): void {
     localStorage.setItem('curr',JSON.stringify("Dashboard"));
+    this.token=localStorage.getItem('token');
     this.getCount();
     this.getStudent();
   }

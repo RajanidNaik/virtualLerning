@@ -44,11 +44,12 @@ export class PasswordChangeComponent implements OnInit {
         next: (data: any) => {
           alert('PasswordChange');
           console.log(data);
-          // this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/');
         },
         error: (data: any) => {
           console.log(data);
           this.passwordForm.reset();
+          this.router.navigateByUrl('/');
         },
       });
     } else this.mismatch = true;

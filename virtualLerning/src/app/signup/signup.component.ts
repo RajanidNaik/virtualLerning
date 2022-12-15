@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminLoginService } from '../services/admin-login.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
   url: any;
   selectedFile: any;
   imageAvail = false;
-  constructor(private al: AdminLoginService) {}
+  constructor(private al: AdminLoginService, private router: Router) {}
   signUpForm = new FormGroup({
     userName: new FormControl('', [
       Validators.required,
@@ -22,10 +23,6 @@ export class SignupComponent implements OnInit {
     textArea: new FormControl('', [
       Validators.required,
       Validators.minLength(10),
-    ]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
     ]),
     designation: new FormControl('', [Validators.required]),
     urlLink: new FormControl('', [Validators.required]),
@@ -41,7 +38,6 @@ export class SignupComponent implements OnInit {
     console.log(this.selectedFile);
   }
   request() {
-    
     const body = {
       emailId: this.signUpForm.value.email,
       fullName: this.signUpForm.value.userName,
@@ -52,13 +48,14 @@ export class SignupComponent implements OnInit {
     };
     console.log(body);
     this.al.signUp(body).subscribe({
-        next: (data) =>{
-          alert('Request Sent Succefully');
-          console.log(data);
-        },
-        error:(data)=>{
-          console.log(data);
-        }
-    })
+      next: (data) => {
+        alert('Request Sent Succefully');
+        console.log(data);
+        this.router.navigateByUrl('/');
+      },
+      error: (data) => {
+        console.log(data);
+      },
+    });
   }
 }
