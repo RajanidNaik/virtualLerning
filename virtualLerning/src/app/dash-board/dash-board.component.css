@@ -481,3 +481,12 @@ color: #FF0031;
     color:#F7B055;
     font-size: .5rem;
     }
+    .toDelete mat-icon{
+        color:rgb(216, 84, 84);
+        margin:1%;
+        margin-block-start: 1rem;
+        font-size: 2rem;
+    }
+    .btn1 mat-icon{
+        color:#1EAB0D
+    }

@@ -16,11 +16,13 @@ isSubscribed:boolean=true;
 value=70;
 data:any;
 date=new Date();
-limit=2;
+limit=5;
 student:any;
 token:any;
 ongoing:any;
 complete:any;
+todelete:any=[];
+sub:any=[];
   constructor(private dialog:MatDialog,public service:QuestionService) { }
 
   ngOnInit(): void {
@@ -38,6 +40,12 @@ onRecent(){
   this.second=true;
   this.first =false;
 }
+toDelete(i:any){
+  this.todelete[i] = !this.todelete[i];
+  }
+  onsub(i:any){
+    this.sub[i] = !this.sub[i];
+  }
 openDialog(){
   
   const dialogConfig = new MatDialogConfig();
@@ -78,11 +86,12 @@ getStudent(){
 }
 @HostListener('window:scroll', []) onScrollEvent(){
     
-  if(window.pageYOffset >15) {
-    this.limit = this.limit+1;
+  if(window.pageYOffset >10) {
+    
+    
   
   }
- 
+  this.limit = this.limit+3;
 
 } 
 
