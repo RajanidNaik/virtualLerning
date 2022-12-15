@@ -60,7 +60,7 @@ getCount(){
   this.service.getTotal().subscribe((data)=>{
     
     this.data = data;
-    console.log(this.data);
+    console.log(this.data.totalStudentsEnrolled);
   })
 }
 getStudent(){

@@ -16,7 +16,8 @@ border-radius: 2px;
 right: 0;
 left: 0;
 width: 10rem;
-  margin:auto;
+margin:auto;
+margin-top: 18px;
 }
 .dashboard {
   display: flex;
