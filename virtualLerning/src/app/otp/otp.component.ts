@@ -48,12 +48,10 @@ export class OtpComponent implements OnInit {
        next: (data) => {
         alert("OTP send")
          this.logindata = data;
-         console.log(data);
-         this.router.navigateByUrl('/password');
+         console.log(data);;
        },
        error: (data) => {
-         console.log(data);
-         this.router.navigateByUrl('/password');
+         console.log(data);;
        },
      });
   }
@@ -81,7 +79,6 @@ export class OtpComponent implements OnInit {
       this.login.value.val3 +
       this.login.value.val4;
     // console.log(this.otp);
-    // this.router.navigateByUrl('/password');
     const body = {
       emailId: this.email,
       otp: this.otp,
@@ -91,7 +88,7 @@ export class OtpComponent implements OnInit {
         next: (data) => {
           this.logindata = data;
           console.log(data);
-          
+          this.router.navigateByUrl('/password');
         },
         error: (data) => {
                 this.message = "Invalid OTP";

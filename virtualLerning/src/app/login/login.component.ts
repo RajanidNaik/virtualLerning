@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { log } from 'console';
+import { Session } from 'inspector';
 import { AdminLoginService } from '../services/admin-login.service';
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { AdminLoginService } from '../services/admin-login.service';
 export class LoginComponent implements OnInit {
   valid = true;
   login = true;
+  item:any;
   forgotPassword = false;
   superAdmins = false;
   loginForm = new FormGroup({
@@ -27,10 +29,7 @@ export class LoginComponent implements OnInit {
     ]),
   });
   emailForm = new FormGroup({
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email,
-    ])
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   logindata: any;
@@ -64,13 +63,14 @@ export class LoginComponent implements OnInit {
 
   emailCheck() {
     sessionStorage.setItem('email', this.emailForm.value.email!);
-    this.message=""
+    this.message = '';
     const body = {
       emailId: this.emailForm.value.email,
     };
     this.al.resetPass(body).subscribe({
       next: (data) => {
         this.logindata = data;
+        console.log(data);
         localStorage.setItem('save', JSON.stringify(this.logindata));
         alert(this.logindata.body.message);
         console.log('else');
@@ -82,9 +82,14 @@ export class LoginComponent implements OnInit {
       },
     });
   }
+// const keys = response.headers.keys();
+//   const headers = keys.map(key =>
+//     `${key}: ${response.headers.get(key)}`);
+
+//    console.table(headers);
 
   adminLogin() {
-    this.message="";
+    this.message = '';
     const body = {
       userName: this.loginForm.value.user,
       password: this.loginForm.value.password,
@@ -92,12 +97,47 @@ export class LoginComponent implements OnInit {
     console.log(body);
     this.al.adminLogin(body).subscribe({
       next: (data) => {
-        // this.router.navigateByUrl('/dashboard');
-        console.log(data);
+         let token: any = data.headers.get('jwt-token');
+         sessionStorage.setItem('token', token);
+        this.router.navigateByUrl('/dashboard');
+        // console.log(data);
       },
       error: (data) => {
         this.message = JSON.parse(data.error);
         this.message = this.message.error;
+      },
+    });
+  }
+
+  supAdminLogin() {
+    this.message = '';
+    const body = {
+      userName: this.loginForm.value.user,
+      password: this.loginForm.value.password,
+    };
+    console.log(body);
+    this.al.adminLogin(body).subscribe({
+      next: (data) => {
+        let token:any=data.headers.get('jwt-token');
+        sessionStorage.setItem('token',token);
+        this.item = data.body;
+        console.log(typeof this.item.role);
+
+        if (this.item.role == '[ROLE_SUPER_ADMIN]'){
+          this.router.navigateByUrl('/super');
+        }
+        else{
+          alert("Not a Super Admin ");
+           this.superAdmins = false;
+           this.login = true;
+        }
+
+      },
+      error: (data) => {
+        console.log(data);
+        alert('Not A Super Admin');
+         this.superAdmins = false;
+         this.login = true ;
       },
     });
   }

@@ -38,6 +38,8 @@ export class PasswordChangeComponent implements OnInit {
         emailId: this.email,
         password: this.passwordForm.value.password,
       };
+      console.log(body);
+      
       this.al.reset(body).subscribe({
         next: (data: any) => {
           alert('PasswordChange');
@@ -47,6 +49,7 @@ export class PasswordChangeComponent implements OnInit {
         error: (data: any) => {
           console.log(data);
           this.passwordForm.reset();
+          this.router.navigateByUrl('/');
         },
       });
     } else this.mismatch = true;

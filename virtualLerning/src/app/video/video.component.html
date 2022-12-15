@@ -4,6 +4,12 @@
       <div class="text">Video Title</div>
       <div>
         <input class="titleInput" type="text" formControlName="videoTitle" />
+        <div
+          *ngIf="videoForm.get('videoTitle')?.errors?.['required'] && videoForm.get('videoTitle')?.touched"
+          class="error1"
+        >
+          Required
+        </div>
       </div>
     </div>
     <div class="category">
@@ -21,6 +27,12 @@
           <option (click)="addCategory()" value="">Add new +</option>
         </select>
       </div>
+      <div
+        *ngIf="videoForm.get('category')?.errors?.['required']"
+        class="error1"
+      >
+        Required
+      </div>
     </div>
     <div class="suBcategory">
       <div class="text">Sub Category</div>
@@ -37,18 +49,37 @@
           <option (click)="addCategory()" value="">Add new +</option>
         </select>
       </div>
+      <div
+        *ngIf="videoForm.get('subCategory')?.errors?.['required'] "
+        class="error1"
+      >
+        Required
+      </div>
     </div>
   </div>
+
   <!-- Top PRT -->
   <div class="userview">
     <div class="uploadSection">Head Text</div>
+    <div
+      *ngIf="videoForm.get('formatText')?.errors?.['required'] &&videoForm.get('formatText')?.touched"
+      class="error"
+    >
+      Required
+    </div>
     <div>
-      <textarea class="textarea" formControlName="formatText"></textarea>
+      <textarea class="textarea2" formControlName="formatText"></textarea>
     </div>
   </div>
   <!--////////////////////////// TEXT EDITOR \\\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="videoDiscription">
     <div class="overview">Add Discription / Overview</div>
+    <div
+      *ngIf="videoForm.get('overview')?.errors?.['required'] &&videoForm.get('overview')?.touched"
+      class="error"
+    >
+      Required
+    </div>
     <div class="file">
       <ckeditor [editor]="Editor" formControlName="overview" data=""></ckeditor>
     </div>
@@ -56,7 +87,7 @@
 
   <!-- /////// -->
 
-  <div class="title1">
+  <div class="title2">
     <div class="uploadSection">
       Upload Support Document *
       <input
@@ -70,27 +101,51 @@
   <!--///////////////////////////// LEARNING \\\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="userview">
     <div class="uploadSection">What they gain</div>
+    <div
+      *ngIf="videoForm.get('learning')?.errors?.['required'] &&videoForm.get('learning')?.touched"
+      class="error"
+    >
+      Required
+    </div>
     <div>
       <textarea class="textarea2" formControlName="learning"></textarea>
     </div>
   </div>
-
+ minima magnam!
   <!--///////////////////////// Requirement \\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
   <div class="userview">
     <div class="uploadSection">Requirements</div>
+    <div
+      *ngIf="videoForm.get('requirement')?.errors?.['required'] &&videoForm.get('requirement')?.touched"
+      class="error"
+    >
+      Required
+    </div>
     <div>
       <textarea class="textarea2" formControlName="requirement"></textarea>
     </div>
   </div>
   <div class="title">
     <div class="uploadSection">Keywords</div>
+    <div
+      *ngIf="videoForm.get('keyWords')?.errors?.['required'] &&videoForm.get('keyWords')?.touched"
+      class="error"
+    >
+      Required
+    </div>
     <div>
       <input class="titleInput" type="text" formControlName="keyWords" />
     </div>
   </div>
   <div class="userview">
     <div class="uploadSection">Difficulty</div>
+    <div
+      *ngIf="videoForm.get('level')?.errors?.['required'] &&videoForm.get('level')?.touched"
+      class="error"
+    >
+      Required
+    </div>
     <div>
       <select formControlName="level" type="text">
         <option value="" selected>Select Category</option>
@@ -109,16 +164,17 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn" (click)="add()">Add New +</button>
+        <button class="btn" (click)="addChapter()">Add New +</button>
+        <!-- [disabled]="videoForm.invalid" -->
       </div>
     </div>
 
     <div
       class="white"
       formArrayName="chapter"
-      *ngFor="let item of getControl; let i = index"
+      *ngFor="let item of chapters().controls; let chapIndex = index"
     >
-      <div [formGroupName]="i">
+      <div [formGroupName]="chapIndex">
         <div class="top">
           <div class="chapName">
             Chapter Name
@@ -126,7 +182,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               <input
                 class="titleInput"
                 type="text"
-                formControlName="chaptername"
+                formControlName="chapterName"
               />
             </div>
           </div>
@@ -142,29 +198,20 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               <div>Upload failed</div>
             </div>
           </div>
-          <div class="more" class="center" (click)="show(i)">
-            <mat-icon *ngIf="!shows[i]">keyboard_arrow_down</mat-icon>
-            <mat-icon *ngIf="shows[i]">keyboard_arrow_up</mat-icon>
+          <div class="more" class="center" (click)="show(chapIndex)">
+            <mat-icon *ngIf="!shows[chapIndex]">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="shows[chapIndex]">keyboard_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="imgUpload" *ngIf="shows[i]">
-          <div class="container" *ngIf="true">
-            <div class="previw"></div>
-            <div class="selection"></div>
-          </div>
-          <div class="container">
-            <div class="text">
-              <div class="name">Sub Chapter Name</div>
-              <div class="inputSubChap">
-                <input class="titleInput" type="text" />
-              </div>
-              <div class="btn">
-                <div>
-                  <button class="buttonP">Previous</button>
-                </div>
-                <div class="btnX">
-                  <div>
-                    <button class="buttonN">Next</button>
+        <div class="imgUpload" *ngIf="shows[chapIndex]">
+          <div formArrayName="subChapter">
+            {{chapIndex}}
+            <div *ngFor="let sub of subChapters(chapIndex).controls;let subIndex = index">
+              <div [formGroupName]="subIndex">
+                <div class="chapName">
+                  Sub Chapter Name
+                  <div class="input">
+                    <input class="titleInput" type="text" />
                   </div>
                 </div>
               </div>
@@ -173,9 +220,9 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
         </div>
       </div>
     </div>
-  </div>
-  <div class="next">
-    <button *ngIf="false" class="nextbtn">Save</button>
-    <button class="nextbtn" (click)="publish()">Publish</button>
+    <div class="next">
+      <button *ngIf="false" class="nextbtn">Save</button>
+      <button class="nextbtn" (click)="publish()">Publish</button>
+    </div>
   </div>
 </form>

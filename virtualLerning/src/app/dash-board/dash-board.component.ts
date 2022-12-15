@@ -18,6 +18,7 @@ data:any;
 date=new Date();
 limit=5;
 student:any;
+token:any;
 ongoing:any;
 complete:any;
 todelete:any=[];
@@ -26,6 +27,7 @@ sub:any=[];
 
   ngOnInit(): void {
     localStorage.setItem('curr',JSON.stringify("Dashboard"));
+    this.token=localStorage.getItem('token');
     this.getCount();
     this.getStudent();
   }

@@ -10,39 +10,33 @@ export class AdminLoginService {
     'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin';
 
   adminLogin(body: any) {
-    return this.http.put(
-      'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin/login',
+    return this.http.put(this.login+'/login',
       body,
       { observe: 'response' }
     );
   }
   resetPass(body: any) {
-    return this.http.post(
-      'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin/send',
-      body,
-      { observe: 'response' }
-    );
+    return this.http.post(this.login +'/send', body, { observe: 'response' });
   }
   otp(body: any) {
-    return this.http.post(
-      'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin/verify',
-      body,
-      { observe: 'response' }
-    );
+    return this.http.post(this.login +'/verify', body, {
+      observe: 'response',
+    });
   }
   resend(body: any) {
-    return this.http.post(
-      'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin/resend',
-      body,
-      { observe: 'response' }
-    );
+    return this.http.post(this.login +'/register', body, {
+      observe: 'response',
+    });
   }
 
   reset(body: any) {
-    return this.http.put(
-      'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin/resetPassword',
-      body,
-      { observe: 'response' }
-    );
+    return this.http.put(this.login +'/resetPassword', body, {
+      observe: 'response',
+    });
+  }
+  signUp(body: any) {
+    return this.http.put(this.login +'/register', body, {
+      observe: 'response',
+    });
   }
 }

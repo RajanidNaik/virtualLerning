@@ -3,7 +3,6 @@
   width: 100vw;
   background: #092963;
   position: fixed;
-  cursor: default;
 }
 .box {
   width: 31.25%;
@@ -13,13 +12,6 @@
   border-radius: 4px;
   /* align-items: center;  */
 }
-.error{
-    margin: 10px 0;
-    color: red;
-} 
-.resend span{
-  cursor: pointer;
-}
 .logo {
   margin: 0 auto;
 }
@@ -28,6 +20,9 @@
   margin-top: 6.48%;
   width: 40.33%;
   height: 23.34%;
+}
+.error{
+  color: red;
 }
 input{
     color: #072D5B;
