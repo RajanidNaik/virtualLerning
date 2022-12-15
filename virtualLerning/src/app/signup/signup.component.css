@@ -12,6 +12,10 @@
   border-radius: 4px;
   /* align-items: center;  */
 }
+.error{
+    color: red;
+}
+
 #upLoadProfile {
   display: none;
 }

@@ -29,27 +29,18 @@ export class VideoComponent implements OnInit {
     this.category = localStorage.getItem('category');
     this.category = JSON.parse(this.category);
     this.videoForm = new FormGroup({
-      videoTitle: new FormControl(''),
-      category: new FormControl(''),
-      subCategory: new FormControl(''),
-      formatText: new FormControl(''),
-      overview: new FormControl(''),
-      learning: new FormControl(''),
-      requirement: new FormControl(''),
-      keyWords: new FormControl(''),
-      level: new FormControl(''),
+      videoTitle: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required]),
+      subCategory: new FormControl('', [Validators.required]),
+      formatText: new FormControl('', [Validators.required]),
+      overview: new FormControl('', [Validators.required]),
+      learning: new FormControl('', [Validators.required]),
+      requirement: new FormControl('', [Validators.required]),
+      keyWords: new FormControl('', [Validators.required]),
+      level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([]),
     });
-    this.add();
-  }
-
-  data(i: any) {
-    sessionStorage.setItem('plus', JSON.stringify(i));
-    this.count = i;
-    if (sessionStorage.getItem('plus')) {
-      this.info = JSON.parse(sessionStorage.getItem('plus') || '[]');
-      console.log(this.info);
-    }
+    this.addChapter();
   }
 
 
@@ -63,20 +54,6 @@ export class VideoComponent implements OnInit {
   show(pos: any) {
     this.shows[pos] = !this.shows[pos];
   }
-  add() {
-    this.shows?.push(false);
-    console.log(this.shows);
-    let lan = new FormGroup({
-      chaptername: new FormControl(''),
-      sub: this.fb.array([]),
-    });
-    (<FormArray>this.videoForm.controls['chapter']).push(lan);
-    // this.videoForm.reset();
-  }
-
-  get getControl() {
-    return (<FormArray>this.videoForm.controls['chapter']).controls;
-  }
 
   publish() {
     console.log(this.videoForm.value);
@@ -84,5 +61,33 @@ export class VideoComponent implements OnInit {
 
   addCategory() {
     this.dialog.open(DialogCategoryComponent);
+  }
+
+  chapters():FormArray{
+    return this.videoForm.get('chapter') as FormArray;
+  }
+
+  newChapter():FormGroup{
+    return this.fb.group({
+      chapterName:new FormControl('',[Validators.required]),
+      subChapter: this.fb.array([])
+    });
+  }
+
+  addChapter(){
+    this.chapters().push(this.newChapter())
+  }
+
+  subChapters(chapIndex:number): FormArray{
+    return this.chapters().at(chapIndex).get('subChapter') as FormArray;
+  }
+
+  newSubChapter(): FormGroup{
+    return this.fb.group({
+      subChapterName: new FormGroup('',[Validators.required])
+    });
+  }
+  addSubChapter(chapIndex:number){
+    this.subChapters(chapIndex).push(this.newSubChapter());
   }
 }

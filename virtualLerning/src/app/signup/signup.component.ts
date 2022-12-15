@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AdminLoginService } from '../services/admin-login.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,9 +11,12 @@ export class SignupComponent implements OnInit {
   url: any;
   selectedFile: any;
   imageAvail = false;
-  constructor() {}
+  constructor(private al: AdminLoginService) {}
   signUpForm = new FormGroup({
-    userName: new FormControl('', [Validators.required]),
+    userName: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[a-zA-Z ]*$'),
+    ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     mob: new FormControl('', [Validators.required, Validators.minLength(10)]),
     textArea: new FormControl('', [
@@ -33,21 +37,28 @@ export class SignupComponent implements OnInit {
     else return true;
   }
   onSelectDp(event: any) {
-        this.selectedFile = <File>event.target.files[0];
-        console.log(this.selectedFile);
-                       
+    this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile);
   }
   request() {
-    alert('Request Sent Succefully');
+    
     const body = {
       emailId: this.signUpForm.value.email,
       fullName: this.signUpForm.value.userName,
       mobileNumber: this.signUpForm.value.mob,
       designation: this.signUpForm.value.designation,
-      description:this.signUpForm.value.textArea,
-      url:this.signUpForm.value.urlLink,
+      description: this.signUpForm.value.textArea,
+      url: this.signUpForm.value.urlLink,
     };
     console.log(body);
-    
+    this.al.signUp(body).subscribe({
+        next: (data) =>{
+          alert('Request Sent Succefully');
+          console.log(data);
+        },
+        error:(data)=>{
+          console.log(data);
+        }
+    })
   }
 }
