@@ -141,10 +141,15 @@
               </div>
             </th>
           </tr>
-          <tr *ngFor="let d of student">
+          <tr *ngFor="let d of student; let i = index">
             <td>
-              <div class="btn">
-                <mat-icon>radio_button_unchecked</mat-icon>
+              <div (click)="toDelete(i)">
+                <div class="btn" *ngIf="!todelete[i]">
+                  <mat-icon >check_box_outline_blank</mat-icon>
+                </div>
+                <div class="btn1" *ngIf="todelete[i]">
+                  <mat-icon >check_box</mat-icon>
+                </div>
               </div>
             </td>
             <td>
@@ -171,10 +176,19 @@
                   </div>
             </td>
             <td>
-              <div>
-                <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"></mat-slide-toggle>
+              <div (click)="onsub(i)">
+                <!-- <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"  ></mat-slide-toggle> -->
+              <div *ngIf="sub[i]">
+                <img src="/assets/Switch on.png">
+              </div>
+              <div *ngIf="!sub[i]">
+                <img src="/assets/Switch off.png">
+              </div>
               </div>
             </td>
+            <div class="toDelete" *ngIf="todelete[i]">
+              <mat-icon >delete</mat-icon>
+            </div>
           </tr>
         </table>
       </div>

@@ -17,9 +17,15 @@ export class QuestionService {
     return this.http.get<any>("assets/questions.json");
   }
   getStudentList(limit:any):Observable<any>{
-    return this.http.get(`${baseUrl}/admin/studentList?pageNumber=2&limit=${limit}`);
+    return this.http.get(`${baseUrl}/admin/studentList?pageNumber=1&limit=${limit}`);
   }
   getTotal():Observable<any>{
     return this.http.get(`${baseUrl}/admin/dashBoard/header`);
+  }
+  toDelete(body:any){
+       return this.http.delete(`${baseUrl}/admin/deleteStudent`,body)
+  }
+  toSubscribe(body:any):Observable<any>{
+    return this.http.put(`${baseUrl}/admin/subscribe`,body,{ observe: 'response' });
   }
 }

@@ -66,11 +66,17 @@
                   </div>
                 </th>
               </tr>
-              <tr *ngFor="let d of data">
+              <tr *ngFor="let d of data;let i = index">
+               
                 <td>
-                  <div class="btn">
-                    <mat-icon>check_box_outline_blank</mat-icon>
+                  <div (click)="toDelete(i)">
+                  <div class="btn" *ngIf="!todelete[i]">
+                    <mat-icon >check_box_outline_blank</mat-icon>
                   </div>
+                  <div class="btn1" *ngIf="todelete[i]">
+                    <mat-icon >check_box</mat-icon>
+                  </div>
+                </div>
                 </td>
                 <td>
                   <div class="profile">
@@ -96,16 +102,25 @@
                   </div>
                 </td>
                 <td>
-                  <div>
-                    <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"></mat-slide-toggle>
+                  <div (click)="onsub(i)">
+                    <!-- <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"  ></mat-slide-toggle> -->
+                  <div *ngIf="sub[i]">
+                    <img src="/assets/Switch on.png">
+                  </div>
+                  <div *ngIf="!sub[i]">
+                    <img src="/assets/Switch off.png">
+                  </div>
                   </div>
                 </td>
+                <div class="toDelete" *ngIf="todelete[i]">
+                  <mat-icon (click)="deleteStudent(d)">delete</mat-icon>
+                </div>
               </tr>
             </table>
            
           </div>
-          <div class="load" [class.disable]="data.message == null">
-            <button type="submit" (click)="load()" [disabled]="data.message == null"  >Load&nbsp;more</button>
+          <div class="load" [class.disable]="dis" >
+            <button type="submit" (click)="load()"  [disabled]="dis">Load&nbsp;more</button>
           </div>
           
     </div>
