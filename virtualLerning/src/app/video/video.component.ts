@@ -13,7 +13,6 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 export class VideoComponent implements OnInit {
   plus = false;
   isChecked: any;
-  array = ['v'];
   selected: any;
   videoForm!: FormGroup;
   skills = new FormArray([]);

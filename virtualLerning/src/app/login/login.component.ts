@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { log } from 'console';
+import { Session } from 'inspector';
 import { AdminLoginService } from '../services/admin-login.service';
 @Component({
   selector: 'app-login',
@@ -96,8 +97,10 @@ export class LoginComponent implements OnInit {
     console.log(body);
     this.al.adminLogin(body).subscribe({
       next: (data) => {
+         let token: any = data.headers.get('jwt-token');
+         sessionStorage.setItem('token', token);
         this.router.navigateByUrl('/dashboard');
-        console.log(data);
+        // console.log(data);
       },
       error: (data) => {
         this.message = JSON.parse(data.error);
@@ -115,12 +118,18 @@ export class LoginComponent implements OnInit {
     console.log(body);
     this.al.adminLogin(body).subscribe({
       next: (data) => {
-        console.log(data);
+        let token:any=data.headers.get('jwt-token');
+        sessionStorage.setItem('token',token);
         this.item = data.body;
         console.log(typeof this.item.role);
 
         if (this.item.role == '[ROLE_SUPER_ADMIN]'){
           this.router.navigateByUrl('/super');
+        }
+        else{
+          alert("Not a Super Admin ");
+           this.superAdmins = false;
+           this.login = true;
         }
 
       },

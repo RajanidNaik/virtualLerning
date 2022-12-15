@@ -41,15 +41,18 @@
               />
             </mat-form-field>
             <div class="error" *ngIf="signUpForm.get('mob')?.hasError('minlength')"> Must be 10 digits</div>
-          </div>
+          </div> 
           <div class="username">
-            <mat-form-field class="example-full-width">
-              <mat-label>Password</mat-label>
-              <input type="password" matInput formControlName="password" />
-            </mat-form-field>
-            <div class="error" *ngIf="signUpForm.get('password')?.hasError('minlength')"> Must be 6 characters </div>
-          </div>
-          
+              <mat-form-field class="example-full-width">
+                <mat-label>Designation</mat-label>
+                <input matInput formControlName="designation" />
+              </mat-form-field>
+               <div
+      *ngIf="signUpForm.get('designation')?.errors?.['required'] && signUpForm.get('designation')?.touched"
+      class="error"
+    >Field is required 
+            </div>
+            </div>   
         </div>
 
         <div class="description">
@@ -63,17 +66,6 @@
     >Field is required 
             </div>
           </div>
-            <div class="username">
-              <mat-form-field class="example-full-width">
-                <mat-label>Designation</mat-label>
-                <input matInput formControlName="designation" />
-              </mat-form-field>
-               <div
-      *ngIf="signUpForm.get('designation')?.errors?.['required'] && signUpForm.get('designation')?.touched"
-      class="error"
-    >Field is required 
-            </div>
-            </div>
             <div class="username">
               <mat-form-field class="example-full-width">
                 <mat-label>Link</mat-label>
