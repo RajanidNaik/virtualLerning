@@ -52,7 +52,7 @@
       <div class="studentCount1">
         <div class="studentnumber">
           <div class="student">Total&nbsp;Student</div>
-          <div class="number">{{data.totalStudentsEnrolled}}</div>
+          <div class="number">{{data.totalStudentsEnrolled||0}}</div>
         </div>
         <div class="studentimage">
           <img src="/assets/Group 74.png" />
@@ -61,7 +61,9 @@
       <div class="studentCount2">
         <div class="studentnumber">
           <div class="student">Overall&nbsp;Rseult</div>
+
           <div class="number">{{data.overallResult || 0}}%</div>
+
         </div>
         <div class="studentimage">
           <img src="/assets/cup.png" />

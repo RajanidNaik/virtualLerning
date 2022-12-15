@@ -2,9 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SuperAdminServiceService {
+  url =
+    'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/superAdmin/';
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  getDash() {
+    return this.http.get(this.url + 'admins');
+  }
 }
+

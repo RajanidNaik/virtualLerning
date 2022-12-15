@@ -65,7 +65,9 @@ openDialog(){
 getCount(){
   this.service.getTotal().subscribe((data)=>{
     this.data = data;
+
     console.log(this.data)
+
   })
 }
 getStudent(){
