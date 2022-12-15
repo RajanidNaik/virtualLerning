@@ -82,14 +82,20 @@ this.todelete[i] = !this.todelete[i];
 deleteStudent(data:any){
   const body = [
     {
-    userName:data.userName,
-    courseId:data.courseId
-    
-  }
-];
+      userName:data.userName,
+      courseId:data.courseId
+    },
+  ];
   console.log(body)
-  this.service.toDelete(body).subscribe((res)=>{
-    console.log(res);
+  this.service.toDelete(body).subscribe({
+    next:(data) =>{
+      console.log(data);
+      
+    },
+    error:(data)=>{
+      console.log(data);
+      
+    }
   })
 }
 subscribe(body:any){

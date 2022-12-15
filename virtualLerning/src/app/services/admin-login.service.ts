@@ -30,7 +30,7 @@ export class AdminLoginService {
   }
 
   reset(body: any) {
-    return this.http.put(this.login +'/resetPassword', body, {
+    return this.http.put(this.login +'/resetPassword', body,{
       observe: 'response',
     });
   }

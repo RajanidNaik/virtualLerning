@@ -1,22 +1,38 @@
-.container{
-    background: #092963;
-    width:100%;
-    height: 5rem;
-    /* margin-left: auto;
+body {
+  height: 100%;
+}
+.container {
+  background: #092963;
+  width: 100%;
+  height: 5rem;
+  /* margin-left: auto;
     margin-right: auto; */
 }
-.logo img{
-    width:70%; 
+.logo img {
+  width: 70%;
 }
-.content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   margin-left: 5%;
-   margin-right: 5%;
+.admin1 {
+  width: 73px;
+  border-radius: 50px;
 }
-.person div{
-    font-family: "Proxima Nova Soft";
+.cover {
+  width: 89%;
+  margin: 3% auto;
+}
+.admin {
+  font-size: 22px;
+  font-weight: 700;
+  margin-left: 5.3%;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.person div {
+  font-family: "Proxima Nova Soft";
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -24,80 +40,75 @@
   text-align: right;
   color: #fff;
 }
-.notification mat-icon{
-    color:#fff;
-    font-size: 2rem;;
+.overview {
+  display: flex;
+  justify-content: center;
+  margin: 35px 0;
+  gap: 14%;
 }
-.align{
-    display: flex;
-    gap:5rem;
-    align-items: center;
+.number {
+  text-align: center;
+  margin-top: 18px;
 }
-.body{
-    background: #F9F9F9;
-   
-    height: fit-content;
+.studentCount3 {
+  display: flex;
+  font-size: 20px;
+  margin: 10px;
 }
-.admin{
-    font-family: 'Proxima Nova Soft';
-font-style: normal;
-font-weight: 600;
-font-size: 24px;
-line-height: 29px;
-color: #292929;
-margin-left:5%;
-margin-block-start: 2%;
+
+.notification mat-icon {
+  color: #fff;
+  font-size: 2rem;
 }
-.cover{
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.17));
-    background-color: #fff;
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2px;
-    margin-block-start: 2%;
-    
+.align {
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+}
+.body {
+  background: #f9f9f9;
+  height: 87vh;
+}
+.name{
+    margin-left: 10px;
+    width: 17%;
+}
+.desig{
+    width: 250.633px;   
+}
+ button {
+  background: #ee5c4d;
+  border-radius: 6px;
+  border: none;
+  font-weight: 400;
+  line-height: 17px;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 5px;
 }
 .list{
+     background-color: #fff;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 19px;
+  padding: 17px 0px;
+}
+.detail{
+    width:64%;
+    padding: 0 3%;
     display: flex;
     justify-content: space-between;
-    margin:2%;
-    margin-top: 2%;
-    margin-block-end: 1%;
-    
-    
-    
+    font-size: 17px;
 }
-/* table, th, td {
-    border: 1px solid;
-   
-  }
-  table{
-    width: 100%;
-  } */
-  .list button{
-    background: #EE5C4D;
-border-radius: 6px;
-border: none;
-font-family: 'Proxima Nova Soft';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-color: #1A1A1A;
-cursor: pointer;
-padding: .5rem;
-padding-left: 1rem;
-padding-right: 1rem;
-
-  }
-  .name{
-    font-family: 'Proxima Nova Soft';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
-color: #1A1A1A;
-
-
-  }
+.detail span{
+    font-weight: 700;
+}
+.detail div{
+    margin-bottom: 10px;
+}

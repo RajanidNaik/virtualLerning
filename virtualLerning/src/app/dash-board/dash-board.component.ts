@@ -28,7 +28,10 @@ sub:any=[];
   ngOnInit(): void {
     localStorage.setItem('curr',JSON.stringify("Dashboard"));
     this.token=localStorage.getItem('token');
-    this.getCount();
+    this.service.getTotal().subscribe((x)=>{
+    
+    this.data = x;});
+
     this.getStudent();
   }
 
@@ -64,18 +67,12 @@ openDialog(){
   this.dialog.open(DialogDashboardComponent,dialogConfig)   
   
 }
-getCount(){
-  this.service.getTotal().subscribe((data)=>{
-    
-    this.data = data;
-    console.log(this.data.totalStudentsEnrolled);
-  })
-}
+
 getStudent(){
-  this.service.getStudentList(this.limit).subscribe((data:any)=>{
-    console.log(data);
-    this.student = data;
-    if(this.data.courseCompletedStatus == true){
+  this.service.getStudentList(this.limit).subscribe((x:any)=>{
+    console.log(x);
+    this.student = x;
+    if(this.student.courseCompletedStatus == true){
       this.complete=true;
       this.ongoing=false;
      }else{

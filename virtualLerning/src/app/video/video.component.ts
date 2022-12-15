@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { DialogCategoryComponent } from '../dialog-category/dialog-category.component';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { VideoServiceService } from '../videoService/video-service.service';
 
 @Component({
   selector: 'app-video',
@@ -17,16 +18,26 @@ export class VideoComponent implements OnInit {
   videoForm!: FormGroup;
   skills = new FormArray([]);
   selectedFile: any;
+  category1:any
   count: any;
   public Editor = ClassicEditor;
-  constructor(public fb: FormBuilder, private dialog: MatDialog) {}
+  subcategory: any;
+  constructor(
+    public fb: FormBuilder,
+    private dialog: MatDialog,
+    private videoSer:VideoServiceService) {}
   category: any;
   info: any;
   shows: any = [];
 
   ngOnInit(): void {
-    this.category = localStorage.getItem('category');
-    this.category = JSON.parse(this.category);
+     this.videoSer.getChategory().subscribe(
+      (data)=>{
+          this.category = JSON.parse(data);
+     });
+     this.videoSer.getSubCat().subscribe((data) => {
+       this.subcategory = JSON.parse(data);
+     });
     this.videoForm = new FormGroup({
       videoTitle: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
@@ -42,12 +53,10 @@ export class VideoComponent implements OnInit {
     this.addChapter();
   }
 
-
-  supportUpload(event:any){
+  supportUpload(event: any) {
     console.log(this.selectedFile);
     this.selectedFile = <File>event.target.files[0];
     console.log(this.selectedFile);
-    
   }
 
   show(pos: any) {
@@ -62,31 +71,73 @@ export class VideoComponent implements OnInit {
     this.dialog.open(DialogCategoryComponent);
   }
 
-  chapters():FormArray{
+  chapters(): FormArray {
     return this.videoForm.get('chapter') as FormArray;
   }
 
-  newChapter():FormGroup{
+  newChapter(): FormGroup {
     return this.fb.group({
-      chapterName:new FormControl('',[Validators.required]),
-      subChapter: this.fb.array([])
+      chapterName: new FormControl('', [Validators.required]),
+      subChapter: this.fb.array([]),
     });
   }
 
-  addChapter(){
-    this.chapters().push(this.newChapter())
+  addChapter() {
+    this.chapters().push(this.newChapter());
   }
 
-  subChapters(chapIndex:number): FormArray{
+  subChapters(chapIndex: number): FormArray {
     return this.chapters().at(chapIndex).get('subChapter') as FormArray;
   }
 
-  newSubChapter(): FormGroup{
+  newSubChapter(): FormGroup {
     return this.fb.group({
-      subChapterName: new FormGroup('',[Validators.required])
+      subChapterName: new FormGroup('', [Validators.required]),
     });
   }
-  addSubChapter(chapIndex:number){
+  addSubChapter(chapIndex: number) {
     this.subChapters(chapIndex).push(this.newSubChapter());
   }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <div class="suBcategory">
+//       <div class="text">Sub Category</div>
+//       <div class="titleInputV">
+//         <select formControlName="subCategory" type="text">
+//           <option value="" selected>Sub Category</option>
+//           <option
+//             *ngFor="let item of subcategory"
+//             [value]="item.categoryName"
+//             [selected]="item === 'Design'"
+//           >
+//             {{ item.categoryName }}
+//           </option>
+//           <option (click)="addCategory()" value="">Add new +</option>
+//         </select>
+//       </div>
+//       <div
+//         *ngIf="videoForm.get('subCategory')?.errors?.['required'] "
+//         class="error1"
+//       >
+//         Required
+//       </div>
+//     </div>
