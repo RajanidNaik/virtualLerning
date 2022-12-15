@@ -15,11 +15,11 @@ export class SuperAdminServiceService {
 
   adminAccept(body: any) {
     console.log(body);
-    return this.http.get(this.url +'approve',body);
+    return this.http.post(this.url +'approve',body);
   }
 
   adminReject(body: any) {
     console.log(body);
-    return this.http.get(this.url + 'reject',body);
+    return this.http.delete(this.url + 'reject',body);
   }
 }

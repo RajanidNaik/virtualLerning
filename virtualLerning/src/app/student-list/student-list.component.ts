@@ -10,6 +10,7 @@ import { DeleteStudentComponent } from '../delete-student/delete-student.compone
 export class StudentListComponent implements OnInit {
 isSubscribed:any=[];
 sub:any=[];
+subscribes:any;
 studentData:any;
 ongoing:any;
 complete:any;
@@ -17,7 +18,7 @@ data:any =[];
 limit=2;
 dis:boolean=false;
 todelete:any=[];
-  constructor(public service:QuestionService,private dialog:MatDialog) { }
+  constructor(public service:QuestionService) { }
 
   ngOnInit(): void {
     localStorage.setItem('curr', JSON.stringify('Student List'));
@@ -30,23 +31,17 @@ todelete:any=[];
     this.service.getStudentList(this.limit).subscribe((res)=>{
       this.data=res;
       console.log(res)
-     if(this.data.courseCompletedStatus == true){
+
+    })
+  }
+  onComplete(i:any){
+    if(this.data[i].courseCompletedStatus == true){
       this.complete=true;
       this.ongoing=false;
      }else{
       this.complete=false;
       this.ongoing=true;
      }
-    //  if(this.data.subscribeStatus == true){
-    //    this.isSubscribed = true;
-    //    console.log(this.isSubscribed)
-    //  }else{
-    //   this.isSubscribed = false;
-    //   console.log(this.isSubscribed)
-    //  }
-     
-      
-    })
   }
   load(){
     if(this.data.message == 'null' ){
@@ -60,27 +55,24 @@ todelete:any=[];
    }
    this.getStudent();
   }
-// openDialog(){
-//   const dialogConfig =new MatDialogConfig();
-//   dialogConfig.disableClose = true;
-//   dialogConfig.autoFocus = true;
-//   this.dialog.open(DeleteStudentComponent,dialogConfig)  
-// }
+
 toSubscribe(i:any){
-  if(this.data[i].subscribeStatus == true){
-    this.sub = true;
+  if(this.data[i].subscribeStatus === true){
+    this.sub[i] = true;
+   
   }else{
-    this.sub = false;
+    this.sub[i] = false;
+    
   }
 }
-onsub(i:any){
-  this.sub[i] = !this.sub[i];
-}
+
+
 toDelete(i:any){
 this.todelete[i] = !this.todelete[i];
 }
+
 deleteStudent(data:any){
-  const body = [
+  let body = [
     {
       userName:data.userName,
       courseId:data.courseId
@@ -98,9 +90,25 @@ deleteStudent(data:any){
     }
   })
 }
-subscribe(body:any){
+
+
+onsub(i:any){
+  this.sub[i] = !this.sub[i];
+  
+}
+subscribe(data:any,i:any){
+this.onsub(i);
+  let body = 
+    {
+    userName:data.userName,
+    courseId:data.courseId
+    
+  }
 this.service.toSubscribe(body).subscribe((res)=>{
   console.log(res);
+  alert(res.message);
+  this.getStudent();
 })
 }
+
 }

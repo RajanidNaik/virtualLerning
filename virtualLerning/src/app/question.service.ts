@@ -22,6 +22,6 @@ export class QuestionService {
        return this.http.delete(`${baseUrl}/admin/deleteStudent`,body)
   }
   toSubscribe(body:any):Observable<any>{
-    return this.http.put(`${baseUrl}/admin/subscribe`,body,{ observe: 'response' });
+    return this.http.put(`${baseUrl}/admin/subscribe`,body);
   }
 }

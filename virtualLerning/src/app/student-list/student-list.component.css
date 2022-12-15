@@ -6,7 +6,8 @@ width: 80.1%;
 /* height: 88%; */
 height: 61rem;
 right: 0;
-top: 6.5rem;
+top: 124px;
+left: 350.267px;
 background: #F9F9F9;
 border-radius: 38px 0px 0px 38px;
 /* border:1px solid #000; */
@@ -52,7 +53,7 @@ table{
 
 .studentList{
     position: absolute;
-    top:5%;
+    top:2%;
     left: 2%;
     width:95%;
     height: 75%;

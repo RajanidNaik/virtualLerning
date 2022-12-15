@@ -61,7 +61,9 @@
       <div class="studentCount2">
         <div class="studentnumber">
           <div class="student">Overall&nbsp;Rseult</div>
-          <div class="number">{{data.overallResult||0}}%</div>
+
+          <div class="number">{{data.overallResult || 0}}%</div>
+
         </div>
         <div class="studentimage">
           <img src="/assets/cup.png" />
@@ -142,6 +144,7 @@
             </th>
           </tr>
           <tr *ngFor="let d of student; let i = index">
+           
             <td>
               <div (click)="toDelete(i)">
                 <div class="btn" *ngIf="!todelete[i]">
@@ -164,19 +167,22 @@
                 {{d.courseName}}
               </div>
             </td>
+            {{onComplete(i)}}
             <td><div class="startdate">{{d.completedDate}}</div></td>
             <td>
               <div class="complete" *ngIf="complete">
                 <div class="color"><mat-icon>lens</mat-icon></div>
                 <div class="comline">Completed</div>
               </div>
+             
               <div class="ongoing" *ngIf="ongoing">
                     <div class="color1"><mat-icon>lens</mat-icon></div>
                     <div class="comline1">on&nbsp;Going</div>
                   </div>
             </td>
             <td>
-              <div (click)="onsub(i)">
+              {{toSubscribe(i)}}
+              <div (click)="subscribe(d,i)">
                 <!-- <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"  ></mat-slide-toggle> -->
               <div *ngIf="sub[i]">
                 <img src="/assets/Switch on.png">

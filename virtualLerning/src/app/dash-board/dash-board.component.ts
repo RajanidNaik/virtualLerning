@@ -16,7 +16,7 @@ isSubscribed:boolean=true;
 value=70;
 data:any;
 date=new Date();
-limit=5;
+limit=8;
 student:any;
 token:any;
 ongoing:any;
@@ -46,9 +46,7 @@ onRecent(){
 toDelete(i:any){
   this.todelete[i] = !this.todelete[i];
   }
-  onsub(i:any){
-    this.sub[i] = !this.sub[i];
-  }
+  
 openDialog(){
   
   const dialogConfig = new MatDialogConfig();
@@ -69,27 +67,56 @@ openDialog(){
 }
 
 getStudent(){
-  this.service.getStudentList(this.limit).subscribe((x:any)=>{
-    console.log(x);
-    this.student = x;
-    if(this.student.courseCompletedStatus == true){
-      this.complete=true;
-      this.ongoing=false;
-     }else{
-      this.complete=false;
-      this.ongoing=true;
-     }
+  this.service.getStudentList(this.limit).subscribe((data)=>{
+    this.student = data;
+    console.log(this.student)
   })
 }
-@HostListener('window:scroll', []) onScrollEvent(){
+onComplete(id:any){
+  if(this.student[id].courseCompletedStatus == true){
+    this.complete=true;
+    this.ongoing=false;
+   }else{
+    this.complete=false;
+    this.ongoing=true;
+   }
+}
+toSubscribe(i:any){
+  if(this.student[i].subscribeStatus === true){
+    this.sub[i] = true;
+   
+  }else{
+    this.sub[i] = false;
     
-  if(window.pageYOffset >10) {
-    
-    
-  
   }
-  this.limit = this.limit+3;
+}
+onsub(i:any){
+  this.sub[i] = !this.sub[i];
+  
+}
+subscribe(data:any,i:any){
+  this.onsub(i);
+    let body = 
+      {
+      userName:data.userName,
+      courseId:data.courseId
+      
+    }
+  this.service.toSubscribe(body).subscribe((res)=>{
+    console.log(res);
+    alert(res.message);
+    this.getStudent();
+  })
+  }
 
+
+
+@HostListener('window:scroll', []) onScrollEvent(){
+  if(document.body.scrollTop >5 || document.documentElement.scrollTop>0) {
+    this.limit = this.limit+3;
+    this.getStudent();
+    console.log('done')
+  }
 } 
 
 }

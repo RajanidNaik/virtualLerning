@@ -65,6 +65,7 @@
                     </p>
                   </div>
                 </th>
+                
               </tr>
               <tr *ngFor="let d of data;let i = index">
                
@@ -90,19 +91,23 @@
                     {{d.courseName}}
                   </div>
                 </td>
+                {{ onComplete(i)}}
                 <td><div class="startdate">{{d.completedDate}}</div></td>
                 <td>
                   <div class="complete" *ngIf="complete">
                     <div class="color"><mat-icon>lens</mat-icon></div>
                     <div class="comline">Completed</div>
                   </div>
+                  
                   <div class="ongoing" *ngIf="ongoing">
                     <div class="color1"><mat-icon>lens</mat-icon></div>
                     <div class="comline1">on&nbsp;Going</div>
                   </div>
                 </td>
+                
                 <td>
-                  <div (click)="onsub(i)">
+                  {{toSubscribe(i)}}
+                  <div (click)="subscribe(d,i)">
                     <!-- <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"  ></mat-slide-toggle> -->
                   <div *ngIf="sub[i]">
                     <img src="/assets/Switch on.png">
