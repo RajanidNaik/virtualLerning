@@ -25,7 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NgxFileDropModule } from 'ngx-file-drop';  
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { DialogCategoryComponent } from './dialog-category/dialog-category.component';
 import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
@@ -52,7 +51,6 @@ import { DeleteStudentComponent } from './delete-student/delete-student.componen
     VideoComponent,
     CertificateComponent,
     QAndAComponent,
-    SuperAdminComponent,
     SignupComponent,
     DialogCategoryComponent,
     SuperAdmindashboardComponent,

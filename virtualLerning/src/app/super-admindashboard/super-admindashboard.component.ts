@@ -12,4 +12,8 @@ export class SuperAdmindashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  home(){
+    
+  }
+
 }
