@@ -35,7 +35,7 @@ export class AdminLoginService {
     });
   }
   signUp(body: any) {
-    return this.http.put(this.login +'/register', body, {
+    return this.http.post(this.login +'/register', body, {
       observe: 'response',
     });
   }

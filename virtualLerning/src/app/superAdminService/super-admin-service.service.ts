@@ -22,4 +22,9 @@ export class SuperAdminServiceService {
     console.log(body);
     return this.http.delete(this.url + 'reject',body);
   }
+  
+  removed(){
+    return this.http.get(this.url + 'rejected/admins',{responseType:'text'})
+  }
+
 }

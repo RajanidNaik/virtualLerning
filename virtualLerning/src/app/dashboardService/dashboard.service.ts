@@ -22,7 +22,4 @@ dashHeader(){
     return this.http.get(this.url+'dashBoard/header',{headers:headers_object,responseType: 'text'}); 
     
 }
-
-
-
   }

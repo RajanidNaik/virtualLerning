@@ -13,31 +13,28 @@ import { VideoServiceService } from '../videoService/video-service.service';
 })
 export class VideoComponent implements OnInit {
   plus = false;
+  uploadSuccess = [false];
+  uploadFailed = [false];
   isChecked: any;
   selected: any;
   videoForm!: FormGroup;
   skills = new FormArray([]);
   selectedFile: any;
-  category1:any
+  category1: any;
   count: any;
   public Editor = ClassicEditor;
   subcategory: any;
+  array=['v'];
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
-    private videoSer:VideoServiceService) {}
+    private videoSer: VideoServiceService
+  ) {}
   category: any;
   info: any;
   shows: any = [];
 
   ngOnInit(): void {
-     this.videoSer.getChategory().subscribe(
-      (data)=>{
-          this.category = JSON.parse(data);
-     });
-     this.videoSer.getSubCat().subscribe((data) => {
-       this.subcategory = JSON.parse(data);
-     });
     this.videoForm = new FormGroup({
       videoTitle: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
@@ -78,11 +75,14 @@ export class VideoComponent implements OnInit {
   newChapter(): FormGroup {
     return this.fb.group({
       chapterName: new FormControl('', [Validators.required]),
-      subChapter: this.fb.array([]),
+      subChapter: this.fb.array([this.newSubChapter()]),
     });
   }
 
-  addChapter() {
+  addChapter()
+  {
+    this.uploadFailed.push(false);
+    this.uploadSuccess.push(false);
     this.chapters().push(this.newChapter());
   }
 
@@ -92,13 +92,22 @@ export class VideoComponent implements OnInit {
 
   newSubChapter(): FormGroup {
     return this.fb.group({
-      subChapterName: new FormGroup('', [Validators.required]),
+      subChapterName: new FormControl('', [Validators.required]),
     });
   }
   addSubChapter(chapIndex: number) {
     this.subChapters(chapIndex).push(this.newSubChapter());
   }
-
+  storeIndex(index:any){
+    sessionStorage.setItem('Index',index)
+  }
+  appendSub(){
+    let index =sessionStorage.getItem('Index');
+  }
+  display(){
+    let index:any = sessionStorage.getItem('Index');
+    let val = parseInt(index)
+  }
 }
 
 

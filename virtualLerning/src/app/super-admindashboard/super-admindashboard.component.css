@@ -16,8 +16,9 @@ body {
   border-radius: 50px;
 }
 .cover {
-  width: 89%;
-  margin: 3% auto;
+  width: 50%;
+  margin-left: 5.3%;
+  margin-top: 15px;
 }
 .admin {
   font-size: 22px;
@@ -111,4 +112,12 @@ body {
 }
 .detail div{
     margin-bottom: 10px;
+}
+
+.innerbody{
+  display: flex;
+}
+
+.right{
+  background-color: #ffffff;
 }
