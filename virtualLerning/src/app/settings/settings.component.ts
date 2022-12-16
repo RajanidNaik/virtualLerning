@@ -20,7 +20,7 @@ pass:any;
       console.log(this.pass)
     }
     this.changeForm = this.fb.group({
-      oldpassword:['',[Validators.required,this.currentMatch()] ],
+      oldpassword:['',[Validators.required] ],
       newpassword:['',[Validators.required,Validators.minLength(6)]],
       confirmpassword:['',Validators.required]
     },{
@@ -45,16 +45,16 @@ pass:any;
     }
 
   }
-  currentMatch(){
-    return(control:FormGroup)=>{
-      if(control.value !== this.pass){
-        return ({currentMatch:true}) 
-      }
-      else{
-        return
-      }
-    }
-  }
+  // currentMatch(){
+  //   return(control:FormGroup)=>{
+  //     if(control.value !== this.pass){
+  //       return ({currentMatch:true}) 
+  //     }
+  //     else{
+  //       return
+  //     }
+  //   }
+  // }
   doNotMatch(oldpass:string, newpass:string){
     return(control:FormGroup)=>{
       const controlOld = control.controls[oldpass];

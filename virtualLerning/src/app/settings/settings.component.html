@@ -16,7 +16,7 @@
             <label>Current&nbsp;password</label>
             <input placeholder="placeholder text" type="password"  formControlName="oldpassword">
             <div *ngIf="changeForm.get('oldpassword')?.errors?.['required'] && changeForm.get('oldpassword')?.touched" class="require">This is required field*</div>
-            <div *ngIf="changeForm.get('oldpassword')?.errors?.['currentMatch'] && changeForm.get('oldpassword')?.touched" class="require">Incorrect password</div>
+            <!-- <div *ngIf="changeForm.get('oldpassword')?.errors?.['currentMatch'] && changeForm.get('oldpassword')?.touched" class="require">Incorrect password</div> -->
         </div>
         
         <div class="input">

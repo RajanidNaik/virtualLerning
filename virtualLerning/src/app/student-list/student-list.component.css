@@ -190,7 +190,23 @@ cursor: pointer;
         margin:1%;
         margin-block-start: 1rem;
         font-size: 2rem;
+        
     }
+    .todelete mat-icon:hover{
+        color:#000
+     }
     .btn1 mat-icon{
         color:#1EAB0D
+    }
+    
+    .del{
+        font-family: 'Proxima Nova Soft';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1rem;
+        color: #1A1A1A;
+        align-items: flex-start;
+       
+        display: none;
     }

@@ -193,7 +193,7 @@
               </div>
             </td>
             <div class="toDelete" *ngIf="todelete[i]">
-              <mat-icon >delete</mat-icon>
+              <mat-icon (click)="deleteStudent(d)">delete</mat-icon>
             </div>
           </tr>
         </table>
@@ -210,8 +210,8 @@
         <div class="backline">Recently&nbsp;courses&nbsp;added</div>
         
     </div>
-    <div class="recentAddVideo">
-        <div class="gap">
+    <div class="recentAddVideo" >
+        <!-- <div class="gap">
         <div class="video">
             <div class="videoBox">
               <img class="image" src="/assets/unsplash_ubIWo074QlU.png" />
@@ -227,8 +227,8 @@
           <div class="iconclose">
             <mat-icon>close</mat-icon>
           </div>
-        </div>
-        <div  class="gap">
+        </div> -->
+        <!-- <div  class="gap">
             <div class="video">
               <div class="videoBox">
                 <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" />
@@ -245,36 +245,49 @@
             <div class="iconclose">
               <mat-icon (click)="openDialog()">delete_outline</mat-icon>
             </div>
-          </div>
+          </div> -->
 
-          <div class="gap" >
+          <div class="gap" *ngFor="let c of course">
             <div class="video">
               <div class="videoBox">
-                <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" />
-                <div class="play">
+                <video  controls  class="image">
+                  <source src="{{c.previewVideo}}" type="video/mp4">
+                  <source src="{{c.previewVideo}}" type="video/ogg">
+                </video>
+                <!-- <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" /> -->
+                <!-- <div class="play">
                   <mat-icon>play_arrow</mat-icon>
+                </div> -->
+              </div>
+              <div class="videoname">
+                <div class="videoLine">{{c.courseName}}</div>
+                <div class="progressbar" *ngIf="progress">
+                  <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
                 </div>
               </div>
-    
-              <div class="videoLine">Poster&nbsp;design&nbsp;tutorial&nbsp;for&nbsp;beginers</div>
+              <!-- <div class="videoLine">{{c.courseName}}</div> -->
               
             </div>
             <div class="iconList">
-                <div class="error">
+              <div class="done" *ngIf="c.uploadedStatus">
+                <mat-icon>done</mat-icon>
+              </div>
+                <div class="error" *ngIf="!c.uploadedStatus">
                     <div class="errorimage">
                         <img src="/assets/error.png">
                     </div>
                     <div class="errorline">Upload&nbsp;failed</div>
                 </div>
-            <div class="iconclose">
+            <div class="iconclose" *ngIf="!c.uploadedStatus">
                 <mat-icon>refresh</mat-icon>
               </div>
             <div class="iconclose">
               <mat-icon (click)="openDialog()">delete_outline</mat-icon>
             </div>
+            <div class="iconclose" *ngIf="progress">
+              <mat-icon>close</mat-icon>
+            </div>
         </div>
-            
-            
           </div>
           
           

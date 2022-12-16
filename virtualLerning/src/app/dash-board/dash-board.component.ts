@@ -16,13 +16,15 @@ isSubscribed:boolean=true;
 value=70;
 data:any;
 date=new Date();
-limit=8;
+limit=2;
 student:any;
 token:any;
 ongoing:any;
 complete:any;
 todelete:any=[];
 sub:any=[];
+course:any;
+progress:boolean=false;
   constructor(private dialog:MatDialog,public service:QuestionService) { }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ sub:any=[];
     this.token=localStorage.getItem('token');
     this.getCount();
     this.getStudent();
+    this.getCourseDetails();
   }
 
 onBack(){
@@ -42,6 +45,7 @@ onRecent(){
 }
 toDelete(i:any){
   this.todelete[i] = !this.todelete[i];
+  alert('Before delete the student make sure that student unsubscribed or not');
   }
   
 openDialog(){
@@ -112,8 +116,46 @@ subscribe(data:any,i:any){
     this.getStudent();
   })
   }
+  deleteStudent(data:any){
+    let body = [
+      {
+      userName:data.userName,
+      courseId:data.courseId
+    }
+  ];
+    console.log(body)
+    this.service.toDelete(body)
+    .subscribe({
+      next:(res)=>{
+        let response = res;
+        if(response[0] == '{'){
+         response = JSON.parse(response);
+         alert(Object.values(response)[0]);
+        }
+       },
+       error:(error)=>{
+        alert(error.error);
+       },
+       complete:()=>{
+        this.getStudent();
+       }
+    })
+  }
 
 
+
+
+getCourseDetails(){
+  this.service.getCourse().subscribe({
+    next:(res)=>{
+      console.log(res);
+      this.course = res;
+    },
+    error:(error)=>{
+      alert(error.error);
+    }
+  })
+}
 
 @HostListener('window:scroll', []) onScrollEvent(){
   if(document.body.scrollTop >5 || document.documentElement.scrollTop>0) {

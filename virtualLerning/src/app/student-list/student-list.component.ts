@@ -69,6 +69,7 @@ toSubscribe(i:any){
 
 toDelete(i:any){
 this.todelete[i] = !this.todelete[i];
+alert('Before delete the student make sure that student unsubscribed or not');
 }
 
 deleteStudent(data:any){
@@ -76,12 +77,24 @@ deleteStudent(data:any){
     {
     userName:data.userName,
     courseId:data.courseId
-    
   }
 ];
   console.log(body)
-  this.service.toDelete(body).subscribe((res)=>{
-    console.log(res);
+  this.service.toDelete(body)
+  .subscribe({
+    next:(res)=>{
+      let response = res;
+      if(response[0] == '{'){
+       response = JSON.parse(response);
+       alert(Object.values(response)[0]);
+      }
+     },
+     error:(error)=>{
+      alert(error.error);
+     },
+     complete:()=>{
+      this.getStudent();
+     }
   })
 }
 

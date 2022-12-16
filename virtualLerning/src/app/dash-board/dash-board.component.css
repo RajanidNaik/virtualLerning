@@ -457,7 +457,7 @@ cursor: pointer;
   .iconList{
     display: flex;
     flex-direction: row;
-    gap:2rem
+    gap:2rem;
   }
   .errorline{
     font-family: 'Proxima Nova Soft';
@@ -489,4 +489,8 @@ color: #FF0031;
     }
     .btn1 mat-icon{
         color:#1EAB0D
+    }
+    .extra{
+        display: none;
+        justify-content: space-between;
     }
