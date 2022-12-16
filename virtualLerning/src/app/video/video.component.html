@@ -205,11 +205,31 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
         </div>
         <div class="imgUpload" *ngIf="shows[chapIndex]">
               <div class="left">
-                {{chapIndex}}
                 <div class="preview"></div>
-                <div class="bottomDisplay"></div>
+                <div class="bottomDisplay">
+                    <div class="videoScroll" formArrayName="subChapter">
+                      <div  class="box" *ngFor="let sub of subChapters(chapIndex).controls; let subIndex = index" >
+                        <div  [formGroupName]="subIndex">
+
+                        </div>
+                        <button class="buttonN" (click)="addSubChapter(subIndex)">Add</button>
+                      </div>
+                    </div>
+                </div>
               </div>
               <div class="right">
+                <div class="subchapName">
+                  Sub Chapter Name
+                  <div class="input">
+                    <input
+                      class="titleInput"
+                      type="text"
+                      formControlName="subChapterName"
+                    />
+                  </div>
+                </div>
+                
+                
               </div>
         </div>
       </div>
@@ -220,48 +240,3 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     </div>
   </div>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="videoScroll" formArrayName="subChapter">
-                      <div  class="box" *ngFor="let sub of subChapters(chapIndex).controls; let subIndex = index" >
-                        <div  [formGroupName]="subIndex">
-
-                        </div>
-                        <button class="buttonN" (click)="addSubChapter(subIndex)">Add</button>
-                      </div>
-                    </div> -->
-
-
-
-
-                    <!-- <div class="subchapName">
-                  Sub Chapter Name
-                  <div class="input">
-                    <input
-                      class="titleInput"
-                      type="text"
-                      formControlName="subChapterName"
-                    />
-                  </div>
-                </div>
-                <div class="subchapName">
-                  Add thubnail
-                   <div class="input">
-                    <input
-                      class="titleInput"
-                      type="text"
-                      formControlName="subChapterName"
-                    />
-                  </div>
-                </div> -->
