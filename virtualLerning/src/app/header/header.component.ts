@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog,MAT_DIALOG_DATA,MatDialogConfig} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.compone
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dialog:MatDialog) { }
+  constructor(private dialog:MatDialog,private router:Router) { }
   head:any;
   ngOnInit(): void {
     this.head = localStorage.getItem('curr');
@@ -32,5 +33,9 @@ export class HeaderComponent implements OnInit {
     }
     
     this.dialog.open(ProfileDialogComponent,dialogConfig)   
+  }
+  logout(){
+    this.router.navigateByUrl('/');
+    sessionStorage.removeItem('token');
   }
 }

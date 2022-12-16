@@ -21,6 +21,9 @@
   line-height: 2.125rem;
   color: #292929;
 }
+.outer{
+  display: flex;
+}
 .person {
   display: flex;
   flex-direction: column;
