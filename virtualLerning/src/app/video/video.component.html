@@ -199,7 +199,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             </div>
           </div>
           <div class="more" class="center" (click)="show(chapIndex)">
-            <mat-icon *ngIf="!shows[chapIndex]">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="!shows[chapIndex]" (click)="addSubChapter(chapIndex)">keyboard_arrow_down</mat-icon>
             <mat-icon *ngIf="shows[chapIndex]">keyboard_arrow_up</mat-icon>
           </div>
         </div>
@@ -210,9 +210,8 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                     <div class="videoScroll" formArrayName="subChapter">
                       <div  class="box" *ngFor="let sub of subChapters(chapIndex).controls; let subIndex = index" >
                         <div  [formGroupName]="subIndex">
-
                         </div>
-                        <button class="buttonN" (click)="addSubChapter(subIndex)">Add</button>
+                        {{subIndex}}
                       </div>
                     </div>
                 </div>
@@ -228,8 +227,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                     />
                   </div>
                 </div>
-                
-                
+                <div class="btn">
+                <button class="buttonP">Previous</button>
+                <button class="buttonN">Next</button>
+                </div>
+                <button (click)="addSubChapter(chapIndex)"> Add Sub Chapter</button>
               </div>
         </div>
       </div>

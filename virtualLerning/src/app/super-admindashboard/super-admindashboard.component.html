@@ -35,53 +35,49 @@
     </div>
     <div class="admin">Admin Request</div>
     <div class="innerbody">
-    <div class="cover">
-      <div class="list" *ngFor="let item of request; let reqIndex = index">
-        <div>
-          <div class="item">
-            <div class="name">{{ item.fullName }}</div>
-            <div class="desig">{{ item.designation }}</div>
-            <div>
-              <button (click)="accept(item,reqIndex)">Accept</button>
-              <button (click)="reject(item,reqIndex)">Reject</button>
+      <div class="cover">
+        <div class="list" *ngFor="let item of request; let reqIndex = index">
+          <div class="elements">
+            <div class="item">
+              <div class="name">{{ item.fullName }}</div>
+              <div class="desig">{{ item.designation }}</div>
+              <div>
+                <button (click)="accept(item, reqIndex)">Accept</button>
+                <button (click)="reject(item, reqIndex)">Reject</button>
+              </div>
+              <div (click)="toggle(reqIndex)">
+                <mat-icon *ngIf="!array[reqIndex]"
+                  >keyboard_arrow_down</mat-icon
+                >
+                <mat-icon *ngIf="array[reqIndex]">keyboard_arrow_up</mat-icon>
+              </div>
             </div>
-            <div (click)="toggle(reqIndex)">
-              <mat-icon *ngIf="!array[reqIndex]">keyboard_arrow_down</mat-icon>
-              <mat-icon *ngIf="array[reqIndex]">keyboard_arrow_up</mat-icon>
-            </div>
-          </div>
-          <div class="detail" *ngIf="array[reqIndex]">
-                <div>
-                    <div class="discription">
-                           <span>About</span> :{{item.description}}
-                    </div>
-                    <div class="url">
-                            <span>URL:</span> {{item.url}}
-                    </div>
+            <div class="detail" *ngIf="array[reqIndex]">
+              <div>
+                <div class="discription">
+                  <span>About</span> :{{ item.description }}
                 </div>
-                <div>
-                    <div class="email">
-                        <span>Email:</span>{{item.emailId}}
-                    </div>
-                    <div class="mob">
-                        <span>Mob Number:</span> {{item.mobileNumber}}
-                    </div>
-                </div>    
+                <div class="url"><span>URL:</span> {{ item.url }}</div>
+              </div>
+              <div>
+                <div class="email"><span>Email:</span>{{ item.emailId }}</div>
+                <div class="mob">
+                  <span>Mob Number:</span> {{ item.mobileNumber }}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="right">
-        <div class="list"  >
-          <div>
-
+      <div class="right1">
+        <div class="admin">RejectedList</div>
+        <div class="right">
+          <div class="list" *ngFor="let item of rejectedList">
+            <div class="discription1">{{ item.fullName }}</div>
+            <div class="discription1">{{ item.emailId }}</div>
           </div>
-          <div>
-            
-          </div>
-
-        </div>  
-    </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

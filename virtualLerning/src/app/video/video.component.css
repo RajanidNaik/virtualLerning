@@ -227,6 +227,7 @@ mat-icon {
 }
 .buttonN {
   background: rgba(9, 41, 99, 0.2);
+  margin-right: 10px;
 }
 
 .btn {
@@ -306,4 +307,8 @@ gap: 19px;
   border: 1px solid #10002e;
   height: 95%;
 min-width: 85px;
+}
+
+.right{
+  width: 32%;
 }

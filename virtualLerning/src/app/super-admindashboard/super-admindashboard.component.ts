@@ -61,7 +61,7 @@ export class SuperAdmindashboardComponent implements OnInit {
   }
   rejectList(){
     this.supS.removed().subscribe((data) => {
-      this.rejectedList=data;
+      this.rejectedList=JSON.parse(data);
       console.log(this.rejectedList);
     });
   }
