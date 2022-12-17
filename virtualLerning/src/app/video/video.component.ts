@@ -24,10 +24,7 @@ export class VideoComponent implements OnInit {
   subCa:any;
   count: any;
   public Editor = ClassicEditor;
-
   completeDetails: any;
-  
-
   subcategory: any;
   array=['v'];
   constructor(
@@ -42,10 +39,7 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(sessionStorage.getItem('addCourseDetails')){
-      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
-      console.log(this.completeDetails);
-   }
+   
     this.category = localStorage.getItem('category');
     this.category = JSON.parse(this.category);
 
@@ -63,9 +57,14 @@ export class VideoComponent implements OnInit {
       chapter: this.fb.array([]),
     });
     this.addChapter();
+    if(sessionStorage.getItem('addCourseDetails')){
+      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
+      console.log(this.completeDetails);
+      this.setValue();
+   }
 
-    this.setValue();
-  }
+    
+  
 
     this.videoSer.getChategory().subscribe( (data) =>{ 
       this.category1=JSON.parse(data);
@@ -76,8 +75,8 @@ export class VideoComponent implements OnInit {
     });
     
 
-
   }
+  
 
   supportUpload(event: any) {
     console.log(this.selectedFile);
@@ -132,7 +131,6 @@ export class VideoComponent implements OnInit {
 
   //add details
   setValue(){
-    
     this.videoForm.patchValue({
       videoTitle:this.completeDetails.courseName,
       category:this.completeDetails.categoryName,
@@ -141,11 +139,17 @@ export class VideoComponent implements OnInit {
       overview:this.completeDetails.description,
       learning:this.completeDetails.learningOutCome,
       requirement:this.completeDetails.requirements,
-      level:this.completeDetails.difficultyLevel
+      level:this.completeDetails.difficultyLevel,
+      keyWords:this.completeDetails.keywords[0]['keyword'],
+      chapter:[{
+        chapterName:this.completeDetails.chapter[0]['chapterName'],
+        subChapter:[{
+          subChapterName:this.completeDetails.chapter[0]['lessonList'][0]['lessonName']
+        }]
+      }]
+      
     })
   }
-}
-
   storeIndex(index:any){
     sessionStorage.setItem('Index',index)
   }
@@ -157,6 +161,9 @@ export class VideoComponent implements OnInit {
     let val = parseInt(index)
   }
 }
+
+ 
+
 
 
 
