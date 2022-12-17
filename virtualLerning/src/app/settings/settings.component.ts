@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,7 +11,8 @@ export class SettingsComponent implements OnInit {
 success:boolean=false;
 changeForm !:FormGroup;
 pass:any;
-  constructor(private fb:FormBuilder) { }
+  response: any;
+  constructor(private fb:FormBuilder,public service:QuestionService) { }
 
   ngOnInit(): void {
     localStorage.setItem('curr', JSON.stringify('Settings')); 
@@ -20,7 +22,7 @@ pass:any;
       console.log(this.pass)
     }
     this.changeForm = this.fb.group({
-      oldpassword:['',[Validators.required,this.currentMatch()] ],
+      oldpassword:['',[Validators.required] ],
       newpassword:['',[Validators.required,Validators.minLength(6)]],
       confirmpassword:['',Validators.required]
     },{
@@ -45,16 +47,16 @@ pass:any;
     }
 
   }
-  currentMatch(){
-    return(control:FormGroup)=>{
-      if(control.value !== this.pass){
-        return ({currentMatch:true}) 
-      }
-      else{
-        return
-      }
-    }
-  }
+  // currentMatch(){
+  //   return(control:FormGroup)=>{
+  //     if(control.value !== this.pass){
+  //       return ({currentMatch:true}) 
+  //     }
+  //     else{
+  //       return
+  //     }
+  //   }
+  // }
   doNotMatch(oldpass:string, newpass:string){
     return(control:FormGroup)=>{
       const controlOld = control.controls[oldpass];
@@ -72,6 +74,7 @@ pass:any;
 
   }
 onSave(){
+  this.changepass();
   this.success =true;
   this.onReset();
 }
@@ -82,4 +85,26 @@ onReset(){
   console.log(this.changeForm.value);
   this.changeForm.reset();
 }
+changepass(){
+  let body ={
+    "oldPassword":this.changeForm.get('oldpassword')?.value,
+    "newPassword":this.changeForm.get('newpassword')?.value
+  }
+  this.service.changePassword(body).subscribe({
+    next:(res)=>{
+      
+      this.response =res;
+      if(this.response[0] == '{'){
+        this.response = JSON.parse(this.response);
+        // alert(Object.values(this.response)[0]);
+        this.response = Object.values(this.response)[0];
+        // console.log(this.response)
+       }
+    },
+    error:(error)=>{
+      alert(error.error);
+    }
+  })
+}
+
 }

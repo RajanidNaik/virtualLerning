@@ -98,6 +98,7 @@ export class LoginComponent implements OnInit {
     this.al.adminLogin(body).subscribe({
       next: (data) => {
          let token: any = data.headers.get('jwt-token');
+        
          sessionStorage.setItem('token', token);
         this.router.navigateByUrl('/dashboard');
         // console.log(data);

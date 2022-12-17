@@ -24,6 +24,10 @@ export class VideoComponent implements OnInit {
   subCa:any;
   count: any;
   public Editor = ClassicEditor;
+
+  completeDetails: any;
+  
+
   subcategory: any;
   array=['v'];
   constructor(
@@ -31,11 +35,21 @@ export class VideoComponent implements OnInit {
     private dialog: MatDialog,
     private videoSer: VideoServiceService
   ) {}
+
   category: any;
   info: any;
   shows: any = [];
 
   ngOnInit(): void {
+
+    if(sessionStorage.getItem('addCourseDetails')){
+      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
+      console.log(this.completeDetails);
+   }
+    this.category = localStorage.getItem('category');
+    this.category = JSON.parse(this.category);
+
+
     this.videoForm = new FormGroup({
       videoTitle: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
@@ -49,6 +63,10 @@ export class VideoComponent implements OnInit {
       chapter: this.fb.array([]),
     });
     this.addChapter();
+
+    this.setValue();
+  }
+
     this.videoSer.getChategory().subscribe( (data) =>{ 
       this.category1=JSON.parse(data);
     });
@@ -57,6 +75,7 @@ export class VideoComponent implements OnInit {
         
     });
     
+
 
   }
 
@@ -108,6 +127,25 @@ export class VideoComponent implements OnInit {
   addSubChapter(chapIndex: number) {
     this.subChapters(chapIndex).push(this.newSubChapter());
   }
+
+
+
+  //add details
+  setValue(){
+    
+    this.videoForm.patchValue({
+      videoTitle:this.completeDetails.courseName,
+      category:this.completeDetails.categoryName,
+      subCategory:this.completeDetails.subCategoryName,
+      formatText:this.completeDetails.courseTagLine,
+      overview:this.completeDetails.description,
+      learning:this.completeDetails.learningOutCome,
+      requirement:this.completeDetails.requirements,
+      level:this.completeDetails.difficultyLevel
+    })
+  }
+}
+
   storeIndex(index:any){
     sessionStorage.setItem('Index',index)
   }
@@ -160,3 +198,4 @@ export class VideoComponent implements OnInit {
 //         Required
 //       </div>
 //     </div>
+

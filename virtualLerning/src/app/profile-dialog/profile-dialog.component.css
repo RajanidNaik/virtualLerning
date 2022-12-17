@@ -78,9 +78,11 @@ color: #FFFFFF;
     border: 1px solid rgba(255,255,255,0.1);
 }
 .image{
-    
-    background-color: rgb(230, 169, 56);
+    /* background-color: rgb(230, 169, 56); */
     border-radius: 50%;
+    border:1px solid #000;
+    width: 4.3em;
+    height: 4.3em;
 }
 
 .name{
@@ -175,10 +177,12 @@ font-size: 1.75rem;
 line-height: 2.18rem;
 color: #FFFFFF;
 }
+
 .changePhoto{
     position: absolute;
     top:15%;
-    width:25%;
+    width:7em;
+    height: 7em;
     left:40%;
     background-color: rgb(230, 169, 56);
     border-radius: 50%;

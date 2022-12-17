@@ -10,23 +10,24 @@
     </div>
     <div class="profileImage">
 <div class="image">
-    <img src="/assets/mg 1.png">
+    <img  class="image" src="{{profileDetails.profilePhoto}}">
+    <!-- <img src="/assets/mg 1.png"> -->
 </div>
-<div class="name">Virat&nbsp;Kohli</div>
+<div class="name">{{profileDetails.fullName}}</div>
     </div>
     <div class="border"></div>
     <div class="content">
         <div class="inside">
             <div class="person">Name</div>
-            <div class="personName">Virat&nbsp;Kohli</div>
+            <div class="personName" >{{profileDetails.fullName}}</div>
         </div>
         <div class="inside1">
             <div class="person">Email&nbsp;ID</div>
-            <div class="personName">viratk@gmail.com</div>
+            <div class="personName">{{profileDetails.emailId}}</div>
         </div>
         <div class="inside2">
             <div class="person">Mobile&nbsp;number</div>
-            <div class="personName">+91&nbsp;9844635685</div>
+            <div class="personName">{{profileDetails.mobileNumber}}</div>
         </div>
         <div class="inside3">
             <div class="personName">Change&nbsp;password</div>
@@ -42,9 +43,11 @@
     <div class="edits">Edit&nbsp;Profile</div>
     <form [formGroup]="chageProfile">
     <div class="photo">
-        <img class="changePhoto" src="/assets/mg 1.png">
+        <img class="changePhoto" src="{{photo}}">
         <div class="cphoto">
-            <input type="file" name="photo" id="upload" formControlName="profile"/> <label for="upload"><mat-icon >camera_alt</mat-icon></label> 
+
+            <input type="file" name="photo" id="upload" (change)="onFileSelect($event)" /> <label for="upload"><mat-icon >camera_alt</mat-icon></label>
+
         </div>
     </div>
     <div class="lineCopy"></div>
@@ -52,15 +55,15 @@
     <div class="details">
         <div class="none">
             <label class="noneName">Full&nbsp;Name</label>
-            <input placeholder="" formControlName="name">
+            <input placeholder="" formControlName="name" >
         </div>
         <div>
             <small *ngIf="chageProfile.get('name')?.errors?.['required'] && chageProfile.get('name')?.touched " class="require"> This is required field*</small>
-            <small *ngIf="chageProfile.get('name')?.errors?.['pattern']" class="require">  name cannot contain number</small>
+            <small *ngIf="chageProfile.get('name')?.errors?.['pattern']" class="require">  name cannot start with number</small>
           </div>
         <div class="none">
             <label class="noneName">Email&nbsp;ID</label>
-            <input placeholder="" formControlName="email" readonly>
+            <input placeholder="" formControlName="email"  readonly>
         </div>
         <div class="none">
             <label class="noneName">Mobile&nbsp;Number</label>
@@ -93,7 +96,7 @@
             <input placeholder="" type="password" formControlName="oldpassword">
         </div>
         <div *ngIf="changeForm.get('oldpassword')?.errors?.['required'] && changeForm.get('oldpassword')?.touched" class="require">This is required field*</div>
-        <div *ngIf="changeForm.get('oldpassword')?.errors?.['currentMatch'] && changeForm.get('oldpassword')?.touched" class="require">Incorrect password</div>
+        <!-- <div *ngIf="changeForm.get('oldpassword')?.errors?.['currentMatch'] && changeForm.get('oldpassword')?.touched" class="require">Incorrect password</div> -->
         <div class="none">
             <label class="noneName">New&nbsp;Password</label>
             <input placeholder="" type="password" formControlName="newpassword">
@@ -122,12 +125,12 @@
 </div>
 <div class="success" *ngIf="savePro">
     <div class="right"><mat-icon (click)="onClose()">check_circle</mat-icon></div>
-    <div class="lines">profile&nbsp;edited&nbsp;successfully</div>
+    <div class="lines">{{result}}</div>
     <div class="left"><mat-icon (click)="onClose()">clear</mat-icon></div>
 </div>
 <div class="success" *ngIf="save">
     <div class="right"><mat-icon (click)="onClose()">check_circle</mat-icon></div>
-    <div class="lines">password&nbsp;changed&nbsp;successfully</div>
+    <div class="lines">{{response}}</div>
     <div class="left"><mat-icon (click)="onClose()">clear</mat-icon></div>
 </div>
 </div>

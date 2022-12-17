@@ -69,25 +69,34 @@ toSubscribe(i:any){
 
 toDelete(i:any){
 this.todelete[i] = !this.todelete[i];
+alert('Before delete the student make sure that student unsubscribed or not');
 }
 
 deleteStudent(data:any){
   let body = [
     {
-      userName:data.userName,
-      courseId:data.courseId
-    },
-  ];
+
+    userName:data.userName,
+    courseId:data.courseId
+  }
+];
   console.log(body)
-  this.service.toDelete(body).subscribe({
-    next:(data) =>{
-      console.log(data);
-      
-    },
-    error:(data)=>{
-      console.log(data);
-      
-    }
+  this.service.toDelete(body)
+  .subscribe({
+    next:(res)=>{
+      let response = res;
+      if(response[0] == '{'){
+       response = JSON.parse(response);
+       alert(Object.values(response)[0]);
+      }
+     },
+     error:(error)=>{
+      alert(error.error);
+     },
+     complete:()=>{
+      this.getStudent();
+     }
+
   })
 }
 
