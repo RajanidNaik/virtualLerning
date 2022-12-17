@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { baseUrl } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,26 +16,30 @@ export class AdminLoginService {
     );
   }
   resetPass(body: any) {
-    return this.http.post(this.login +'/send', body, { observe: 'response' });
+    return this.http.post(`${baseUrl}/admin/send`, body, {
+      observe: 'response',
+    });
   }
   otp(body: any) {
-    return this.http.post(this.login +'/verify', body, {
+    return this.http.post(`${baseUrl}/admin/verify`, body, {
       observe: 'response',
     });
   }
   resend(body: any) {
-    return this.http.post(this.login +'/register', body, {
+    console.log(body);
+    
+    return this.http.post(`${baseUrl}/admin/resend`, body, {
       observe: 'response',
     });
   }
 
   reset(body: any) {
-    return this.http.put(this.login +'/resetPassword', body,{
+    return this.http.put(`${baseUrl}/admin/resetPassword`, body, {
       observe: 'response',
     });
   }
   signUp(body: any) {
-    return this.http.post(this.login +'/register', body, {
+    return this.http.post(`${baseUrl}/admin/register`, body, {
       observe: 'response',
     });
   }

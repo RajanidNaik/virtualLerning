@@ -21,6 +21,7 @@ export class VideoComponent implements OnInit {
   skills = new FormArray([]);
   selectedFile: any;
   category1: any;
+  subCa:any;
   count: any;
   public Editor = ClassicEditor;
   subcategory: any;
@@ -48,6 +49,15 @@ export class VideoComponent implements OnInit {
       chapter: this.fb.array([]),
     });
     this.addChapter();
+    this.videoSer.getChategory().subscribe( (data) =>{ 
+      this.category1=JSON.parse(data);
+    });
+    this.videoSer.getSubCat().subscribe( (data) =>{ 
+        this.subCa=JSON.parse(data);
+        
+    });
+    
+
   }
 
   supportUpload(event: any) {
@@ -75,7 +85,11 @@ export class VideoComponent implements OnInit {
   newChapter(): FormGroup {
     return this.fb.group({
       chapterName: new FormControl('', [Validators.required]),
-      subChapter: this.fb.array([]),
+      subChapter: this.fb.array([
+        this.fb.group({
+          subChapterName: new FormGroup('', [Validators.required]),
+        }),
+      ]),
     });
   }
 
