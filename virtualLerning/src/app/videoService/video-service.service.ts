@@ -1,18 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { baseUrl } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class VideoServiceService {
-  url =
-    'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin/';
   constructor(private http: HttpClient) {}
 
   getChategory() {
-    return this.http.get(this.url + 'categories', { responseType: 'text' });
+    return this.http.get(`${baseUrl}/admin/categories`, {
+      responseType: 'text',
+    });
   }
   getSubCat() {
-    return this.http.get(this.url + 'subCategories', { responseType: 'text' });
+    return this.http.get(`${baseUrl}/admin/subCategories`, {
+      responseType: 'text',
+    });
   }
 }

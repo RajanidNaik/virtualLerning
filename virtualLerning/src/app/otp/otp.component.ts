@@ -43,7 +43,6 @@ export class OtpComponent implements OnInit {
     const body = {
       emailId: this.email,
     };
-    console.log(body);
      this.al.resend(body).subscribe({
        next: (data) => {
         alert("OTP send")

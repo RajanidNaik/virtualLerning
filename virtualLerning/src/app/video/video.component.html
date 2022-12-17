@@ -18,7 +18,7 @@
         <select formControlName="category" type="text">
           <option value="" selected>Select Category</option>
           <option
-            *ngFor="let item of category"
+            *ngFor="let item of category1"
             [value]="item.categoryName"
             [selected]="item === 'Design'"
           >
@@ -34,17 +34,17 @@
         Required
       </div>
     </div>
-    <!-- <div class="suBcategory">
+    <div class="suBcategory">
       <div class="text">Sub Category</div>
       <div class="titleInputV">
         <select formControlName="subCategory" type="text">
           <option value="" selected>Sub Category</option>
           <option
-            *ngFor="let item of subcategory"
+            *ngFor="let item of subCa"
             [value]="item.categoryName"
             [selected]="item === 'Design'"
           >
-            {{ item.categoryName }}
+            {{ item.subCategoryName }}
           </option>
           <option (click)="addCategory()" value="">Add new +</option>
         </select>
@@ -55,7 +55,7 @@
       >
         Required
       </div>
-    </div> -->
+    </div>
   </div>
 
   <!-- Top PRT -->
@@ -111,7 +111,6 @@
       <textarea class="textarea2" formControlName="learning"></textarea>
     </div>
   </div>
-  minima magnam!
   <!--///////////////////////// Requirement \\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
   <div class="userview">
@@ -199,24 +198,27 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             </div>
           </div>
           <div class="more" class="center" (click)="show(chapIndex)">
-            <mat-icon *ngIf="!shows[chapIndex]" (click)="addSubChapter(chapIndex)">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="!shows[chapIndex]">keyboard_arrow_down</mat-icon>
             <mat-icon *ngIf="shows[chapIndex]">keyboard_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="imgUpload" *ngIf="shows[chapIndex]">
-              <div class="left">
-                <div class="preview"></div>
-                <div class="bottomDisplay">
-                    <div class="videoScroll" formArrayName="subChapter">
-                      <div  class="box" *ngFor="let sub of subChapters(chapIndex).controls; let subIndex = index" >
-                        <div  [formGroupName]="subIndex">
-                        </div>
-                        {{subIndex}}
-                      </div>
-                    </div>
-                </div>
-              </div>
-              <div class="right">
+        <div
+          class="imgUpload"
+          *ngIf="shows[chapIndex]"
+          formArrayName="subChapter"
+        >
+          <div class="left">
+            <div class="preview"></div>
+            <div class="bottomDisplay"></div>
+          </div>
+          <div class="right">
+            <div
+              *ngFor="
+                let subItem of subChapters(chapIndex).controls;
+                let subIndex = index
+              "
+            >
+              <div [formGroupName]="subIndex">
                 <div class="subchapName">
                   Sub Chapter Name
                   <div class="input">
@@ -227,12 +229,14 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                     />
                   </div>
                 </div>
-                <div class="btn">
-                <button class="buttonP">Previous</button>
-                <button class="buttonN">Next</button>
-                </div>
-                <button (click)="addSubChapter(chapIndex)"> Add Sub Chapter</button>
               </div>
+            </div>
+            <div class="btn">
+              <button class="buttonP">Previous</button>
+              <button class="buttonN">Next</button>
+            </div>
+            <button (click)="addSubChapter(chapIndex)">Add Sub Chapter</button>
+          </div>
         </div>
       </div>
     </div>
@@ -242,3 +246,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     </div>
   </div>
 </form>
+
+<!-- <div class="videoScroll" formArrayName="subChapter">
+                      <div  class="box" *ngFor="let sub of subChapters(chapIndex).controls; let subIndex = index" >
+                        <div  [formGroupName]="subIndex">
+                        </div>
+                        {{subIndex}}
+                      </div>
+                    </div> -->
