@@ -12,5 +12,19 @@ export class SuperAdminServiceService {
   getDash() {
     return this.http.get(this.url + 'admins');
   }
-}
 
+  adminAccept(body: any) {
+    console.log(body);
+    return this.http.post(this.url +'approve',body);
+  }
+
+  adminReject(body: any) {
+    console.log(body);
+    return this.http.delete(this.url + 'reject',body);
+  }
+  
+  removed(){
+    return this.http.get(this.url + 'rejected/admins',{responseType:'text'})
+  }
+
+}

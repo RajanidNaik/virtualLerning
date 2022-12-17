@@ -75,6 +75,7 @@ alert('Before delete the student make sure that student unsubscribed or not');
 deleteStudent(data:any){
   let body = [
     {
+
     userName:data.userName,
     courseId:data.courseId
   }
@@ -95,6 +96,7 @@ deleteStudent(data:any){
      complete:()=>{
       this.getStudent();
      }
+
   })
 }
 

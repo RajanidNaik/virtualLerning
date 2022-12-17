@@ -18,11 +18,11 @@
         <select formControlName="category" type="text">
           <option value="" selected>Select Category</option>
           <option
-            *ngFor="let item of category"
-            [value]="item"
+            *ngFor="let item of category1"
+            [value]="item.categoryName"
             [selected]="item === 'Design'"
           >
-            {{ item }}
+            {{ item.categoryName }}
           </option>
           <option (click)="addCategory()" value="">Add new +</option>
         </select>
@@ -40,11 +40,11 @@
         <select formControlName="subCategory" type="text">
           <option value="" selected>Sub Category</option>
           <option
-            *ngFor="let item of category"
-            [value]="item"
+            *ngFor="let item of subCa"
+            [value]="item.categoryName"
             [selected]="item === 'Design'"
           >
-            {{ item }}
+            {{ item.subCategoryName }}
           </option>
           <option (click)="addCategory()" value="">Add new +</option>
         </select>
@@ -111,7 +111,6 @@
       <textarea class="textarea2" formControlName="learning"></textarea>
     </div>
   </div>
- minima magnam!
   <!--///////////////////////// Requirement \\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
   <div class="userview">
@@ -187,11 +186,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             </div>
           </div>
           <div class="center">
-            <div class="icon" *ngIf="false">
+            <div class="icon" *ngIf="uploadSuccess[chapIndex]">
               <div><mat-icon class="green">check_circle</mat-icon></div>
               <div class="green">Videos upload successful</div>
             </div>
-            <div class="icon" *ngIf="true">
+            <div class="icon" *ngIf="uploadFailed[chapIndex]">
               <div class="green">
                 <mat-icon>error</mat-icon>
               </div>
@@ -203,19 +202,40 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <mat-icon *ngIf="shows[chapIndex]">keyboard_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="imgUpload" *ngIf="shows[chapIndex]">
-          <div formArrayName="subChapter">
-            {{chapIndex}}
-            <div *ngFor="let sub of subChapters(chapIndex).controls;let subIndex = index">
+        <div
+          class="imgUpload"
+          *ngIf="shows[chapIndex]"
+          formArrayName="subChapter"
+        >
+          <div class="left">
+            <div class="preview"></div>
+            <div class="bottomDisplay"></div>
+          </div>
+          <div class="right">
+            <div
+              *ngFor="
+                let subItem of subChapters(chapIndex).controls;
+                let subIndex = index
+              "
+            >
               <div [formGroupName]="subIndex">
-                <div class="chapName">
+                <div class="subchapName">
                   Sub Chapter Name
                   <div class="input">
-                    <input class="titleInput" type="text" />
+                    <input
+                      class="titleInput"
+                      type="text"
+                      formControlName="subChapterName"
+                    />
                   </div>
                 </div>
               </div>
             </div>
+            <div class="btn">
+              <button class="buttonP">Previous</button>
+              <button class="buttonN">Next</button>
+            </div>
+            <button (click)="addSubChapter(chapIndex)">Add Sub Chapter</button>
           </div>
         </div>
       </div>
@@ -226,3 +246,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     </div>
   </div>
 </form>
+
+<!-- <div class="videoScroll" formArrayName="subChapter">
+                      <div  class="box" *ngFor="let sub of subChapters(chapIndex).controls; let subIndex = index" >
+                        <div  [formGroupName]="subIndex">
+                        </div>
+                        {{subIndex}}
+                      </div>
+                    </div> -->
