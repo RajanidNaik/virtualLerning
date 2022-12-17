@@ -197,7 +197,10 @@ updateProfile(){
     next:(res)=>{
       console.log(res);
       this.result = res;
-      console.log(this.result.message)
+    if(this.result[0] == '{'){
+      this.result = JSON.parse(this.result);
+      this.result = Object.values(this.result)[0];
+    }
     },
     error:(error)=>{
       alert(error.error);
@@ -215,13 +218,17 @@ changepass(){
   }
   this.service.changePassword(body).subscribe({
     next:(res)=>{
-      console.log(res);
+      // console.log(res);
       this.response =res;
-      
-      // if(this.response[0] == '{'){
-      //   this.response = JSON.parse(this.response);
-      //   alert(Object.values(this.response)[0]);
-      //  }
+      if(this.response[0] == '{'){
+        this.response = JSON.parse(this.response);
+        // alert(Object.values(this.response)[0]);
+        this.response = Object.values(this.response)[0];
+        // console.log(this.response)
+       }
+    },
+    error:(error)=>{
+      alert(error.error);
     }
   })
 }

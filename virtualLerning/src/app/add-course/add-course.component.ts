@@ -10,9 +10,14 @@ export class AddCourseComponent implements OnInit {
   video=true;
   qAndA=false;
   certificate = false;
+  completeDetails:any;
   constructor() { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('addCourseDetails')){
+       this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
+       console.log(this.completeDetails)
+    }
     localStorage.setItem('curr', JSON.stringify('Add Courses'));
   }
   show(){

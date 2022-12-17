@@ -19,12 +19,17 @@ export class VideoComponent implements OnInit {
   selectedFile: any;
   count: any;
   public Editor = ClassicEditor;
-  constructor(public fb: FormBuilder, private dialog: MatDialog) {}
+  completeDetails: any;
+  
   category: any;
   info: any;
   shows: any = [];
-
+  constructor(public fb: FormBuilder, private dialog: MatDialog) {}
   ngOnInit(): void {
+    if(sessionStorage.getItem('addCourseDetails')){
+      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
+      console.log(this.completeDetails);
+   }
     this.category = localStorage.getItem('category');
     this.category = JSON.parse(this.category);
     this.videoForm = new FormGroup({
@@ -40,6 +45,7 @@ export class VideoComponent implements OnInit {
       chapter: this.fb.array([]),
     });
     this.addChapter();
+    this.setValue();
   }
 
 
@@ -88,5 +94,21 @@ export class VideoComponent implements OnInit {
   }
   addSubChapter(chapIndex:number){
     this.subChapters(chapIndex).push(this.newSubChapter());
+  }
+
+
+  //add details
+  setValue(){
+    
+    this.videoForm.patchValue({
+      videoTitle:this.completeDetails.courseName,
+      category:this.completeDetails.categoryName,
+      subCategory:this.completeDetails.subCategoryName,
+      formatText:this.completeDetails.courseTagLine,
+      overview:this.completeDetails.description,
+      learning:this.completeDetails.learningOutCome,
+      requirement:this.completeDetails.requirements,
+      level:this.completeDetails.difficultyLevel
+    })
   }
 }

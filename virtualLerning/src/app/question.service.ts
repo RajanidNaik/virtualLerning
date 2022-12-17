@@ -51,11 +51,14 @@ export class QuestionService {
   }
 
 
-  getCourse():Observable<any>{
-    return this.http.get(`${baseUrl}/admin/coursesAdded?pageNumber=1&limit=5`);
+  getCourse(limit:any):Observable<any>{
+    return this.http.get(`${baseUrl}/admin/coursesAdded?pageNumber=1&limit=${limit}`);
   }
 
   changePassword(body:any):Observable<any>{
     return this.http.put(`${baseUrl}/admin/changePassword`,body,{responseType:'text'})
+  }
+  getAddCourseDetails(id:any):Observable<any>{
+    return this.http.get(`${baseUrl}/admin/courseDetails?courseId=${id}`);
   }
 }

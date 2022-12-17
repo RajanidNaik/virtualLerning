@@ -27,9 +27,9 @@ border-radius: 2rem 0rem 0rem 2rem;
    background-color: #fff;
     position: absolute;
     right: 3%;
-    top:2%;
+    top:3%;
     height: 10rem;
-    width: 35%;
+    width: 40%;
     border-radius: 2rem;
    
 }
@@ -82,10 +82,15 @@ line-height: 2rem;
 color: #292929;
 }
 .videoBox{
-    width:3vw;
-    height: 4vh;
+    width:4em;
+    height: 4em;
     position: relative;
     /* border: 1px solid #000; */
+}
+.videoBox1{
+    width: 8em;
+    height: 6em;
+    object-fit: cover;
 }
 .image{
     object-fit: cover;
@@ -101,11 +106,33 @@ color: #292929;
    
 }
 .videoUpload{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin: 3%;
+    height: 6rem;
+  
+     overflow: hidden;
+    
+
 }
+.videoUpload::-webkit-scrollbar{
+    display: none;
+}
+.gap1{
+    margin-block-start: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .iconList1{
+    display: flex;
+    flex-direction: row;
+    gap:3%;
+   
+  }
+  .videoLine1{
+    width:12rem;
+    height: 1rem;
+    overflow: hidden;
+  }
 .play mat-icon{
    
     position:absolute;
@@ -273,6 +300,7 @@ color: #B3B3B3;
     width:95%;
     height: 70%;
     overflow: scroll;
+    /* border:1px solid #000; */
     
 }
 .studentList::-webkit-scrollbar{
@@ -409,7 +437,7 @@ cursor: pointer;
     top:15%;
     left: 2%;
     width:96%;
-    height: 82%;
+    height: 60%;
     overflow-y: scroll;
 }
 
@@ -446,7 +474,9 @@ cursor: pointer;
     margin-block-start: 1%;
     display: flex;
     justify-content: space-between;
-    margin:2%
+    align-items: center;
+    margin:2%;
+   
     
   }
   .videoLine{
@@ -493,4 +523,14 @@ color: #FF0031;
     .extra{
         display: none;
         justify-content: space-between;
+    }
+    .add{
+        font-family: 'Proxima Nova Soft';
+font-style: normal;
+font-weight: 400;
+font-size: 1.125rem;
+line-height: 1.375rem;
+color: #999999;
+
+
     }

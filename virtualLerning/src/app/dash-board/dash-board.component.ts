@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import {MatDialog,MAT_DIALOG_DATA,MatDialogConfig} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogDashboardComponent } from '../dialog-dashboard/dialog-dashboard.component';
 import { HeadDialogComponent } from '../head-dialog/head-dialog.component';
 import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
@@ -25,7 +26,9 @@ todelete:any=[];
 sub:any=[];
 course:any;
 progress:boolean=false;
-  constructor(private dialog:MatDialog,public service:QuestionService) { }
+courseLimit=7;
+completeDeatails:any;
+  constructor(private dialog:MatDialog,public service:QuestionService, public router:Router) { }
 
   ngOnInit(): void {
     localStorage.setItem('curr',JSON.stringify("Dashboard"));
@@ -33,6 +36,7 @@ progress:boolean=false;
     this.getCount();
     this.getStudent();
     this.getCourseDetails();
+   
   }
 
 onBack(){
@@ -146,7 +150,7 @@ subscribe(data:any,i:any){
 
 
 getCourseDetails(){
-  this.service.getCourse().subscribe({
+  this.service.getCourse(this.courseLimit).subscribe({
     next:(res)=>{
       console.log(res);
       this.course = res;
@@ -156,6 +160,24 @@ getCourseDetails(){
     }
   })
 }
+ getVideoDetails(courseId:any){
+this.service.getAddCourseDetails(courseId).subscribe({
+  next:(res)=>{
+    console.log(res);
+    this.completeDeatails =res;
+  },
+  error:(error)=>{
+    alert(error);
+  },
+  complete:()=>{
+    sessionStorage.setItem('addCourseDetails',JSON.stringify(this.completeDeatails))
+    this.router.navigateByUrl('/addcourse');
+  }
+})
+ }
+
+
+
 
 @HostListener('window:scroll', []) onScrollEvent(){
   if(document.body.scrollTop >5 || document.documentElement.scrollTop>0) {
@@ -164,5 +186,20 @@ getCourseDetails(){
     console.log('done')
   }
 } 
+onScrolling(event:any){
+ 
+  if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+this.limit = this.limit +1;
+this.getStudent()
 
+  }
+}
+onScrollCourse(event:any){
+  if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+    this.courseLimit = this.courseLimit +1;
+    this.getCourseDetails();
+    console.log('done')
+    
+      }
+}
 }
