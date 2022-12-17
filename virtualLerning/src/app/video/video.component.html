@@ -198,28 +198,36 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             </div>
           </div>
           <div class="more" class="center" (click)="show(chapIndex)">
-            <mat-icon
-              *ngIf="!shows[chapIndex]"
-              >keyboard_arrow_down</mat-icon
-            >
+            <mat-icon *ngIf="!shows[chapIndex]">keyboard_arrow_down</mat-icon>
             <mat-icon *ngIf="shows[chapIndex]">keyboard_arrow_up</mat-icon>
           </div>
         </div>
-        <div class="imgUpload" *ngIf="shows[chapIndex]">
+        <div
+          class="imgUpload"
+          *ngIf="shows[chapIndex]"
+          formArrayName="subChapter"
+        >
           <div class="left">
             <div class="preview"></div>
             <div class="bottomDisplay"></div>
           </div>
           <div class="right">
-            <div formArrayName="subChapter">
-              <div *ngFor="let subItem of subChapters(chapIndex).controls; let subIndex = index">
-                <div [formGroupName]="subIndex">
+            <div
+              *ngFor="
+                let subItem of subChapters(chapIndex).controls;
+                let subIndex = index
+              "
+            >
+              <div [formGroupName]="subIndex">
                 <div class="subchapName">
                   Sub Chapter Name
                   <div class="input">
-                    <input class="titleInput" type="text" formControlName="subchapName" />
+                    <input
+                      class="titleInput"
+                      type="text"
+                      formControlName="subChapterName"
+                    />
                   </div>
-                </div>
                 </div>
               </div>
             </div>

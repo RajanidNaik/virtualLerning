@@ -85,11 +85,7 @@ export class VideoComponent implements OnInit {
   newChapter(): FormGroup {
     return this.fb.group({
       chapterName: new FormControl('', [Validators.required]),
-      subChapter: this.fb.array([
-        this.fb.group({
-          subChapterName: new FormGroup('', [Validators.required]),
-        }),
-      ]),
+      subChapter: this.fb.array([this.newSubChapter()]),
     });
   }
 
@@ -106,7 +102,7 @@ export class VideoComponent implements OnInit {
 
   newSubChapter(): FormGroup {
     return this.fb.group({
-      subChapterName: new FormGroup('', [Validators.required]),
+      subChapterName: new FormControl('', [Validators.required]),
     });
   }
   addSubChapter(chapIndex: number) {
