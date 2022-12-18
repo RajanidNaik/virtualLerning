@@ -16,17 +16,20 @@ export class VideoComponent implements OnInit {
   uploadSuccess = [false];
   uploadFailed = [false];
   isChecked: any;
+  id: any;
+  subChapVal = '';
   selected: any;
-  diffLevel =[ 'Advanced','Beginner']
+  diffLevel = ['Advanced', 'Beginner'];
   videoForm!: FormGroup;
   skills = new FormArray([]);
   selectedFile: any;
   category1: any;
-  subCa:any;
+  subCa: any;
   count: any;
+  cIndex = 0;
   public Editor = ClassicEditor;
 
-  sIndex:any;
+  sIndex = 0;
 
   completeDetails: any;
   subcategory: any;
@@ -41,11 +44,8 @@ export class VideoComponent implements OnInit {
   shows: any = [];
 
   ngOnInit(): void {
-
-
     this.category = localStorage.getItem('category');
     this.category = JSON.parse(this.category);
-
 
     this.videoForm = new FormGroup({
       videoTitle: new FormControl('', [Validators.required]),
@@ -60,37 +60,35 @@ export class VideoComponent implements OnInit {
       chapter: this.fb.array([]),
     });
     this.addChapter();
-    if(sessionStorage.getItem('addCourseDetails')){
-      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
+    if (sessionStorage.getItem('addCourseDetails')) {
+      this.completeDetails = JSON.parse(
+        sessionStorage.getItem('addCourseDetails') || '[]'
+      );
       console.log(this.completeDetails);
       this.setValue();
-   }
-
-    
-    this.videoSer.getChategory().subscribe( (data) =>{ 
-      this.category1=JSON.parse(data);
+    }
+    this.videoSer.getChategory().subscribe((data) => {
+      this.category1 = JSON.parse(data);
     });
-    this.videoSer.getSubCat().subscribe( (data) =>{ 
-        this.subCa=JSON.parse(data);
-        
-
+    this.videoSer.getSubCat().subscribe((data) => {
+      this.subCa = JSON.parse(data);
     });
-    
-
   }
 
   supportUpload(event: any) {
-    console.log(this.selectedFile);
     this.selectedFile = <File>event.target.files[0];
     console.log(this.selectedFile);
   }
-
+  thumbnailUpload(event: any) {
+    this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile);
+  }
   show(pos: any) {
     this.shows[pos] = !this.shows[pos];
   }
 
   publish() {
-    console.log(this.videoForm.value);
+    console.log(this.videoForm.value.chapter);
   }
 
   addCategory() {
@@ -108,8 +106,7 @@ export class VideoComponent implements OnInit {
     });
   }
 
-  addChapter()
-  {
+  addChapter() {
     this.uploadFailed.push(false);
     this.uploadSuccess.push(false);
     this.chapters().push(this.newChapter());
@@ -121,51 +118,51 @@ export class VideoComponent implements OnInit {
 
   newSubChapter(): FormGroup {
     return this.fb.group({
-      subChapterName: new FormControl('', [Validators.required]),
+      subChapterName: new FormControl(' ', [Validators.required]),
     });
   }
   addSubChapter(chapIndex: number) {
     this.subChapters(chapIndex).push(this.newSubChapter());
+    this.id.value = '';
   }
-
-
 
   //add details
-  setValue(){
+  setValue() {
     this.videoForm.patchValue({
-
-      videoTitle:this.completeDetails.courseName,
-      category:this.completeDetails.categoryName,
-      subCategory:this.completeDetails.subCategoryName,
-      formatText:this.completeDetails.courseTagLine,
-      overview:this.completeDetails.description,
-      learning:this.completeDetails.learningOutCome,
-      requirement:this.completeDetails.requirements,
-      level:this.completeDetails.difficultyLevel,
-      keyWords:this.completeDetails.keywords[0]['keyword'],
-      chapter:[{
-        chapterName:this.completeDetails.chapter[0]['chapterName'],
-        subChapter:[{
-          subChapterName:this.completeDetails.chapter[0]['lessonList'][0]['lessonName']
-        }]
-      }]
-      
-    })
+      videoTitle: this.completeDetails.courseName,
+      category: this.completeDetails.categoryName,
+      subCategory: this.completeDetails.subCategoryName,
+      formatText: this.completeDetails.courseTagLine,
+      overview: this.completeDetails.description,
+      learning: this.completeDetails.learningOutCome,
+      requirement: this.completeDetails.requirements,
+      level: this.completeDetails.difficultyLevel,
+      keyWords: this.completeDetails.keywords[0]['keyword'],
+      chapter: [
+        {
+          chapterName: this.completeDetails.chapter[0]['chapterName'],
+          subChapter: [
+            {
+              subChapterName:
+                this.completeDetails.chapter[0]['lessonList'][0]['lessonName'],
+            },
+          ],
+        },
+      ],
+    });
   }
-  storeIndex(index:any){
-    sessionStorage.setItem('Index',index)
+  storeIndex(index: any, chapIndex: any) {
+    this.sIndex = index;
+    this.cIndex = chapIndex;
   }
-  appendSub(){
-    let index =sessionStorage.getItem('Index');
+  display() {
+    let index: any = sessionStorage.getItem('Index');
+    this.sIndex = parseInt(index);
   }
-  display(){
-    let index:any = sessionStorage.getItem('Index');
-    this.sIndex = parseInt(index)
+  setSubChap(value: any, i: any) {
+    this.videoForm.value.chapter[this.cIndex].subChapter[
+      this.sIndex
+    ].subChapterName = value;
+    this.id = i;
   }
 }
-
- 
-
-
-
-

@@ -213,7 +213,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   "
                   [formGroupName]="subIndex"
                 >
-                  {{ storeIndex(subIndex) }}
+                  {{ storeIndex(subIndex,chapIndex) }}
                 </div>
               </div>
             </div>
@@ -222,23 +222,28 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <div class="subchapName">
               Sub Chapter Name
               <div class="input">
-                {{ appendSub() }}
                 <div>
-                  <input
-                    class="titleInput"
-                    type="text"
-                    [formGroupName]="sIndex"
-                    formControlName="subChapterName"
-                  />
+                  {{sIndex}}
+                  <input class="titleInput" type="text" #id [value]=subChapVal  (keyup)="setSubChap(id.value,id)"/>
                 </div>
               </div>
+            </div>
+            <div class="subchapName">
+              Video Thumbnail : <input
+        id="thumbnail"
+        type="file"
+        accept=""
+        (change)="thumbnailUpload($event)"
+      /><label for="thumbnail">Browse</label>
             </div>
 
             <div class="btn">
               <button class="buttonP">Previous</button>
               <button class="buttonN">Next</button>
             </div>
-            <button (click)="addSubChapter(chapIndex)">Add Sub Chapter</button>
+            <div class="btn1">
+            <button class="buttonP" (click)="addSubChapter(chapIndex) ">Add Sub Chapter</button>
+            </div>
           </div>
         </div>
       </div>

@@ -227,7 +227,8 @@ mat-icon {
 }
 .buttonN {
   background: rgba(9, 41, 99, 0.2);
-  margin-right: 10px;
+  margin-left: 10px;
+
 }
 
 .btn {
@@ -237,6 +238,14 @@ mat-icon {
   display: flex;
   justify-content: space-between;
 }
+.btn1{
+  padding: 8px;
+  padding-left: 19px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
 .title1 {
   margin: 10px 0;
 }
@@ -295,7 +304,7 @@ margin-top: 10px;
 .videoScroll{
  width: 90%;
 margin: 2% 5%;
-border: 2px solid green;
+/* border: 2px solid green; */
 height: 93%;
   display: flex;
   overflow: scroll;
@@ -303,8 +312,8 @@ gap: 19px;
 }
 .box{
   border: 1px solid #10002e;
-  height: 83%;
-min-width: 85px;
+  height: 90px;
+min-width: 90px;
 }
 
 .right{
