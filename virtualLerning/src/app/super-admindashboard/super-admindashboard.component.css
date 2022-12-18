@@ -133,12 +133,17 @@ font-weight: 700;
 .right{
   margin: 0 3%;
   padding: 5px;
-  overflow: scroll;
+  height: fit-content;
+max-height: 550px;
+overflow: scroll;
 }
 .right1{
   width: 36%;
   margin-left: 10px;
   border-radius: 10px;
   border: 2px solid #f5dada;
+  height: fit-content;
+max-height: 550px;
+overflow: scroll;
 }
 

@@ -17,6 +17,7 @@ export class VideoComponent implements OnInit {
   uploadFailed = [false];
   isChecked: any;
   selected: any;
+  diffLevel =[ 'Advanced','Beginner']
   videoForm!: FormGroup;
   skills = new FormArray([]);
   selectedFile: any;
@@ -24,12 +25,11 @@ export class VideoComponent implements OnInit {
   subCa:any;
   count: any;
   public Editor = ClassicEditor;
-
+  sIndex:any;
   completeDetails: any;
   
 
   subcategory: any;
-  array=['v'];
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
@@ -42,10 +42,6 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(sessionStorage.getItem('addCourseDetails')){
-      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
-      console.log(this.completeDetails);
-   }
     this.category = localStorage.getItem('category');
     this.category = JSON.parse(this.category);
 
@@ -64,20 +60,23 @@ export class VideoComponent implements OnInit {
     });
     this.addChapter();
 
-    this.setValue();
-  }
-
+    
     this.videoSer.getChategory().subscribe( (data) =>{ 
       this.category1=JSON.parse(data);
     });
     this.videoSer.getSubCat().subscribe( (data) =>{ 
         this.subCa=JSON.parse(data);
         
-    });
-    
-
-
+    }); 
+    if (sessionStorage.getItem('addCourseDetails')) {
+      this.completeDetails = JSON.parse(
+        sessionStorage.getItem('addCourseDetails') || '[]'
+      );
+      console.log(this.completeDetails);
+      this.setValue();
+    }
   }
+   
 
   supportUpload(event: any) {
     console.log(this.selectedFile);
@@ -134,18 +133,16 @@ export class VideoComponent implements OnInit {
   setValue(){
     
     this.videoForm.patchValue({
-      videoTitle:this.completeDetails.courseName,
-      category:this.completeDetails.categoryName,
-      subCategory:this.completeDetails.subCategoryName,
-      formatText:this.completeDetails.courseTagLine,
-      overview:this.completeDetails.description,
-      learning:this.completeDetails.learningOutCome,
-      requirement:this.completeDetails.requirements,
-      level:this.completeDetails.difficultyLevel
-    })
+      videoTitle: this.completeDetails.courseName,
+      category: this.completeDetails.categoryName,
+      subCategory: this.completeDetails.subCategoryName,
+      formatText: this.completeDetails.courseTagLine,
+      overview: this.completeDetails.description,
+      learning: this.completeDetails.learningOutCome,
+      requirement: this.completeDetails.requirements,
+      level: this.completeDetails.difficultyLevel,
+    });
   }
-}
-
   storeIndex(index:any){
     sessionStorage.setItem('Index',index)
   }
@@ -154,48 +151,9 @@ export class VideoComponent implements OnInit {
   }
   display(){
     let index:any = sessionStorage.getItem('Index');
-    let val = parseInt(index)
+    this.sIndex = parseInt(index)
   }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// <div class="suBcategory">
-//       <div class="text">Sub Category</div>
-//       <div class="titleInputV">
-//         <select formControlName="subCategory" type="text">
-//           <option value="" selected>Sub Category</option>
-//           <option
-//             *ngFor="let item of subcategory"
-//             [value]="item.categoryName"
-//             [selected]="item === 'Design'"
-//           >
-//             {{ item.categoryName }}
-//           </option>
-//           <option (click)="addCategory()" value="">Add new +</option>
-//         </select>
-//       </div>
-//       <div
-//         *ngIf="videoForm.get('subCategory')?.errors?.['required'] "
-//         class="error1"
-//       >
-//         Required
-//       </div>
-//     </div>
 

@@ -20,7 +20,7 @@ export class SuperAdminServiceService {
 
   adminReject(body: any) {
     console.log(body);
-    return this.http.delete(this.url + 'reject',body);
+    return this.http.delete(this.url + 'reject',{body ,responseType:'text'});
   }
   
   removed(){

@@ -296,16 +296,14 @@ margin-top: 10px;
  width: 90%;
 margin: 2% 5%;
 border: 2px solid green;
-height: 69%;
-}
-.videoScroll{
+height: 93%;
   display: flex;
   overflow: scroll;
 gap: 19px;
 }
 .box{
   border: 1px solid #10002e;
-  height: 95%;
+  height: 83%;
 min-width: 85px;
 }
 

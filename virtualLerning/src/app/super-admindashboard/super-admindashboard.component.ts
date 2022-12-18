@@ -49,6 +49,7 @@ export class SuperAdmindashboardComponent implements OnInit {
      this.supS.adminReject(body).subscribe(data => console.log(data)
 );
     this.remove(index)
+    this.add(item,index)
   }
 
   toggle(i:any){
@@ -64,5 +65,8 @@ export class SuperAdmindashboardComponent implements OnInit {
       this.rejectedList=JSON.parse(data);
       console.log(this.rejectedList);
     });
+  }
+  add(item:any,index:any){
+      this.rejectedList.splice(index,0,item)
   }
 }
