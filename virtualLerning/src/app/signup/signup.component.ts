@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
       next: (data) => {
         alert('Request Sent Succefully');
         console.log(data);
-        this.router.navigateByUrl('/');
+        // this.router.navigateByUrl('/');
       },
       error: (data) => {
         console.log(data);

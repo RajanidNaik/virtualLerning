@@ -17,6 +17,7 @@ export class VideoComponent implements OnInit {
   uploadFailed = [false];
   isChecked: any;
   selected: any;
+  diffLevel =[ 'Advanced','Beginner']
   videoForm!: FormGroup;
   skills = new FormArray([]);
   selectedFile: any;
@@ -24,9 +25,11 @@ export class VideoComponent implements OnInit {
   subCa:any;
   count: any;
   public Editor = ClassicEditor;
+
+  sIndex:any;
+
   completeDetails: any;
   subcategory: any;
-  array=['v'];
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
@@ -39,7 +42,7 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
+
     this.category = localStorage.getItem('category');
     this.category = JSON.parse(this.category);
 
@@ -64,19 +67,17 @@ export class VideoComponent implements OnInit {
    }
 
     
-  
-
     this.videoSer.getChategory().subscribe( (data) =>{ 
       this.category1=JSON.parse(data);
     });
     this.videoSer.getSubCat().subscribe( (data) =>{ 
         this.subCa=JSON.parse(data);
         
+
     });
     
 
   }
-  
 
   supportUpload(event: any) {
     console.log(this.selectedFile);
@@ -132,6 +133,7 @@ export class VideoComponent implements OnInit {
   //add details
   setValue(){
     this.videoForm.patchValue({
+
       videoTitle:this.completeDetails.courseName,
       category:this.completeDetails.categoryName,
       subCategory:this.completeDetails.subCategoryName,
@@ -158,7 +160,7 @@ export class VideoComponent implements OnInit {
   }
   display(){
     let index:any = sessionStorage.getItem('Index');
-    let val = parseInt(index)
+    this.sIndex = parseInt(index)
   }
 }
 
@@ -166,43 +168,4 @@ export class VideoComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// <div class="suBcategory">
-//       <div class="text">Sub Category</div>
-//       <div class="titleInputV">
-//         <select formControlName="subCategory" type="text">
-//           <option value="" selected>Sub Category</option>
-//           <option
-//             *ngFor="let item of subcategory"
-//             [value]="item.categoryName"
-//             [selected]="item === 'Design'"
-//           >
-//             {{ item.categoryName }}
-//           </option>
-//           <option (click)="addCategory()" value="">Add new +</option>
-//         </select>
-//       </div>
-//       <div
-//         *ngIf="videoForm.get('subCategory')?.errors?.['required'] "
-//         class="error1"
-//       >
-//         Required
-//       </div>
-//     </div>
 
