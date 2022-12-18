@@ -35,6 +35,7 @@
       <div class="titleInputV">
         <select formControlName="subCategory" type="text">
           <option value="" selected>Sub Category</option>
+
           <option *ngFor="let item of subCa" [value]="item.subCategoryName">
             {{ item.subCategoryName }}
           </option>
