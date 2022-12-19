@@ -11,9 +11,9 @@ export class QuestionService {
   nkm: any;
 
   constructor(public http:HttpClient) { }
-  getQuestionJson(){
-    return this.http.get<any>("assets/questions.json");
-  }
+  // getQuestionJson(){
+  //   return this.http.get<any>("assets/questions.json");
+  // }
   getStudentList(limit:any):Observable<any>{
     return this.http.get(`${baseUrl}/admin/studentList?pageNumber=1&limit=${limit}`);
   }
@@ -60,5 +60,11 @@ export class QuestionService {
   }
   getAddCourseDetails(id:any):Observable<any>{
     return this.http.get(`${baseUrl}/admin/courseDetails?courseId=${id}`);
+  }
+  addQuestion(body:any):Observable<any>{
+    return this.http.post(`${baseUrl}/admin/addTest`,body,{responseType:'text'})
+  }
+  getQuestion(id:any):Observable<any>{
+    return this.http.get(`${baseUrl}/admin/QuestionAndAns?chapterId=${id}`);
   }
 }

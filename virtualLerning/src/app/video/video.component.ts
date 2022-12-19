@@ -24,11 +24,13 @@ export class VideoComponent implements OnInit {
   category1: any;
   subCa:any;
   count: any;
+  
   public Editor = ClassicEditor;
 
   sIndex:any;
 
   completeDetails: any;
+  data:any;
   subcategory: any;
   constructor(
     public fb: FormBuilder,
@@ -59,11 +61,15 @@ export class VideoComponent implements OnInit {
       level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([]),
     });
-    this.addChapter();
+  
     if(sessionStorage.getItem('addCourseDetails')){
+      
       this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
       console.log(this.completeDetails);
+      this.data = this.completeDetails.chapter;
       this.setValue();
+   }else{
+  this.addChapter();
    }
 
     
@@ -131,7 +137,17 @@ export class VideoComponent implements OnInit {
 
 
   //add details
+  
   setValue(){
+
+    this.data.forEach((t:any)=>{
+      var chapters:FormGroup = this.newChapter();
+      this.chapters().push(chapters);
+      console.log(this.data)
+    //  this.videoForm.controls['chapter'].patchValue(this.data['chapterName'])
+    
+    }
+    )
     this.videoForm.patchValue({
 
       videoTitle:this.completeDetails.courseName,
@@ -143,12 +159,30 @@ export class VideoComponent implements OnInit {
       requirement:this.completeDetails.requirements,
       level:this.completeDetails.difficultyLevel,
       keyWords:this.completeDetails.keywords[0]['keyword'],
+     
       chapter:[{
-        chapterName:this.completeDetails.chapter[0]['chapterName'],
-        subChapter:[{
-          subChapterName:this.completeDetails.chapter[0]['lessonList'][0]['lessonName']
-        }]
-      }]
+        chapterName:this.data[0]['chapterName'],
+    
+      },
+    {
+      chapterName:this.data[1]['chapterName']
+    },
+    {
+      chapterName:this.data[2]['chapterName']
+    },
+    {
+      chapterName:this.data[3]['chapterName']
+    },
+    {
+      chapterName:this.data[4]['chapterName']
+    },
+    {
+      chapterName:this.data[5]['chapterName']
+    }
+  
+  
+  ],
+      
       
     })
   }

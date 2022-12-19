@@ -2,31 +2,43 @@
   <form [formGroup]="chapForm">
     <div class="chapName">Select Chapter Name</div>
     <div class="input /">
-      <div>
+      <div    >
         <input
           class="titleInput"
           type="list"
           list="browsers"
-          formControlName="chaptername"
+          formControlName="chaptername" 
+         
         />
-        <div
+        <datalist id="browsers" >
+          
+          <option *ngFor="let chap of chapter" [value]="chap.chapterName"  >{{chap.chapterName}}</option>
+          
+        </datalist>
+      </div>
+    </div>
+    <div
           *ngIf="chapForm.get('chaptername')?.errors?.['required'] && chapForm.get('chaptername')?.touched"
           class="require"
         >
           Please select the chapter name
         </div>
-        <datalist id="browsers">
-          <option value="Internet Explorer"></option>
-          <option value="Firefox"></option>
-          <option value="Google Chrome"></option>
-          <option value="Opera"></option>
-          <option value="Safari"></option>
-        </datalist>
-      </div>
+
+
+        <div class="chapName">CourseId</div>
+    <div>
+      <input class="titleInput" placeholder=""  formControlName="courseId"/>
     </div>
+    <div
+    *ngIf="chapForm.get('courseId')?.errors?.['required'] && chapForm.get('courseId')?.touched"
+    class="require"
+  >
+    This is required field*
+  </div>
+
     <div class="chapName">Duration</div>
     <div>
-      <input class="titleInput" formControlName="duration" />
+      <input class="titleInput" placeholder="hh:mm:ss" formControlName="duration" />
     </div>
     <div
       *ngIf="chapForm.get('duration')?.errors?.['required'] && chapForm.get('duration')?.touched"
@@ -34,7 +46,8 @@
     >
       This is required field*
     </div>
-    <div class="chapName">Module&nbsp;Test</div>
+    
+    <div class="chapName">Passing&nbsp;grade</div>
     <div>
       <input class="titleInput" formControlName="moduleTest" />
     </div>
@@ -44,7 +57,7 @@
     >
       This is required field*
     </div>
-    <div class="currPage">5 of 44</div>
+    <div class="currPage">5 of 10</div>
   </form>
 </div>
 <!-- <div class="question" *ngFor="let qn of questionList;let i=index"> -->
@@ -57,6 +70,10 @@
     <div [formGroupName]="i">
       <!-- <div class="Qnum">Question {{i+1}}</div> -->
       <div class="Qnum">Question {{ i + 1 }}</div>
+      <div class="chapName">Question Id</div>
+      <div>
+        <input class="titleInput" formControlName="questionId" />
+      </div>
       <div class="details">
         <div class="qn">
           <!-- {{qn?.questionText}}  -->
@@ -79,44 +96,47 @@
           </div>
         </div>
       </div>
+      
       <div class="options" *ngIf="shows[i]">
         <!-- <div class="opt" *ngFor="let option of questionList[i]?.options"> -->
-        <div class="opt" formGroupName="option1">
+        <div class="opt" >
           <!-- <div>{{option.text}}</div> -->
-          <input placeholder="a" formControlName="opt" />
+          <input placeholder="a" formControlName="option_1" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="ans"
+              
             ></mat-slide-toggle>
           </div>
         </div>
-        <div class="opt" formGroupName="option2">
-          <input placeholder="b" formControlName="opt" />
+        <div class="opt" >
+          <input placeholder="b" formControlName="option_2" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="ans"
+              
             ></mat-slide-toggle>
           </div>
         </div>
-        <div class="opt" formGroupName="option3">
-          <input placeholder="c" formControlName="opt" />
+        <div class="opt" >
+          <input placeholder="c" formControlName="option_3" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="ans"
+             
             ></mat-slide-toggle>
           </div>
         </div>
-        <div class="opt" formGroupName="option4">
-          <input placeholder="d" formControlName="opt" />
+        <div class="opt" >
+          <input placeholder="d" formControlName="option_4" />
           <div class="transform">
             <mat-slide-toggle
               color="primary"
-              formControlName="ans"
             ></mat-slide-toggle>
           </div>
+        </div>
+        <div class="opt" >
+          <input placeholder="choose correct answer" formControlName="correctAnswer" />
         </div>
         <div
           *ngIf="questionForm.get('opt')?.errors?.['required']&& questionForm.get('opt')?.touched "
@@ -142,6 +162,9 @@
   </button>
 </div>
   
+</div>
+<div class="update">
+  <button class="newButton" (click)="postQuestion()">Update</button>
 </div>
 <!-- <div class="border"> -->
 <!-- <div class="footer">
