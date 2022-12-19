@@ -17,7 +17,7 @@ isSubscribed:boolean=true;
 value=70;
 data:any;
 date=new Date();
-limit=2;
+limit=5;
 student:any;
 token:any;
 ongoing:any;
@@ -175,17 +175,17 @@ this.service.getAddCourseDetails(courseId).subscribe({
 
 
 
-@HostListener('window:scroll', []) onScrollEvent(){
-  if(document.body.scrollTop >5 || document.documentElement.scrollTop>0) {
-    this.limit = this.limit+3;
-    this.getStudent();
-    console.log('done')
-  }
-} 
+// @HostListener('window:scroll', []) onScrollEvent(){
+//   if(document.body.scrollTop >5 || document.documentElement.scrollTop>0) {
+//     this.limit = this.limit+3;
+//     this.getStudent();
+//     console.log('done')
+//   }
+// } 
 onScrolling(event:any){
  
   if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
-this.limit = this.limit +1;
+this.limit = this.limit +2;
 this.getStudent()
 
   }
