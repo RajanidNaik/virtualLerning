@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "virtualearn-26e6b": {
+      "hosting": {
+        "virtualLerning": [
+          "virtualearn-26e6b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "virtualearn-26e6b"
+  }
+}

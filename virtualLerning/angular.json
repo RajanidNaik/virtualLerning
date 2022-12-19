@@ -96,6 +96,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "virtualLerning:build:production",
+            "firebaseProject": "virtualearn-26e6b",
+            "firebaseHostingSite": "virtualearn-26e6b"
+          }
         }
       }
     }

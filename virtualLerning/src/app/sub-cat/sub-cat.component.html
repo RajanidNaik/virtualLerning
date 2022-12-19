@@ -3,7 +3,7 @@
   <div class="textIn">
     <div class="title">Category Name:</div>
     <div>
-      <input #name type="text" formControlName="categoryName" />
+      <input type="text" formControlName="categoryName" />
     </div>
     <div
           *ngIf="categoryForm.get('videoTitle')?.errors?.['required'] && categoryForm.get('videoTitle')?.touched"
@@ -12,20 +12,8 @@
           Required
         </div>
   </div>
-  <div class="textIn">
-    <div class="title">Image</div>
-    <div>
-      <input
-        type="file"
-        id="upload"
-        type="file"
-        accept="image/*"
-        (change)="supportUpload($event)"
-      />
-    </div>
-  </div>
   <div class="flex">
-      <button (click)="add(name.value)" [disabled]="categoryForm.invalid">Add</button>
+      <button (click)="add()" [disabled]="categoryForm.invalid">Add</button>
       <button mat-dialog-close>Close</button>
     </div>
 </div>

@@ -139,10 +139,10 @@ label {
   margin-bottom: 4vh;
   padding: 18px;
 }
-.notUpload > div:nth-child(1) {
-  height: 133.5px;
+.notUpload {
+margin-top: 123px;
+text-align: center;
 }
-
 .top {
   padding: 5px;
   display: flex;
@@ -188,6 +188,10 @@ mat-icon {
   margin-top: 9vh;
   margin-bottom: 4vh;
 }
+.box1{
+  height: 90px;
+    width:90px;
+}
 .green {
   margin-left: 13px;
   color: #1eab0d;
@@ -229,6 +233,11 @@ mat-icon {
   background: rgba(9, 41, 99, 0.2);
   margin-left: 10px;
 
+}
+
+.hund{
+  height: 100%;
+  width: 100%;
 }
 
 .btn {
@@ -309,13 +318,22 @@ height: 93%;
   display: flex;
   overflow: scroll;
 gap: 19px;
+overflow-y: hidden;
 }
 .box{
-  border: 1px solid #10002e;
+  border: 3px solid #10002e;
   height: 90px;
 min-width: 90px;
 }
 
 .right{
   width: 32%;
+}
+
+.notUpload > div:nth-child(1) > img:nth-child(2) {
+position: relative;
+top: -84px;
+}
+.notUpload > div:nth-child(1) {
+height: 117.5px;
 }

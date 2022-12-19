@@ -30,7 +30,16 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
 import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
 import { AuthserviceInterceptor } from './authservice.interceptor';
 import { DeleteStudentComponent } from './delete-student/delete-student.component';
-
+import { SubCatComponent } from './sub-cat/sub-cat.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { provideMessaging,getMessaging } from '@angular/fire/messaging';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -55,6 +64,7 @@ import { DeleteStudentComponent } from './delete-student/delete-student.componen
     DialogCategoryComponent,
     SuperAdmindashboardComponent,
     DeleteStudentComponent,
+    SubCatComponent,
   ],
 
   imports: [
@@ -67,12 +77,23 @@ import { DeleteStudentComponent } from './delete-student/delete-student.componen
     ReactiveFormsModule,
     CKEditorModule,
     NgxFileDropModule,
+    AngularFireModule.initializeApp(environment.firebase),
+      provideFirebaseApp(() => initializeApp(environment.firebase)),
+      provideAnalytics(() => getAnalytics()),
+      provideAuth(() => getAuth()),
+      provideFirestore(() => getFirestore()),
+      provideFunctions(() => getFunctions()),
+      provideMessaging(() => getMessaging()),
+      provideStorage(() => getStorage()),
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:AuthserviceInterceptor,
-    multi:true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthserviceInterceptor,
+      multi: true,
+    },
+    ScreenTrackingService,UserTrackingService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,10 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  FormArray,
+  Validators,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { DialogCategoryComponent } from '../dialog-category/dialog-category.component';
-import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import {
+  NgxFileDropEntry,
+  FileSystemFileEntry,
+  FileSystemDirectoryEntry,
+} from 'ngx-file-drop';
 import { VideoServiceService } from '../videoService/video-service.service';
+import { SubCatComponent } from '../sub-cat/sub-cat.component';
+import {
+  AngularFireStorage,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from '@angular/fire/compat/storage';
+import { finalize, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-video',
@@ -27,26 +44,29 @@ export class VideoComponent implements OnInit {
   subCa: any;
   count: any;
   cIndex = 0;
+  previewVideo: any;
   public Editor = ClassicEditor;
 
   sIndex = 0;
 
   completeDetails: any;
   subcategory: any;
+  ref!: AngularFireStorageReference;
+  task!: AngularFireUploadTask;
+  uploadState!: Observable<unknown>;
+  uploadProgress!: Observable<unknown>;
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
-    private videoSer: VideoServiceService
+    private videoSer: VideoServiceService,
+    private af: AngularFireStorage
   ) {}
-
+  adding = true;
   category: any;
   info: any;
   shows: any = [];
 
   ngOnInit(): void {
-    this.category = localStorage.getItem('category');
-    this.category = JSON.parse(this.category);
-
     this.videoForm = new FormGroup({
       videoTitle: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
@@ -55,6 +75,8 @@ export class VideoComponent implements OnInit {
       overview: new FormControl('', [Validators.required]),
       learning: new FormControl('', [Validators.required]),
       requirement: new FormControl('', [Validators.required]),
+      coursePhoto: new FormControl('', [Validators.required]),
+      previewVideo: new FormControl('', [Validators.required]),
       keyWords: new FormControl('', [Validators.required]),
       level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([]),
@@ -69,30 +91,34 @@ export class VideoComponent implements OnInit {
     }
     this.videoSer.getChategory().subscribe((data) => {
       this.category1 = JSON.parse(data);
+      console.log(this.category1);
     });
     this.videoSer.getSubCat().subscribe((data) => {
       this.subCa = JSON.parse(data);
+      console.log(this.subCa);
     });
   }
+  storeCatId(item: any) {
+    sessionStorage.setItem('catId', item.categoryId);
+  }
 
-  supportUpload(event: any) {
-    this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile);
-  }
-  thumbnailUpload(event: any) {
-    this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile);
-  }
   show(pos: any) {
+    console.log(this.sIndex);
+    console.log(this.cIndex);
+    
+    
     this.shows[pos] = !this.shows[pos];
   }
 
   publish() {
-    console.log(this.videoForm.value.chapter);
+    console.log(this.videoForm.value);
   }
 
   addCategory() {
     this.dialog.open(DialogCategoryComponent);
+  }
+  addSubCategory() {
+    this.dialog.open(SubCatComponent);
   }
 
   chapters(): FormArray {
@@ -109,6 +135,7 @@ export class VideoComponent implements OnInit {
   addChapter() {
     this.uploadFailed.push(false);
     this.uploadSuccess.push(false);
+    this.sIndex=0;
     this.chapters().push(this.newChapter());
   }
 
@@ -118,12 +145,13 @@ export class VideoComponent implements OnInit {
 
   newSubChapter(): FormGroup {
     return this.fb.group({
-      subChapterName: new FormControl(' ', [Validators.required]),
+      subChapterName: new FormControl('', [Validators.required]),
+      videoUrl: new FormControl('', [Validators.required]),
     });
   }
   addSubChapter(chapIndex: number) {
+    this.adding = true;
     this.subChapters(chapIndex).push(this.newSubChapter());
-    this.id.value = '';
   }
 
   //add details
@@ -151,18 +179,86 @@ export class VideoComponent implements OnInit {
       ],
     });
   }
-  storeIndex(index: any, chapIndex: any) {
-    this.sIndex = index;
-    this.cIndex = chapIndex;
-  }
-  display() {
-    let index: any = sessionStorage.getItem('Index');
-    this.sIndex = parseInt(index);
-  }
+
+
   setSubChap(value: any, i: any) {
     this.videoForm.value.chapter[this.cIndex].subChapter[
       this.sIndex
     ].subChapterName = value;
-    this.id = i;
+  }
+
+  uploadCoursePhoto(event: any) {
+    const id = Math.random().toString(36).substring(2);
+    const file = event.target.files[0];
+    let filePath = id;
+
+    this.ref = this.af.ref(id);
+    this.task = this.af.upload(filePath, file);
+    // this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+    // this.uploadProgress = this.task.percentageChanges();
+    this.task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.ref.getDownloadURL().subscribe((url: any) => {
+            this.videoForm.patchValue({
+              coursePhoto: url,
+            });
+          });
+        })
+      )
+      .subscribe();
+  }
+  uploadVideo(event: any) {
+    const id = Math.random().toString(36).substring(2);
+    const file = event.target.files[0];
+    let filePath = id;
+
+    this.ref = this.af.ref(id);
+    this.task = this.af.upload(filePath, file);
+    // this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+    // this.uploadProgress = this.task.percentageChanges();
+    this.task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.ref.getDownloadURL().subscribe((url: any) => {
+            this.videoForm.patchValue({
+              previewVideo: url,
+            });
+          });
+        })
+      )
+      .subscribe();
+  }
+
+  addSubvideo(event: any) {
+    const id = Math.random().toString(36).substring(2);
+    const file = event.target.files[0];
+    let filePath = id;
+    this.ref = this.af.ref(id);
+    this.task = this.af.upload(filePath, file);
+    // this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+    this.uploadProgress = this.task.percentageChanges();
+    this.task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.ref.getDownloadURL().subscribe((url: any) => {
+            this.videoForm.value.chapter[this.cIndex].subChapter[
+              this.sIndex
+            ].videoUrl = url;
+          });
+        })
+      )
+      .subscribe();
+  }
+  store(a: any,b: any){
+    this.cIndex = a;
+    this.sIndex=b;
+  }
+
+  console(a:any) {
+    console.log(""+a);
   }
 }
