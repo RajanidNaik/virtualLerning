@@ -70,7 +70,7 @@
               <mat-icon (click)="getVideoDetails(c.courseId)">refresh</mat-icon>
             </div>
           <div class="iconclose">
-            <mat-icon (click)="openDialog()">delete_outline</mat-icon>
+            <mat-icon (click)="deleteCourse(c.courseId)">delete_outline</mat-icon>
           </div>
           <div class="iconclose" *ngIf="progress">
             <mat-icon>close</mat-icon>
@@ -329,7 +329,7 @@
                 <mat-icon (click)="getVideoDetails(c.courseId)">refresh</mat-icon>
               </div>
             <div class="iconclose">
-              <mat-icon (click)="openDialog()">delete_outline</mat-icon>
+              <mat-icon (click)="deleteCourse(c.courseId)">delete_outline</mat-icon>
             </div>
             <div class="iconclose" *ngIf="progress">
               <mat-icon>close</mat-icon>

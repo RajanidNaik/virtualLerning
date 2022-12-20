@@ -5,7 +5,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { DialogCategoryComponent } from '../dialog-category/dialog-category.component';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { VideoServiceService } from '../videoService/video-service.service';
-
+import { AddVideo } from '../add-video';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -32,6 +32,12 @@ export class VideoComponent implements OnInit {
   completeDetails: any;
   data:any;
   subcategory: any;
+
+
+  //edit
+chapter:any=[]
+add = new AddVideo()
+
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
@@ -66,7 +72,9 @@ export class VideoComponent implements OnInit {
       
       this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
       console.log(this.completeDetails);
-      this.data = this.completeDetails.chapter;
+      this.chapter = this.completeDetails.chapter
+      // this.data = this.completeDetails.chapter;
+      console.log(this.chapter)
       this.setValue();
    }else{
   this.addChapter();
@@ -140,16 +148,15 @@ export class VideoComponent implements OnInit {
   
   setValue(){
 
-    this.data.forEach((t:any)=>{
-      var chapters:FormGroup = this.newChapter();
-      this.chapters().push(chapters);
-      console.log(this.data)
-    //  this.videoForm.controls['chapter'].patchValue(this.data['chapterName'])
-    
-    }
-    )
-    this.videoForm.patchValue({
+    // this.data.forEach((t:any)=>{
+    //   var chapters:FormGroup = this.newChapter();
+    //   this.chapters().push(chapters);
+    //   console.log(this.data)
+    // }
+    // )
 
+
+    this.videoForm.patchValue({
       videoTitle:this.completeDetails.courseName,
       category:this.completeDetails.categoryName,
       subCategory:this.completeDetails.subCategoryName,
@@ -160,30 +167,26 @@ export class VideoComponent implements OnInit {
       level:this.completeDetails.difficultyLevel,
       keyWords:this.completeDetails.keywords[0]['keyword'],
      
-      chapter:[{
-        chapterName:this.data[0]['chapterName'],
+  //     chapter:[{
+  //       chapterName:this.data[0]['chapterName'],
     
-      },
-    {
-      chapterName:this.data[1]['chapterName']
-    },
-    {
-      chapterName:this.data[2]['chapterName']
-    },
-    {
-      chapterName:this.data[3]['chapterName']
-    },
-    {
-      chapterName:this.data[4]['chapterName']
-    },
-    {
-      chapterName:this.data[5]['chapterName']
-    }
-  
-  
-  ],
-      
-      
+  //     },
+  //   {
+  //     chapterName:this.data[1]['chapterName']
+  //   },
+  //   {
+  //     chapterName:this.data[2]['chapterName']
+  //   },
+  //   {
+  //     chapterName:this.data[3]['chapterName']
+  //   },
+  //   {
+  //     chapterName:this.data[4]['chapterName']
+  //   },
+  //   {
+  //     chapterName:this.data[5]['chapterName']
+  //   }
+  // ],
     })
   }
   storeIndex(index:any){

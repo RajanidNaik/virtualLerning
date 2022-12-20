@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QuestionService } from '../question.service';
-
+import { Add } from '../add';
 @Component({
   selector: 'app-q-and-a',
   templateUrl: './q-and-a.component.html',
@@ -9,6 +9,7 @@ import { QuestionService } from '../question.service';
 })
 export class QAndAComponent implements OnInit {
   plus = false;
+  addQn =new Add();
   // public questionList: any = [];
   // qndeatails: any = [];
   shows:any=[];
@@ -20,6 +21,12 @@ export class QAndAComponent implements OnInit {
   id:any;
   completeDetails:any;
   chapter:any;
+  value:any;
+  array:any=[];
+  hide:any;
+  testDetails:any;
+  questionlist:any=[];
+  questions:any
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -28,19 +35,22 @@ export class QAndAComponent implements OnInit {
       duration: ['', Validators.required],
       courseId:['',Validators.required],
       moduleTest: ['', Validators.required],
+      passingGrade:['',Validators.required]
     });
     this.questionForm = this.fb.group({
       questionText: this.fb.array([
        
       ]),
     });
-    // this.getAllQuestions();
     this.add();
     if(sessionStorage.getItem('addCourseDetails')){
+      this.hide=true;
       this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
       console.log(this.completeDetails.chapter);
       this.chapter = this.completeDetails.chapter;
-      // this.setValue();
+      this.array =this.chapter;
+   }else{
+    this.hide =false;
    }
    
     
@@ -50,60 +60,23 @@ export class QAndAComponent implements OnInit {
   }
 
   newQuestion(): FormGroup {
-    
     return this.fb.group({
       question: ['', Validators.required],
-    //  option1:this.fb.group({
-    //   optn:['', Validators.required],
-    //   ans: [false, Validators.required],
-    //  }),
-    //  option2:this.fb.group({
-    //   opt:['', Validators.required],
-    //   ans: [false, Validators.required]
-    //  }),
-    //  option3:this.fb.group({
-    //   opt:['', Validators.required],
-    //   ans: [false, Validators.required]
-    //  }),
-    //  option4:this.fb.group({
-    //   opt:['', Validators.required],
-    //   ans: [false, Validators.required]
-    //  })
     option_1:['', Validators.required],
     option_2:['', Validators.required],
     option_3:['', Validators.required],
     option_4:['', Validators.required],
     correctAnswer:['', Validators.required],
     questionId:[],
-    deleteStatus:[false]
+    deleteStatus:[]
      
     });
     
    
   }
-  // getId(){
-  //   if(this.chapForm.controls['chaptername'].value == 'Module Test-1'){
-  //     console.log('done');
-  //     this.id=37;
-  //     this.getAllQuestions();
-  //   }else{
-  //     console.log('no')
-  //   }
-  // }
+  
   add() {
     this.question.push(this.newQuestion());
-   
-    // console.log(this.newQuestion().controls['option1']?.value);
-    console.log(this.questionForm.get('questionText')?.value);
-   
-    console.log(this.chapForm.value);
-    // console.log(this.chapForm.controls['chaptername'].value)
-    // sessionStorage.setItem('ans',JSON.stringify(this.questionForm.value));
-    // if(sessionStorage.getItem('ans')){
-    //   this.ans = sessionStorage.getItem('ans');
-    //   this.ans = JSON.parse(this.ans);
-    //   console.log(this.ans.questionText);
-    //       }
   }
 
   deleteOption(lessonIndex: number) {
@@ -115,20 +88,10 @@ export class QAndAComponent implements OnInit {
   postQuestion(){
     let body={
       "testId":13,
-      "testName":this.chapForm.controls['chaptername'].value,
+      "testName":this.chapForm.controls['moduleTest'].value,
       "chapterId":this.chapForm.controls['courseId'].value,
       "testDuration":this.chapForm.controls['duration'].value,
-      "passingGrade":this.chapForm.controls['moduleTest'].value,
-      // "questionRequests":[{
-      //   "questionId":'',
-      //   "questionName":"",
-      //   "option_1": "a",
-      //   "option_2": "b",
-      //   "option_3": "c",
-      //   "option_4": "d",
-      //   "correctAnswer":"a",
-      //   "deleteStatus":false
-      // }]
+      "passingGrade":this.chapForm.controls['passingGrade'].value,
       "questionRequests":this.questionForm.get('questionText')?.value
     }
     console.log(body)
@@ -146,15 +109,88 @@ export class QAndAComponent implements OnInit {
       }
     })
   }
-  getAllQuestions(id:any) {
-    this.service.getQuestion(id)
+  getAllQuestions(e:any) {
+   this.value = e.target.value;
+   this.array = this.chapter.filter((item:any)=>{
+ return  item.chapterName == this.value;
+})
+// console.log(this.array[0].chapterId);
+this.id= this.array[0].chapterId
+    this.service.getQuestion(this.array[0].chapterId)
       .subscribe({
         next:(res)=>{
           console.log(res);
+          this.testDetails = res;
+          this.questionlist = this.testDetails.questionRequests;
+          
         },
         error:(error)=>{
           console.log(error.error)
+        },
+        complete:()=>{
+          this.setValue();
+          
+          // for(let i=0; i<this.testDetails.questionRequests.length;i++){
+          //   this.setQuestionForm(i)
+          // }
+          
         }
       })
   }
+
+  setValue(){
+    this.chapForm.patchValue({
+      duration:this.testDetails.testDuration,
+      moduleTest:this.testDetails.testName,
+      courseId:this.testDetails.chapterId,
+      passingGrade:this.testDetails.passingGrade
+
+    });
+   
+  }
+  newQn(){
+    this.addQn = new Add();
+this. questionlist.push(this.addQn)
+  } 
+  onPost(){
+    let body={
+      "testId":13,
+      "testName":this.chapForm.controls['moduleTest'].value,
+      "chapterId":this.chapForm.controls['courseId'].value,
+      "testDuration":this.chapForm.controls['duration'].value,
+      "passingGrade":this.chapForm.controls['passingGrade'].value,
+      "questionRequests":this.questionlist
+    }
+    console.log(body);
+    this.service.addQuestion(body).subscribe({
+      next:(res)=>{
+        console.log(res);
+        let response =res;
+        if(response[0] == '{'){
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+         }
+      },
+      error:(error)=>{
+        console.log(error.error)
+      }
+    })
+  }
+  // setQuestionForm(i:any){
+   
+  //   this.questionForm.patchValue({
+  //     questionText:[{
+  //       question:this.testDetails.questionRequests[i]['questionName'],
+  //       option_1:this.testDetails.questionRequests[i]['option_1'],
+  //       option_2:this.testDetails.questionRequests[i]['option_2'],
+  //       option_3:this.testDetails.questionRequests[i]['option_3'],
+  //       option_4:this.testDetails.questionRequests[i]['option_4'],
+  //       correctAnswer:this.testDetails.questionRequests[i]['correctAnswer'],
+  //       questionId:this.testDetails.questionRequests[i]['questionId'],
+  //       deleteStatus:this.testDetails.questionRequests[i]['deleteStatus']
+  //     }]
+  //   })
+    
+  // }
+  
 }

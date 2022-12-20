@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { log } from 'console';
 import { Session } from 'inspector';
 import { AdminLoginService } from '../services/admin-login.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,10 +35,12 @@ export class LoginComponent implements OnInit {
 
   logindata: any;
   message: any;
-  constructor(private router: Router, private al: AdminLoginService) {}
+ 
+  constructor(private router: Router, private al: AdminLoginService, ) {}
 
   ngOnInit(): void {
     console.log(this.loginForm);
+    
   }
   forgot() {
     this.login = false;

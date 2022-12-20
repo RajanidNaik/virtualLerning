@@ -150,11 +150,8 @@ getPro(){
     next:(res)=>{
       console.log(res);
       this.profileDetails = res;
-      // this.name = this.profileDetails.fullName;
-      // this.email = this.profileDetails.emailId;
-      // this.number = this.profileDetails.mobileNumber;
+      console.log(this.profileDetails);
       this.photo = this.profileDetails.profilePhoto;
-      
     },
     error:(error)=>{
       alert(error.error.message);

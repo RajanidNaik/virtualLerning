@@ -17,7 +17,7 @@ isSubscribed:boolean=true;
 value=70;
 data:any;
 date=new Date();
-limit=5;
+limit=8;
 student:any;
 token:any;
 ongoing:any;
@@ -28,6 +28,7 @@ course:any;
 progress:boolean=false;
 courseLimit=7;
 completeDeatails:any;
+response:any;
   constructor(private dialog:MatDialog,public service:QuestionService, public router:Router) { }
 
   ngOnInit(): void {
@@ -55,24 +56,7 @@ toDelete(i:any){
   alert('Before delete the student make sure that student unsubscribed or not');
   }
   
-openDialog(){
-  
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.disableClose = true;
-  dialogConfig.autoFocus = true;
-    dialogConfig.height='100%';
-    dialogConfig.width='100%';
-  dialogConfig.maxHeight='100vh';
-  dialogConfig.maxWidth = '100vw';
-  dialogConfig.panelClass = 'full-screen-modal',
-  dialogConfig.position ={
-    right:'0%',
-    top:'0%',
-    
-  }
-  this.dialog.open(DialogDashboardComponent,dialogConfig)   
-  
-}
+
 
 getStudent(){
   this.service.getStudentList(this.limit).subscribe((data)=>{
@@ -156,6 +140,8 @@ getCourseDetails(){
     }
   })
 }
+
+
  getVideoDetails(courseId:any){
 this.service.getAddCourseDetails(courseId).subscribe({
   next:(res)=>{
@@ -192,10 +178,47 @@ this.getStudent()
 }
 onScrollCourse(event:any){
   if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
-    this.courseLimit = this.courseLimit +1;
+    this.courseLimit = this.courseLimit +2;
     this.getCourseDetails();
     console.log('done')
     
       }
 }
+deleteCourse(id:any){
+  sessionStorage.setItem('courseId',JSON.stringify(id));
+  this.service.getAddCourseDetails(id).subscribe({
+    next:(res)=>{
+      this.response = res;
+    },
+    error:(error)=>{
+      alert(error);
+    },
+    complete:()=>{
+      sessionStorage.setItem('deleteCourseDetails',JSON.stringify(this.response));
+      this.openDialog();
+      this.getCourseDetails();
+      // this.getTotal();
+    }
+  })
+ 
+}
+openDialog(){
+ 
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+    dialogConfig.height='100%';
+    dialogConfig.width='100%';
+  dialogConfig.maxHeight='100vh';
+  dialogConfig.maxWidth = '100vw';
+  dialogConfig.panelClass = 'full-screen-modal',
+  dialogConfig.position ={
+    right:'0%',
+    top:'0%',
+    
+  }
+  this.dialog.open(DialogDashboardComponent,dialogConfig)   
+  
+}
+
 }
