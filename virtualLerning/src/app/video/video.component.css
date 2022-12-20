@@ -289,7 +289,14 @@ textarea {
   font-size: 18px;
   margin-bottom: 10px;
 }
-
+.nextbtnp{
+  font-size: 18px;
+  color: rgb(240, 220, 220);
+  float: right;
+  height: 44px;
+  width: 209.81px;
+  background-color: #ee5c4d;
+}
 .nextbtn {
   font-size: 18px;
   color: white;
@@ -374,6 +381,11 @@ height: 82%;
   position: absolute;
 left: 97px;
 width: 399.783px;
+height: 100%;
+}
+.containing{
+  height: 100%;
+  background-color: white;
 }
 .bottomDisplay{
   position: relative;

@@ -143,7 +143,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn" (click)="addChapter()">Add New +</button>
+        <button class="btn" [disabled]="videoForm.invalid" (click)="addChapter()">Add New +</button>
         <!-- [disabled]="videoForm.invalid" -->
       </div>
     </div>
@@ -191,8 +191,8 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                               <div class="dragAndDrop">Drag and drop multiple files</div>
                               <div class="browse">
                                 or
-                                <input type="file" accept="video/*" name="photo" id="upload" (change)="addSubvideo($event,preItem)" /><label
-                                  for="upload">Browse</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+                                <input type="file" accept="video/*" name="photo" id="upload3" (change)="addSubvideo($event,chapIndex,preIndex)" /><label
+                                  for="upload3">Browse</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                                 choose files
                               </div>
                             </div>
@@ -211,7 +211,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 <div *ngFor=" let subItem of subChapters(chapIndex).controls;let subIndex = index;">
                   <div class="input" [formGroupName]="subIndex">
                     <div class="box">
-                      <div  class="box" *ngIf="!subItem.value.videoUrl">
+                      <div  class="box" *ngIf="subItem.value.videoUrl">
                         <video width="100%" height="100%" controls="controls">
                           <source [src]="subItem.value.videoUrl" type="video/mp4">
                         </video>
@@ -238,15 +238,15 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 <button class="buttonN">Next</button>
               </div>
               <div class="btn1">
-                <button class="buttonP" (click)="addSubChapter(chapIndex) ">Add Sub Chapter</button>
+                <button class="buttonP" [disabled]="videoForm.invalid" (click)="addSubChapter(chapIndex) ">Add Sub Chapter</button>
               </div>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     </div>
     <div class="next">
-      <button *ngIf="false" class="nextbtn">Save</button>
+      <button  [disabled]="videoForm.invalid" class="nextbtp" (click)="addOverView()">Save</button>
       <button class="nextbtn" (click)="publish()">Publish</button>
     </div>
   </div>

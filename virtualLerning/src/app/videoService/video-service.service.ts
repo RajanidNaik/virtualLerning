@@ -17,4 +17,11 @@ export class VideoServiceService {
       responseType: 'text',
     });
   }
+  save(body:any){
+    console.log(body );
+    
+    return this.http.post(`${baseUrl}/admin/overView`,body, {
+      responseType: 'text',
+    });
+  }
 }

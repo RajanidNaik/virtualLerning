@@ -72,6 +72,7 @@ export class VideoComponent implements OnInit {
           subChapter: this.fb.array([
             this.fb.group({
               subChapterName: new FormControl('', [Validators.required]),
+              videolength: new FormControl('00:30:20'),
               videoUrl: new FormControl('', [Validators.required]),
             }),
           ]),
@@ -105,7 +106,7 @@ export class VideoComponent implements OnInit {
   publish() {
     console.log(this.videoForm.value);
   }
-  selected(){
+  selected() {
     sessionStorage.removeItem('catId');
   }
   addCategory() {
@@ -137,10 +138,11 @@ export class VideoComponent implements OnInit {
   }
 
   newSubChapter(): FormGroup {
-      return this.fb.group({
-        subChapterName: new FormControl('', [Validators.required]),
-        videoUrl: new FormControl('', [Validators.required]),
-      });
+    return this.fb.group({
+      subChapterName: new FormControl('', [Validators.required]),
+      videolength: new FormControl('00:30:20'),
+      videoUrl: new FormControl('', [Validators.required]),
+    });
   }
   addSubChapter(chapIndex: number) {
     this.adding = true;
@@ -236,7 +238,7 @@ export class VideoComponent implements OnInit {
     this.adding = false;
   }
 
-  addSubvideo(event: any,item:any) {
+  addSubvideo(event: any, cIndex: any,sIndex:any) {
     const id = Math.random().toString(36).substring(2);
     const file = event.target.files[0];
     let filePath = id;
@@ -250,20 +252,41 @@ export class VideoComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.ref.getDownloadURL().subscribe((url: any) => {
-            item.value.videoUrl=url;
+            this.videoForm.value.chapter[cIndex].subChapter[sIndex].videoUrl=url;
           });
         })
       )
-      .subscribe(); 
+      .subscribe();
   }
 
-  select( item:any){
-    
-  }
+  select(item: any) {}
 
   // log(a:any){
-    // console.log(typeof(a));
-    
-  // }
+  // console.log(typeof(a));
 
+  // }
+  addOverView(){
+    const body = {
+      courseName: this.videoForm.value.videoTitle,
+      categoryName: this.videoForm.value.category,
+      subCategoryName: this.videoForm.value.subCategory,
+      courseTagLine: this.videoForm.value.formatText,
+      description: this.videoForm.value.overview,
+      learningOutCome: this.videoForm.value.learning,
+      requirements: this.videoForm.value.requirement,
+      difficultyLevel: this.videoForm.value.level,
+      coursePhoto: this.videoForm.value.coursePhoto,
+      previewVideo: this.videoForm.value.previewVideo,
+      courseKeyword: this.videoForm.value.keyWords,
+    };
+    this.videoSer.save(body).subscribe({
+      next: (data) => {
+        alert('Request Sent Succefully');
+        console.log(data);
+      },
+      error: (data) => {
+        console.log(data);
+      },
+    });
+}
 }
