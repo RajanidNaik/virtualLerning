@@ -28,13 +28,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   position: absolute;
   right: 5%;
-  top: 15%;
+  top: 5%;
 }
 .personImg {
-  background-color: rgb(230, 169, 56);
   border-radius: 50%;
 }
 .personName {
@@ -45,4 +43,11 @@
   line-height: 1.1875rem;
   text-align: right;
   color: #292929;
+}
+.image{
+  
+  border-radius: 50%;
+  border:1px solid #000;
+  width: 4.3em;
+  height: 4.3em;
 }
