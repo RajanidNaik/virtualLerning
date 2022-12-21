@@ -61,7 +61,7 @@ export class VideoComponent implements OnInit {
   shows: any = [];
   validp = true;
   ngOnInit(): void {
-     this.response = sessionStorage.getItem('CourseID');
+     this.response = sessionStorage.getItem('CourseID')||239;
     console.log(typeof(this.response))
     
     
