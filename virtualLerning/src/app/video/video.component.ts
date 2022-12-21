@@ -8,7 +8,7 @@ import { VideoServiceService } from '../videoService/video-service.service';
 import { SubCatComponent } from '../sub-cat/sub-cat.component';
 import{AngularFireStorage,AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/compat/storage';
 import { finalize, map, Observable } from 'rxjs';
-
+import { AddVideo } from '../add-video';
 
 @Component({
   selector: 'app-video',
@@ -46,6 +46,10 @@ export class VideoComponent implements OnInit {
   task!: AngularFireUploadTask;
   uploadState!: Observable<unknown>;
   uploadProgress!: Observable<unknown>;
+
+//edit upload failed thing
+addVideo = new AddVideo();
+chapterArray:any
 
   constructor(
     public fb: FormBuilder,
@@ -96,6 +100,7 @@ export class VideoComponent implements OnInit {
         sessionStorage.getItem('addCourseDetails') || '[]'
       );
       console.log(this.completeDetails);
+      this.chapterArray = this.completeDetails.chapter;
       this.setValue();
 
     }
