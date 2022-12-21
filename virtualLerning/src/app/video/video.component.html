@@ -143,7 +143,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn" [disabled]="videoForm.invalid"  (click)="addChapter()">Add New +</button>
+        <button class="btn"  [disabled]="videoForm.invalid || !currVal||!currVideo"  (click)="addChapter()">Add New +</button>
         <!-- [disabled]="videoForm.invalid" -->
       </div>
     </div>
@@ -181,7 +181,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
           <!-- /\/\/\\/\\/\\/\/\/\\/\/\\/\/\\/\\/\/\\/\/\/\\/\\/\/ -->
           <div class="left">
             <div class="preview">
-              {{storeIndex(sIndex,chapIndex)}}
+              {{storesIndex(sIndex,chapIndex)}}
                   {{setcurrVideo()}}
                   <div class="contain" *ngIf="currVideo">
                       <video width="100%" height="100%" controls="controls">
@@ -207,7 +207,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <div class="bottomDisplay">
               <div class="videoScroll">
                 <div formArrayName="subChapter" *ngFor=" let subItem of subChapters(chapIndex).controls;let subIndex = index;">
-                  {{storeIndex(subChapters(chapIndex).length-1,chapIndex)}}
+                  {{storesIndex(subChapters(chapIndex).length-1,chapIndex)}}
                   {{setcurrVal()}}
                   {{setlength(subChapters(chapIndex).length-1)}}
                   <ng-container [formGroupName]="subIndex"> 
@@ -223,8 +223,8 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             </div>
           </div>
           <div class="right">
-            {{storeIndex(sIndex,chapIndex)}}
-              <div>{{cIndex}}{{sIndex}}
+            {{storesIndex(sIndex,chapIndex)}}
+              <div>
                 <span class="uploadSection"> Subchapter Name </span>
                 <div class="input">
                   {{setcurrVal()}}
@@ -233,7 +233,6 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               </div>
               <div class="takevalue">
                 <div class="btn">
-                  {{sIndex}}
                   <button class="buttonP"[disabled]="sIndex==0" (click)="prev()">Previous</button>
                   <button class="buttonN" [disabled]="sIndex <= length" (click)="next()">Next</button>
                 </div>
@@ -256,9 +255,9 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   </div>
 
   <div class="next">
-    <button   class="nextbtn" (click)="addOverView()" [disabled]="videoForm.invalid ">Save</button>
-    <button class="nextbtn" [disabled]="videoForm.invalid || !currVal||!currVideo" (click)="publish()">Publish</button>
+    <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal||!currVideo" (click)="addCourse()">Publish</button>
   </div>
+    <button (click)="preview()">show</button>
   </div>
 </form>
 
