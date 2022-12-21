@@ -53,6 +53,7 @@ export class DashBoardComponent implements OnInit {
   onBack() {
     this.first = true;
     this.second = false;
+    this.getCourseDetails();
   }
   onRecent() {
     this.second = true;
@@ -188,7 +189,7 @@ export class DashBoardComponent implements OnInit {
     ) {
       this.courseLimit = this.courseLimit + 2;
       this.getCourseDetails();
-      console.log('done');
+      
     }
   }
   deleteCourse(id: any) {

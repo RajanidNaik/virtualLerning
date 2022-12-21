@@ -181,7 +181,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
           <!-- /\/\/\\/\\/\\/\/\/\\/\/\\/\/\\/\\/\/\\/\/\/\\/\\/\/ -->
           <div class="left">
             <div class="preview">
-              {{storeIndex(sIndex,chapIndex)}}
+              {{storesIndex(sIndex,chapIndex)}}
                   {{setcurrVideo()}}
                   <div class="contain" *ngIf="currVideo">
                       <video width="100%" height="100%" controls="controls">
@@ -207,7 +207,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <div class="bottomDisplay">
               <div class="videoScroll">
                 <div formArrayName="subChapter" *ngFor=" let subItem of subChapters(chapIndex).controls;let subIndex = index;">
-                  {{storeIndex(subChapters(chapIndex).length-1,chapIndex)}}
+                  {{storesIndex(subChapters(chapIndex).length-1,chapIndex)}}
                   {{setcurrVal()}}
                   {{setlength(subChapters(chapIndex).length-1)}}
                   <ng-container [formGroupName]="subIndex"> 
@@ -223,7 +223,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             </div>
           </div>
           <div class="right">
-            {{storeIndex(sIndex,chapIndex)}}
+            {{storesIndex(sIndex,chapIndex)}}
               <div>{{cIndex}}{{sIndex}}
                 <span class="uploadSection"> Subchapter Name </span>
                 <div class="input">

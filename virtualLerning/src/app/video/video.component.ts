@@ -93,8 +93,6 @@ export class VideoComponent implements OnInit {
       this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
       console.log(this.completeDetails);
       this.setValue();
-   }else{
-  this.addChapter();
    }
 
     
@@ -175,12 +173,12 @@ export class VideoComponent implements OnInit {
       ].videoLink;
   }
 
-  storeIndex(index: any, chapIndex: any) {
+  storesIndex(index: any, chapIndex: any) {
     this.sIndex = index;
     this.cIndex = chapIndex;
 
 
-
+  }
   
   
   setValue(){
@@ -202,10 +200,7 @@ export class VideoComponent implements OnInit {
   appendSub(){
     let index =sessionStorage.getItem('Index');
   }
-  display(){
-    let index:any = sessionStorage.getItem('Index');
-    this.sIndex = parseInt(index)
-  }
+  
   display() {
     let index: any = sessionStorage.getItem('Index');
     this.sIndex = parseInt(index);

@@ -3,7 +3,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HeadDialogComponent } from '../head-dialog/head-dialog.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { QuestionService } from '../question.service';
-import html2canvas from 'html2canvas';
 import { OnSaveComponent } from '../on-save/on-save.component';
 @Component({
   selector: 'app-certificate',
@@ -73,5 +72,14 @@ export class CertificateComponent implements OnInit {
         );
       },
     });
+  }
+  setValue(){
+    this.certForm.patchValue({
+      title:'',
+      name:'',
+      course:'',
+      join:'',
+      end:''
+    })
   }
 }
