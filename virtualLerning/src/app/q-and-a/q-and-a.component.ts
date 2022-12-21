@@ -27,9 +27,12 @@ export class QAndAComponent implements OnInit {
   testDetails: any;
   questionlist: any = [];
   questions: any;
+  response: any;
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+     this.response = sessionStorage.getItem('CourseID');
+     
     this.chapForm = this.fb.group({
       chaptername: ['', Validators.required],
       duration: ['', Validators.required],

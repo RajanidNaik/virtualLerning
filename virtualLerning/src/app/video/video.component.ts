@@ -61,11 +61,8 @@ export class VideoComponent implements OnInit {
   shows: any = [];
   validp = true;
   ngOnInit(): void {
-    this.response= sessionStorage.getItem('response2')
-    this.response= JSON.parse(this.response);
+     this.response = sessionStorage.getItem('CourseID');
     console.log(typeof(this.response))
-   var thenum = this.response.message.match(/\d+$/)[0];
-   console.log(thenum);
     
     
     this.videoForm = new FormGroup({
