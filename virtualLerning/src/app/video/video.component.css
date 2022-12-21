@@ -21,7 +21,7 @@
   color: red;
   margin-top: 20px;
 }
-.error{
+.error {
   color: red;
   margin: 5px 0;
 }
@@ -85,7 +85,7 @@ label {
 }
 .titleInputV {
   margin-right: 15px;
-  width: 165px;
+width: 186px;
   font-size: 16px;
   height: 36px;
   background: #ffffff;
@@ -139,10 +139,10 @@ label {
   margin-bottom: 4vh;
   padding: 18px;
 }
-.notUpload > div:nth-child(1) {
-  height: 133.5px;
+.notUpload {
+  margin-top: 123px;
+  text-align: center;
 }
-
 .top {
   padding: 5px;
   display: flex;
@@ -188,6 +188,10 @@ mat-icon {
   margin-top: 9vh;
   margin-bottom: 4vh;
 }
+.box1 {
+  height: 90px;
+  width: 90px;
+}
 .green {
   margin-left: 13px;
   color: #1eab0d;
@@ -199,20 +203,31 @@ mat-icon {
   padding-bottom: 10px;
   height: 39vw;
 }
-.full,.subChapter{
-  height: 100%;
-  width: 100%;
+.full {
+  width: 47%;
+  height: 55%;
+  position: absolute;
+}
+.contain1 {
+  text-align: center;
+  padding-top: 10px;
 }
 .container {
   width: 50%;
   border: 2px solid turquoise;
 }
 .preview {
-  border: 2px solid rgb(250, 124, 6);
-  height: 80%;
-  width: 100%;
+  border: 2px dashed rgb(14, 13, 13);
+
+  position: absolute;
+  width: 47%;
+  height: 45%;
 }
 
+.contain {
+  height: 100%;
+  width: 100%;
+}
 .text {
   padding: 15px;
 }
@@ -227,16 +242,29 @@ mat-icon {
 }
 .buttonN {
   background: rgba(9, 41, 99, 0.2);
-  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.hund {
+  height: 100%;
+  width: 100%;
 }
 
 .btn {
   padding: 8px;
   padding-left: 19px;
-  margin-top: 25px;
+  margin-top: px;
   display: flex;
   justify-content: space-between;
 }
+.btn1 {
+  padding: 8px;
+  padding-left: 19px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
 .title1 {
   margin: 10px 0;
 }
@@ -261,7 +289,14 @@ textarea {
   font-size: 18px;
   margin-bottom: 10px;
 }
-
+.nextbtnp{
+  font-size: 18px;
+  color: rgb(240, 220, 220);
+  float: right;
+  height: 44px;
+  width: 209.81px;
+  background-color: #ee5c4d;
+}
 .nextbtn {
   font-size: 18px;
   color: white;
@@ -270,43 +305,89 @@ textarea {
   width: 209.81px;
   background-color: #ee5c4d;
 }
-.subChapter{
-  border:2px solid yellow ;
+.subChapter {
+  border: 2px solid yellow;
   display: flex;
 }
-.bottomDisplay{
-   
-    height: 20%;
-    width: 100%;
+.bottomDisplay {
+  position: relative;
+  top: 422px;
+  height: 18%;
+  width: 94%;
 }
-.left{
-   width: 68%;
-   height: 100%;
+.left {
+  width: 68%;
+  height: 100%;
 }
 .subchapName {
-margin: 10% 0;
-margin-left: 14px;
-font-weight: 600;
-font-size: 14px;
+  margin: 10% 0;
+  margin-left: 14px;
+  font-weight: 600;
+  font-size: 14px;
 }
-.subchapName input{
-margin-top: 10px;
+.subchapName input {
+  margin-top: 10px;
 }
-.videoScroll{
- width: 90%;
-margin: 2% 5%;
-border: 2px solid green;
-height: 93%;
+.videoScroll {
+  margin: 2% 5%;
+  /* border: 2px solid green; */
   display: flex;
   overflow: scroll;
-gap: 19px;
+  gap: 19px;
+  overflow-y: hidden;
 }
-.box{
-  border: 1px solid #10002e;
-  height: 83%;
-min-width: 85px;
+.box {
+  border: 1px dashed #10002e;
+  height: 90px;
+  min-width: 90px;
+}
+.contain1{
+  position: relative;
 }
 
-.right{
+.right {
   width: 32%;
+}
+
+.notUpload > div:nth-child(1) > img:nth-child(2) {
+  position: relative;
+  top: -84px;
+}
+.notUpload > div:nth-child(1) {
+  height: 117.5px;
+}
+
+.relative {
+  position: absolute;
+}
+.absolute {
+  position: relative;
+  font-size: 20px;
+  width: 77%;
+}
+
+.takevalue {
+  margin-top: 61px;
+}
+.head {
+  margin-left: 5%;
+}
+.preview{
+position: relative;
+width: 92%;
+height: 82%;
+}
+.containers{
+  position: absolute;
+left: 97px;
+width: 399.783px;
+height: 100%;
+}
+.containing{
+  height: 100%;
+  background-color: white;
+}
+.bottomDisplay{
+  position: relative;
+  top: 0;
 }

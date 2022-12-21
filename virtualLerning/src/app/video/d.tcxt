@@ -1,56 +1,67 @@
+<ng-container formArrayName="subChapter">
+          <div class="left">
+            <div class="preview">
+                <div class="containers" *ngFor=" let preItem of subChapters(chapIndex).controls;let preIndex = index;">
+                    <div class="containing" [formGroupName]="preIndex" >
+                        <div class="contain1" *ngIf="!preItem.value.videoUrl">
 
+                            <div class="notUpload">
+                              <div>
+                                <ngx-file-drop (onFileDrop)="filedrop($event)"> </ngx-file-drop>
+                                <img src="assets/add-course/Vector.png" alt="" />
+                              </div>
+                              <div class="dragAndDrop">Drag and drop multiple files</div>
+                              <div class="browse">
+                                or
+                                <input type="file" accept="video/*" name="photo" id="upload3" (change)="addSubvideo($event,preItem)" /><label
+                                  for="upload3">Browse</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+                                choose files
+                              </div>
+                            </div>
+                        </div>
+                        <div class="contain" *ngIf="preItem.value.videoUrl">
+                            <video width="100%" height="100%" controls="controls">
+                              <source [src]="preItem.value.videoUrl" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
 
-div class="imgUpload" *ngIf="plus">
-        <div class="add">
-          <div class="img">
-            <div class="notUpload">
-              <div>
-                <ngx-file-drop> </ngx-file-drop>
-                <img src="assets/add-course/Vector.png" alt="" />
-              </div>
-              <div class="dragAndDrop">Drag and drop multiple files</div>
-              <div class="browse">
-                or
-                <input type="file" name="photo" id="upload" /><label
-                  for="upload"
-                  >Browse</label
-                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
-                choose files
+                </div>
+            </div>
+            <div class="bottomDisplay">
+              <div class="videoScroll">
+                <div *ngFor=" let subItem of subChapters(chapIndex).controls;let subIndex = index;">
+                  <div class="input" [formGroupName]="subIndex">
+                    <div class="box">
+                      <div  class="box" *ngIf="subItem.value.videoUrl">
+                        <video width="100%" height="100%" controls="controls">
+                          <source [src]="subItem.value.videoUrl" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- <div formArrayName="subSections" *ngFor="let k of field.get('subSections').controls; let y = index;"></div> -->
-          <div class="videos">
-            <div class="videoItem" *ngFor="let vide of array"></div>
-          </div>
-        </div>
-        <div class="Subchap">
-          <div class="name">Sub Chapter Name</div>
-          <div>
-            <input class="titleInput" type="text" />
-          </div>
-          <div>
-            Upload Support Document * <input id="input" type="file" /><label
-              for="upload"
-              >Browse</label
-            >
-          </div>
-          <div class="btns">
-            <div>
-              <button class="buttonP">Previous</button>
+          <div class="right">
+            <div class="head">
+              <span class="uploadSection"> Subchapter Name </span>
+              <div *ngFor=" let subname of subChapters(chapIndex).controls;let nameInd = index;">
+                <div class="relative" [formGroupName]="nameInd">
+                  <input class="absolute" type="text" formControlName="subChapterName">
+                </div>
+              </div>
             </div>
-            <div class="btnX">
-              <div>
+            <div class="takevalue">
+              <div class="btn">
+
+                <button class="buttonP">Previous</button>
                 <button class="buttonN">Next</button>
               </div>
+              <div class="btn1">
+                <button class="buttonP"  (click)="addSubChapter(chapIndex) ">Add Sub Chapter</button>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="next">
-    <button *ngIf="false" class="nextbtn">Save</button>
-    <button class="nextbtn" (click)="publish()">Publish</button>
-  </div>
-</form>
+          </div>  
+        </ng-container>

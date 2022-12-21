@@ -10,10 +10,9 @@ export class AdminLoginService {
     'http://virtuallearnadmin-env.eba-vvpawj4n.ap-south-1.elasticbeanstalk.com/admin';
 
   adminLogin(body: any) {
-    return this.http.put(this.login+'/login',
-      body,
-      { observe: 'response' }
-    );
+    return this.http.put(`${baseUrl}/admin/login`, body, {
+      observe: 'response',
+    });
   }
   resetPass(body: any) {
     return this.http.post(`${baseUrl}/admin/send`, body, {
