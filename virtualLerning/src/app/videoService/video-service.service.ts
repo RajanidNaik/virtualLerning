@@ -20,8 +20,9 @@ export class VideoServiceService {
   save(body:any){
     console.log(body );
     
-    return this.http.post(`${baseUrl}/admin/overView`,body, {
-      responseType: 'text',
-    });
+    return 0;
+    //  this.http.post(`${baseUrl}/admin/overView`,body, {
+    //   responseType: 'text',
+    // });
   }
 }

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@ang
 import { MatDialog } from '@angular/material/dialog';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { DialogCategoryComponent } from '../dialog-category/dialog-category.component';
-import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { NgxFileDropEntry } from 'ngx-file-drop';
 import { VideoServiceService } from '../videoService/video-service.service';
 import { SubCatComponent } from '../sub-cat/sub-cat.component';
 import{AngularFireStorage,AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/compat/storage';
@@ -22,7 +22,7 @@ export class VideoComponent implements OnInit {
   isChecked: any;
   id: any;
   subChapVal = '';
-
+  length=0;
   diffLevel = ['Advanced', 'Beginner'];
   videoForm!: FormGroup;
   skills = new FormArray([]);
@@ -33,7 +33,7 @@ export class VideoComponent implements OnInit {
   cIndex = 0;
   previewVideo: any;
   public Editor = ClassicEditor;
-
+  currVideo = '';
   sIndex = 0;
 
   completeDetails: any;
@@ -48,11 +48,13 @@ export class VideoComponent implements OnInit {
     private videoSer: VideoServiceService,
     private af: AngularFireStorage
   ) {}
+
   adding = true;
+  currVal = 99;
   category: any;
   info: any;
   shows: any = [];
-
+  validp = true;
   ngOnInit(): void {
     this.videoForm = new FormGroup({
       videoTitle: new FormControl('', [Validators.required]),
@@ -69,11 +71,11 @@ export class VideoComponent implements OnInit {
       chapter: this.fb.array([
         this.fb.group({
           chapterName: new FormControl('', [Validators.required]),
-          subChapter: this.fb.array([
+          lessonsList: this.fb.array([
             this.fb.group({
-              subChapterName: new FormControl('', [Validators.required]),
-              videolength: new FormControl('00:30:20'),
-              videoUrl: new FormControl('', [Validators.required]),
+              lessonName: new FormControl(''),
+              lessonDuration: new FormControl('00:30:20'),
+              videoLink: new FormControl(''),
             }),
           ]),
         }),
@@ -122,26 +124,27 @@ export class VideoComponent implements OnInit {
 
   newChapter(): FormGroup {
     return this.fb.group({
-      chapterName: new FormControl('', [Validators.required]),
-      subChapter: this.fb.array([this.newSubChapter()]),
+      chapterName: new FormControl('',[Validators.required]),
+      lessonsList: this.fb.array([this.newSubChapter()]),
     });
   }
 
   addChapter() {
     this.uploadFailed.push(false);
     this.uploadSuccess.push(false);
+    this.sIndex = 0;
     this.chapters().push(this.newChapter());
   }
 
   subChapters(chapIndex: number): FormArray {
-    return this.chapters().at(chapIndex).get('subChapter') as FormArray;
+    return this.chapters().at(chapIndex).get('lessonsList') as FormArray;
   }
 
   newSubChapter(): FormGroup {
     return this.fb.group({
-      subChapterName: new FormControl('', [Validators.required]),
-      videolength: new FormControl('00:30:20'),
-      videoUrl: new FormControl('', [Validators.required]),
+      lessonName: new FormControl(''),
+      lessonDuration: new FormControl('00:30:20'),
+      videoLink: new FormControl(''),
     });
   }
   addSubChapter(chapIndex: number) {
@@ -161,19 +164,32 @@ export class VideoComponent implements OnInit {
       requirement: this.completeDetails.requirements,
       level: this.completeDetails.difficultyLevel,
       keyWords: this.completeDetails.keywords[0]['keyword'],
-      chapter: [
-        {
-          chapterName: this.completeDetails.chapter[0]['chapterName'],
-          subChapter: [
-            {
-              subChapterName:
-                this.completeDetails.chapter[0]['lessonList'][0]['lessonName'],
-            },
-          ],
-        },
-      ],
+    //   chapter: [
+    //     {
+    //       chapterName: this.completeDetails.chapter[0]['chapterName'],
+    //       lessonsList: [
+    //         {
+    //           lessonName:
+    //             this.completeDetails.chapter[0]['lessonList'][0]['lessonName'],
+    //         },
+    //       ],
+    //     },
+    //   ],
     });
   }
+  setcurrVal() {
+    this.currVal =
+      this.videoForm.value.chapter[this.cIndex].lessonsList[
+        this.sIndex
+      ].lessonName;
+  }
+  setcurrVideo() {
+    this.currVideo =
+      this.videoForm.value.chapter[this.cIndex].lessonsList[
+        this.sIndex
+      ].videoLink;
+  }
+
   storeIndex(index: any, chapIndex: any) {
     this.sIndex = index;
     this.cIndex = chapIndex;
@@ -182,14 +198,15 @@ export class VideoComponent implements OnInit {
     let index: any = sessionStorage.getItem('Index');
     this.sIndex = parseInt(index);
   }
-  setSubChap(value: any, i: any) {
-    this.videoForm.value.chapter[this.cIndex].subChapter[
+  setSubChap(value: any) {
+    this.videoForm.value.chapter[this.cIndex].lessonsList[
       this.sIndex
-    ].subChapterName = value;
-    this.id = i;
+    ].lessonName = value;
   }
 
   uploadCoursePhoto(event: any) {
+    console.log(event);
+
     const id = Math.random().toString(36).substring(2);
     const file = event.target.files[0];
     let filePath = id;
@@ -238,7 +255,7 @@ export class VideoComponent implements OnInit {
     this.adding = false;
   }
 
-  addSubvideo(event: any, cIndex: any,sIndex:any) {
+  addSubvideo(event: any) {
     const id = Math.random().toString(36).substring(2);
     const file = event.target.files[0];
     let filePath = id;
@@ -252,11 +269,21 @@ export class VideoComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.ref.getDownloadURL().subscribe((url: any) => {
-            this.videoForm.value.chapter[cIndex].subChapter[sIndex].videoUrl=url;
+            this.videoForm.value.chapter[this.cIndex].lessonsList[this.sIndex].videoLink = url;
+            console.log(
+              this.videoForm.value.chapter[this.cIndex].lessonsList[this.sIndex]
+                .videoLink
+            );
+            
           });
         })
       )
       .subscribe();
+       
+         this.videoForm.value.chapter[this.cIndex].lessonsList[
+           this.sIndex
+         ].videoLink=this.currVideo;
+         
   }
 
   select(item: any) {}
@@ -265,7 +292,7 @@ export class VideoComponent implements OnInit {
   // console.log(typeof(a));
 
   // }
-  addOverView(){
+  addOverView() {
     const body = {
       courseName: this.videoForm.value.videoTitle,
       categoryName: this.videoForm.value.category,
@@ -279,14 +306,36 @@ export class VideoComponent implements OnInit {
       previewVideo: this.videoForm.value.previewVideo,
       courseKeyword: this.videoForm.value.keyWords,
     };
-    this.videoSer.save(body).subscribe({
-      next: (data) => {
-        alert('Request Sent Succefully');
-        console.log(data);
-      },
-      error: (data) => {
-        console.log(data);
-      },
-    });
-}
+    this.videoSer.save(body)
+    // .subscribe({
+    //   next: (data: any) => {
+    //     alert('Request Sent Succefully');
+    //     console.log(data);
+    //   },
+    //   error: (data: any) => {
+    //     console.log(data);
+    //   },
+    // });
+    sessionStorage.setItem('addCourseDetails',JSON.stringify(body));
+  }
+
+  filedrop(event: NgxFileDropEntry[]) {
+    console.log(event);
+  }
+  next(){
+    this.sIndex++;
+    this.setcurrVal()
+    console.log("BNEX");
+  }
+  prev(){
+    this.sIndex --;
+    this.setcurrVal();
+    console.log(this.videoForm.value.chapter[this.cIndex].lessonsList[
+        this.sIndex
+      ].lessonName);
+  }
+  setlength(item:any){
+    this.length=item;
+  }
+
 }
