@@ -17,12 +17,16 @@ export class VideoServiceService {
       responseType: 'text',
     });
   }
-  save(body:any){
+  overview(body:any){
     console.log(body );
-    
-    return 0;
-    //  this.http.post(`${baseUrl}/admin/overView`,body, {
-    //   responseType: 'text',
-    // });
+    return this.http.post(`${baseUrl}/admin/overView`,body, {
+      responseType: 'text',
+    });
   }
+  addChapters(body:any){
+    console.log(body);
+    return this.http.post(`${baseUrl}/admin/chapter`, body, {
+      responseType: 'text',
+    });
+  } 
 }
