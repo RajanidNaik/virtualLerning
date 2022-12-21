@@ -27,6 +27,7 @@ export class QAndAComponent implements OnInit {
   testDetails: any;
   questionlist: any = [];
   questions: any;
+  AddedChapter:any;
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -141,6 +142,9 @@ export class QAndAComponent implements OnInit {
   newQn() {
     this.addQn = new Add();
     this.questionlist.push(this.addQn);
+  }
+  deleteQuestion(i:any){
+    this.questionlist.splice(i);
   }
   onPost() {
     let body = {
