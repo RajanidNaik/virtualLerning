@@ -30,6 +30,7 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
 import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
 import { AuthserviceInterceptor } from './authservice.interceptor';
 import { DeleteStudentComponent } from './delete-student/delete-student.component';
+import { OnSaveComponent } from './on-save/on-save.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { DeleteStudentComponent } from './delete-student/delete-student.componen
     DialogCategoryComponent,
     SuperAdmindashboardComponent,
     DeleteStudentComponent,
+    OnSaveComponent,
   ],
 
   imports: [

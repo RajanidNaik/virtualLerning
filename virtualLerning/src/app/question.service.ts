@@ -1,76 +1,104 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {baseUrl} from './../environments/environment';
+import { baseUrl } from './../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuestionService {
   formData: any;
   nkm: any;
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) {}
   // getQuestionJson(){
   //   return this.http.get<any>("assets/questions.json");
   // }
-  getStudentList(limit:any):Observable<any>{
-    return this.http.get(`${baseUrl}/admin/studentList?pageNumber=1&limit=${limit}`);
+  getStudentList(limit: any): Observable<any> {
+    return this.http.get(
+      `${baseUrl}/admin/studentList?pageNumber=1&limit=${limit}`
+    );
   }
-  getTotal():Observable<any>{
+  getTotal(): Observable<any> {
     return this.http.get(`${baseUrl}/admin/dashBoard/header`);
   }
-  toDelete(body:any){
+  toDelete(body: any) {
     // console.log(body);  let formData = new FormData();
-  //   formData.set('file',body);
-  //  console.log(formData);
-    
-    return this.http.delete(`${baseUrl}/admin/deleteStudent`,{body,responseType:'text'});
-     
+    //   formData.set('file',body);
+    //  console.log(formData);
+
+    return this.http.delete(`${baseUrl}/admin/deleteStudent`, {
+      body,
+      responseType: 'text',
+    });
   }
-  toSubscribe(body:any):Observable<any>{
-    return this.http.put(`${baseUrl}/admin/subscribe`,body);
+  toSubscribe(body: any): Observable<any> {
+    return this.http.put(`${baseUrl}/admin/subscribe`, body);
   }
-  getProfile():Observable<any>{
+  getProfile(): Observable<any> {
     return this.http.get(`${baseUrl}/admin/getProfile`);
   }
-  updateProfile(body:any){
+  updateProfile(body: any) {
     console.log(body);
 
     var body2 = new FormData();
-    body2.append('profilePhoto',body.profilePhoto);
-    body2.append('fullName',body.fullName);
-    body2.append('mobileNumber',body.mobileNumber);
+    body2.append('profilePhoto', body.profilePhoto);
+    body2.append('fullName', body.fullName);
+    body2.append('mobileNumber', body.mobileNumber);
 
     for (const value of Object.entries(body2)) {
-      console.log(value[0],value[1]);
+      console.log(value[0], value[1]);
     }
     // debugger;
-    
-    return this.http.post(`${baseUrl}/admin/save`,body2,{responseType:'text'});
+
+    return this.http.post(`${baseUrl}/admin/save`, body2, {
+      responseType: 'text',
+    });
   }
 
-
-  getCourse(limit:any):Observable<any>{
-    return this.http.get(`${baseUrl}/admin/coursesAdded?pageNumber=1&limit=${limit}`);
+  getCourse(limit: any): Observable<any> {
+    return this.http.get(
+      `${baseUrl}/admin/coursesAdded?pageNumber=1&limit=${limit}`
+    );
   }
 
-  changePassword(body:any):Observable<any>{
-    return this.http.put(`${baseUrl}/admin/changePassword`,body,{responseType:'text'})
+  changePassword(body: any): Observable<any> {
+    return this.http.put(`${baseUrl}/admin/changePassword`, body, {
+      responseType: 'text',
+    });
   }
-  getAddCourseDetails(id:any):Observable<any>{
+  getAddCourseDetails(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/admin/courseDetails?courseId=${id}`);
   }
-deleteCourse(id:any):Observable<any>{
-  return this.http.put(`${baseUrl}/admin/deleteCourse?courseId=${id}`,{responseType:'text'})
-}
-
-
-
-  addQuestion(body:any):Observable<any>{
-    return this.http.post(`${baseUrl}/admin/addTest`,body,{responseType:'text'})
+  deleteCourse(id: any): Observable<any> {
+    return this.http.put(`${baseUrl}/admin/deleteCourse?courseId=${id}`, {
+      responseType: 'text',
+    });
   }
-  getQuestion(id:any):Observable<any>{
+
+  addQuestion(body: any): Observable<any> {
+    return this.http.post(`${baseUrl}/admin/addTest`, body, {
+      responseType: 'text',
+    });
+  }
+  getQuestion(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/admin/QuestionAndAns?chapterId=${id}`);
+  }
+
+  getCertificateStudent(): Observable<any> {
+    return this.http.get(`${baseUrl}/admin/course/completed`);
+  }
+  saveCertificate(body: any) {
+    var body2 = new FormData();
+    body2.append('template', body.template);
+    body2.append('userName', body.userName);
+    body2.append('courseId', body.courseId);
+
+    for (const value of Object.entries(body2)) {
+      console.log(value[0], value[1]);
+    }
+    return this.http.post(`${baseUrl}/admin/course/certificate/save`, body2, {
+      responseType: 'text',
+    });
   }
 }

@@ -5,344 +5,286 @@
   <div class="head">
     <app-header></app-header>
   </div>
-  <div class="contentBox" >
+  <div class="contentBox">
     <div *ngIf="first">
-    <div class="day">
-      <div class="week">Today</div>
-      <div class="date">{{date | date:'ccc dd'}},&nbsp;{{date | date:'yyyy'}}&nbsp;|&nbsp;{{date|date:'h:mm a'}}</div>
-    </div>
-    <div class="recentBox">
-      <div class="recent">
-        <div class="recentAdd">Recently&nbsp;courses&nbsp;added</div>
-        <div class="view" (click)="onRecent()">View&nbsp;all</div>
-      </div>
-      <div class="videoUpload">
-        <!-- <div class="video">
-          <div class="videoBox">
-            <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" />
-            <div class="play">
-              <mat-icon>play_arrow</mat-icon>
-            </div>
-          </div>
-
-          <div>Poster&nbsp;design&nbsp;tutorial</div>
-          <div class="done">
-            <mat-icon>done</mat-icon>
-          </div>
-        </div>
-        <div class="icondelete">
-          <mat-icon (click)="openDialog()">delete_outline</mat-icon>
-        </div> -->
-        <div class="gap1" *ngFor="let c of course">
-          <div class="video">
-            <div class="videoBox">
-              <video  controls  class="image">
-                <source src="{{c.previewVideo}}" type="video/mp4">
-                <source src="{{c.previewVideo}}" type="video/ogg">
-              </video>
-              <!-- <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" /> -->
-              <!-- <div class="play">
-                <mat-icon>play_arrow</mat-icon>
-              </div> -->
-            </div>
-            <div class="videoname">
-              <div class="videoLine1">{{c.courseName}}</div>
-              <div class="progressbar" *ngIf="progress">
-                <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
-              </div>
-              <div class="add" *ngIf="c.uploadedStatus">Added&nbsp;on&nbsp;{{c.uploadedDate}}</div>
-                <div class="add" *ngIf="!c.uploadedStatus">Tried&nbsp;on&nbsp;{{c.uploadedDate}}</div>
-            </div>
-            <!-- <div class="videoLine">{{c.courseName}}</div> -->
-            
-          </div>
-          <div class="iconList1">
-            <div class="done" *ngIf="c.uploadedStatus">
-              <mat-icon>done</mat-icon>
-            </div>
-              <div class="error" *ngIf="!c.uploadedStatus">
-                  <div class="errorimage">
-                      <img src="/assets/error.png">
-                  </div>
-                  <div class="errorline">Upload&nbsp;failed</div>
-              </div>
-          <div class="iconclose" *ngIf="!c.uploadedStatus">
-              <mat-icon (click)="getVideoDetails(c.courseId)">refresh</mat-icon>
-            </div>
-          <div class="iconclose">
-            <mat-icon (click)="deleteCourse(c.courseId)">delete_outline</mat-icon>
-          </div>
-          <div class="iconclose" *ngIf="progress">
-            <mat-icon>close</mat-icon>
-          </div>
-      </div>
-        </div>
-        
-      </div>
-      <!-- <div class="videoUpload">
-      <div class="video">
-        <div class="videoBox">
-          <img class="image" src="/assets/unsplash_ubIWo074QlU.png" />
-        </div>
-        <div class="videoname">
-          <div>Graphic&nbsp;design&nbsp;part&nbsp;1</div>
-          <div class="progressbar">
-            <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
-          </div>
+      <div class="day">
+        <div class="week">Today</div>
+        <div class="date">
+          {{ date | date : "ccc dd" }},&nbsp;{{
+            date | date : "yyyy"
+          }}&nbsp;|&nbsp;{{ date | date : "h:mm a" }}
         </div>
       </div>
-    </div> -->
-    </div>
-    <div class="count">
-      <div class="studentCount1">
-        <div class="studentnumber">
-          <div class="student">Total&nbsp;Student</div>
-          <div class="number">{{data.totalStudentsEnrolled||0}}</div>
+      <div class="recentBox">
+        <div class="recent">
+          <div class="recentAdd">Recently&nbsp;courses&nbsp;added</div>
+          <div class="view" (click)="onRecent()">View&nbsp;all</div>
         </div>
-        <div class="studentimage">
-          <img src="/assets/Group 74.png" />
-        </div>
-      </div>
-      <div class="studentCount2">
-        <div class="studentnumber">
-          <div class="student">Overall&nbsp;Rseult</div>
-
-          <div class="number">{{data.overallResult || 0}}%</div>
-
-        </div>
-        <div class="studentimage">
-          <img src="/assets/cup.png" />
-        </div>
-      </div>
-      <div class="studentCount3">
-        <div class="studentnumber">
-          <div class="student">Total&nbsp;Courses</div>
-          <div class="number">{{data.totalCoursesAdded}}</div>
-        </div>
-        <div class="studentimage">
-          <img src="/assets/course.png" />
-        </div>
-      </div>
-    </div>
-    <div class="studentDetails">
-      <div class="aboveTable">
-        <div class="above">Total&nbsp;Student</div>
-        <div class="people">{{data.totalStudentsEnrolled}}&nbsp;people</div>
-      </div>
-      <div class="studentList" (scroll) = "onScrolling($event)">
-        <table>
-          <tr>
-            <th><p></p></th>
-            <th>
-              <div class="tablehead">
-                <p>Name</p>
-                <p class="icon">
-                  <mat-icon>keyboard_arrow_up</mat-icon>
-                  <mat-icon>keyboard_arrow_down</mat-icon>
-                </p>
-              </div>
-            </th>
-            <th>
-              <div class="tablehead">
-                <p>Joined&nbsp;date</p>
-                <p class="icon">
-                  <mat-icon>keyboard_arrow_up</mat-icon>
-                  <mat-icon>keyboard_arrow_down</mat-icon>
-                </p>
-              </div>
-            </th>
-            <th>
-              <div class="tablehead">
-                <p>course&nbsp;title</p>
-                <p class="icon">
-                  <mat-icon>keyboard_arrow_up</mat-icon>
-                  <mat-icon>keyboard_arrow_down</mat-icon>
-                </p>
-              </div>
-            </th>
-            <th>
-              <div class="tablehead">
-                <p>Completed&nbsp;date</p>
-                <p class="icon">
-                  <mat-icon>keyboard_arrow_up</mat-icon>
-                  <mat-icon>keyboard_arrow_down</mat-icon>
-                </p>
-              </div>
-            </th>
-            <th>
-              <div class="tablehead">
-                <p>Status</p>
-                <p class="icon">
-                  <mat-icon>keyboard_arrow_up</mat-icon>
-                  <mat-icon>keyboard_arrow_down</mat-icon>
-                </p>
-              </div>
-            </th>
-            <th>
-              <div class="tablehead">
-                <p>Subscribe</p>
-                <p class="icon">
-                  <mat-icon>keyboard_arrow_up</mat-icon>
-                  <mat-icon>keyboard_arrow_down</mat-icon>
-                </p>
-              </div>
-            </th>
-          </tr>
-          <tr *ngFor="let d of student; let i = index">
-           
-            <td>
-              <div (click)="toDelete(i)">
-                <div class="btn" *ngIf="!todelete[i]">
-                  <mat-icon >check_box_outline_blank</mat-icon>
-                </div>
-                <div class="btn1" *ngIf="todelete[i]">
-                  <mat-icon >check_box</mat-icon>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="profile">
-                <img class="proimage" src="{{d.profilePhoto}}" />
-                <p>{{d.fullName}}</p>
-              </div>
-            </td>
-            <td><div class="startdate">{{d.joinDate}}</div></td>
-            <td>
-              <div class="cline">
-                {{d.courseName}}
-              </div>
-            </td>
-            {{onComplete(i)}}
-            <td><div class="startdate">{{d.completedDate}}</div></td>
-            <td>
-              <div class="complete" *ngIf="complete">
-                <div class="color"><mat-icon>lens</mat-icon></div>
-                <div class="comline">Completed</div>
-              </div>
-             
-              <div class="ongoing" *ngIf="ongoing">
-                    <div class="color1"><mat-icon>lens</mat-icon></div>
-                    <div class="comline1">on&nbsp;Going</div>
-                  </div>
-            </td>
-            <td>
-              {{toSubscribe(i)}}
-              <div (click)="subscribe(d,i)">
-                <!-- <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"  ></mat-slide-toggle> -->
-              <div *ngIf="sub[i]">
-                <img src="/assets/Switch on.png">
-              </div>
-              <div *ngIf="!sub[i]">
-                <img src="/assets/Switch off.png">
-              </div>
-              </div>
-            </td>
-            <div class="toDelete" *ngIf="todelete[i]">
-              <mat-icon (click)="deleteStudent(d)">delete</mat-icon>
-            </div>
-          </tr>
-        </table>
-      </div>
-    </div>
-   </div>
-
-
-<div class="secondBlock" *ngIf="second">
-    <div class="back">
-        <div class="backIcon">
-            <mat-icon (click)="onBack()">keyboard_arrow_left</mat-icon>
-        </div>
-        <div class="backline">Recently&nbsp;courses&nbsp;added</div>
-        
-    </div>
-    <div class="recentAddVideo" (scroll)="onScrollCourse($event)">
-        <!-- <div class="gap">
-        <div class="video">
-            <div class="videoBox">
-              <img class="image" src="/assets/unsplash_ubIWo074QlU.png" />
-            </div>
-            <div class="videoname">
-              <div class="videoLine">Python&nbsp;programming&nbsp;for&nbsp;school&nbsp;students</div>
-              <div class="progressbar">
-                <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
-              </div>
-            </div>
-            
-          </div>
-          <div class="iconclose">
-            <mat-icon>close</mat-icon>
-          </div>
-        </div> -->
-        <!-- <div  class="gap">
+        <div class="videoUpload">
+          <div class="gap1" *ngFor="let c of course">
             <div class="video">
               <div class="videoBox">
-                <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" />
-                <div class="play">
-                  <mat-icon>play_arrow</mat-icon>
-                </div>
-              </div>
-    
-              <div class="videoLine">Poster&nbsp;design&nbsp;tutorial</div>
-              <div class="done">
-                <mat-icon>done</mat-icon>
-              </div>
-            </div>
-            <div class="iconclose">
-              <mat-icon (click)="openDialog()">delete_outline</mat-icon>
-            </div>
-          </div> -->
-
-          <div class="gap" *ngFor="let c of course">
-            <div class="video">
-              <div class="videoBox1">
-                <video  controls  class="image">
-                  <source src="{{c.previewVideo}}" type="video/mp4">
-                  <source src="{{c.previewVideo}}" type="video/ogg">
+                <video controls class="image">
+                  <source src="{{ c.previewVideo }}" type="video/mp4" />
+                  <source src="{{ c.previewVideo }}" type="video/ogg" />
                 </video>
-                <!-- <img class="image" src="/assets/unsplash_RhGK4qOwxxw.png" /> -->
-                <!-- <div class="play">
-                  <mat-icon>play_arrow</mat-icon>
-                </div> -->
               </div>
               <div class="videoname">
-                <div class="videoLine">{{c.courseName}}</div>
+                <div class="videoLine1">{{ c.courseName }}</div>
                 <div class="progressbar" *ngIf="progress">
-                  <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
+                  <mat-progress-bar
+                    mode="determinate"
+                    [value]="value"
+                  ></mat-progress-bar>
                 </div>
-                <div class="add" *ngIf="c.uploadedStatus">Added&nbsp;on&nbsp;{{c.uploadedDate}}</div>
-                <div class="add" *ngIf="!c.uploadedStatus">Tried&nbsp;on&nbsp;{{c.uploadedDate}}</div>
+                <div class="add" *ngIf="c.uploadedStatus">
+                  Added&nbsp;on&nbsp;{{ c.uploadedDate }}
+                </div>
+                <div class="add" *ngIf="!c.uploadedStatus">
+                  Tried&nbsp;on&nbsp;{{ c.uploadedDate }}
+                </div>
               </div>
-              <!-- <div class="videoLine">{{c.courseName}}</div> -->
-              
             </div>
-            <div class="iconList">
+            <div class="iconList1">
               <div class="done" *ngIf="c.uploadedStatus">
                 <mat-icon>done</mat-icon>
               </div>
-                <div class="error" *ngIf="!c.uploadedStatus">
-                    <div class="errorimage">
-                        <img src="/assets/error.png">
-                    </div>
-                    <div class="errorline">Upload&nbsp;failed</div>
+              <div class="error" *ngIf="!c.uploadedStatus">
+                <div class="errorimage">
+                  <img src="/assets/error.png" />
                 </div>
-            <div class="iconclose" *ngIf="!c.uploadedStatus">
-                <mat-icon (click)="getVideoDetails(c.courseId)">refresh</mat-icon>
+                <div class="errorline">Upload&nbsp;failed</div>
               </div>
+              <div class="iconclose" *ngIf="!c.uploadedStatus">
+                <mat-icon (click)="getVideoDetails(c.courseId)"
+                  >refresh</mat-icon
+                >
+              </div>
+              <div class="iconclose">
+                <mat-icon (click)="deleteCourse(c.courseId)"
+                  >delete_outline</mat-icon
+                >
+              </div>
+              <div class="iconclose" *ngIf="progress">
+                <mat-icon>close</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="count">
+        <div class="studentCount1">
+          <div class="studentnumber">
+            <div class="student">Total&nbsp;Student</div>
+            <div class="number">{{ data.totalStudentsEnrolled || 0 }}</div>
+          </div>
+          <div class="studentimage">
+            <img src="/assets/Group 74.png" />
+          </div>
+        </div>
+        <div class="studentCount2">
+          <div class="studentnumber">
+            <div class="student">Overall&nbsp;Rseult</div>
+
+            <div class="number">{{ data.overallResult || 0 }}%</div>
+          </div>
+          <div class="studentimage">
+            <img src="/assets/cup.png" />
+          </div>
+        </div>
+        <div class="studentCount3">
+          <div class="studentnumber">
+            <div class="student">Total&nbsp;Courses</div>
+            <div class="number">{{ data.totalCoursesAdded }}</div>
+          </div>
+          <div class="studentimage">
+            <img src="/assets/course.png" />
+          </div>
+        </div>
+      </div>
+      <div class="studentDetails">
+        <div class="aboveTable">
+          <div class="above">Total&nbsp;Student</div>
+          <div class="people">{{ data.totalStudentsEnrolled }}&nbsp;people</div>
+        </div>
+        <div class="studentList" (scroll)="onScrolling($event)">
+          <table>
+            <tr>
+              <th><p></p></th>
+              <th>
+                <div class="tablehead">
+                  <p>Name</p>
+                  <p class="icon">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </p>
+                </div>
+              </th>
+              <th>
+                <div class="tablehead">
+                  <p>Joined&nbsp;date</p>
+                  <p class="icon">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </p>
+                </div>
+              </th>
+              <th>
+                <div class="tablehead">
+                  <p>course&nbsp;title</p>
+                  <p class="icon">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </p>
+                </div>
+              </th>
+              <th>
+                <div class="tablehead">
+                  <p>Completed&nbsp;date</p>
+                  <p class="icon">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </p>
+                </div>
+              </th>
+              <th>
+                <div class="tablehead">
+                  <p>Status</p>
+                  <p class="icon">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </p>
+                </div>
+              </th>
+              <th>
+                <div class="tablehead">
+                  <p>Subscribe</p>
+                  <p class="icon">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </p>
+                </div>
+              </th>
+            </tr>
+            <tr *ngFor="let d of student; let i = index">
+              <td>
+                <div (click)="toDelete(i)">
+                  <div class="btn" *ngIf="!todelete[i]">
+                    <mat-icon>check_box_outline_blank</mat-icon>
+                  </div>
+                  <div class="btn1" *ngIf="todelete[i]">
+                    <mat-icon>check_box</mat-icon>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="profile">
+                  <img class="proimage" src="{{ d.profilePhoto }}" />
+                  <p>{{ d.fullName }}</p>
+                </div>
+              </td>
+              <td>
+                <div class="startdate">{{ d.joinDate }}</div>
+              </td>
+              <td>
+                <div class="cline">
+                  {{ d.courseName }}
+                </div>
+              </td>
+              {{
+                onComplete(i)
+              }}
+              <td>
+                <div class="startdate">{{ d.completedDate }}</div>
+              </td>
+              <td>
+                <div class="complete" *ngIf="complete">
+                  <div class="color"><mat-icon>lens</mat-icon></div>
+                  <div class="comline">Completed</div>
+                </div>
+
+                <div class="ongoing" *ngIf="ongoing">
+                  <div class="color1"><mat-icon>lens</mat-icon></div>
+                  <div class="comline1">on&nbsp;Going</div>
+                </div>
+              </td>
+              <td>
+                {{ toSubscribe(i) }}
+                <div (click)="subscribe(d, i)">
+                  <!-- <mat-slide-toggle color="primary" [(ngModel)]="isSubscribed"  ></mat-slide-toggle> -->
+                  <div *ngIf="sub[i]">
+                    <img src="/assets/Switch on.png" />
+                  </div>
+                  <div *ngIf="!sub[i]">
+                    <img src="/assets/Switch off.png" />
+                  </div>
+                </div>
+              </td>
+              <div class="toDelete" *ngIf="todelete[i]">
+                <mat-icon (click)="deleteStudent(d)">delete</mat-icon>
+              </div>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="secondBlock" *ngIf="second">
+      <div class="back">
+        <div class="backIcon">
+          <mat-icon (click)="onBack()">keyboard_arrow_left</mat-icon>
+        </div>
+        <div class="backline">Recently&nbsp;courses&nbsp;added</div>
+      </div>
+      <div class="recentAddVideo" (scroll)="onScrollCourse($event)">
+        <div class="gap" *ngFor="let c of course">
+          <div class="video">
+            <div class="videoBox1">
+              <video controls class="image">
+                <source src="{{ c.previewVideo }}" type="video/mp4" />
+                <source src="{{ c.previewVideo }}" type="video/ogg" />
+              </video>
+            </div>
+            <div class="videoname">
+              <div class="videoLine">{{ c.courseName }}</div>
+              <div class="progressbar" *ngIf="progress">
+                <mat-progress-bar
+                  mode="determinate"
+                  [value]="value"
+                ></mat-progress-bar>
+              </div>
+              <div class="add" *ngIf="c.uploadedStatus">
+                Added&nbsp;on&nbsp;{{ c.uploadedDate }}
+              </div>
+              <div class="add" *ngIf="!c.uploadedStatus">
+                Tried&nbsp;on&nbsp;{{ c.uploadedDate }}
+              </div>
+            </div>
+          </div>
+          <div class="iconList">
+            <div class="done" *ngIf="c.uploadedStatus">
+              <mat-icon>done</mat-icon>
+            </div>
+            <div class="error" *ngIf="!c.uploadedStatus">
+              <div class="errorimage">
+                <img src="/assets/error.png" />
+              </div>
+              <div class="errorline">Upload&nbsp;failed</div>
+            </div>
+            <div class="iconclose" *ngIf="!c.uploadedStatus">
+              <mat-icon (click)="getVideoDetails(c.courseId)">refresh</mat-icon>
+            </div>
             <div class="iconclose">
-              <mat-icon (click)="deleteCourse(c.courseId)">delete_outline</mat-icon>
+              <mat-icon (click)="deleteCourse(c.courseId)"
+                >delete_outline</mat-icon
+              >
             </div>
             <div class="iconclose" *ngIf="progress">
               <mat-icon>close</mat-icon>
             </div>
-        </div>
           </div>
-          
-          
+        </div>
+      </div>
     </div>
-
-    
-</div>
-
-
   </div>
 </div>

@@ -9,51 +9,49 @@ import { Add } from '../add';
 })
 export class QAndAComponent implements OnInit {
   plus = false;
-  addQn =new Add();
+  addQn = new Add();
   // public questionList: any = [];
   // qndeatails: any = [];
-  shows:any=[];
+  shows: any = [];
   // public currentQuestion: number = 0;
   questionForm!: FormGroup;
   chapForm!: FormGroup;
-  ans:any;
-  correctAns:any;
-  id:any;
-  completeDetails:any;
-  chapter:any;
-  value:any;
-  array:any=[];
-  hide:any;
-  testDetails:any;
-  questionlist:any=[];
-  questions:any
+  ans: any;
+  correctAns: any;
+  id: any;
+  completeDetails: any;
+  chapter: any;
+  value: any;
+  array: any = [];
+  hide: any;
+  testDetails: any;
+  questionlist: any = [];
+  questions: any;
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.chapForm = this.fb.group({
       chaptername: ['', Validators.required],
       duration: ['', Validators.required],
-      courseId:['',Validators.required],
+      courseId: ['', Validators.required],
       moduleTest: ['', Validators.required],
-      passingGrade:['',Validators.required]
+      passingGrade: ['', Validators.required],
     });
     this.questionForm = this.fb.group({
-      questionText: this.fb.array([
-       
-      ]),
+      questionText: this.fb.array([]),
     });
     this.add();
-    if(sessionStorage.getItem('addCourseDetails')){
-      this.hide=true;
-      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
+    if (sessionStorage.getItem('addCourseDetails')) {
+      this.hide = true;
+      this.completeDetails = JSON.parse(
+        sessionStorage.getItem('addCourseDetails') || '[]'
+      );
       console.log(this.completeDetails.chapter);
       this.chapter = this.completeDetails.chapter;
-      this.array =this.chapter;
-   }else{
-    this.hide =false;
-   }
-   
-    
+      this.array = this.chapter;
+    } else {
+      this.hide = false;
+    }
   }
   get question(): FormArray {
     return this.questionForm.controls['questionText'] as FormArray;
@@ -62,19 +60,16 @@ export class QAndAComponent implements OnInit {
   newQuestion(): FormGroup {
     return this.fb.group({
       question: ['', Validators.required],
-    option_1:['', Validators.required],
-    option_2:['', Validators.required],
-    option_3:['', Validators.required],
-    option_4:['', Validators.required],
-    correctAnswer:['', Validators.required],
-    questionId:[],
-    deleteStatus:[]
-     
+      option_1: ['', Validators.required],
+      option_2: ['', Validators.required],
+      option_3: ['', Validators.required],
+      option_4: ['', Validators.required],
+      correctAnswer: ['', Validators.required],
+      questionId: [],
+      deleteStatus: [],
     });
-    
-   
   }
-  
+
   add() {
     this.question.push(this.newQuestion());
   }
@@ -85,112 +80,90 @@ export class QAndAComponent implements OnInit {
   show(i: any) {
     this.shows[i] = !this.shows[i];
   }
-  postQuestion(){
-    let body={
-      "testId":13,
-      "testName":this.chapForm.controls['moduleTest'].value,
-      "chapterId":this.chapForm.controls['courseId'].value,
-      "testDuration":this.chapForm.controls['duration'].value,
-      "passingGrade":this.chapForm.controls['passingGrade'].value,
-      "questionRequests":this.questionForm.get('questionText')?.value
-    }
-    console.log(body)
-    this.service.addQuestion(body).subscribe({
-      next:(res)=>{
-        console.log(res);
-        let response =res;
-        if(response[0] == '{'){
-          response = JSON.parse(response);
-          alert(Object.values(response)[0]);
-         }
-      },
-      error:(error)=>{
-        console.log(error.error)
-      }
-    })
-  }
-  getAllQuestions(e:any) {
-   this.value = e.target.value;
-   this.array = this.chapter.filter((item:any)=>{
- return  item.chapterName == this.value;
-})
-// console.log(this.array[0].chapterId);
-this.id= this.array[0].chapterId
-    this.service.getQuestion(this.array[0].chapterId)
-      .subscribe({
-        next:(res)=>{
-          console.log(res);
-          this.testDetails = res;
-          this.questionlist = this.testDetails.questionRequests;
-          
-        },
-        error:(error)=>{
-          console.log(error.error)
-        },
-        complete:()=>{
-          this.setValue();
-          
-          // for(let i=0; i<this.testDetails.questionRequests.length;i++){
-          //   this.setQuestionForm(i)
-          // }
-          
-        }
-      })
-  }
-
-  setValue(){
-    this.chapForm.patchValue({
-      duration:this.testDetails.testDuration,
-      moduleTest:this.testDetails.testName,
-      courseId:this.testDetails.chapterId,
-      passingGrade:this.testDetails.passingGrade
-
-    });
-   
-  }
-  newQn(){
-    this.addQn = new Add();
-this. questionlist.push(this.addQn)
-  } 
-  onPost(){
-    let body={
-      "testId":13,
-      "testName":this.chapForm.controls['moduleTest'].value,
-      "chapterId":this.chapForm.controls['courseId'].value,
-      "testDuration":this.chapForm.controls['duration'].value,
-      "passingGrade":this.chapForm.controls['passingGrade'].value,
-      "questionRequests":this.questionlist
-    }
+  postQuestion() {
+    let body = {
+      testId: 13,
+      testName: this.chapForm.controls['moduleTest'].value,
+      chapterId: this.chapForm.controls['courseId'].value,
+      testDuration: this.chapForm.controls['duration'].value,
+      passingGrade: this.chapForm.controls['passingGrade'].value,
+      questionRequests: this.questionForm.get('questionText')?.value,
+    };
     console.log(body);
     this.service.addQuestion(body).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
-        let response =res;
-        if(response[0] == '{'){
+        let response = res;
+        if (response[0] == '{') {
           response = JSON.parse(response);
           alert(Object.values(response)[0]);
-         }
+        }
       },
-      error:(error)=>{
-        console.log(error.error)
-      }
-    })
+      error: (error) => {
+        console.log(error.error.message);
+      },
+    });
   }
-  // setQuestionForm(i:any){
-   
-  //   this.questionForm.patchValue({
-  //     questionText:[{
-  //       question:this.testDetails.questionRequests[i]['questionName'],
-  //       option_1:this.testDetails.questionRequests[i]['option_1'],
-  //       option_2:this.testDetails.questionRequests[i]['option_2'],
-  //       option_3:this.testDetails.questionRequests[i]['option_3'],
-  //       option_4:this.testDetails.questionRequests[i]['option_4'],
-  //       correctAnswer:this.testDetails.questionRequests[i]['correctAnswer'],
-  //       questionId:this.testDetails.questionRequests[i]['questionId'],
-  //       deleteStatus:this.testDetails.questionRequests[i]['deleteStatus']
-  //     }]
-  //   })
-    
-  // }
-  
+  getAllQuestions(e: any) {
+    this.value = e.target.value;
+    this.array = this.chapter.filter((item: any) => {
+      return item.chapterName == this.value;
+    });
+    // console.log(this.array[0].chapterId);
+    this.id = this.array[0].chapterId;
+    this.service.getQuestion(this.array[0].chapterId).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.testDetails = res;
+        this.questionlist = this.testDetails.questionRequests;
+      },
+      error: (error) => {
+        console.log(error.error.message);
+      },
+      complete: () => {
+        this.setValue();
+
+        // for(let i=0; i<this.testDetails.questionRequests.length;i++){
+        //   this.setQuestionForm(i)
+        // }
+      },
+    });
+  }
+
+  setValue() {
+    this.chapForm.patchValue({
+      duration: this.testDetails.testDuration,
+      moduleTest: this.testDetails.testName,
+      courseId: this.testDetails.chapterId,
+      passingGrade: this.testDetails.passingGrade,
+    });
+  }
+  newQn() {
+    this.addQn = new Add();
+    this.questionlist.push(this.addQn);
+  }
+  onPost() {
+    let body = {
+      testId: 13,
+      testName: this.chapForm.controls['moduleTest'].value,
+      chapterId: this.chapForm.controls['courseId'].value,
+      testDuration: this.chapForm.controls['duration'].value,
+      passingGrade: this.chapForm.controls['passingGrade'].value,
+      questionRequests: this.questionlist,
+    };
+    console.log(body);
+    this.service.addQuestion(body).subscribe({
+      next: (res) => {
+        console.log(res);
+        let response = res;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
+      },
+      error: (error) => {
+        console.log(error.error.message);
+      },
+    });
+  }
 }

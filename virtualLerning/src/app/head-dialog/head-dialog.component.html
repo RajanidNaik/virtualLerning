@@ -1,4 +1,5 @@
-<div class="container">
+
+<div id="container">
   <div class="navbar">
     <div>
       <!-- <app-side-nav></app-side-nav> -->
@@ -8,8 +9,12 @@
       <!-- <app-header></app-header> -->
     </div>
     <div class="contentBox" >
+     
       <div class="dialogBox">
         <div>
+          <div >
+            <mat-icon (click)="captureScreenData()">save_alt</mat-icon>
+          </div>
           <div class="delete"><mat-icon mat-dialog-close>clear</mat-icon></div>
           <div class="cup">
             <img src="/assets/image 1.png">

@@ -1,0 +1,21 @@
+<div class="delete"><mat-icon mat-dialog-close>clear</mat-icon></div>
+<div  class="onSave">
+    <div class="display">
+        <label>HTmL template</label>
+    <input type="file"  id="upload" (change)="onFileSelect($event)"  /> 
+    </div>
+    
+    
+    <div class="display">
+    <label>UserName</label>
+      <input placeholder="userName">
+    </div>
+    
+    <div class="display">
+        <label>CourseId</label>
+      <input placeholder="courseId">
+    </div>
+  </div>
+  <div>
+    <button (click)="saveCertificate()">Save</button>
+  </div>
