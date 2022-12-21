@@ -97,7 +97,9 @@ export class VideoComponent implements OnInit {
       );
       console.log(this.completeDetails);
       this.setValue();
+
     }
+
 
     this.videoSer.getChategory().subscribe((data) => {
       this.category1 = JSON.parse(data);
@@ -180,7 +182,9 @@ export class VideoComponent implements OnInit {
     this.cIndex = chapIndex;
   }
 
+
   setValue() {
+
     this.videoForm.patchValue({
       videoTitle: this.completeDetails.courseName,
       category: this.completeDetails.categoryName,
@@ -196,6 +200,7 @@ export class VideoComponent implements OnInit {
   storeIndex(index: any) {
     sessionStorage.setItem('Index', index);
   }
+
   appendSub() {
     let index = sessionStorage.getItem('Index');
   }
