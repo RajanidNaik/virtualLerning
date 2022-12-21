@@ -291,7 +291,7 @@ textarea {
 }
 .nextbtnp{
   font-size: 18px;
-  color: rgb(240, 220, 220);
+  color: rgb(255, 255, 255);
   float: right;
   height: 44px;
   width: 209.81px;
@@ -303,7 +303,8 @@ textarea {
   float: right;
   height: 44px;
   width: 209.81px;
-  background-color: #ee5c4d;
+  background-color: #8f7774;
+  margin-right: 20px;
 }
 .subChapter {
   border: 2px solid yellow;
@@ -390,4 +391,8 @@ height: 100%;
 .bottomDisplay{
   position: relative;
   top: 0;
+}
+.next {
+margin-bottom: 30px;
+height: 49px;
 }

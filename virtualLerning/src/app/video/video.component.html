@@ -143,7 +143,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn" [disabled]="videoForm.invalid"  (click)="addChapter()">Add New +</button>
+        <button class="btn"  [disabled]="videoForm.invalid || !currVal||!currVideo"  (click)="addChapter()">Add New +</button>
         <!-- [disabled]="videoForm.invalid" -->
       </div>
     </div>
@@ -224,7 +224,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
           </div>
           <div class="right">
             {{storesIndex(sIndex,chapIndex)}}
+
               <div>{{cIndex}}{{sIndex}}
+
+              <div>
+
                 <span class="uploadSection"> Subchapter Name </span>
                 <div class="input">
                   {{setcurrVal()}}
@@ -233,7 +237,6 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               </div>
               <div class="takevalue">
                 <div class="btn">
-                  {{sIndex}}
                   <button class="buttonP"[disabled]="sIndex==0" (click)="prev()">Previous</button>
                   <button class="buttonN" [disabled]="sIndex <= length" (click)="next()">Next</button>
                 </div>
@@ -256,9 +259,9 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   </div>
 
   <div class="next">
-    <button   class="nextbtn" (click)="addOverView()" [disabled]="videoForm.invalid ">Save</button>
-    <button class="nextbtn" [disabled]="videoForm.invalid || !currVal||!currVideo" (click)="publish()">Publish</button>
+    <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal||!currVideo" (click)="addCourse()">Publish</button>
   </div>
+    <button (click)="preview()">show</button>
   </div>
 </form>
 
