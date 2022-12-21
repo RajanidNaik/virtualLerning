@@ -101,4 +101,8 @@ export class QuestionService {
       responseType: 'text',
     });
   }
+getChapter(id:any):Observable<any>{
+  return this.http.get(`${baseUrl}/admin/chapterList?courseId=${id}`);
+}
+
 }
