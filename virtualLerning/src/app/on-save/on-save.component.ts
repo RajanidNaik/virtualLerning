@@ -33,7 +33,12 @@ export class OnSaveComponent implements OnInit {
       console.log(data);
       this.service.saveCertificate(data).subscribe({
         next: (res) => {
-          console.log('res');
+          console.log(res);
+          let response = res;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
         },
         error: (error) => {
           alert(error.error.message);

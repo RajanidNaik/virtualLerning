@@ -137,9 +137,10 @@ response:any;
     this.changeForm.reset();
   }
 proSave(){
+  this.updateProfile();
   console.log(this.chageProfile.value);
-  this.savePro =true;
-  this.updateProfile()
+  
+  
 }
   // sub(){
   //   this.trans =true;
@@ -198,9 +199,10 @@ updateProfile(){
       this.result = JSON.parse(this.result);
       this.result = Object.values(this.result)[0];
     }
+    this.savePro =true;
     },
     error:(error)=>{
-      alert(error.error);
+      alert(error.error.message);
     },
     complete:()=>{
       this.getPro();
@@ -225,7 +227,7 @@ changepass(){
        }
     },
     error:(error)=>{
-      alert(error.error);
+      alert(error.error.message);
     }
   })
 }

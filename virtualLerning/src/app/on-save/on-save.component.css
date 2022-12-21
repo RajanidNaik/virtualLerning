@@ -22,6 +22,7 @@
 }
 .delete {
   float: right;
+  cursor: pointer;
 }
 button {
   float: right;
@@ -34,4 +35,5 @@ button {
   padding-left: 5%;
   padding-right: 5%;
   margin-block-start: 2%;
+  cursor: pointer;
 }
