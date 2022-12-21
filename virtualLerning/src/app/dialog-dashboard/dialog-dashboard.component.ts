@@ -3,41 +3,39 @@ import { QuestionService } from '../question.service';
 @Component({
   selector: 'app-dialog-dashboard',
   templateUrl: './dialog-dashboard.component.html',
-  styleUrls: ['./dialog-dashboard.component.css']
+  styleUrls: ['./dialog-dashboard.component.css'],
 })
 export class DialogDashboardComponent implements OnInit {
   completeDetails: any;
-  id:any;
-  constructor( public service:QuestionService) { }
+  id: any;
+  constructor(public service: QuestionService) {}
 
   ngOnInit(): void {
-    if(sessionStorage.getItem('deleteCourseDetails')){
-      this.completeDetails = JSON.parse(sessionStorage.getItem('deleteCourseDetails') || '[]');
+    if (sessionStorage.getItem('deleteCourseDetails')) {
+      this.completeDetails = JSON.parse(
+        sessionStorage.getItem('deleteCourseDetails') || '[]'
+      );
       console.log(this.completeDetails);
     }
-    if(sessionStorage.getItem('courseId')){
+    if (sessionStorage.getItem('courseId')) {
       this.id = JSON.parse(sessionStorage.getItem('courseId') || '[]');
       console.log(this.id);
     }
-  
   }
-  deleteCourse(){
+  deleteCourse() {
     this.service.deleteCourse(this.id).subscribe({
-      next:(res)=>{
+      next: (res) => {
         let response = res;
         console.log(response);
-        if(response[0] == '{'){
-         response = JSON.parse(response);
-         alert(Object.values(response)[0]);
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
         }
       },
-      error:(error)=>{
-        alert(error.error)
+      error: (error) => {
+        alert(error.error);
       },
-      complete:()=>{
-
-      }
-    })
+      complete: () => {},
+    });
   }
-
 }

@@ -41,9 +41,8 @@
   order: 1;
   padding: 12px;
   align-self: stretch;
-  color:#000;
+  color: #000;
 }
-
 
 .question .details {
   display: flex;
@@ -193,7 +192,7 @@ button.sub {
 .require {
   color: red;
 }
-.newButton{
+.newButton {
   background: rgba(9, 41, 99, 0.11);
   border-radius: 4px;
   border: none;
@@ -203,7 +202,7 @@ button.sub {
   font-size: 20px;
   line-height: 30px;
 }
-.update{
+.update {
   float: right;
 }
 select {
@@ -217,7 +216,7 @@ select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-.in{
+.in {
   outline: none;
-  border:none;
+  border: none;
 }
