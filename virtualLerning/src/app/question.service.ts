@@ -61,6 +61,12 @@ export class QuestionService {
   getAddCourseDetails(id:any):Observable<any>{
     return this.http.get(`${baseUrl}/admin/courseDetails?courseId=${id}`);
   }
+deleteCourse(id:any):Observable<any>{
+  return this.http.put(`${baseUrl}/admin/deleteCourse?courseId=${id}`,{responseType:'text'})
+}
+
+
+
   addQuestion(body:any):Observable<any>{
     return this.http.post(`${baseUrl}/admin/addTest`,body,{responseType:'text'})
   }

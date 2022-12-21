@@ -4,9 +4,9 @@
   </div>
   <div class="person">
     <div class="personImg" (click)="openDialogProfile()">
-      <img src="/assets/mg 1.png" />
+      <img src="{{profileDetails.profilePhoto}}" />
     </div>
-    <div class="personName">Virat&nbsp;Kohli</div>
+    <div class="personName">{{profileDetails.fullName}}</div>
     <div (click)="logout()">
       <mat-icon>logout</mat-icon>
     </div>
