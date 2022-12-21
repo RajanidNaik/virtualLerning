@@ -327,11 +327,7 @@ export class VideoComponent implements OnInit {
             sessionStorage.setItem('response2', data);
             this.response = JSON.parse(data);
             this.response = this.response.message.match(/\d+$/)[0];
-            const store ={
-              title: this.videoForm.value.videoTitle,
-              courseId:this.response
-            }
-            sessionStorage.setItem('detail',JSON.stringify(store));
+            sessionStorage.setItem('CourseID',this.response);
           },
           error: (data: any) => {
               console.log(data);
