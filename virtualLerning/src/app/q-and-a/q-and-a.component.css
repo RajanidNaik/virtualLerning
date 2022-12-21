@@ -15,6 +15,7 @@
   background-color: white;
   /* border:1px solid #000; */
 }
+
 .Qnum {
   font-weight: 700;
   font-size: 16px;
@@ -40,6 +41,7 @@
   order: 1;
   padding: 12px;
   align-self: stretch;
+  color: #000;
 }
 
 .question .details {
@@ -60,6 +62,7 @@
   grid-template-columns: auto auto;
   gap: 40px;
 }
+
 .opt {
   background: #fdfdfd;
   border: 1px solid #d5d4dc;
@@ -69,7 +72,21 @@
   justify-content: space-between;
   padding: 2vh 1vw;
 }
-
+.opt1 {
+  background: #fdfdfd;
+  border: 1px solid #d5d4dc;
+  border-radius: 4px;
+  display: flex;
+  width: 29vw;
+  justify-content: space-between;
+  padding: 2vh 1vw;
+  font-family: "Proxima Nova Soft";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+}
 .footer {
   font-weight: 700;
   font-size: 12px;
@@ -174,4 +191,32 @@ button.sub {
 }
 .require {
   color: red;
+}
+.newButton {
+  background: rgba(9, 41, 99, 0.11);
+  border-radius: 4px;
+  border: none;
+  color: #092963;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+}
+.update {
+  float: right;
+}
+select {
+  background: #ffffff;
+  width: 26vw;
+  font-size: 20px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #d5d4dc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.in {
+  outline: none;
+  border: none;
 }

@@ -30,6 +30,7 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
 import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
 import { AuthserviceInterceptor } from './authservice.interceptor';
 import { DeleteStudentComponent } from './delete-student/delete-student.component';
+
 import { SubCatComponent } from './sub-cat/sub-cat.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -40,6 +41,8 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
+
+import { OnSaveComponent } from './on-save/on-save.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     DialogCategoryComponent,
     SuperAdmindashboardComponent,
     DeleteStudentComponent,
+
     SubCatComponent,
+    OnSaveComponent,
   ],
 
   imports: [

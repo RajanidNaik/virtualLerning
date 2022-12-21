@@ -30,18 +30,23 @@ export class VideoComponent implements OnInit {
   category1: any;
   subCa: any;
   count: any;
+
   cIndex = 0;
   previewVideo: any;
+
   public Editor = ClassicEditor;
   currVideo = '';
   sIndex = 0;
 
   completeDetails: any;
+  data:any;
   subcategory: any;
+
   ref!: AngularFireStorageReference;
   task!: AngularFireUploadTask;
   uploadState!: Observable<unknown>;
   uploadProgress!: Observable<unknown>;
+
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
@@ -81,16 +86,20 @@ export class VideoComponent implements OnInit {
         }),
       ]),
     });
-    if (sessionStorage.getItem('addCourseDetails')) {
-      this.completeDetails = JSON.parse(
-        sessionStorage.getItem('addCourseDetails') || '[]'
-      );
+
+  
+    if(sessionStorage.getItem('addCourseDetails')){
+      
+      this.completeDetails = JSON.parse(sessionStorage.getItem('addCourseDetails') || '[]');
       console.log(this.completeDetails);
       this.setValue();
-    }
-    this.videoSer.getChategory().subscribe((data) => {
-      this.category1 = JSON.parse(data);
-      console.log(this.category1);
+   }else{
+  this.addChapter();
+   }
+
+    
+    this.videoSer.getChategory().subscribe( (data) =>{ 
+      this.category1=JSON.parse(data);
     });
     this.videoSer.getSubCat().subscribe((data) => {
       this.subCa = JSON.parse(data);
@@ -152,31 +161,7 @@ export class VideoComponent implements OnInit {
     this.subChapters(chapIndex).push(this.newSubChapter());
   }
 
-  //add details
-  setValue() {
-    this.videoForm.patchValue({
-      videoTitle: this.completeDetails.courseName,
-      category: this.completeDetails.categoryName,
-      subCategory: this.completeDetails.subCategoryName,
-      formatText: this.completeDetails.courseTagLine,
-      overview: this.completeDetails.description,
-      learning: this.completeDetails.learningOutCome,
-      requirement: this.completeDetails.requirements,
-      level: this.completeDetails.difficultyLevel,
-      keyWords: this.completeDetails.keywords[0]['keyword'],
-    //   chapter: [
-    //     {
-    //       chapterName: this.completeDetails.chapter[0]['chapterName'],
-    //       lessonsList: [
-    //         {
-    //           lessonName:
-    //             this.completeDetails.chapter[0]['lessonList'][0]['lessonName'],
-    //         },
-    //       ],
-    //     },
-    //   ],
-    });
-  }
+
   setcurrVal() {
     this.currVal =
       this.videoForm.value.chapter[this.cIndex].lessonsList[
@@ -193,6 +178,33 @@ export class VideoComponent implements OnInit {
   storeIndex(index: any, chapIndex: any) {
     this.sIndex = index;
     this.cIndex = chapIndex;
+
+
+
+  
+  
+  setValue(){
+    this.videoForm.patchValue({
+      videoTitle:this.completeDetails.courseName,
+      category:this.completeDetails.categoryName,
+      subCategory:this.completeDetails.subCategoryName,
+      formatText:this.completeDetails.courseTagLine,
+      overview:this.completeDetails.description,
+      learning:this.completeDetails.learningOutCome,
+      requirement:this.completeDetails.requirements,
+      level:this.completeDetails.difficultyLevel,
+      keyWords:this.completeDetails.keywords[0]['keyword'],
+    })
+  }
+  storeIndex(index:any){
+    sessionStorage.setItem('Index',index)
+  }
+  appendSub(){
+    let index =sessionStorage.getItem('Index');
+  }
+  display(){
+    let index:any = sessionStorage.getItem('Index');
+    this.sIndex = parseInt(index)
   }
   display() {
     let index: any = sessionStorage.getItem('Index');

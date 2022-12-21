@@ -254,9 +254,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
       </div>
     </div>
   </div>
+
   <div class="next">
     <button   class="nextbtn" (click)="addOverView()" [disabled]="videoForm.invalid ">Save</button>
     <button class="nextbtn" [disabled]="videoForm.invalid || !currVal||!currVideo" (click)="publish()">Publish</button>
   </div>
   </div>
 </form>
+

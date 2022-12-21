@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QuestionService } from '../question.service';
-
+import { Add } from '../add';
 @Component({
   selector: 'app-q-and-a',
   templateUrl: './q-and-a.component.html',
@@ -9,29 +9,49 @@ import { QuestionService } from '../question.service';
 })
 export class QAndAComponent implements OnInit {
   plus = false;
-  public questionList: any = [];
-  qndeatails: any = [];
-  shows:any=[];
-  public currentQuestion: number = 0;
+  addQn = new Add();
+  // public questionList: any = [];
+  // qndeatails: any = [];
+  shows: any = [];
+  // public currentQuestion: number = 0;
   questionForm!: FormGroup;
   chapForm!: FormGroup;
-  ans:any;
+  ans: any;
+  correctAns: any;
+  id: any;
+  completeDetails: any;
+  chapter: any;
+  value: any;
+  array: any = [];
+  hide: any;
+  testDetails: any;
+  questionlist: any = [];
+  questions: any;
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.chapForm = this.fb.group({
       chaptername: ['', Validators.required],
       duration: ['', Validators.required],
+      courseId: ['', Validators.required],
       moduleTest: ['', Validators.required],
+      passingGrade: ['', Validators.required],
     });
     this.questionForm = this.fb.group({
-      questionText: this.fb.array([
-        
-      ]),
+      questionText: this.fb.array([]),
     });
-    // this.getAllQuestions();
     this.add();
-    
+    if (sessionStorage.getItem('addCourseDetails')) {
+      this.hide = true;
+      this.completeDetails = JSON.parse(
+        sessionStorage.getItem('addCourseDetails') || '[]'
+      );
+      console.log(this.completeDetails.chapter);
+      this.chapter = this.completeDetails.chapter;
+      this.array = this.chapter;
+    } else {
+      this.hide = false;
+    }
   }
   get question(): FormArray {
     return this.questionForm.controls['questionText'] as FormArray;
@@ -40,35 +60,18 @@ export class QAndAComponent implements OnInit {
   newQuestion(): FormGroup {
     return this.fb.group({
       question: ['', Validators.required],
-     option1:this.fb.group({
-      opt:['', Validators.required],
-      ans: [false, Validators.required]
-     }),
-     option2:this.fb.group({
-      opt:['', Validators.required],
-      ans: [false, Validators.required]
-     }),
-     option3:this.fb.group({
-      opt:['', Validators.required],
-      ans: [false, Validators.required]
-     }),
-     option4:this.fb.group({
-      opt:['', Validators.required],
-      ans: [false, Validators.required]
-     })
+      option_1: ['', Validators.required],
+      option_2: ['', Validators.required],
+      option_3: ['', Validators.required],
+      option_4: ['', Validators.required],
+      correctAnswer: ['', Validators.required],
+      questionId: [],
+      deleteStatus: [],
     });
   }
-  add() {
 
+  add() {
     this.question.push(this.newQuestion());
-    console.log(this.questionForm.value);
-    console.log(this.chapForm.value);
-    // sessionStorage.setItem('ans',JSON.stringify(this.questionForm.value));
-    // if(sessionStorage.getItem('ans')){
-    //   this.ans = sessionStorage.getItem('ans');
-    //   this.ans = JSON.parse(this.ans);
-    //   console.log(this.ans.questionText);
-    //       }
   }
 
   deleteOption(lessonIndex: number) {
@@ -77,11 +80,90 @@ export class QAndAComponent implements OnInit {
   show(i: any) {
     this.shows[i] = !this.shows[i];
   }
-  // getAllQuestions() {
-  //   this.service.getQuestionJson()
-  //     .subscribe(res => {
-  //       this.questionList = res.questions;
-  //       console.log(this.questionList);
-  //     })
-  // }
+  postQuestion() {
+    let body = {
+      testId: 13,
+      testName: this.chapForm.controls['moduleTest'].value,
+      chapterId: this.chapForm.controls['courseId'].value,
+      testDuration: this.chapForm.controls['duration'].value,
+      passingGrade: this.chapForm.controls['passingGrade'].value,
+      questionRequests: this.questionForm.get('questionText')?.value,
+    };
+    console.log(body);
+    this.service.addQuestion(body).subscribe({
+      next: (res) => {
+        console.log(res);
+        let response = res;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
+      },
+      error: (error) => {
+        console.log(error.error.message);
+      },
+    });
+  }
+  getAllQuestions(e: any) {
+    this.value = e.target.value;
+    this.array = this.chapter.filter((item: any) => {
+      return item.chapterName == this.value;
+    });
+    // console.log(this.array[0].chapterId);
+    this.id = this.array[0].chapterId;
+    this.service.getQuestion(this.array[0].chapterId).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.testDetails = res;
+        this.questionlist = this.testDetails.questionRequests;
+      },
+      error: (error) => {
+        console.log(error.error.message);
+      },
+      complete: () => {
+        this.setValue();
+
+        // for(let i=0; i<this.testDetails.questionRequests.length;i++){
+        //   this.setQuestionForm(i)
+        // }
+      },
+    });
+  }
+
+  setValue() {
+    this.chapForm.patchValue({
+      duration: this.testDetails.testDuration,
+      moduleTest: this.testDetails.testName,
+      courseId: this.testDetails.chapterId,
+      passingGrade: this.testDetails.passingGrade,
+    });
+  }
+  newQn() {
+    this.addQn = new Add();
+    this.questionlist.push(this.addQn);
+  }
+  onPost() {
+    let body = {
+      testId: 13,
+      testName: this.chapForm.controls['moduleTest'].value,
+      chapterId: this.chapForm.controls['courseId'].value,
+      testDuration: this.chapForm.controls['duration'].value,
+      passingGrade: this.chapForm.controls['passingGrade'].value,
+      questionRequests: this.questionlist,
+    };
+    console.log(body);
+    this.service.addQuestion(body).subscribe({
+      next: (res) => {
+        console.log(res);
+        let response = res;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
+      },
+      error: (error) => {
+        console.log(error.error.message);
+      },
+    });
+  }
 }

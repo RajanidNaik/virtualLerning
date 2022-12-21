@@ -3,30 +3,52 @@
     <div class="chapName">Select Chapter Name</div>
     <div class="input /">
       <div>
-        <input
-          class="titleInput"
-          type="list"
-          list="browsers"
-          formControlName="chaptername"
-        />
-        <div
-          *ngIf="chapForm.get('chaptername')?.errors?.['required'] && chapForm.get('chaptername')?.touched"
-          class="require"
-        >
-          Please select the chapter name
+        <div *ngIf="!hide">
+          <input
+            class="titleInput"
+            type="list"
+            list="browsers"
+            formControlName="chaptername"
+          />
         </div>
-        <datalist id="browsers">
-          <option value="Internet Explorer"></option>
-          <option value="Firefox"></option>
-          <option value="Google Chrome"></option>
-          <option value="Opera"></option>
-          <option value="Safari"></option>
-        </datalist>
+        <div *ngIf="hide">
+          <select
+            id="browsers"
+            (change)="getAllQuestions($event)"
+            formControlName="chaptername"
+          >
+            <option *ngFor="let chap of chapter" [value]="chap.chapterName">
+              {{ chap.chapterName }}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
+    <div
+      *ngIf="chapForm.get('chaptername')?.errors?.['required'] && chapForm.get('chaptername')?.touched"
+      class="require"
+    >
+      Please select the chapter name
+    </div>
+
+    <div class="chapName">CourseId</div>
+    <div>
+      <input class="titleInput" placeholder="" formControlName="courseId" />
+    </div>
+    <div
+      *ngIf="chapForm.get('courseId')?.errors?.['required'] && chapForm.get('courseId')?.touched"
+      class="require"
+    >
+      This is required field*
+    </div>
+
     <div class="chapName">Duration</div>
     <div>
-      <input class="titleInput" formControlName="duration" />
+      <input
+        class="titleInput"
+        placeholder="hh:mm:ss"
+        formControlName="duration"
+      />
     </div>
     <div
       *ngIf="chapForm.get('duration')?.errors?.['required'] && chapForm.get('duration')?.touched"
@@ -34,7 +56,8 @@
     >
       This is required field*
     </div>
-    <div class="chapName">Module&nbsp;Test</div>
+
+    <div class="chapName">Test&nbsp;Name</div>
     <div>
       <input class="titleInput" formControlName="moduleTest" />
     </div>
@@ -44,105 +67,192 @@
     >
       This is required field*
     </div>
-    <div class="currPage">5 of 44</div>
+    <div class="chapName">Passing&nbsp;grade</div>
+    <div>
+      <input class="titleInput" formControlName="passingGrade" />
+    </div>
+    <div
+      *ngIf="chapForm.get('passingGrade')?.errors?.['required'] && chapForm.get('passingGrade')?.touched"
+      class="require"
+    >
+      This is required field*
+    </div>
+    <div class="currPage">5 of 10</div>
   </form>
 </div>
 <!-- <div class="question" *ngFor="let qn of questionList;let i=index"> -->
-<div
-  class="question"
-  [formGroup]="questionForm"
-  *ngFor="let optionForm of question.controls; let i = index"
->
-  <ng-container formArrayName="questionText">
-    <div [formGroupName]="i">
-      <!-- <div class="Qnum">Question {{i+1}}</div> -->
-      <div class="Qnum">Question {{ i + 1 }}</div>
-      <div class="details">
-        <div class="qn">
-          <!-- {{qn?.questionText}}  -->
-          <input placeholder="Enter the question" formControlName="question" />
+<div *ngIf="!hide">
+  <div
+    class="question"
+    [formGroup]="questionForm"
+    *ngFor="let optionForm of question.controls; let i = index"
+  >
+    <ng-container formArrayName="questionText">
+      <div [formGroupName]="i">
+        <!-- <div class="Qnum">Question {{i+1}}</div> -->
+        <div class="Qnum">Question {{ i + 1 }}</div>
+        <div class="chapName">Question Id:</div>
+        <div>
+          <input formControlName="questionId" />
+        </div>
+        <div class="details">
+          <div class="qn">
+            <!-- {{qn?.questionText}}  -->
+            <input
+              placeholder="Enter the question"
+              formControlName="question"
+            />
+            <div
+              *ngIf="optionForm.get('question')?.errors?.['required'] && optionForm.get('question')?.touched"
+              class="require"
+            >
+              Please enter the question
+            </div>
+            <!-- What is load balancing, and why is it important to system design? -->
+          </div>
+          <div class="deleteChoice">
+            <div style="margin-right: 2vw">
+              <mat-icon (click)="deleteOption(i)">delete</mat-icon>
+            </div>
+            <div class="more" (click)="show(i)">
+              <mat-icon *ngIf="!shows[i]">add</mat-icon>
+              <mat-icon *ngIf="shows[i]"> remove</mat-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="options" *ngIf="shows[i]">
+          <!-- <div class="opt" *ngFor="let option of questionList[i]?.options"> -->
+          <div class="opt">
+            <!-- <div>{{option.text}}</div> -->
+            <input placeholder="a" formControlName="option_1" />
+            <div class="transform">
+              <mat-slide-toggle color="primary"></mat-slide-toggle>
+            </div>
+          </div>
+          <div class="opt">
+            <input placeholder="b" formControlName="option_2" />
+            <div class="transform">
+              <mat-slide-toggle color="primary"></mat-slide-toggle>
+            </div>
+          </div>
+          <div class="opt">
+            <input placeholder="c" formControlName="option_3" />
+            <div class="transform">
+              <mat-slide-toggle color="primary"></mat-slide-toggle>
+            </div>
+          </div>
+          <div class="opt">
+            <input placeholder="d" formControlName="option_4" />
+            <div class="transform">
+              <mat-slide-toggle color="primary"></mat-slide-toggle>
+            </div>
+          </div>
+          <div class="opt">
+            <input
+              placeholder="choose correct answer"
+              formControlName="correctAnswer"
+            />
+          </div>
           <div
-            *ngIf="optionForm.get('question')?.errors?.['required'] && optionForm.get('question')?.touched"
+            *ngIf="questionForm.get('opt')?.errors?.['required']&& questionForm.get('opt')?.touched "
             class="require"
           >
-            Please enter the question
+            Please enter the option
           </div>
-          <!-- What is load balancing, and why is it important to system design? -->
+
+          <div
+            *ngIf="(newQuestion().get('ans')?.errors?.['required']) && (newQuestion().get('ans')?.touched  )"
+            class="require"
+          >
+            Please select the correct answer
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div>
+      <button class="sub" (click)="add()" [disabled]="!optionForm.valid">
+        Add+
+      </button>
+    </div>
+  </div>
+  <div class="update">
+    <button class="newButton" (click)="postQuestion()">Post</button>
+  </div>
+</div>
+
+<div *ngIf="hide">
+  <div class="question" *ngFor="let qn of questionlist; index as i">
+    <div>
+      <div class="Qnum">Question {{ i + 1 }}</div>
+      <div class="chapName">
+        Question Id:
+        <input class="in" name="questionId" [(ngModel)]="qn.questionId" />
+      </div>
+
+      <div class="details">
+        <div class="qn">
+          <!-- {{qn.questionName}} -->
+          <input
+            placeholder="Enter the question"
+            name="question"
+            [(ngModel)]="qn.questionName"
+          />
         </div>
         <div class="deleteChoice">
           <div style="margin-right: 2vw">
             <mat-icon (click)="deleteOption(i)">delete</mat-icon>
           </div>
+
           <div class="more" (click)="show(i)">
             <mat-icon *ngIf="!shows[i]">add</mat-icon>
             <mat-icon *ngIf="shows[i]"> remove</mat-icon>
           </div>
         </div>
       </div>
+
       <div class="options" *ngIf="shows[i]">
-        <!-- <div class="opt" *ngFor="let option of questionList[i]?.options"> -->
-        <div class="opt" formGroupName="option1">
-          <!-- <div>{{option.text}}</div> -->
-          <input placeholder="a" formControlName="opt" />
-          <div class="transform">
-            <mat-slide-toggle
-              color="primary"
-              formControlName="ans"
-            ></mat-slide-toggle>
-          </div>
+        <div class="opt">
+          <input placeholder="a" name="option_1" [(ngModel)]="qn.option_1" />
+          <!-- {{qn.option_1}} -->
         </div>
-        <div class="opt" formGroupName="option2">
-          <input placeholder="b" formControlName="opt" />
-          <div class="transform">
-            <mat-slide-toggle
-              color="primary"
-              formControlName="ans"
-            ></mat-slide-toggle>
-          </div>
+        <div class="opt">
+          <input placeholder="b" name="option_2" [(ngModel)]="qn.option_2" />
+          <!-- {{qn.option_2}} -->
         </div>
-        <div class="opt" formGroupName="option3">
-          <input placeholder="c" formControlName="opt" />
-          <div class="transform">
-            <mat-slide-toggle
-              color="primary"
-              formControlName="ans"
-            ></mat-slide-toggle>
-          </div>
+        <div class="opt">
+          <input placeholder="c" name="option_3" [(ngModel)]="qn.option_3" />
+          <!-- {{qn.option_3}} -->
         </div>
-        <div class="opt" formGroupName="option4">
-          <input placeholder="d" formControlName="opt" />
-          <div class="transform">
-            <mat-slide-toggle
-              color="primary"
-              formControlName="ans"
-            ></mat-slide-toggle>
-          </div>
+        <div class="opt">
+          <input placeholder="d" name="option_4" [(ngModel)]="qn.option_4" />
+          <!-- {{qn.option_4}} -->
         </div>
-        <div
-          *ngIf="questionForm.get('opt')?.errors?.['required']&& questionForm.get('opt')?.touched "
-          class="require"
-        >
-          Please enter the option
+
+        <div class="opt">
+          <input
+            placeholder="choose correct answer"
+            name="correctAns"
+            [(ngModel)]="qn.correctAnswer"
+          />
+          <!-- {{qn.correctAnswer}} -->
         </div>
-        
-        <div
-          *ngIf="(newQuestion().get('ans')?.errors?.['required']) && (newQuestion().get('ans')?.touched  )"
-          class="require"
-        >
-          Please select the correct answer
-        </div>
-        
       </div>
-      
+
+      <div>
+        <label>DeleteStatus:</label>
+        <input class="in" [ngModel]="qn.deleteStatus" />
+      </div>
     </div>
-  </ng-container>
-<div>
-  <button class="sub" (click)="add()" [disabled]="!optionForm.valid">
-    Add+
-  </button>
+  </div>
+  <div>
+    <button class="sub" (click)="newQn()">Add New</button>
+  </div>
+  <div class="update">
+    <button class="newButton" (click)="onPost()">Post</button>
+  </div>
 </div>
-  
-</div>
+
 <!-- <div class="border"> -->
 <!-- <div class="footer">
   <div class="prev">

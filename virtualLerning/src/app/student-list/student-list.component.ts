@@ -28,10 +28,14 @@ todelete:any=[];
    
   }
   getStudent(){
-    this.service.getStudentList(this.limit).subscribe((res)=>{
-      this.data=res;
-      console.log(res)
-
+    this.service.getStudentList(this.limit).subscribe({
+      next:(res)=>{
+        this.data=res;
+        console.log(res);
+      },
+      error:(error)=>{
+        alert(error.error.message)
+      }
     })
   }
   onComplete(i:any){
@@ -50,7 +54,7 @@ todelete:any=[];
           console.log('done')
    }
    else{
-    this.limit = this.limit+1;
+    this.limit = this.limit+2;
     console.log(this.limit);
    }
    this.getStudent();
@@ -113,10 +117,17 @@ this.onsub(i);
     courseId:data.courseId
     
   }
-this.service.toSubscribe(body).subscribe((res)=>{
-  console.log(res);
-  alert(res.message);
-  this.getStudent();
+this.service.toSubscribe(body).subscribe({
+  next:(res)=>{
+    console.log(res);
+    alert(res.message);
+  },
+  error:(error)=>{
+    alert(error.error.message);
+  },
+  complete:()=>{
+    this.getStudent();
+  }
 })
 }
 
