@@ -75,7 +75,6 @@ lessonArray:any;
      this.response = sessionStorage.getItem('CourseID')||239;
     console.log(typeof(this.response))
     
-    
     this.videoForm = new FormGroup({
       videoTitle: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
@@ -108,10 +107,10 @@ lessonArray:any;
         sessionStorage.getItem('addCourseDetails') || '[]'
       );
       console.log(this.completeDetails);
-      this.chapterArray = this.completeDetails.chapter;
-     
       this.setValue();
-
+      
+      this.chapterArray = this.completeDetails.chapter;
+      console.log('2')
     }else{
       this.hide = false;
     }
@@ -212,7 +211,8 @@ lessonArray:any;
 
 
   setValue() {
-    this.videoForm.setValue({
+   
+    this.videoForm.patchValue({
       videoTitle: this.completeDetails.courseName,
       category: this.completeDetails.categoryName,
       subCategory: this.completeDetails.subCategoryName,
