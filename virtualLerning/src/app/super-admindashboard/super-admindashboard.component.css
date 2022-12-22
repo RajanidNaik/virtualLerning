@@ -16,7 +16,7 @@ body {
   border-radius: 50px;
 }
 .cover {
-  width: 57%;
+  width: 61%;
   margin-left: 5.3%;
   margin-top: 15px;
 }
@@ -24,7 +24,7 @@ body {
   font-size: 22px;
   font-weight: 700;
   margin-left: 5.3%;
-  margin-bottom:15px ;
+  margin-bottom: 15px;
 }
 .content {
   display: flex;
@@ -34,7 +34,7 @@ body {
   margin-right: 5%;
 }
 .person div {
-  font-family: "Proxima Nova Soft";
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -71,14 +71,14 @@ body {
   background: #f9f9f9;
   height: 87vh;
 }
-.name{
-    margin-left: 10px;
-    width: 17%;
+.name {
+  margin-left: 10px;
+  width: 17%;
 }
-.desig{
-    width: 250.633px;   
+.desig {
+  width: 250.633px;
 }
- button {
+button {
   background: #ee5c4d;
   border-radius: 6px;
   border: none;
@@ -91,13 +91,13 @@ body {
   padding-right: 1rem;
   margin: 5px;
 }
-.list{
-     background-color: #fff;
-     display: flex;
-     width: 100%;
-    margin-bottom: 10px;
+.list {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
 }
-.elements{
+.elements {
   width: 100%;
 }
 .item {
@@ -107,43 +107,89 @@ body {
   font-size: 19px;
   padding: 17px 0px;
 }
-.detail{
-    width:64%;
-    padding: 0 3%;
-    display: flex;
-    justify-content: space-between;
-    font-size: 17px;
+.detail {
+  width: 64%;
+  padding: 0 3%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
 }
-.detail span{
-    font-weight: 700;
+.detail span {
+  font-weight: 700;
 }
-.detail div{
-    margin-bottom: 10px;
+.detail div {
+  margin-bottom: 10px;
 }
 
-.innerbody{
+.innerbody {
   display: flex;
 }
-.discription1{
- width: 161.4px;
-font-size: 17px;
-font-weight: 700;
+.discription1 {
+  width: 181.4px;
+  font-size: 17px;
+  font-weight: 700;
 }
 
-.right{
+.right {
   margin: 0 3%;
   padding: 5px;
   height: fit-content;
-max-height: 550px;
-overflow: scroll;
+  max-height: 550px;
 }
-.right1{
-  width: 36%;
+.right1 {
+  width: 100%;
   margin-left: 10px;
   border-radius: 10px;
   border: 2px solid #f5dada;
-  height: fit-content;
-max-height: 550px;
-overflow: scroll;
+  height: 218px;
+  max-height: 550px;
+  overflow: scroll;
+}
+.Name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-left: 5.3%;
+  margin-bottom: 15px;
+  margin-top: 3%;
+}
+.box {
+  border: 2px solid blueviolet;
+  height: 281px;
+  margin: 2% 5.3%;
+
+  overflow: scroll;
+}
+.listItem {
+  width: 200px;
 }
 
+.list1 {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 10px;
+  margin: 5px 0;
+  font-size: 18px;
+  margin: 4vh 0;
+  font-weight: 500;
+  height: 37px;
+}
+
+.discription1 {
+  width: 181.4px;
+  font-size: 19px;
+  font-weight: 700;
+}
+.right2 {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #f5dada;
+  height: 336px;
+  max-height: 550px;
+  overflow: scroll;
+}
+
+.outer1{
+  margin: 0% 5.9%;
+}

@@ -3,13 +3,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Proxima Nova Soft";
-
-
+  font-family: revert;
   background: #f9f9f9;
-
+  font-family: 'Rubik', sans-serif;
 }
-@import url("https://fonts.googleapis.com/css?family=Proxima+Nova");
+button{
+  cursor: pointer;
+}
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
 .mat-progress-bar-fill::after {
   background-color: red;
 }
@@ -18,6 +19,7 @@ body {
     border-radius: 2px;
 }
 body,html {
+  cursor: default;
   overflow-x: hidden;
   width: 100%;
   height: 100%;
@@ -37,5 +39,4 @@ body,html {
   
   transition: all 100s ease-in-out 100s;
 }
-
 

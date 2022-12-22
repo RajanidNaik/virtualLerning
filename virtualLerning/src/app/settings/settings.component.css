@@ -5,8 +5,8 @@ position: absolute;
 width: 80.1%;
 /* height: 88%; */
 height: 61rem;
-right: 0;
-top: 127px;
+top: 14vh;
+left: 22vw;
 background: #F9F9F9;
 border-radius: 2.375rem 0rem 0rem 2.375rem;
 /* border: 1px solid #000; */
@@ -16,7 +16,7 @@ border-radius: 2.375rem 0rem 0rem 2.375rem;
     position: absolute;
     top:3%;
     left: 3rem;
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 1.5rem;
@@ -55,7 +55,7 @@ border-radius: .5rem;
 
 }
 .input label{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 0.875rem;
@@ -65,7 +65,7 @@ letter-spacing: 0.4px;
 color: #232323;
 }
 .input input::placeholder{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 1rem;
@@ -74,7 +74,7 @@ letter-spacing: 0.2px;
 color: #8B849B;
 }
 .input input{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 1rem;
@@ -86,7 +86,7 @@ color: #8B849B;
     background: #EE5C4D;
 border-radius: 6px;
 border: none;
-font-family: 'Proxima Nova Soft';
+font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 1.125rem;

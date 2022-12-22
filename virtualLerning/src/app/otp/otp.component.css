@@ -68,7 +68,7 @@ border-radius: 6px;
     text-align: center;
 }
 .dataForgot .title{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 32px;
@@ -120,4 +120,7 @@ border: 0;
 span{
     color: #EE5C4D;
        
+}
+.resend > span:nth-child(1) {
+cursor: default;
 }

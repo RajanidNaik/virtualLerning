@@ -7,8 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { log } from 'console';
-import { Session } from 'inspector';
 import { AdminLoginService } from '../services/admin-login.service';
 
 @Component({
@@ -107,8 +105,7 @@ export class LoginComponent implements OnInit {
         // console.log(data);
       },
       error: (data) => {
-        this.message =data.error;
-        this.message = this.message.error;
+        this.message="Invalid Credential"
       },
     });
   }

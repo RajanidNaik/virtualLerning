@@ -144,7 +144,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn"  [disabled]="videoForm.invalid || !currVal||!currVideo"  (click)="addChapter()">Add New +</button>
+        <button class="btn"  [disabled]="videoForm.invalid || !currVal"  (click)="addChapter()">Add New +</button>
       </div>
     </div>
 
@@ -166,8 +166,8 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               <div class="green">Videos upload successful</div>
             </div>
             <div class="icon" *ngIf="uploadFailed[chapIndex]">
-              <div class="green">
-                <mat-icon>error</mat-icon>
+              <div >
+                <mat-icon style="color: red;" >error</mat-icon>
               </div>
               <div>Upload failed</div>
             </div>

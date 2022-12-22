@@ -1,10 +1,9 @@
 .contentBox {
   box-sizing: border-box;
-  margin-top: 12vh;
-  margin-left: 19.9vw;
-  width: 80%;
-  top: 117px;
-  left: 292.6px;
+  position: absolute;
+top: 13vh;
+left: 20vw;;
+  width: 80%; 
   background: #f9f9f9;
 }
 .innerNav {
@@ -34,7 +33,7 @@ right: 4vw;
 .itemNav {
   cursor: pointer;
   /* border: 3px solid violet;   */
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
