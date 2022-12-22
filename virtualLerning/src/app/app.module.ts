@@ -41,7 +41,7 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
-
+import { AuthGuard } from './guard/auth.guard';
 import { OnSaveComponent } from './on-save/on-save.component';
 
 @NgModule({
@@ -83,13 +83,13 @@ import { OnSaveComponent } from './on-save/on-save.component';
     CKEditorModule,
     NgxFileDropModule,
     AngularFireModule.initializeApp(environment.firebase),
-      provideFirebaseApp(() => initializeApp(environment.firebase)),
-      provideAnalytics(() => getAnalytics()),
-      provideAuth(() => getAuth()),
-      provideFirestore(() => getFirestore()),
-      provideFunctions(() => getFunctions()),
-      provideMessaging(() => getMessaging()),
-      provideStorage(() => getStorage()),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideMessaging(() => getMessaging()),
+    provideStorage(() => getStorage()),
   ],
   providers: [
     {
@@ -97,7 +97,9 @@ import { OnSaveComponent } from './on-save/on-save.component';
       useClass: AuthserviceInterceptor,
       multi: true,
     },
-    ScreenTrackingService,UserTrackingService,
+    ScreenTrackingService,
+    UserTrackingService,
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })

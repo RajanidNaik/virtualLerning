@@ -18,24 +18,37 @@ import { SignupComponent } from './signup/signup.component';
 import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
 import { DeleteStudentComponent } from './delete-student/delete-student.component';
 import { OnSaveComponent } from './on-save/on-save.component';
+import { AuthGuard } from './guard/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashBoardComponent },
-  { path: 'addcourse', component: AddCourseComponent },
+  {
+    path: 'dashboard',
+    component: DashBoardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'addcourse',
+    component: AddCourseComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'otp', component: OtpComponent },
   { path: 'password', component: PasswordChangeComponent },
-  { path: 'studentlist', component: StudentListComponent },
+  {
+    path: 'studentlist',
+    component: StudentListComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'signUp', component: SignupComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'dialogDashboard', component: DialogDashboardComponent },
-  { path: 'profileDialog', component: ProfileDialogComponent },
-  { path: 'sideNav', component: SideNavComponent },
-  { path: 'head', component: HeadDialogComponent },
-  { path: 'header', component: HeaderComponent },
-  {path:'super',component:SuperAdmindashboardComponent},
-  {path:'delete',component:DeleteStudentComponent},
-  {path:'onSave',component:OnSaveComponent}
+  { path: 'settings', component: SettingsComponent,
+  canActivate: [AuthGuard] },
+  {
+    path: 'super',
+    component: SuperAdmindashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'delete', component: DeleteStudentComponent },
+  { path: 'onSave', component: OnSaveComponent },
 ];
 
 @NgModule({
