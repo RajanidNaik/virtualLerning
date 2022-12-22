@@ -190,7 +190,7 @@ chapterArray:any
 
   setValue() {
 
-    this.videoForm.patchValue({
+    this.videoForm.setValue({
       videoTitle: this.completeDetails.courseName,
       category: this.completeDetails.categoryName,
       subCategory: this.completeDetails.subCategoryName,
