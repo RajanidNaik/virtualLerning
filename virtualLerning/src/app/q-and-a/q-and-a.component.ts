@@ -77,7 +77,7 @@ export class QAndAComponent implements OnInit {
       option_4: ['', Validators.required],
       correctAnswer: ['', Validators.required],
       questionId: ['',Validators.required],
-      deleteStatus: ['',Validators.required],
+      deleteStatus: [false],
     });
   }
 
@@ -128,6 +128,7 @@ export class QAndAComponent implements OnInit {
         console.log(res);
         this.testDetails = res;
         this.questionlist = this.testDetails.questionRequests;
+        console.log(this.questionlist)
       },
       error: (error) => {
         console.log(error.error.message);
@@ -152,6 +153,7 @@ export class QAndAComponent implements OnInit {
   }
   deleteQuestion(i:any){
     this.questionlist.splice(i);
+    this.questionlist[i].deleteStatus == true;
   }
   onPost() {
     let body = {
