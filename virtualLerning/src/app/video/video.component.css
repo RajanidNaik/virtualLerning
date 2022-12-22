@@ -396,3 +396,18 @@ height: 100%;
 margin-bottom: 30px;
 height: 49px;
 }
+.inputs{
+  margin-block-end: 2%;
+  display:flex;
+}
+.btns{
+  background: rgba(9, 41, 99, 0.11);
+  border-radius: 4px;
+  border: none;
+  color: #092963;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+ 
+}

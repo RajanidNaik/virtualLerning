@@ -97,4 +97,12 @@ margin-top: 43px; */
   background: rgba(9, 41, 99, 0.2);
   margin-right: 3vw;
 }
-
+input.in{
+  outline: none !important;
+  border:none !important;
+ margin-block-start: 2%!important;
+}
+.display{
+  display: flex;
+  align-items: center;
+}

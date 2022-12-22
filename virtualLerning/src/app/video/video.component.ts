@@ -8,7 +8,7 @@ import { VideoServiceService } from '../videoService/video-service.service';
 import { SubCatComponent } from '../sub-cat/sub-cat.component';
 import{AngularFireStorage,AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/compat/storage';
 import { finalize, map, Observable } from 'rxjs';
-import { AddVideo } from '../add-video';
+import { addSub, AddVideo } from '../add-video';
 
 @Component({
   selector: 'app-video',
@@ -50,6 +50,11 @@ export class VideoComponent implements OnInit {
 //edit upload failed thing
 addVideo = new AddVideo();
 chapterArray:any
+hide:any;
+
+addSubchapter = new addSub();
+lessonArray:any;
+
 
   constructor(
     public fb: FormBuilder,
@@ -96,13 +101,17 @@ chapterArray:any
     });
 
     if (sessionStorage.getItem('addCourseDetails')) {
+      this.hide = true;
       this.completeDetails = JSON.parse(
         sessionStorage.getItem('addCourseDetails') || '[]'
       );
       console.log(this.completeDetails);
       this.chapterArray = this.completeDetails.chapter;
+     
       this.setValue();
 
+    }else{
+      this.hide = false;
     }
 
 
@@ -189,7 +198,6 @@ chapterArray:any
 
 
   setValue() {
-
     this.videoForm.setValue({
       videoTitle: this.completeDetails.courseName,
       category: this.completeDetails.categoryName,
@@ -382,6 +390,69 @@ chapterArray:any
     if (this.videoForm.value){}
   }
 
+//edit
+addNewChapter(){
+  this.addVideo = new AddVideo();
+  this.chapterArray.push(this.addVideo);
+}
+addNewSub(i:any){
+  this.lessonArray = this.chapterArray[i].lessonList;
+  this.addSubchapter = new addSub();
+this.lessonArray.push(this.addSubchapter);
+}
+onPublish(){
+  
+  const body = {
+    courseName: this.videoForm.value.videoTitle,
+    categoryName: this.videoForm.value.category,
+    subCategoryName: this.videoForm.value.subCategory,
+    courseTagLine: this.videoForm.value.formatText,
+    description: this.videoForm.value.overview,
+    learningOutCome: this.videoForm.value.learning,
+    requirements: this.videoForm.value.requirement,
+    difficultyLevel: this.videoForm.value.level,
+    coursePhoto: this.videoForm.value.coursePhoto,
+    previewVideo: this.videoForm.value.previewVideo,
+    courseKeyword: this.videoForm.value.keyWords,
+  };
+  const body2 = {
+    courseName: this.videoForm.value.videoTitle,
+    chapterDataRequestList:this.chapterArray
+  };
+  console.log(body, body2);
+  this.videoSer.overview(body)
+  .subscribe({
+      next: (data: any) => {
+          alert('Request Sent Succefully');
+          console.log(data);
+          sessionStorage.setItem('response2', data);
+          this.response = JSON.parse(data);
+          this.response = this.response.message.match(/\d+$/)[0];
+          sessionStorage.setItem('CourseID',this.response);
+        },
+        error: (data: any) => {
+            console.log(data);
+          },
+        });
+  this.videoSer.addChapters(body2)
+  .subscribe({
+          next: (data: any) => {
+          alert('Request Sent Succefully');
+          console.log(data);
+          sessionStorage.setItem('response2',data)
+
+        },
+        error: (data: any) => {
+            console.log(data);
+          },
+        })
+}
+
+
+
+removeAddChapter(i:any){
+  this.chapterArray.splice(i);
+}
 
 
 }
