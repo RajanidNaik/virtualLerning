@@ -47,7 +47,7 @@
             </div>
             <div class="iconList1">
               <div class="done" *ngIf="c.uploadedStatus">
-                <mat-icon>done</mat-icon>
+                <mat-icon (click)="getVideoDetails(c.courseId)">done</mat-icon>
               </div>
               <div class="error" *ngIf="!c.uploadedStatus">
                 <div class="errorimage">
