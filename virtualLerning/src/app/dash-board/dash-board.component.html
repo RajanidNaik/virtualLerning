@@ -236,8 +236,8 @@
         </div>
         <div class="backline">Recently&nbsp;courses&nbsp;added</div>
       </div>
-      <div class="recentAddVideo" (scroll)="onScrollCourse($event)">
-        <div class="gap" *ngFor="let c of course">
+      <div class="recentAddVideo" >
+        <div class="gap" (scroll)="onScrollCourse($event)" *ngFor="let c of course">
           <div class="video">
             <div class="videoBox1">
               <video controls class="image">

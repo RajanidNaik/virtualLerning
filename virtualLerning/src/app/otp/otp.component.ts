@@ -47,7 +47,7 @@ export class OtpComponent implements OnInit {
        next: (data) => {
         alert("OTP send")
          this.logindata = data;
-         console.log(data);;
+         console.log(this.logindata);;
        },
        error: (data) => {
          console.log(data);;

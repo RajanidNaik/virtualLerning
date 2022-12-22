@@ -38,7 +38,7 @@
   margin: 3%;
 }
 .recentAdd {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 1.375rem;
@@ -46,7 +46,7 @@
   color: #292929;
 }
 .view {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.75rem;
@@ -60,7 +60,7 @@
   cursor: pointer;
 }
 .week {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 3rem;
@@ -69,7 +69,7 @@
   color: #292929;
 }
 .date {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.5rem;
@@ -188,7 +188,7 @@
   left: 10%;
 }
 .student {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.5rem;
@@ -196,7 +196,7 @@
   color: #292929;
 }
 .number {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 2rem;
@@ -234,14 +234,14 @@
   left: 3%;
 }
 .above {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 1.5rem;
   line-height: 1.75rem;
 }
 .people {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.75rem;
@@ -268,7 +268,7 @@
   margin-left: 2%;
 }
 .tablehead p:first-child {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -317,7 +317,7 @@ td {
   gap: 3%;
 }
 .profile p {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 0.875rem;
@@ -343,7 +343,7 @@ td {
 }
 
 .startdate {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.875rem;
@@ -351,7 +351,7 @@ td {
   color: #666666;
 }
 .cline {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.875rem;
@@ -360,7 +360,7 @@ td {
   align-items: flex-start;
 }
 .comline {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.875rem;
@@ -368,7 +368,7 @@ td {
   color: #1eab0d;
 }
 .comline1 {
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.875rem;

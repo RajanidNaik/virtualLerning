@@ -80,7 +80,7 @@
   width: 29vw;
   justify-content: space-between;
   padding: 2vh 1vw;
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -150,7 +150,7 @@
 .qn input {
   outline: none;
   border: none;
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -163,7 +163,7 @@
 .opt input {
   outline: none;
   border: none;
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;

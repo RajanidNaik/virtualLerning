@@ -51,7 +51,7 @@ left:5%;
     cursor: pointer;
 }
 .line{
-font-family: 'Proxima Nova Soft';
+font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 1.75rem;
@@ -86,7 +86,7 @@ color: #FFFFFF;
 }
 
 .name{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 1.375rem;
@@ -136,7 +136,7 @@ color: #FFFFFF;
    justify-content: space-between;
 }
 .person{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 1.25rem;
@@ -144,7 +144,7 @@ line-height: 1.625rem;
 color: rgba(255, 255, 255, 0.5);
 }
 .personName{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 1.25rem;
@@ -170,7 +170,7 @@ left:5%;
     position: absolute;
     top:8%;
     left:5%;
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
    font-weight: 700;
 font-size: 1.75rem;
@@ -253,7 +253,7 @@ color: #FFFFFF;
 .save button{
     outline: none;
     border: none;
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.125rem;
@@ -288,7 +288,7 @@ color: #FFFFFF;
     position: absolute;
     top:10%;
     left:5%;
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
    font-weight: 700;
 font-size: 28px;
