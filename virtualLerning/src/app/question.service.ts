@@ -104,9 +104,11 @@ export class QuestionService {
     });
   }
 
-  publish(id:any){
+  publish(id:any):Observable<any>{
     return this.http.put(`${baseUrl}/admin/publishToWeb?courseId=${id}`,id);
   }
-
+getChapter(id:any):Observable<any>{
+  return this.http.get(`${baseUrl}/admin/chapterList?courseId=${id}`);
+}
 
 }

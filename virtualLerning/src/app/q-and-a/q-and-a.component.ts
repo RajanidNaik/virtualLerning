@@ -27,11 +27,20 @@ export class QAndAComponent implements OnInit {
   testDetails: any;
   questionlist: any = [];
   questions: any;
+
   response: any;
+
+  AddedChapter:any;
+  chapterId:any;
+  chapterName:any;
+
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.response = sessionStorage.getItem('CourseID');
+
+     this.response = sessionStorage.getItem('CourseID') || 27;
+     this.getChapterList();
+
     this.chapForm = this.fb.group({
       chaptername: ['', Validators.required],
       duration: ['', Validators.required],
@@ -67,8 +76,8 @@ export class QAndAComponent implements OnInit {
       option_3: ['', Validators.required],
       option_4: ['', Validators.required],
       correctAnswer: ['', Validators.required],
-      questionId: [],
-      deleteStatus: [],
+      questionId: ['',Validators.required],
+      deleteStatus: ['',Validators.required],
     });
   }
 
@@ -125,10 +134,6 @@ export class QAndAComponent implements OnInit {
       },
       complete: () => {
         this.setValue();
-
-        // for(let i=0; i<this.testDetails.questionRequests.length;i++){
-        //   this.setQuestionForm(i)
-        // }
       },
     });
   }
@@ -144,6 +149,9 @@ export class QAndAComponent implements OnInit {
   newQn() {
     this.addQn = new Add();
     this.questionlist.push(this.addQn);
+  }
+  deleteQuestion(i:any){
+    this.questionlist.splice(i);
   }
   onPost() {
     let body = {
@@ -169,5 +177,28 @@ export class QAndAComponent implements OnInit {
         console.log(error.error.message);
       },
     });
+  }
+
+  getChapterList(){
+    this.service.getChapter(this.response).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.AddedChapter =res;
+      },
+      error:(error)=>{
+        console.log(error.error.message);
+      }
+    })
+  }
+  getChapterId(e: any) {
+    this.chapterName = e.target.value;
+    this.array = this.AddedChapter.filter((item: any) => {
+      return item.chapterName == this.chapterName;
+    });
+    console.log(this.array[0].chapterId);
+    this.chapterId = this.array[0].chapterId;
+    this.chapForm.patchValue({
+      courseId:this.chapterId
+    })
   }
 }

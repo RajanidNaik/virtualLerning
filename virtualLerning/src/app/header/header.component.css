@@ -28,13 +28,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   position: absolute;
   right: 5%;
-  top: 15%;
+  top: 5%;
 }
 .personImg {
-  /* background-color: rgb(230, 169, 56); */
   border-radius: 50%;
 }
 .personName {
@@ -70,4 +68,5 @@ top: 43px;
 }
 .publish span{
   margin-right: 47px;
+
 }

@@ -4,12 +4,21 @@
     <div class="input /">
       <div>
         <div *ngIf="!hide">
-          <input
+          <!-- <input
             class="titleInput"
             type="list"
             list="browsers"
             formControlName="chaptername"
-          />
+          /> -->
+          <select
+            id="browsers"
+            (change)="getChapterId($event)"
+            formControlName="chaptername"
+          >
+            <option *ngFor="let chap of AddedChapter" [value]="chap.chapterName">
+              {{ chap.chapterName }}
+            </option>
+          </select>
         </div>
         <div *ngIf="hide">
           <select
@@ -91,10 +100,17 @@
       <div [formGroupName]="i">
         <!-- <div class="Qnum">Question {{i+1}}</div> -->
         <div class="Qnum">Question {{ i + 1 }}</div>
-        <div class="chapName">Question Id:</div>
-        <div>
-          <input formControlName="questionId" />
+        
+        <div class="qnId">
+          <label >Question Id:</label>
+          <input class="in" formControlName="questionId" />
         </div>
+        <div
+        *ngIf="optionForm.get('questionId')?.errors?.['required'] && optionForm.get('questionId')?.touched"
+            class="require"
+          >
+            Please enter the questionId
+          </div>
         <div class="details">
           <div class="qn">
             <!-- {{qn?.questionText}}  -->
@@ -126,27 +142,21 @@
           <div class="opt">
             <!-- <div>{{option.text}}</div> -->
             <input placeholder="a" formControlName="option_1" />
-            <div class="transform">
+            <!-- <div class="transform">
               <mat-slide-toggle color="primary"></mat-slide-toggle>
-            </div>
+            </div> -->
           </div>
           <div class="opt">
             <input placeholder="b" formControlName="option_2" />
-            <div class="transform">
-              <mat-slide-toggle color="primary"></mat-slide-toggle>
-            </div>
+            
           </div>
           <div class="opt">
             <input placeholder="c" formControlName="option_3" />
-            <div class="transform">
-              <mat-slide-toggle color="primary"></mat-slide-toggle>
-            </div>
+            
           </div>
           <div class="opt">
             <input placeholder="d" formControlName="option_4" />
-            <div class="transform">
-              <mat-slide-toggle color="primary"></mat-slide-toggle>
-            </div>
+            
           </div>
           <div class="opt">
             <input
@@ -154,20 +164,23 @@
               formControlName="correctAnswer"
             />
           </div>
-          <div
-            *ngIf="questionForm.get('opt')?.errors?.['required']&& questionForm.get('opt')?.touched "
-            class="require"
-          >
-            Please enter the option
-          </div>
-
-          <div
-            *ngIf="(newQuestion().get('ans')?.errors?.['required']) && (newQuestion().get('ans')?.touched  )"
-            class="require"
-          >
-            Please select the correct answer
-          </div>
         </div>
+        <div
+        *ngIf="optionForm.get('correctAnswer')?.errors?.['required'] && optionForm.get('correctAnswer')?.touched"
+        class="require"
+      >
+        Please select the correct answer
+      </div>
+      <div>
+        <label>DeleteStatus:</label>
+        <input class="in"  formControlName="deleteStatus"/>
+      </div>
+      <div
+      *ngIf="optionForm.get('deleteStatus')?.errors?.['required'] && optionForm.get('deleteStatus')?.touched"
+      class="require"
+    >
+      Please enter the delete status
+    </div>
       </div>
     </ng-container>
     <div>
@@ -181,13 +194,17 @@
   </div>
 </div>
 
+
+
+<!--Edit Part for upload failed thing-->
+
 <div *ngIf="hide">
   <div class="question" *ngFor="let qn of questionlist; index as i">
     <div>
       <div class="Qnum">Question {{ i + 1 }}</div>
       <div class="chapName">
         Question Id:
-        <input class="in" name="questionId" [(ngModel)]="qn.questionId" />
+        <input class="in" name="questionId{{i}}" [(ngModel)]="qn.questionId" />
       </div>
 
       <div class="details">
@@ -201,7 +218,7 @@
         </div>
         <div class="deleteChoice">
           <div style="margin-right: 2vw">
-            <mat-icon (click)="deleteOption(i)">delete</mat-icon>
+            <mat-icon (click)="deleteQuestion(i)">delete</mat-icon>
           </div>
 
           <div class="more" (click)="show(i)">
@@ -213,26 +230,26 @@
 
       <div class="options" *ngIf="shows[i]">
         <div class="opt">
-          <input placeholder="a" name="option_1" [(ngModel)]="qn.option_1" />
+          <input placeholder="a" name="option_1{{i}}" [(ngModel)]="qn.option_1" />
           <!-- {{qn.option_1}} -->
         </div>
         <div class="opt">
-          <input placeholder="b" name="option_2" [(ngModel)]="qn.option_2" />
+          <input placeholder="b" name="option_2{{i}}" [(ngModel)]="qn.option_2" />
           <!-- {{qn.option_2}} -->
         </div>
         <div class="opt">
-          <input placeholder="c" name="option_3" [(ngModel)]="qn.option_3" />
+          <input placeholder="c" name="option_3{{i}}" [(ngModel)]="qn.option_3" />
           <!-- {{qn.option_3}} -->
         </div>
         <div class="opt">
-          <input placeholder="d" name="option_4" [(ngModel)]="qn.option_4" />
+          <input placeholder="d" name="option_4{{i}}" [(ngModel)]="qn.option_4" />
           <!-- {{qn.option_4}} -->
         </div>
 
         <div class="opt">
           <input
             placeholder="choose correct answer"
-            name="correctAns"
+            name="correctAns{{i}}"
             [(ngModel)]="qn.correctAnswer"
           />
           <!-- {{qn.correctAnswer}} -->
@@ -241,7 +258,7 @@
 
       <div>
         <label>DeleteStatus:</label>
-        <input class="in" [ngModel]="qn.deleteStatus" />
+        <input class="in" name="deleteStatus{{i}}" [ngModel]="qn.deleteStatus" />
       </div>
     </div>
   </div>
@@ -253,20 +270,3 @@
   </div>
 </div>
 
-<!-- <div class="border"> -->
-<!-- <div class="footer">
-  <div class="prev">
-    <button class="previous">PREVIOUS</button>
-  </div>
-  <div class="pageNo">
-    <div class="roundPage">1</div>
-    <div class="roundPage">2</div>
-    <div class="roundPage">3</div>
-  </div>
-  <div class="nxt1">
-    <button class="next1">NEXT</button>
-  </div>
-  <div>
-    <button class="buttonSave">Save</button>
-  </div>
-</div> -->
