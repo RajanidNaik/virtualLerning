@@ -365,6 +365,13 @@ export class VideoComponent implements OnInit {
     this.length = item;
   }
   preview(){
-
+      console.log(this.videoForm.value);
   }
+
+  uploadCheck(){
+    if (this.videoForm.value){}
+  }
+
+
+
 }

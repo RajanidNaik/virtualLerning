@@ -47,15 +47,27 @@
   color: #292929;
 }
 .image{
-
-  
-
   border-radius: 50%;
-
   border:1px solid #000;
-
   width: 4.3em;
-
   height: 4.3em;
+}
 
+.publ{
+  position: absolute;
+  left: 64%;
+top: 43px;
+}
+
+.publish{
+  background: #EE5C4D;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 8px;
+}
+.publish span{
+  margin-right: 47px;
 }

@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { text } from 'body-parser';
+import { response } from 'express';
 import { Observable } from 'rxjs';
 import { baseUrl } from './../environments/environment';
 
@@ -101,4 +103,10 @@ export class QuestionService {
       responseType: 'text',
     });
   }
+
+  publish(id:any){
+    return this.http.put(`${baseUrl}/admin/publishToWeb?courseId=${id}`,id);
+  }
+
+
 }

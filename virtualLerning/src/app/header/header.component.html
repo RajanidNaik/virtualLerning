@@ -2,6 +2,10 @@
   <div class="navPosition">
     {{ head }}
   </div>
+  <div class="publ" *ngIf="show">
+    <button class="publish"[disabled]="!id || !qa" (click)="publish()" ><span>Publish to web</span><mat-icon>cloud_upload</mat-icon></button>
+  </div>
+
   <div class="person">
     <div class="personImg" (click)="openDialogProfile()">
       <img class="image" src="{{profileDetails.profilePhoto}}" />
