@@ -305,8 +305,8 @@ td {
   padding: 7px;
 }
 .proimage {
-  height: 15%;
-  width: 15%;
+  height: 7%;
+  width: 7%;
   border: 1px solid rgba(102, 102, 102, 0.24);
   border-radius: 50%;
 }
@@ -325,6 +325,9 @@ td {
   color: #1a1a1a;
   text-align: center;
   margin: 1%;
+}
+.lines{
+  width:30%
 }
 .btn mat-icon {
   font-size: 1rem;
@@ -357,7 +360,7 @@ td {
   font-size: 0.875rem;
   line-height: 1rem;
   color: #1a1a1a;
-  align-items: flex-start;
+  
 }
 .comline {
   font-family: "Proxima Nova Soft";

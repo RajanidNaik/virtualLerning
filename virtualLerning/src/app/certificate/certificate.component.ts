@@ -17,6 +17,8 @@ export class CertificateComponent implements OnInit {
     course: new FormControl(''),
     join: new FormControl(''),
     end: new FormControl(''),
+    duration: new FormControl(''),
+    certificateNumber: new FormControl('')
   });
   certificateDetails: any;
 
@@ -45,8 +47,6 @@ export class CertificateComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    // dialogConfig.height='40%';
-    // dialogConfig.width='40%';
     dialogConfig.position = {
       right: '0%',
       bottom: '15%',
@@ -62,25 +62,35 @@ export class CertificateComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.certificateDetails = res;
+        console.log(this.certificateDetails);
       },
       error: (error) => {
         alert(error.error.message);
       },
       complete: () => {
+        this.setValue();
         sessionStorage.setItem(
           'certificateDetails',
           JSON.stringify(this.certificateDetails)
         );
+        
       },
     });
   }
   setValue(){
-    this.certForm.patchValue({
-      title:'',
-      name:'',
-      course:'',
-      join:'',
-      end:''
-    })
+    if(sessionStorage.getItem('certificateDetails')){
+      console.log(this.certificateDetails);
+      this.certForm.patchValue({
+        title:this.certificateDetails[0].courseName,
+        name:this.certificateDetails[0].fullName,
+        course:this.certificateDetails[0].courseName,
+        join:this.certificateDetails[0].joinDate,
+        end:this.certificateDetails[0].completedDate,
+        certificateNumber:this.certificateDetails[0].certificateNo,
+        duration:this.certificateDetails[0].courseDuration
+      })
+     console.log( this.certForm.value)
+    }
+    
   }
 }

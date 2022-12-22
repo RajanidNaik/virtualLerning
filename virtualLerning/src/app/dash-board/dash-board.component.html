@@ -79,7 +79,7 @@
             <div class="number">{{ data.totalStudentsEnrolled || 0 }}</div>
           </div>
           <div class="studentimage">
-            <img src="/assets/Group 74.png" />
+            <img  src="/assets/Group 74.png" />
           </div>
         </div>
         <div class="studentCount2">
@@ -186,7 +186,7 @@
               <td>
                 <div class="startdate">{{ d.joinDate }}</div>
               </td>
-              <td>
+              <td class="lines">
                 <div class="cline">
                   {{ d.courseName }}
                 </div>
@@ -263,7 +263,7 @@
           </div>
           <div class="iconList">
             <div class="done" *ngIf="c.uploadedStatus">
-              <mat-icon>done</mat-icon>
+              <mat-icon (click)="getVideoDetails(c.courseId)">done</mat-icon>
             </div>
             <div class="error" *ngIf="!c.uploadedStatus">
               <div class="errorimage">

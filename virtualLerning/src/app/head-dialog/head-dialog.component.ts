@@ -15,6 +15,7 @@ export class HeadDialogComponent implements OnInit {
       this.completeDetails = JSON.parse(
         sessionStorage.getItem('certificateDetails') || '[]'
       );
+      console.log(this.completeDetails);
       
     }
   }

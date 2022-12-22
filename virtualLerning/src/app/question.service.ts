@@ -92,7 +92,7 @@ export class QuestionService {
   }
   saveCertificate(body: any) {
     var body2 = new FormData();
-    body2.append('template', body.template);
+    body2.append('certificate', body.certificate);
     body2.append('userName', body.userName);
     body2.append('courseId', body.courseId);
 

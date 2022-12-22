@@ -1,21 +1,23 @@
 <div class="delete"><mat-icon mat-dialog-close>clear</mat-icon></div>
+<form [formGroup]="chapForm">
 <div  class="onSave">
     <div class="display">
         <label>HTmL template</label>
-    <input type="file"  id="upload" (change)="onFileSelect($event)"  /> 
+    <input type="file"  id="upload" (change)="onFileSelect($event)" formControlName="template" /> 
     </div>
     
     
     <div class="display">
     <label>UserName</label>
-      <input placeholder="userName">
+      <input placeholder="userName" formControlName="userName">
     </div>
     
     <div class="display">
         <label>CourseId</label>
-      <input placeholder="courseId">
+      <input placeholder="courseId" formControlName="courseId">
     </div>
   </div>
+</form>
   <div>
     <button (click)="saveCertificate()">Save</button>
   </div>
