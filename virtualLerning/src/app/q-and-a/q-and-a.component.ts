@@ -37,8 +37,10 @@ export class QAndAComponent implements OnInit {
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+
      this.response = sessionStorage.getItem('CourseID') || 27;
      this.getChapterList();
+
     this.chapForm = this.fb.group({
       chaptername: ['', Validators.required],
       duration: ['', Validators.required],
@@ -103,6 +105,7 @@ export class QAndAComponent implements OnInit {
       next: (res) => {
         console.log(res);
         let response = res;
+        sessionStorage.setItem('qAnda','true');
         if (response[0] == '{') {
           response = JSON.parse(response);
           alert(Object.values(response)[0]);
@@ -163,6 +166,7 @@ export class QAndAComponent implements OnInit {
     this.service.addQuestion(body).subscribe({
       next: (res) => {
         console.log(res);
+        sessionStorage.setItem('qAnda', 'true');
         let response = res;
         if (response[0] == '{') {
           response = JSON.parse(response);

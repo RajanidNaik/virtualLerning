@@ -13,10 +13,18 @@ export class HeaderComponent implements OnInit {
 
   constructor(private dialog:MatDialog,private router:Router, public service:QuestionService) { }
   head:any;
+  show=false;
+  id:any;
+  qa:any;
+
   ngOnInit(): void {
     this.head = localStorage.getItem('curr');
     this.head = JSON.parse(this.head);
-    this. getPro();
+    if (this.head == "Add Courses") this.show=true;
+    this.id = sessionStorage.getItem('CourseID');
+    this.qa = sessionStorage.getItem('qAnda');
+
+     this.getPro();
 
   }
   openDialogProfile(){
@@ -52,5 +60,18 @@ export class HeaderComponent implements OnInit {
         alert(error.error.message);
       }
     })
+  }
+
+  publish(){
+    console.log("Publish");
+    // this.service.publish(this.id).subscribe({
+    //   next:(res)=>{
+    //     alert(res);
+    //   },
+    //   error:(error)=>{
+    //     alert(error.error.message);
+    //   }
+    // });
+    
   }
 }

@@ -375,6 +375,13 @@ chapterArray:any
     this.length = item;
   }
   preview(){
-
+      console.log(this.videoForm.value);
   }
+
+  uploadCheck(){
+    if (this.videoForm.value){}
+  }
+
+
+
 }

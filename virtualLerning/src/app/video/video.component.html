@@ -144,7 +144,6 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
         <button class="btn"  [disabled]="videoForm.invalid || !currVal||!currVideo"  (click)="addChapter()">Add New +</button>
-        <!-- [disabled]="videoForm.invalid" -->
       </div>
     </div>
 
@@ -206,18 +205,18 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             </div>
             <div class="bottomDisplay">
               <div class="videoScroll">
-                <div formArrayName="subChapter" *ngFor=" let subItem of subChapters(chapIndex).controls;let subIndex = index;">
+                <div formArrayName="lessonsList" *ngFor=" let subItem of subChapters(chapIndex).controls;let subIndex = index;">
                   {{storesIndex(subChapters(chapIndex).length-1,chapIndex)}}
                   {{setcurrVal()}}
                   {{setlength(subChapters(chapIndex).length-1)}}
-                  <ng-container [formGroupName]="subIndex"> 
-                      <div class="box" *ngIf="subItem.value.videoLink">
-                        <video width="100%" height="100%" controls="controls">
-                        <source [src]="subItem.value.videoLink" type="video/mp4">
-                      </video>
-                    </div>
-                    <div class="box" *ngIf="!subItem.value.videoLink"></div>
-                  </ng-container>
+                    <ng-container [formGroupName]="subIndex"> 
+                        <div class="box" *ngIf="subItem.value.videoLink">
+                          <video width="100%" height="100%" controls="controls">
+                          <source [src]="subItem.value.videoLink" type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="box" *ngIf="!subItem.value.videoLink"></div>
+                    </ng-container>
                 </div>
               </div>
             </div>
@@ -241,7 +240,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   <button class="buttonN" [disabled]="sIndex <= length" (click)="next()">Next</button>
                 </div>
                 <div class="btn1">
-                  <button class="buttonP" (click)="addSubChapter(chapIndex)" [disabled]="videoForm.invalid || !currVal||!currVideo">Add Sub Chapter</button>
+                  <button class="buttonP" (click)="addSubChapter(chapIndex)" [disabled]="videoForm.invalid || !currVal">Add Sub Chapter</button>
                 </div>
               </div>
           </div>
@@ -259,7 +258,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   </div>
 
   <div class="next">
-    <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal||!currVideo" (click)="addCourse()">Publish</button>
+    <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal" (click)="addCourse()">Publish</button>
   </div>
     <button (click)="preview()">show</button>
   </div>

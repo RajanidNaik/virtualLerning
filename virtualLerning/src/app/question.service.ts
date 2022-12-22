@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { text } from 'body-parser';
+import { response } from 'express';
 import { Observable } from 'rxjs';
 import { baseUrl } from './../environments/environment';
 
@@ -100,6 +102,10 @@ export class QuestionService {
     return this.http.post(`${baseUrl}/admin/course/certificate/save`, body2, {
       responseType: 'text',
     });
+  }
+
+  publish(id:any):Observable<any>{
+    return this.http.put(`${baseUrl}/admin/publishToWeb?courseId=${id}`,id);
   }
 getChapter(id:any):Observable<any>{
   return this.http.get(`${baseUrl}/admin/chapterList?courseId=${id}`);
