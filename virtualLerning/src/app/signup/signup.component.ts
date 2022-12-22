@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
   url: any;
   selectedFile: any;
   imageAvail = false;
+  response:any;
   constructor(private al: AdminLoginService, private router: Router) {}
   signUpForm = new FormGroup({
     userName: new FormControl('', [
@@ -50,9 +51,9 @@ export class SignupComponent implements OnInit {
     console.log(body);
     this.al.signUp(body).subscribe({
       next: (data) => {
-        alert('Request Sent Succefully');
-        console.log(data);
-        // this.router.navigateByUrl('/');
+        this.response=data.body;
+        alert(this.response.message);
+        this.router.navigateByUrl('/');
       },
       error: (data) => {
         console.log(data);

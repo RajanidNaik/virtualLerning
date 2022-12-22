@@ -27,7 +27,7 @@ align-items: center;
 margin:1%;
 }
 .para{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 22px;
@@ -37,7 +37,7 @@ color: rgba(0,0,0,0.7);
 margin:3%;
 }
 .name{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 28px;
@@ -47,7 +47,7 @@ line-height: 32px;
     color:#EE5C4D;
 }
 .course{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
     font-weight: 200;
     font-size: 28px;
@@ -59,7 +59,7 @@ line-height: 32px;
 .time{
     display: flex;
     gap:1%;
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 18px;

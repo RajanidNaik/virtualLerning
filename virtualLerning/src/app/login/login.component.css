@@ -1,8 +1,8 @@
 .container{
-    height: 100vh;
-    width: 100vw;
+     height: 100vh;
+     width: 100vw;
     background: #092963;
-    position: fixed;
+    position: fixed; 
 }
 .box{
     width: 31.25%;
@@ -76,7 +76,7 @@ border-radius: 6px;
     text-align: center;
 }
 .dataForgot .title{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 32px;
@@ -118,4 +118,7 @@ margin-top: 34px;
 .ck-content {
 height: 356.2px;
 overflow: scroll;
+}
+.button1 {
+margin-top: 20%;
 }

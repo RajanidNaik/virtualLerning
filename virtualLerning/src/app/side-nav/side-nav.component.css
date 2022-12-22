@@ -20,18 +20,18 @@ margin:auto;
 margin-top: 18px;
 }
 .dashboard {
+  width: 13vw;
+  justify-content: center;
+height: 4vw;
+padding: 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1.5rem;
-  font-family: "Proxima Nova Soft";
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 1.125rem;
-  line-height: 1.375rem;
-  padding: 14% 14%;
-  padding-left: 25%;
-  padding-right: 25%;
+
   color: #232323;
   
 }
@@ -40,7 +40,7 @@ margin-top: 18px;
 }
 .nav{
     position: absolute;
-    left: 28%;
+    left: 4vw;
      top: 15%;
     display: flex;
     flex-direction: column;
@@ -95,7 +95,7 @@ border-radius: 2px;
     flex-direction: row;
     align-items: center;
     gap:1.5rem;
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 1.125rem;

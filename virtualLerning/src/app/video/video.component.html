@@ -174,19 +174,14 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
 
 
 \\\\\\\\\\\\\\\\\\\\\\\\-->
-  <div *ngIf="!hide">
-    <div class="videoUpload">
-      <div class="options">
-        <div class="uploadSection">Video Upload Section</div>
-        <div class="addNew">
-          <button
-            class="btn"
-            [disabled]="videoForm.invalid || !currVal || !currVideo"
-            (click)="addChapter()"
-          >
-            Add New +
-          </button>
-        </div>
+
+<div *ngIf="!hide">
+  <div class="videoUpload">
+    <div class="options">
+      <div class="uploadSection">Video Upload Section</div>
+      <div class="addNew">
+        <button class="btn"  [disabled]="videoForm.invalid || !currVal"  (click)="addChapter()">Add New +</button>
+
       </div>
 
       <div
@@ -206,6 +201,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 />
               </div>
             </div>
+
             <div class="center">
               <div class="icon" *ngIf="uploadSuccess[chapIndex]">
                 <div>
@@ -218,6 +214,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   <mat-icon>error</mat-icon>
                 </div>
                 <div>Upload failed</div>
+
+            <div class="icon" *ngIf="uploadFailed[chapIndex]">
+              <div >
+                <mat-icon style="color: red;" >error</mat-icon>
+
               </div>
             </div>
             <div class="more" class="center" (click)="show(chapIndex)">

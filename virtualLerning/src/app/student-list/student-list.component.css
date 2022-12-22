@@ -8,7 +8,7 @@ width: 80.1%;
 height: 61rem;
 right: 0;
 top: 127px;
-left: 350.267px;
+left: 24vw;
 background: #F9F9F9;
 border-radius: 38px 0px 0px 38px;
 /* border:1px solid #000; */
@@ -44,7 +44,7 @@ table{
     
 }
 .tablehead p:first-child{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 0.75rem;
@@ -97,7 +97,7 @@ gap:1rem;
 align-items: center;
 }
 .profile p{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: .875rem;
@@ -126,7 +126,7 @@ text-align: center;
    
 }
 .startdate{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: .875rem;
@@ -134,7 +134,7 @@ line-height: 1rem;
 color: #666666;
 }
 .cline{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 0.875rem;
@@ -144,7 +144,7 @@ align-items: flex-start;
 
 }
 .comline{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 0.875rem;
@@ -152,7 +152,7 @@ line-height: 1rem;
 color: #1EAB0D;
 }
 .comline1{
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 0.875rem;
@@ -168,7 +168,7 @@ color: #666666;
 
 .load button{
     padding: 20%;
-    font-family: 'Proxima Nova Soft';
+    font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 0.875rem;
@@ -202,7 +202,7 @@ cursor: pointer;
     }
     
     .del{
-        font-family: 'Proxima Nova Soft';
+        font-family: 'Rubik', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 0.875rem;

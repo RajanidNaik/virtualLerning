@@ -8,6 +8,9 @@
         <div class="person">
           <img src="/assets/Oval Copy 5.png" />
           <div>Dhoni</div>
+          <div (click)="logout()">
+            <mat-icon>logout</mat-icon>
+          </div>
         </div>
       </div>
     </div>
@@ -46,9 +49,7 @@
                 <button (click)="reject(item, reqIndex)">Reject</button>
               </div>
               <div (click)="toggle(reqIndex)">
-                <mat-icon *ngIf="!array[reqIndex]"
-                  >keyboard_arrow_down</mat-icon
-                >
+                <mat-icon *ngIf="!array[reqIndex]">keyboard_arrow_down</mat-icon>
                 <mat-icon *ngIf="array[reqIndex]">keyboard_arrow_up</mat-icon>
               </div>
             </div>
@@ -69,15 +70,32 @@
           </div>
         </div>
       </div>
-      <div class="right1">
+      <div class="outer1">
         <div class="admin">Rejected List</div>
-        <div class="right">
-          <div class="list" *ngFor="let item of rejectedList">
-            <div class="discription1">{{ item.fullName }}</div>
-            <div class="discription1">{{ item.emailId }}</div>
+        <div class="right1" (scroll)="onScrolling($event)">
+          <div class="right">
+            <div class="list" *ngFor="let item of rejectedList">
+              <div class="discription1">{{item.fullName }}</div>
+              <div class="discription1">{{ item.designation }}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class=Approved admins>
+      <div class="outer1">
+        <div class="admin">Admin List</div>
+        <div class="right2" (scroll)="onScrollingAdmin($event)">
+          <div class="right">
+            <div class="list1" *ngFor="let item of adminList">
+              <div class="discription1">{{item.fullName }}</div>
+              <div class="discription1">{{ item.emailId}}</div>
+              <div class="discription1">{{ item.mobileNumber}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

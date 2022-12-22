@@ -30,7 +30,7 @@ export class VideoComponent implements OnInit {
   category1: any;
   subCa: any;
   count: any;
-
+  status:any;
   cIndex = 0;
   previewVideo: any;
 
@@ -68,8 +68,10 @@ lessonArray:any;
   category: any;
   info: any;
   shows: any = [];
-  validp = true;
+  valid = true;
   ngOnInit(): void {
+    console.log(this.status);
+    
      this.response = sessionStorage.getItem('CourseID')||239;
     console.log(typeof(this.response))
     
@@ -155,6 +157,18 @@ lessonArray:any;
   }
 
   addChapter() {
+    if(this.status == true){
+      console.log("True");
+      
+      console.log(this.uploadFailed[this.cIndex])
+       console.log(this.uploadSuccess[this.cIndex])
+    }
+    else{
+      console.log("False");
+      
+       console.log(this.uploadFailed[this.cIndex])
+       console.log(this.uploadSuccess[this.cIndex])
+    }
     this.uploadFailed.push(false);
     this.uploadSuccess.push(false);
     this.sIndex = 0;
@@ -173,7 +187,7 @@ lessonArray:any;
     });
   }
   addSubChapter(chapIndex: number) {
-    this.adding = true;
+    this.uploadCheck();
     this.subChapters(chapIndex).push(this.newSubChapter());
   }
 
@@ -206,6 +220,8 @@ lessonArray:any;
       overview: this.completeDetails.description,
       learning: this.completeDetails.learningOutCome,
       requirement: this.completeDetails.requirements,
+      coursePhoto: this.completeDetails.requirements,
+      previewVideo: this.completeDetails.previewVideo,
       level: this.completeDetails.difficultyLevel,
       keyWords: this.completeDetails.keywords[0]['keyword'],
     });
@@ -387,7 +403,11 @@ lessonArray:any;
   }
 
   uploadCheck(){
-    if (this.videoForm.value){}
+    if (this.videoForm.value.chapter[this.cIndex].lessonsList[this.sIndex].videoLink) console.log(true);
+  
+    else console.log(false);
+    
+    
   }
 
 //edit
