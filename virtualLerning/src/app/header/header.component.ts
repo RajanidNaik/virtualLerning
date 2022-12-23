@@ -64,14 +64,18 @@ export class HeaderComponent implements OnInit {
 
   publish(){
     console.log("Publish");
-    // this.service.publish(this.id).subscribe({
-    //   next:(res)=>{
-    //     alert(res);
-    //   },
-    //   error:(error)=>{
-    //     alert(error.error.message);
-    //   }
-    // });
+    if(sessionStorage.getItem('CourseID')){
+      this.service.publish(this.id).subscribe({
+        next:(res)=>{
+          alert(res);
+        },
+        error:(error)=>{
+          alert(error.error.message);
+        }
+      });
+      sessionStorage.removeItem('addCourseDetails');
+      window.location.reload();
+    }
     
   }
 }
