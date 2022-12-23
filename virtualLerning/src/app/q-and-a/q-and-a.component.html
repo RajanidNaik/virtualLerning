@@ -15,8 +15,9 @@
             (change)="getChapterId($event)"
             formControlName="chaptername"
           >
-            <option *ngFor="let chap of AddedChapter" [value]="chap.chapterName">
+            <option *ngFor="let chap of AddedChapter;let i = index" [value]="chap.chapterName" >
               {{ chap.chapterName }}
+             
             </option>
           </select>
         </div>
@@ -26,9 +27,10 @@
             (change)="getAllQuestions($event)"
             formControlName="chaptername"
           >
-            <option *ngFor="let chap of chapter" [value]="chap.chapterName">
+            <option *ngFor="let chap of chapter; let i = index" [value]="chap.chapterName" >
               {{ chap.chapterName }}
             </option>
+          
           </select>
         </div>
       </div>
@@ -86,7 +88,7 @@
     >
       This is required field*
     </div>
-    <div class="currPage">5 of 10</div>
+    <!-- <div class="currPage">5 of 10</div> -->
   </form>
 </div>
 <!-- <div class="question" *ngFor="let qn of questionList;let i=index"> -->

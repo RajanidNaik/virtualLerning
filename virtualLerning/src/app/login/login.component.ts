@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -141,5 +141,13 @@ export class LoginComponent implements OnInit {
          this.login = true ;
       },
     });
+  }
+  @HostListener('document:keydown.enter') keydata() {
+    
+    if(this.superAdmins == true && this.login == false){
+      this.supAdminLogin();
+    }else{
+      this.loginCheck() ;
+    }
   }
 }

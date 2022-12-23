@@ -294,7 +294,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   <div class="next">
     <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal" (click)="addCourse()">Publish</button>
   </div>
-    <button (click)="preview()">show</button>
+    <!-- <button (click)="preview()">show</button> -->
   </div>
 
 
@@ -328,7 +328,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <input
               class="titleInput"
               type="text"
-              name="chapterName{{ i }}"
+              name="chapterName{{i}}"
               [(ngModel)]="chap.chapterName"
             />
           </div>
@@ -355,10 +355,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
       <div class="imgUpload" *ngIf="shows[i]">
         <div class="left">
           <div class="preview">
+           
             <div class="contain" *ngIf="currVideo">
               <video width="100%" height="100%" controls="controls">
                 <source
-                  src="{{ chapterArray[i].lessonList[id].videoLink }}"
+                  src="{{currVideo}}"
                   type="video/mp4"
                 />
               </video>
@@ -397,7 +398,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               >
                 <div class="box">
                   <video width="100%" height="100%" controls="controls">
-                    <source src="{{ lesson.videoLink }}" type="video/mp4" />
+                    <source src="{{ lesson.videoLink || this.currVideo}}" type="video/mp4" />
                   </video>
                 </div>
               </div>
@@ -418,7 +419,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 <input
                   class="titleInput"
                   type="text"
-                  name="lessonName{{ id }}"
+                  name="lessonName{{id}}"
                   [(ngModel)]="lessons.lessonName"
                 />
               </div>
@@ -426,7 +427,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <div class="takevalue">
               <div class="btn1">
                 <button class="buttonP" (click)="addNewSub(i)">
-                  Add Sub Chapter
+                  Add+
                 </button>
               </div>
             </div>

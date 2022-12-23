@@ -49,11 +49,11 @@ export class VideoComponent implements OnInit {
 
 //edit upload failed thing
 addVideo = new AddVideo();
-chapterArray:any
+chapterArray:any=[]
 hide:any;
 
 addSubchapter = new addSub();
-lessonArray:any;
+lessonArray:any=[];
 
 
   constructor(
@@ -324,6 +324,7 @@ lessonArray:any;
     this.videoForm.value.chapter[this.cIndex].lessonsList[
       this.sIndex
     ].videoLink = this.currVideo;
+    
   }
 
   select(item: any) {}
@@ -419,7 +420,9 @@ addNewSub(i:any){
   this.lessonArray = this.chapterArray[i].lessonList;
   this.addSubchapter = new addSub();
 this.lessonArray.push(this.addSubchapter);
+
 }
+
 onPublish(){
   
   const body = {

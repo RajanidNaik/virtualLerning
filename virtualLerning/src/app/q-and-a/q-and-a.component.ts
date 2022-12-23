@@ -33,6 +33,7 @@ export class QAndAComponent implements OnInit {
   AddedChapter:any;
   chapterId:any;
   chapterName:any;
+ 
 
   constructor(public service: QuestionService, private fb: FormBuilder) {}
 
@@ -203,4 +204,5 @@ export class QAndAComponent implements OnInit {
       courseId:this.chapterId
     })
   }
+  
 }
