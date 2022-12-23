@@ -18,6 +18,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SuperAdmindashboardComponent } from './super-admindashboard/super-admindashboard.component';
 import { DeleteStudentComponent } from './delete-student/delete-student.component';
 import { OnSaveComponent } from './on-save/on-save.component';
+import { FillCertificateComponent } from './fill-certificate/fill-certificate.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   {path:'super',component:SuperAdmindashboardComponent},
   {path:'delete',component:DeleteStudentComponent},
-  {path:'onSave',component:OnSaveComponent}
+  {path:'onSave',component:OnSaveComponent},
+  {path:'complete',component:FillCertificateComponent}
 ];
 
 @NgModule({

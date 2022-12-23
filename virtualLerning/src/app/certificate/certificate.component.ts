@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { QuestionService } from '../question.service';
 
 import { OnSaveComponent } from '../on-save/on-save.component';
+import { FillCertificateComponent } from '../fill-certificate/fill-certificate.component';
 @Component({
   selector: 'app-certificate',
   templateUrl: './certificate.component.html',
@@ -18,14 +19,20 @@ export class CertificateComponent implements OnInit {
     join: new FormControl(''),
     end: new FormControl(''),
     duration: new FormControl(''),
-    certificateNumber: new FormControl('')
+    certificateNumber: new FormControl(''),
+    courseId:new FormControl('')
   });
   certificateDetails: any;
 
   constructor(private dialog: MatDialog, public service: QuestionService) {}
 
   ngOnInit(): void {
-    this.getCertificateStudentList();
+    
+    if(sessionStorage.getItem('student')){
+      this.openDialogCertificate();
+      this.certificateDetails = JSON.parse(sessionStorage.getItem('student') || '[]')
+    console.log(this.certificateDetails);
+    }
   }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -47,50 +54,39 @@ export class CertificateComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.position = {
-      right: '0%',
-      bottom: '15%',
-    };
     this.dialog.open(OnSaveComponent, dialogConfig);
   }
   show() {
     this.openDialogSave();
     console.log(this.certForm.value);
   }
-  getCertificateStudentList() {
-    this.service.getCertificateStudent().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.certificateDetails = res;
-        console.log(this.certificateDetails);
-      },
-      error: (error) => {
-        alert(error.error.message);
-      },
-      complete: () => {
-        this.setValue();
-        sessionStorage.setItem(
-          'certificateDetails',
-          JSON.stringify(this.certificateDetails)
-        );
-        
-      },
-    });
-  }
+  
   setValue(){
-    if(sessionStorage.getItem('certificateDetails')){
-      console.log(this.certificateDetails);
       this.certForm.patchValue({
-        title:this.certificateDetails[0].courseName,
-        name:this.certificateDetails[0].fullName,
-        course:this.certificateDetails[0].courseName,
-        join:this.certificateDetails[0].joinDate,
-        end:this.certificateDetails[0].completedDate,
-        certificateNumber:this.certificateDetails[0].certificateNo,
-        duration:this.certificateDetails[0].courseDuration
+        title:'Certification of completion',
+        name:this.certificateDetails.fullName,
+        course:this.certificateDetails.courseName,
+        join:this.certificateDetails.joinDate,
+        end:this.certificateDetails.completedDate,
+        certificateNumber:this.certificateDetails.certificateNo,
+        duration:this.certificateDetails.courseDuration,
+        courseId:this.certificateDetails.courseId
       })
-     console.log( this.certForm.value)
-    }
+     console.log( this.certForm.value);
+     sessionStorage.setItem(
+      'previewDetails',
+      JSON.stringify(this.certForm.value)
+    );
+    
+    
+    
+  }
+  openDialogCertificate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(FillCertificateComponent, dialogConfig);
+   
     
   }
 }
