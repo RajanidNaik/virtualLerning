@@ -43,6 +43,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 
 import { OnSaveComponent } from './on-save/on-save.component';
+import { FillCertificateComponent } from './fill-certificate/fill-certificate.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { OnSaveComponent } from './on-save/on-save.component';
 
     SubCatComponent,
     OnSaveComponent,
+    FillCertificateComponent,
   ],
 
   imports: [
