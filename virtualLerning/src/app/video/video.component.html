@@ -15,7 +15,7 @@
     <div class="category">
       <div class="text">Video Category</div>
       <div class="titleInputV">
-        <select formControlName="category" type="text">
+        <select formControlName="category" type="text"(change)=storeCatId($event) >
           <option value="" selected (click)="selected()">
             Select Category
           </option>
@@ -26,7 +26,7 @@
           >
             {{ item.categoryName }}
           </option>
-          <option (click)="addCategory()" value="">Add new +</option>
+          <option  value="">Add new +</option>
         </select>
       </div>
       <div
@@ -39,13 +39,13 @@
     <div class="suBcategory">
       <div class="text">Sub Category</div>
       <div class="titleInputV">
-        <select formControlName="subCategory" type="text">
+        <select formControlName="subCategory" type="text" (change)="addSubCategory($event)" >
           <option value="" selected>Sub Category</option>
 
           <option *ngFor="let item of subCa" [value]="item.subCategoryName">
             {{ item.subCategoryName }}
           </option>
-          <option (click)="addSubCategory()" value="">Add new +</option>
+          <option  value="">Add new +</option>
         </select>
       </div>
       <div
@@ -181,7 +181,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn"  [disabled]="videoForm.invalid || !currVal"  (click)="addChapter()">Add New +</button>
+        <button class="btn"  [disabled]="(videoForm.invalid || !currVal) && addNewChap"  (click)="addChapter()">Add New +</button>
       </div>
     </div>
 
@@ -265,14 +265,14 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 <span class="uploadSection"> Subchapter Name </span>
                 <div class="input">
                   {{setcurrVal()}}
-                  <input class="titleInput" type="text" [value]="currVal" #subName (keyup)="setSubChap(subName.value)">
+                  <input class="titleInput" type="text" [value]="currVal" #subName (keyup)="setSubChap(subName.value)" >
                 </div>
               </div>
               <div class="takevalue">
-                <div class="btn">
+                <!-- <div class="btn">
                   <button class="buttonP"[disabled]="sIndex==0" (click)="prev()">Previous</button>
                   <button class="buttonN" [disabled]="sIndex <= length" (click)="next()">Next</button>
-                </div>
+                </div> -->
                 <div class="btn1">
                   <button class="buttonP" (click)="addSubChapter(chapIndex)" [disabled]="videoForm.invalid || !currVal">Add Sub Chapter</button>
                 </div>
@@ -294,7 +294,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   <div class="next">
     <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal" (click)="addCourse()">Publish</button>
   </div>
-    <!-- <button (click)="preview()">show</button> -->
+    <button (click)="preview()">show</button>
   </div>
 
 
@@ -355,7 +355,8 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
       <div class="imgUpload" *ngIf="shows[i]">
         <div class="left">
           <div class="preview">
-           
+            <!-- {{storesIndex(sIndex,i)}}
+                  {{setcurrVideo2()}} -->
             <div class="contain" *ngIf="currVideo">
               <video width="100%" height="100%" controls="controls">
                 <source
@@ -379,7 +380,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                     accept="video/*"
                     name="photo"
                     id="upload3"
-                    (change)="addSubvideo($event)"
+                    (change)="addSubvideo2($event)"
                   /><label for="upload3">Browse</label
                   >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                   choose files
@@ -391,36 +392,44 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <div class="videoScroll">
               <div
                 *ngFor="
-                  let lesson of chapterArray[i].lessonList;
-                  let id;
-                  as: index
-                "
+                  let lesson of chapterArray[i].lessonList; let id=index"
               >
-                <div class="box">
+              <!-- {{storesIndex(chapterArray[i].length-1,i)}}
+              {{setcurrVal1()}}
+              {{setlength(chapterArray[i].length-1)}} -->
+                <div class="box" >
                   <video width="100%" height="100%" controls="controls">
-                    <source src="{{ lesson.videoLink || this.currVideo}}" type="video/mp4" />
+                    <source src="{{ lesson.videoLink}}" type="video/mp4" />
                   </video>
                 </div>
+                <!-- <div class="box" *ngIf="!lesson.videoLink"></div> -->
               </div>
             </div>
           </div>
         </div>
         <div class="right">
+          <!-- {{storesIndex(sIndex,i)}} -->
           <div>
             <span class="uploadSection"> Subchapter's Name </span>
+            
+            <!-- <div class="input">
+              {{setcurrVal1()}}
+              <input class="titleInput" type="text" [value]="currVal" #subName (keyup)="setSubChap2(subName.value)" >
+            </div> -->
             <div
               *ngFor="
                 let lessons of chapterArray[i].lessonList;
-                let id;
-                as: index
+               let id=index
               "
             >
               <div class="inputs">
+                <!-- {{setcurrVal()}} -->
                 <input
                   class="titleInput"
                   type="text"
                   name="lessonName{{id}}"
                   [(ngModel)]="lessons.lessonName"
+                  
                 />
               </div>
             </div>

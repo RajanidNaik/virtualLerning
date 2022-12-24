@@ -27,12 +27,9 @@ export class CertificateComponent implements OnInit {
   constructor(private dialog: MatDialog, public service: QuestionService) {}
 
   ngOnInit(): void {
+    this.openDialogCertificate();
     
-    if(sessionStorage.getItem('student')){
-      this.openDialogCertificate();
-      this.certificateDetails = JSON.parse(sessionStorage.getItem('student') || '[]')
-    console.log(this.certificateDetails);
-    }
+   
   }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -62,6 +59,10 @@ export class CertificateComponent implements OnInit {
   }
   
   setValue(){
+    if(sessionStorage.getItem('student')){
+      this.certificateDetails = JSON.parse(sessionStorage.getItem('student') || '[]')
+   
+    
       this.certForm.patchValue({
         title:'Certification of completion',
         name:this.certificateDetails.fullName,
@@ -78,7 +79,7 @@ export class CertificateComponent implements OnInit {
       JSON.stringify(this.certForm.value)
     );
     
-    
+  }
     
   }
   openDialogCertificate() {

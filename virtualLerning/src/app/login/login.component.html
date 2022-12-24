@@ -16,12 +16,14 @@
             <mat-label>Password</mat-label>
             <input
               class="password"
-              type="password"
               formControlName="password" 
-              style="-webkit-text-security: square"
               matInput
               placeholder="123456"
+              [type]="hide ? 'password' : 'text'"
             />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
         </div>
         <div div class="error" *ngIf="loginForm.invalid &&   (loginForm.get('user')?.touched && loginForm.get('user')?.dirty)  && (loginForm.get('user')?.touched && loginForm.get('user')?.dirty)">
@@ -73,11 +75,13 @@
             <mat-label>Password</mat-label>
             <input
               class="password"
-              type="password"
               formControlName="password" 
-              style="-webkit-text-security: square"
               matInput
+              [type]="hide ? 'password' : 'text'"
             />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
         </div>
           </form>

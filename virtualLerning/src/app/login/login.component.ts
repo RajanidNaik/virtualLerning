@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   item:any;
   forgotPassword = false;
   superAdmins = false;
+  hide = true;
   loginForm = new FormGroup({
     user: new FormControl('', [Validators.required]),
     password: new FormControl('', [

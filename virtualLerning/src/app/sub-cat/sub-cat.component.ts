@@ -30,7 +30,6 @@ export class SubCatComponent implements OnInit {
       this.courseId = sessionStorage.getItem('catId');
       console.log(this.courseId);
     } else {
-      alert('Select Category');
       this.dialogRef.closeAll();
     }
   }

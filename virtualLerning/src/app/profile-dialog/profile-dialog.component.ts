@@ -25,6 +25,9 @@ editPhoto:any;
 imageFile:any;
 result:any;
 response:any;
+hide1=true;
+hide2=true;
+hide3=true;
   constructor(private fb:FormBuilder,public service:QuestionService) { }
 
   ngOnInit(): void {
