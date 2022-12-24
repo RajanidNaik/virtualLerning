@@ -54,7 +54,7 @@ todelete:any=[];
           console.log('done')
    }
    else{
-    this.limit = this.limit+2;
+    this.limit = this.limit+4;
     console.log(this.limit);
    }
    this.getStudent();

@@ -16,6 +16,7 @@ import { addSub, AddVideo } from '../add-video';
   styleUrls: ['./video.component.css'],
 })
 export class VideoComponent implements OnInit {
+  addNewChap:boolean =true;
   plus = false;
   uploadSuccess = [false];
   uploadFailed = [false];
@@ -52,7 +53,7 @@ addVideo = new AddVideo();
 chapterArray:any=[]
 hide:any;
 
-addSubchapter = new addSub();
+addSubchap = new addSub();
 lessonArray:any=[];
 
 
@@ -94,7 +95,7 @@ lessonArray:any=[];
             this.fb.group({
               lessonName: new FormControl(''),
               lessonDuration: new FormControl('00:30:20'),
-              videoLink: new FormControl(''),
+              videoLink: new FormControl(null),
             }),
           ]),
         }),
@@ -118,6 +119,7 @@ lessonArray:any=[];
 
     this.videoSer.getChategory().subscribe((data) => {
       this.category1 = JSON.parse(data);
+      console.log(this.category1);
     });
     this.videoSer.getSubCat().subscribe((data) => {
       this.subCa = JSON.parse(data);
@@ -125,7 +127,22 @@ lessonArray:any=[];
     });
   }
   storeCatId(item: any) {
-    sessionStorage.setItem('catId', item.categoryId);
+    let id = item.target.value;
+    console.log(id)
+    if(id != ''){
+      console.log(this.category1);
+    let array:any=[] =this.category1;
+    console.log(array)
+     array = this.category1.filter((item: any) => {
+      return item.categoryName == id;
+      
+    });
+    console.log(array[0].categoryId);
+    sessionStorage.setItem('catId', array[0].categoryId);
+    }else{
+this.addCategory();
+    }
+    
   }
 
   show(pos: any) {
@@ -141,8 +158,12 @@ lessonArray:any=[];
   addCategory() {
     this.dialog.open(DialogCategoryComponent);
   }
-  addSubCategory() {
-    this.dialog.open(SubCatComponent);
+  addSubCategory(e:any) {
+    console.log(e.target.value)
+    if(e.target.value == '')
+      this.dialog.open(SubCatComponent);
+    
+    
   }
 
   chapters(): FormArray {
@@ -197,11 +218,21 @@ lessonArray:any=[];
         this.sIndex
       ].lessonName;
   }
+  setcurrVal1(){
+    
+    this.currVal = this.chapterArray[this.cIndex].lessonList[this.sIndex].lessonName
+
+  }
   setcurrVideo() {
+    
     this.currVideo =
       this.videoForm.value.chapter[this.cIndex].lessonsList[
         this.sIndex
-      ].videoLink;
+      ].videoLink ;
+  }
+  setcurrVideo2() {
+    this.currVideo =
+    this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink ;
   }
 
   storesIndex(index: any, chapIndex: any) {
@@ -243,6 +274,11 @@ lessonArray:any=[];
       this.sIndex
     ].lessonName = value;
   }
+  setSubChap2(value: any) {
+    this.chapterArray[this.cIndex].lessonList[
+      this.sIndex
+    ].lessonName = value;
+  }
 
   uploadCoursePhoto(event: any) {
     console.log(event);
@@ -261,7 +297,7 @@ lessonArray:any=[];
         finalize(() => {
           this.ref.getDownloadURL().subscribe((url: any) => {
             this.videoForm.patchValue({
-              coursePhoto: url,
+              coursePhoto: url ,
             });
           });
         })
@@ -283,7 +319,7 @@ lessonArray:any=[];
         finalize(() => {
           this.ref.getDownloadURL().subscribe((url: any) => {
             this.videoForm.patchValue({
-              previewVideo: url,
+              previewVideo: url ,
             });
           });
         })
@@ -304,6 +340,8 @@ lessonArray:any=[];
     this.task = this.af.upload(filePath, file);
     // this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
     this.uploadProgress = this.task.percentageChanges();
+    console.log(this.uploadProgress);
+    
     this.task
       .snapshotChanges()
       .pipe(
@@ -312,6 +350,7 @@ lessonArray:any=[];
             this.videoForm.value.chapter[this.cIndex].lessonsList[
               this.sIndex
             ].videoLink = url;
+            console.log(url)
             console.log(
               this.videoForm.value.chapter[this.cIndex].lessonsList[this.sIndex]
                 .videoLink
@@ -323,9 +362,41 @@ lessonArray:any=[];
 
     this.videoForm.value.chapter[this.cIndex].lessonsList[
       this.sIndex
-    ].videoLink = this.currVideo;
+    ].videoLink  = this.currVideo;
     
   }
+  addSubvideo2(event: any) {
+    const id = Math.random().toString(36).substring(2);
+    const file = event.target.files[0];
+    let filePath = id;
+
+    this.ref = this.af.ref(id);
+    this.task = this.af.upload(filePath, file);
+    // this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+    this.uploadProgress = this.task.percentageChanges();
+    console.log(this.uploadProgress);
+    
+    this.task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.ref.getDownloadURL().subscribe((url: any) => {
+            this.chapterArray[this.cIndex].lessonList[
+              this.sIndex
+            ].videoLink = url;
+            console.log(url)
+           
+          });
+        })
+      )
+      .subscribe();
+
+      this.chapterArray[this.cIndex].lessonList[
+        this.sIndex
+      ].videoLink   = this.currVideo;
+    
+  }
+
 
   select(item: any) {}
 
@@ -418,8 +489,8 @@ addNewChapter(){
 }
 addNewSub(i:any){
   this.lessonArray = this.chapterArray[i].lessonList;
-  this.addSubchapter = new addSub();
-this.lessonArray.push(this.addSubchapter);
+  this.addSubchap = new addSub();
+this.lessonArray.push(this.addSubchap);
 
 }
 
@@ -446,8 +517,13 @@ onPublish(){
   this.videoSer.overview(body)
   .subscribe({
       next: (data: any) => {
-          alert('Request Sent Succefully');
+          // alert('Request Sent Succefully');
           console.log(data);
+          let response = data;
+      if(response[0] == '{'){
+       response = JSON.parse(response);
+       alert(Object.values(response)[0]);
+      }
           sessionStorage.setItem('response2', data);
           this.response = JSON.parse(data);
           this.response = this.response.message.match(/\d+$/)[0];
@@ -460,7 +536,12 @@ onPublish(){
   this.videoSer.addChapters(body2)
   .subscribe({
           next: (data: any) => {
-          alert('Request Sent Succefully');
+          // alert('Request Sent Succefully');
+          let response = data;
+      if(response[0] == '{'){
+       response = JSON.parse(response);
+       alert(Object.values(response)[0]);
+      }
           console.log(data);
           sessionStorage.setItem('response2',data)
 
@@ -468,6 +549,9 @@ onPublish(){
         error: (data: any) => {
             console.log(data);
           },
+          complete:()=>{
+            this.addNewChap =false;
+          }
         })
 }
 
