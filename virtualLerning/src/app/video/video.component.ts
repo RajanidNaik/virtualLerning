@@ -127,6 +127,7 @@ export class VideoComponent implements OnInit {
       this.hide = false;
     }
   }
+  
   storeCatId(item: any) {
     let id = item.target.value;
     console.log(id);
