@@ -55,8 +55,8 @@ table{
 .studentList{
     position: absolute;
     top:2%;
-    left: 2%;
-    width:95%;
+    /* left: 2%; */
+    width:93%;
     height: 75%;
     /* height: 50rem; */
     overflow: scroll;

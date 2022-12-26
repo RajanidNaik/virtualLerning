@@ -73,7 +73,10 @@ toSubscribe(i:any){
 
 toDelete(i:any){
 this.todelete[i] = !this.todelete[i];
-alert('Before delete the student make sure that student unsubscribed or not');
+if(this.todelete[i] == true){
+  alert('Before delete the student make sure that student unsubscribed or not');
+}
+
 }
 
 deleteStudent(data:any){

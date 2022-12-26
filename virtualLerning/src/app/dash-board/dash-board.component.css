@@ -123,6 +123,7 @@
   width: 12rem;
   height: 1rem;
   overflow: hidden;
+  cursor: pointer;
 }
 .play mat-icon {
   position: absolute;
@@ -458,7 +459,8 @@ td {
 .videoLine {
   /* border: 1px solid green; */
 
-  width: 25rem;
+  width: 30rem;
+  cursor: pointer;
 }
 .iconList {
   display: flex;
@@ -505,4 +507,7 @@ td {
   font-size: 1.125rem;
   line-height: 1.375rem;
   color: #999999;
+}
+.videoname{
+  cursor: pointer;
 }

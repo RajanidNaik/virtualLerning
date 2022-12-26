@@ -61,9 +61,9 @@ export class DashBoardComponent implements OnInit {
   }
   toDelete(i: any) {
     this.todelete[i] = !this.todelete[i];
-    alert(
-      'Before delete the student make sure that student unsubscribed or not'
-    );
+    if(this.todelete[i] == true){
+      alert('Before delete the student make sure that student unsubscribed or not');
+    }
   }
 
   getStudent() {
@@ -148,6 +148,8 @@ export class DashBoardComponent implements OnInit {
   }
 
   getVideoDetails(courseId: any) {
+    console.log(courseId);
+    sessionStorage.setItem('editCourseId',courseId);
     this.service.getAddCourseDetails(courseId).subscribe({
       next: (res) => {
         console.log(res);
@@ -162,6 +164,7 @@ export class DashBoardComponent implements OnInit {
           JSON.stringify(this.completeDeatails)
         );
         this.router.navigateByUrl('/addcourse');
+        sessionStorage.removeItem('CourseID');
       },
     });
   }

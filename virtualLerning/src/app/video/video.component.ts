@@ -122,26 +122,38 @@ export class VideoComponent implements OnInit {
       this.setValue();
 
       this.chapterArray = this.completeDetails.chapter;
-      console.log('2');
-    } else {
+      
+    }else{
       this.hide = false;
     }
+
+
+    this.videoSer.getChategory().subscribe((data) => {
+      this.category1 = JSON.parse(data);
+      // console.log(this.category1);
+    });
+    this.videoSer.getSubCat().subscribe((data) => {
+      this.subCa = JSON.parse(data);
+      // console.log(this.subCa);
+    });
   }
   
   storeCatId(item: any) {
     let id = item.target.value;
-    console.log(id);
-    if (id != '') {
-      console.log(this.category1);
-      let array: any = ([] = this.category1);
-      console.log(array);
-      array = this.category1.filter((item: any) => {
-        return item.categoryName == id;
-      });
-      console.log(array[0].categoryId);
-      sessionStorage.setItem('catId', array[0].categoryId);
-    } else {
-      this.addCategory();
+
+    console.log(id)
+    if(id != ''){
+      // console.log(this.category1);
+    let array:any=[] =this.category1;
+    console.log(array)
+     array = this.category1.filter((item: any) => {
+      return item.categoryName == id;
+      
+    });
+    console.log(array[0].categoryId);
+    sessionStorage.setItem('catId', array[0].categoryId);
+    }else{
+     this.addCategory();
     }
   }
 
@@ -174,6 +186,7 @@ export class VideoComponent implements OnInit {
       this.subCa = JSON.parse(data);
       console.log(this.subCa);
     });
+
   }
 
   chapters(): FormArray {
@@ -227,20 +240,21 @@ export class VideoComponent implements OnInit {
         this.sIndex
       ].lessonName;
   }
-  setcurrVal1() {
-    this.currVal =
-      this.chapterArray[this.cIndex].lessonList[this.sIndex].lessonName;
-  }
+
+  // setcurrVal1(){
+  //   this.currVal = this.chapterArray[this.cIndex].lessonList[this.sIndex].lessonName
+  // }
   setcurrVideo() {
     this.currVideo =
       this.videoForm.value.chapter[this.cIndex].lessonsList[
         this.sIndex
       ].videoLink;
   }
-  setcurrVideo2() {
-    this.currVideo =
-      this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink;
-  }
+
+  // setcurrVideo2() {
+  //   this.currVideo =
+  //   this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink ;
+  // }
 
   storesIndex(index: any, chapIndex: any) {
     this.sIndex = index;

@@ -22,12 +22,16 @@ export class HeaderComponent implements OnInit {
     this.head = localStorage.getItem('curr');
     this.head = JSON.parse(this.head);
     if (this.head == "Add Courses") this.show=true;
-    this.id = sessionStorage.getItem('CourseID');
+    
     this.qa = sessionStorage.getItem('qAnda');
 
      this.getPro();
-     sessionStorage.getItem('addCourseDetails');
-     sessionStorage.getItem('CourseID'); 
+     
+     if(sessionStorage.getItem('CourseID')){
+      this.hide=true;
+     }; 
+     this.id = sessionStorage.getItem('CourseID');
+     
      
 
   }
@@ -70,12 +74,9 @@ export class HeaderComponent implements OnInit {
 
   publish(){
     // console.log("Publish");
-    if((sessionStorage.getItem('CourseID') )|| (sessionStorage.getItem('addCourseDetails')) ){
-      this.hide=true;
-    
+    if(sessionStorage.getItem('CourseID')){
       this.service.publish(this.id).subscribe({
         next:(res)=>{
-          // alert(res);
           console.log(res);
           let response = res;
         if (response[0] == '{') {
@@ -92,7 +93,7 @@ export class HeaderComponent implements OnInit {
         }
       });
       
-     
+      
     }
     
     
