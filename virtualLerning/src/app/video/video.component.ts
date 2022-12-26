@@ -29,7 +29,6 @@ export class VideoComponent implements OnInit {
   addNewChap: boolean = true;
   plus = false;
   publishOver = false;
-  publishChap=false;
   uploadSuccess = [false];
   uploadFailed = [false];
   isChecked: any;
@@ -227,8 +226,8 @@ export class VideoComponent implements OnInit {
   newSubChapter(): FormGroup {
     return this.fb.group({
       lessonName: new FormControl(''),
-      lessonDuration: new FormControl('00:30:20'),
-      videoLink: new FormControl(''),
+      lessonDuration: new FormControl('00:00:20'),
+      videoLink: new FormControl(null),
     });
   }
   addSubChapter(chapIndex: number) {
@@ -435,7 +434,8 @@ export class VideoComponent implements OnInit {
       courseName: this.videoForm.value.videoTitle,
       chapterDataRequestList: this.videoForm.value.chapter,
     };
-    this.videoSer.overview(body).subscribe({
+    this.videoSer.overview(body)
+    .subscribe({
       next: (data: any) => {
         alert('Request Sent Succefully');
         console.log(data);
@@ -444,22 +444,58 @@ export class VideoComponent implements OnInit {
         this.response = this.response.message.match(/\d+$/)[0];
         sessionStorage.setItem('CourseID', this.response);
         this.publishOver=true;
-        
+
       },
       error: (data: any) => {
         console.log(data);
       },
+      complete:()=>{
+
+        this.videoSer.addChapters(body2).subscribe({
+
+          next: (data: any) => {
+
+            // alert('Request Sent Succefully');
+
+            console.log(data);
+
+            let response = data;
+
+            if (response[0] == '{') {
+
+              response = JSON.parse(response);
+
+              alert(Object.values(response)[0]);
+
+            }
+
+            sessionStorage.setItem('response2', data);
+
+          },
+
+          error: (data: any) => {
+
+            console.log(data);
+
+          },
+
+        });
+
+      }
+
     });
-    this.videoSer.addChapters(body2).subscribe({
-      next: (data: any) => {
-        alert('Chapters Sent Succefully');
-        console.log(data);
-        sessionStorage.setItem('response2', data);
-      },
-      error: (data: any) => {
-        console.log(data);
-      },
-    });
+
+    this.videoSer.addChapters(body2)
+  //   .subscribe({
+  //     next: (data: any) => {
+  //       alert('Chapters Sent Succefully');
+  //       console.log(data);
+  //       sessionStorage.setItem('response2', data);
+  //     },
+  //     error: (data: any) => {
+  //       console.log(data);
+  //     },
+  //   });
   }
 
   filedrop(event: NgxFileDropEntry[]) {
@@ -524,7 +560,8 @@ export class VideoComponent implements OnInit {
       chapterDataRequestList: this.chapterArray,
     };
     console.log(body, body2);
-    this.videoSer.overview(body).subscribe({
+    this.videoSer.overview(body)
+    .subscribe({
       next: (data: any) => {
         alert('Overview');
         console.log(data);
@@ -541,11 +578,59 @@ export class VideoComponent implements OnInit {
       error: (data: any) => {
         console.log(data);
       },
+      complete:()=>{
+
+        this.videoSer.addChapters(body2).subscribe({
+
+          next: (data: any) => {
+
+            // alert('Request Sent Succefully');
+
+            let response = data;
+
+            if (response[0] == '{') {
+
+              response = JSON.parse(response);
+
+              alert(Object.values(response)[0]);
+
+            }
+
+            console.log(data);
+
+            sessionStorage.setItem('response2', data);
+
+          },
+
+          error: (data: any) => {
+
+            console.log(data);
+
+          },
+
+          complete: () => {
+
+            this.addNewChap = false;
+
+          },
+
+        });
+
+      }
+
     });
-    this.videoSer.addChapters(body2).subscribe({
+  }
+
+  addLessonList(){
+     const body2 = {
+       courseName: this.videoForm.value.videoTitle,
+       chapterDataRequestList: this.chapterArray,
+     };
+    this.videoSer.addChapters(body2)
+    .subscribe({
       next: (data: any) => {
         alert('Chapter Sent');
-        this.publishOver=true;
+        this.publishOver = true;
         let response = data;
         if (response[0] == '{') {
           response = JSON.parse(response);
