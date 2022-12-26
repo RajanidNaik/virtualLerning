@@ -28,6 +28,8 @@ import { addSub, AddVideo } from '../add-video';
 export class VideoComponent implements OnInit {
   addNewChap: boolean = true;
   plus = false;
+  publishOver = false;
+  publishChap=false;
   uploadSuccess = [false];
   uploadFailed = [false];
   isChecked: any;
@@ -441,6 +443,8 @@ export class VideoComponent implements OnInit {
         this.response = JSON.parse(data);
         this.response = this.response.message.match(/\d+$/)[0];
         sessionStorage.setItem('CourseID', this.response);
+        this.publishOver=true;
+        
       },
       error: (data: any) => {
         console.log(data);
@@ -448,7 +452,7 @@ export class VideoComponent implements OnInit {
     });
     this.videoSer.addChapters(body2).subscribe({
       next: (data: any) => {
-        alert('Request Sent Succefully');
+        alert('Chapters Sent Succefully');
         console.log(data);
         sessionStorage.setItem('response2', data);
       },
@@ -522,7 +526,7 @@ export class VideoComponent implements OnInit {
     console.log(body, body2);
     this.videoSer.overview(body).subscribe({
       next: (data: any) => {
-        // alert('Request Sent Succefully');
+        alert('Overview');
         console.log(data);
         let response = data;
         if (response[0] == '{') {
@@ -540,7 +544,8 @@ export class VideoComponent implements OnInit {
     });
     this.videoSer.addChapters(body2).subscribe({
       next: (data: any) => {
-        // alert('Request Sent Succefully');
+        alert('Chapter Sent');
+        this.publishOver=true;
         let response = data;
         if (response[0] == '{') {
           response = JSON.parse(response);

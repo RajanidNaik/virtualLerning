@@ -13,7 +13,7 @@
     <div class="category">
       <div class="text">Video Category</div>
       <div class="titleInputV">
-        <select formControlName="category" (click)="getCategory()" type="text" (change)=storeCatId($event)>
+          <select formControlName="category" type="text" (change)=storeCatId($event)>
           <option value="" selected (click)="selected()">
             Select Category
           </option>
@@ -30,7 +30,7 @@
     <div class="suBcategory">
       <div class="text">Sub Category</div>
       <div class="titleInputV">
-        <select formControlName="subCategory" (click)="getSubCategory()" type="text" (change)="addSubCategory($event)">
+        <select formControlName="subCategory"  type="text" (change)="addSubCategory($event)">
           <option value="" selected>Sub Category</option>
 
           <option *ngFor="let item of subCa" [value]="item.subCategoryName">
@@ -144,7 +144,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
       <div class="options">
         <div class="uploadSection">Video Upload Section</div>
         <div class="addNew">
-          <button class="btn" [disabled]="(videoForm.invalid || !currVal) && addNewChap" (click)="addChapter()"
+          <button class="btn" [disabled]="(videoForm.invalid || !currVal || publishOver) && addNewChap" (click)="addChapter()"
             [class.dis]="(videoForm.invalid || !currVal) && addNewChap">Add New +</button>
         </div>
       </div>
@@ -243,7 +243,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 </div> -->
                 <div class="btn1">
                   <button class="buttonP" (click)="addSubChapter(chapIndex)"
-                    [disabled]="videoForm.invalid || !currVal">Add Sub Chapter</button>
+                    [disabled]="videoForm.invalid || !currVal ">Add Sub Chapter</button>
                 </div>
               </div>
             </div>
@@ -261,7 +261,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
       </div>
 
       <div class="next">
-        <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal" (click)="addCourse()"
+        <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal|| publishOver" (click)="addCourse()"
           [class.pub]="videoForm.invalid || !currVal">Publish</button>
       </div>
       <button (click)="preview()">show</button>
@@ -284,7 +284,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn" (click)="addNewChapter()" [disabled]="!myForm.valid" [class.dis]="!myForm.valid">Add New
+        <button class="btn" (click)="addNewChapter()" [disabled]="!myForm.valid " [class.dis]="!myForm.valid">Add New
           +</button>
       </div>
     </div>
@@ -400,7 +400,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   </form>
 
   <div class="next">
-    <button class="nextbtnp" (click)="onPublish()" [disabled]="!myForm.valid"
+    <button class="nextbtnp" (click)="onPublish()" [disabled]="!myForm.valid || publishOver"
       [class.pub]="!myForm.valid">Publish</button>
   </div>
 </div>
