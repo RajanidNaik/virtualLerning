@@ -23,9 +23,10 @@ import { AuthGuard } from './guard/auth.guard';
 
 import { FillCertificateComponent } from './fill-certificate/fill-certificate.component';
 import { SubCatComponent } from './sub-cat/sub-cat.component';
+import { LoggedInGuard } from './loggedIn/logged-in.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent,canActivate:[LoggedInGuard] },
   {
     path: 'dashboard',
     component: DashBoardComponent,

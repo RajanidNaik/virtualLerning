@@ -44,6 +44,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AuthGuard } from './guard/auth.guard';
 import { OnSaveComponent } from './on-save/on-save.component';
 import { FillCertificateComponent } from './fill-certificate/fill-certificate.component';
+import { LoggedInGuard } from './loggedIn/logged-in.guard';
+import { PreventGuard } from './prevent/prevent.guard';
 
 @NgModule({
   declarations: [
