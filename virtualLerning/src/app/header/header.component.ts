@@ -26,13 +26,16 @@ export class HeaderComponent implements OnInit {
     this.qa = sessionStorage.getItem('qAnda');
 
      this.getPro();
-     
-     if(sessionStorage.getItem('CourseID')){
+     this.getId();
+  }
+
+
+  getId(){
+    if(sessionStorage.getItem('CourseID')){
       this.hide=true;
+      this.id = sessionStorage.getItem('CourseID');
+      console.log(this.id);
      }; 
-     this.id = sessionStorage.getItem('CourseID');
-     
-     
 
   }
   openDialogProfile(){

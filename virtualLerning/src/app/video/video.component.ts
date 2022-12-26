@@ -97,7 +97,7 @@ export class VideoComponent implements OnInit {
       requirement: new FormControl('', [Validators.required]),
       coursePhoto: new FormControl('', [Validators.required]),
       previewVideo: new FormControl('', [Validators.required]),
-      keyWords: new FormControl('', [Validators.required]),
+      keyWords: new FormControl('', [Validators.required,Validators.pattern("^[a-zA-Z][a-zA-Z ]{2,}")]),
       level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([
         this.fb.group({
@@ -145,7 +145,6 @@ export class VideoComponent implements OnInit {
     if(id != ''){
       // console.log(this.category1);
     let array:any=[] =this.category1;
-    console.log(array)
      array = this.category1.filter((item: any) => {
       return item.categoryName == id;
       
@@ -435,8 +434,13 @@ export class VideoComponent implements OnInit {
     };
     this.videoSer.overview(body).subscribe({
       next: (data: any) => {
-        alert('Request Sent Succefully');
+        // alert('Request Sent Succefully');
         console.log(data);
+        let response = data;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
         sessionStorage.setItem('response2', data);
         this.response = JSON.parse(data);
         this.response = this.response.message.match(/\d+$/)[0];
@@ -448,8 +452,13 @@ export class VideoComponent implements OnInit {
     });
     this.videoSer.addChapters(body2).subscribe({
       next: (data: any) => {
-        alert('Request Sent Succefully');
+        // alert('Request Sent Succefully');
         console.log(data);
+        let response = data;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
         sessionStorage.setItem('response2', data);
       },
       error: (data: any) => {
