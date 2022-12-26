@@ -42,7 +42,7 @@
       Please select the chapter name
     </div>
 
-    <div class="chapName">CourseId</div>
+    <div class="chapName">ChapterId</div>
     <div>
       <input class="titleInput" placeholder="" formControlName="courseId" />
     </div>
@@ -227,13 +227,13 @@
           </div>
 
           <div class="more" (click)="show(i)">
-            <mat-icon *ngIf="!shows[i]">add</mat-icon>
+            <mat-icon *ngIf="!shows[i]" >add</mat-icon >
             <mat-icon *ngIf="shows[i]"> remove</mat-icon>
           </div>
         </div>
       </div>
 
-      <div class="options" *ngIf="shows[i]">
+      <div class="options" *ngIf="shows[i]" >
         <div class="opt">
           <input placeholder="a" name="option_1{{i}}" [(ngModel)]="qn.option_1" required/>
           <!-- {{qn.option_1}} -->

@@ -41,6 +41,10 @@ color: #1A1A1A;
 
 
 }
+span{
+    font-weight: 700;
+    
+}
 .button {
 display: flex;
 justify-content: space-around;
