@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {  CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth ser/auth.service';
-
+import { LogInserService } from './log-inser.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoggedInGuard implements CanActivate {
-  constructor(private ser:AuthService){}
+  constructor(private router:Router){}
   canActivate(){
-    return true;
-  }
+    if (sessionStorage.getItem('token')) {
+      this.router.navigateByUrl('/dashboard')
+      return true;
+    }
+      else return true;
+    }
   
 }

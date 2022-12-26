@@ -160,8 +160,7 @@ this.addCategory();
   }
   addSubCategory(e:any) {
     console.log(e.target.value)
-    if(e.target.value == '')
-      this.dialog.open(SubCatComponent);
+    if(e.target.value == '')this.dialog.open(SubCatComponent);
     
     
   }

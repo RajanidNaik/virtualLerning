@@ -9,6 +9,8 @@ export class AuthService {
 
   loggedIn(){
     if(sessionStorage.getItem('token')) return true;
-    else return false;  
+    else return false;
+
+   
   }
 }
