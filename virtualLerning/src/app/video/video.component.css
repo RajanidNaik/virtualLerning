@@ -61,6 +61,7 @@ label {
   order: 1;
   padding: 12px;
   align-self: stretch;
+ 
 }
 #upload {
   width: 5vw;
@@ -97,6 +98,8 @@ width: 186px;
   padding: 12px;
   padding-top: 0;
   align-self: stretch;
+   padding-left: 4px;
+width: 190px;
 }
 .title {
   margin-right: 25px;
