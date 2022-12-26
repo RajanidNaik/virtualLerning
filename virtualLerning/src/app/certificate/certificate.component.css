@@ -106,3 +106,17 @@ input.in{
   display: flex;
   align-items: center;
 }
+.dis{
+  width: 12vw;
+  background: #ee5c4d;
+  border-radius: 6px;
+  height: 44px;
+  color: white;
+  cursor: pointer;
+  opacity: 0.3;
+}
+.dis1{
+  background: rgba(9, 41, 99, 0.2);
+  margin-right: 3vw;
+  opacity:0.4
+}

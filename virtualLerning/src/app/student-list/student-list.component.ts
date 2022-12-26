@@ -15,7 +15,7 @@ studentData:any;
 ongoing:any;
 complete:any;
 data:any =[];
-limit=2;
+limit=12;
 dis:boolean=false;
 todelete:any=[];
   constructor(public service:QuestionService) { }

@@ -33,7 +33,7 @@
             <div *ngIf="changeForm.get('confirmpassword')?.errors?.['mustMatch']" class="require">confirm password didn't match with new password</div>
         </div>
         <div class="save">
-            <button (click)="onSave()"[disabled]="!changeForm.valid">Save</button>
+            <button (click)="onSave()"[disabled]="!changeForm.valid" [class.dis]="!changeForm.valid">Save</button>
         </div>
         </div>
     </form>

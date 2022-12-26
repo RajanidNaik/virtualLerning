@@ -39,7 +39,7 @@ export class QAndAComponent implements OnInit {
 
   ngOnInit(): void {
 
-     this.response = sessionStorage.getItem('CourseID') || 27;
+     this.response = sessionStorage.getItem('CourseID') ;
      this.getChapterList();
 
     this.chapForm = this.fb.group({
@@ -77,7 +77,7 @@ export class QAndAComponent implements OnInit {
       option_3: ['', Validators.required],
       option_4: ['', Validators.required],
       correctAnswer: ['', Validators.required],
-      questionId: ['',Validators.required],
+      questionId: ['' ,Validators.required],
       deleteStatus: [false],
     });
   }
@@ -205,4 +205,6 @@ export class QAndAComponent implements OnInit {
     })
   }
   
+  
+
 }

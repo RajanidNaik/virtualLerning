@@ -148,7 +148,7 @@ export class LoginComponent implements OnInit {
     if(this.superAdmins == true && this.login == false){
       this.supAdminLogin();
     }else{
-      this.loginCheck() ;
+      this.adminLogin();
     }
   }
 }

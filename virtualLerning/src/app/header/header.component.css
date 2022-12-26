@@ -65,6 +65,7 @@ top: 43px;
   align-items: center;
   font-size: 18px;
   padding: 8px;
+  
 }
 .pub{
   background:#EE5C4D;
@@ -74,6 +75,7 @@ top: 43px;
   align-items: center;
   font-size: 18px;
   padding: 8px;
+  opacity: 0.3;
 }
 .publish span{
   margin-right: 47px;

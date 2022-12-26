@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HeadDialogComponent } from '../head-dialog/head-dialog.component';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { QuestionService } from '../question.service';
 
 import { OnSaveComponent } from '../on-save/on-save.component';
@@ -13,14 +13,14 @@ import { FillCertificateComponent } from '../fill-certificate/fill-certificate.c
 })
 export class CertificateComponent implements OnInit {
   certForm = new FormGroup({
-    title: new FormControl(''),
-    name: new FormControl(''),
-    course: new FormControl(''),
-    join: new FormControl(''),
-    end: new FormControl(''),
-    duration: new FormControl(''),
-    certificateNumber: new FormControl(''),
-    courseId:new FormControl('')
+    title: new FormControl('',Validators.required),
+    name: new FormControl('',Validators.required),
+    course: new FormControl('',Validators.required),
+    join: new FormControl('',Validators.required),
+    end: new FormControl('',Validators.required),
+    duration: new FormControl('',Validators.required),
+    certificateNumber: new FormControl('',Validators.required),
+    courseId:new FormControl('',Validators.required)
   });
   certificateDetails: any;
 
@@ -84,6 +84,7 @@ export class CertificateComponent implements OnInit {
   }
   openDialogCertificate() {
     const dialogConfig = new MatDialogConfig();
+    
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialog.open(FillCertificateComponent, dialogConfig);

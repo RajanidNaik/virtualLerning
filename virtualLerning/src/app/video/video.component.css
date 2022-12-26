@@ -411,3 +411,21 @@ height: 49px;
   line-height: 30px;
  
 }
+.dis{
+  background-color: #ffffff;
+  border: 1px solid #d5d4dc;
+  width: 10.5vw;
+  height: 40px;
+  border-radius: 8px;
+  opacity:0.3
+
+}
+.pub{
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  float: right;
+  height: 44px;
+  width: 209.81px;
+  background-color: #ee5c4d;
+  opacity:0.3;
+}

@@ -186,13 +186,13 @@
       </div>
     </ng-container>
     <div>
-      <button class="sub" (click)="add()" [disabled]="!optionForm.valid">
+      <button class="sub" (click)="add()" [disabled]="!optionForm.valid" [class.dis]="!optionForm.valid">
         Add+
       </button>
     </div>
   </div>
   <div class="update">
-    <button class="newButton" (click)="postQuestion()">Post</button>
+    <button class="newButton" (click)="postQuestion()" [disabled]="!chapForm.valid && !question.valid" [class.dis1]="!chapForm.valid && !question.valid">Post</button>
   </div>
 </div>
 
@@ -201,21 +201,24 @@
 <!--Edit Part for upload failed thing-->
 
 <div *ngIf="hide">
+  <form #myForm="ngForm">
   <div class="question" *ngFor="let qn of questionlist; index as i">
     <div>
       <div class="Qnum">Question {{ i + 1 }}</div>
       <div class="chapName">
         Question Id:
-        <input class="in" name="questionId{{i}}" [(ngModel)]="qn.questionId" />
+        <input class="in" name="questionId{{i}}" [(ngModel)]="qn.questionId" required/>
       </div>
 
       <div class="details">
         <div class="qn">
           <!-- {{qn.questionName}} -->
           <input
+          
             placeholder="Enter the question"
             name="question"
             [(ngModel)]="qn.questionName"
+            required
           />
         </div>
         <div class="deleteChoice">
@@ -232,19 +235,19 @@
 
       <div class="options" *ngIf="shows[i]">
         <div class="opt">
-          <input placeholder="a" name="option_1{{i}}" [(ngModel)]="qn.option_1" />
+          <input placeholder="a" name="option_1{{i}}" [(ngModel)]="qn.option_1" required/>
           <!-- {{qn.option_1}} -->
         </div>
         <div class="opt">
-          <input placeholder="b" name="option_2{{i}}" [(ngModel)]="qn.option_2" />
+          <input placeholder="b" name="option_2{{i}}" [(ngModel)]="qn.option_2" required />
           <!-- {{qn.option_2}} -->
         </div>
         <div class="opt">
-          <input placeholder="c" name="option_3{{i}}" [(ngModel)]="qn.option_3" />
+          <input placeholder="c" name="option_3{{i}}" [(ngModel)]="qn.option_3" required/>
           <!-- {{qn.option_3}} -->
         </div>
-        <div class="opt">
-          <input placeholder="d" name="option_4{{i}}" [(ngModel)]="qn.option_4" />
+        <div class="opt" >
+          <input placeholder="d" name="option_4{{i}}" [(ngModel)]="qn.option_4" required />
           <!-- {{qn.option_4}} -->
         </div>
 
@@ -253,6 +256,7 @@
             placeholder="choose correct answer"
             name="correctAns{{i}}"
             [(ngModel)]="qn.correctAnswer"
+            required
           />
           <!-- {{qn.correctAnswer}} -->
         </div>
@@ -265,10 +269,11 @@
     </div>
   </div>
   <div>
-    <button class="sub" (click)="newQn()">Add New</button>
+    <button class="sub" (click)="newQn()" [disabled]="!myForm.valid" [class.dis]="!myForm.valid">Add New</button>
   </div>
   <div class="update">
-    <button class="newButton" (click)="onPost()">Post</button>
+    <button class="newButton" (click)="onPost()" [disabled]="!myForm.valid && questionForm.invalid" [class.dis1]="!myForm.valid && questionForm.invalid" >Post</button>
   </div>
+</form>
 </div>
 

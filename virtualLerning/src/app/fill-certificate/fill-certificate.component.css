@@ -5,15 +5,27 @@
   font-size: 1.375rem;
   line-height: 1.8125rem;
   color: #292929;
-  text-align: center;
+  
   margin-block-end: 5%;
 }
 .student{
     display: flex;
-    gap:3rem;
-    margin-block-end: 2rem;
-    margin: 1%;
+    gap:7rem;
+    margin-block-end: 5%;
+    
     align-items: center;
+    justify-content: center;
+    
+}
+.std{
+    height: 15rem;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: scroll;
+   
+}
+.std::-webkit-scrollbar{
+    display: none;
 }
 button{
     background: #EE5C4D;
@@ -29,6 +41,12 @@ button{
     
     cursor: pointer;
 }
-mat-icon{
-    float:right;
+.delete{
+    float: right;
+}
+
+.align{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
