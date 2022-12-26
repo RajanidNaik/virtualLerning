@@ -15,7 +15,7 @@ export class SuperAdmindashboardComponent implements OnInit {
   request: any;
   array: any = [];
   rejectedList: any;
-  limit = 9;
+  limit = 8;
   constructor(private supS: SuperAdminServiceService,private router:Router) {}
 
   ngOnInit(): void {
@@ -33,6 +33,8 @@ export class SuperAdmindashboardComponent implements OnInit {
       },
       error: (data) => console.log(data),
     });
+    this.rejectList();
+    this.getAdmin();
   }
 
   accept(item: any, index: any) {
@@ -43,6 +45,8 @@ export class SuperAdmindashboardComponent implements OnInit {
     this.supS.adminAccept(body).subscribe((data) => console.log(data));
     this.remove(index);
     this.adminData.totalNumberOfAdmins++;
+    this.rejectList();
+    this.getAdmin();
   }
 
   reject(item: any, index: any) {
@@ -52,6 +56,9 @@ export class SuperAdmindashboardComponent implements OnInit {
     this.supS.adminReject(body).subscribe((data) => console.log(data));
     this.remove(index);
     this.add(item, index);
+    this.rejectList();
+    this.getAdmin();
+    
   }
 
   toggle(i: any) {
@@ -61,15 +68,17 @@ export class SuperAdmindashboardComponent implements OnInit {
   remove(i: any) {
     this.request.splice(i, 1);
   }
+  
+
   rejectList() {
-    this.supS.admlist(this.limit).subscribe((data) => {
+    this.supS.removed(this.limit).subscribe((data) => {
       this.rejectedList = JSON.parse(data);
-      // console.log(this.rejectedList);
+      console.log(this.rejectedList);
     });
   }
 
   getAdmin() {
-    this.supS.removed(this.adminLimit).subscribe((data) => {
+    this.supS.admlist(this.adminLimit).subscribe((data) => {
       this.adminList = JSON.parse(data);
       console.log(this.adminList);
     });
@@ -79,14 +88,11 @@ export class SuperAdmindashboardComponent implements OnInit {
     this.rejectedList.splice(index, 0, item);
   }
   onScrolling(event: any) {
-    console.log(event);
     if (
       event.target.offsetHeight + event.target.scrollTop >=
       event.target.scrollHeight
     ) {
-      this.limit = this.limit + 4;
-      console.log(this.limit);
-
+      this.limit = this.limit +1;
       this.rejectList();
     }
   }

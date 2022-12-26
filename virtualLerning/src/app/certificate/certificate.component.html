@@ -39,9 +39,9 @@
   </div>
 
   <div class="submisson">
-    <button class="preview" (click)="setValue()">AutoFill</button>
-    <button class="preview" (click)="openDialog()">Preview</button>
-    <button class="save" (click)="show()">Save</button>
+    <button class="save" (click)="setValue()">AutoFill</button>
+    <button class="preview" (click)="openDialog()" [disabled]="!certForm.valid" [class.dis1]="!certForm.valid">Preview</button>
+    <button class="save" (click)="show()" [disabled]="!certForm.valid" [class.dis]="!certForm.valid">Save</button>
   </div>
 </div>
 

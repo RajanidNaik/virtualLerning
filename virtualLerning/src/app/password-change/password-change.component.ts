@@ -44,6 +44,11 @@ export class PasswordChangeComponent implements OnInit {
         next: (data: any) => {
           alert('PasswordChange');
           console.log(data);
+          let response = data;
+          if (response[0] == '{') {
+            response = JSON.parse(response);
+            alert(Object.values(response)[0]);
+          }
           this.router.navigateByUrl('/');
         },
         error: (data: any) => {

@@ -349,4 +349,7 @@ input[type="file"]{
 ::ng-deep .mat-form-field-underline {
     background-color: rgba(255,255,255,0.1)!important;
 }
+ .dis{
+    opacity: 0.3;
+}
 

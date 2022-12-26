@@ -75,7 +75,7 @@
             </small>
           </div>
         <div class="save">
-            <button type="submit" (click)="proSave()">Save</button>
+            <button type="submit" (click)="proSave()" [class.dis]="!chageProfile.valid" [disabled]="!chageProfile.valid">Save</button>
         </div>
     </div>
 </form>
@@ -141,7 +141,7 @@
         <div *ngIf="changeForm.get('confirmpassword')?.errors?.['required'] && changeForm.get('confirmpassword')?.touched" class="require">This is required field*</div>
         <div *ngIf="changeForm.get('confirmpassword')?.errors?.['mustMatch']" class="require">confirm password didn't match</div>
         <div class="save" >
-            <button type="submit" (click)=" onSave()" [disabled]="!changeForm.valid">Save</button>
+            <button type="submit" (click)=" onSave()" [disabled]="!changeForm.valid" [class.dis]="!changeForm.valid" >Save</button>
         </div>
     </div>
      <!-- <div *ngIf="!changeForm.get('oldpassword').valid">required field</div> -->

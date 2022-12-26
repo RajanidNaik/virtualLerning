@@ -94,7 +94,7 @@ lessonArray:any=[];
           lessonsList: this.fb.array([
             this.fb.group({
               lessonName: new FormControl(''),
-              lessonDuration: new FormControl('00:30:20'),
+              lessonDuration: new FormControl('00:00:20'),
               videoLink: new FormControl(null),
             }),
           ]),

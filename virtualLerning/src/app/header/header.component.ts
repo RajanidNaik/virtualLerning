@@ -26,6 +26,9 @@ export class HeaderComponent implements OnInit {
     this.qa = sessionStorage.getItem('qAnda');
 
      this.getPro();
+     sessionStorage.getItem('addCourseDetails');
+     sessionStorage.getItem('CourseID'); 
+     
 
   }
   openDialogProfile(){
@@ -65,8 +68,9 @@ export class HeaderComponent implements OnInit {
 
   publish(){
     // console.log("Publish");
-    if(sessionStorage.getItem('CourseID')){
+    if((sessionStorage.getItem('CourseID') )|| (sessionStorage.getItem('addCourseDetails')) ){
       this.hide=true;
+    
       this.service.publish(this.id).subscribe({
         next:(res)=>{
           // alert(res);

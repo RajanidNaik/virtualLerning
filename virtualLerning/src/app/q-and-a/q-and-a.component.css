@@ -169,7 +169,6 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.2px;
-
   color: #2b2b2b;
 }
 button.sub {
@@ -196,17 +195,20 @@ button.sub {
   background: rgba(9, 41, 99, 0.11);
   border-radius: 4px;
   border: none;
-  color: #092963;
+  color: #fff;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
+  background: #EE5C4D;
+  padding-left: 30%;
+  padding-right: 30%;
 }
 .update {
   float: right;
 }
 select {
-  background: #ffffff;
+  background: #fff;
   width: 26vw;
   font-size: 20px;
   padding: 12px 20px;
@@ -230,3 +232,34 @@ label{
   font-family: "Proxima Nova";
   font-style: normal;
 }
+
+button.dis{
+  margin-block-start: 2%;
+  background: #dfe2e9;
+  border: none;
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 1%;
+  color: #092963;
+  opacity: 0.3;
+}
+button.dis1{
+  background: rgba(9, 41, 99, 0.11);
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  background: #EE5C4D;
+  opacity: 0.3;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+

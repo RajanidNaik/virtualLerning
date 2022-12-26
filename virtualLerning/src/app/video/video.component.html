@@ -181,7 +181,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn"  [disabled]="(videoForm.invalid || !currVal) && addNewChap"  (click)="addChapter()">Add New +</button>
+        <button class="btn"  [disabled]="(videoForm.invalid || !currVal) && addNewChap"  (click)="addChapter()" [class.dis]="(videoForm.invalid || !currVal) && addNewChap" >Add New +</button>
       </div>
     </div>
 
@@ -255,8 +255,10 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                       </div>
                       <div class="box" *ngIf="!subItem.value.videoLink"></div>
                     </ng-container>
+                    
                 </div>
               </div>
+              
             </div>
           </div>
           <div class="right">
@@ -292,7 +294,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   </div>
 
   <div class="next">
-    <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal" (click)="addCourse()">Publish</button>
+    <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal" (click)="addCourse()" [class.pub]="videoForm.invalid || !currVal" >Publish</button>
   </div>
     <button (click)="preview()">show</button>
   </div>
@@ -314,11 +316,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn" (click)="addNewChapter()">Add New +</button>
+        <button class="btn" (click)="addNewChapter()" [disabled]="!myForm.valid" [class.dis]="!myForm.valid">Add New +</button>
       </div>
     </div>
   </div>
-
+<form #myForm="ngForm">
   <div class="white" *ngFor="let chap of chapterArray; index as i">
     <div>
       <div class="top">
@@ -330,6 +332,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               type="text"
               name="chapterName{{i}}"
               [(ngModel)]="chap.chapterName"
+              required
             />
           </div>
         </div>
@@ -429,13 +432,14 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   type="text"
                   name="lessonName{{id}}"
                   [(ngModel)]="lessons.lessonName"
+                  required
                   
                 />
               </div>
             </div>
             <div class="takevalue">
               <div class="btn1">
-                <button class="buttonP" (click)="addNewSub(i)">
+                <button class="buttonP" (click)="addNewSub(i)" [disabled]="!myForm.valid" [class.dis]="!myForm.valid">
                   Add+
                 </button>
               </div>
@@ -444,12 +448,13 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
         </div>
       </div>
     </div>
-    <div class="btn">
+    <!-- <div class="btn">
       <button class="btns" (click)="removeAddChapter(i)">Remove</button>
-    </div>
+    </div> -->
   </div>
+</form>
 
   <div class="next">
-    <button class="nextbtnp" (click)="onPublish()">Publish</button>
+    <button class="nextbtnp" (click)="onPublish()" [disabled]="!myForm.valid" [class.pub]="!myForm.valid">Publish</button>
   </div>
 </div>

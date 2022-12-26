@@ -141,3 +141,6 @@ color: #FFFFFF;
 .require{
     color:red;
 }
+.dis{
+    opacity: 0.3;
+}
