@@ -30,7 +30,7 @@
                 </video>
               </div>
               <div class="videoname">
-                <div class="videoLine1">{{ c.courseName }}</div>
+                <div class="videoLine1" (click)="getVideoDetails(c.courseId)">{{ c.courseName }}</div>
                 <div class="progressbar" *ngIf="progress">
                   <mat-progress-bar
                     mode="determinate"
@@ -38,10 +38,10 @@
                   ></mat-progress-bar>
                 </div>
                 <div class="add" *ngIf="c.uploadedStatus">
-                  Added&nbsp;on&nbsp;{{ c.uploadedDate }}
+                  <!-- Added&nbsp;on&nbsp;{{ c.uploadedDate }} -->
                 </div>
                 <div class="add" *ngIf="!c.uploadedStatus">
-                  Tried&nbsp;on&nbsp;{{ c.uploadedDate }}
+                  <!-- Tried&nbsp;on&nbsp;{{ c.uploadedDate }} -->
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@
         </div>
         <div class="studentCount2">
           <div class="studentnumber">
-            <div class="student">Overall&nbsp;Rseult</div>
+            <div class="student">Overall&nbsp;Result</div>
 
             <div class="number">{{ data.overallResult || 0 }}%</div>
           </div>
@@ -245,8 +245,8 @@
                 <source src="{{ c.previewVideo }}" type="video/ogg" />
               </video>
             </div>
-            <div class="videoname">
-              <div class="videoLine">{{ c.courseName }}</div>
+            <div class="videoname" (click)="getVideoDetails(c.courseId)">
+              <div class="videoLine" (click)="getVideoDetails(c.courseId)">{{ c.courseName }}</div>
               <div class="progressbar" *ngIf="progress">
                 <mat-progress-bar
                   mode="determinate"

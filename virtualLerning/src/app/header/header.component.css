@@ -68,13 +68,6 @@ top: 43px;
   
 }
 .pub{
-  background:#EE5C4D;
-  border: none;
-  color: rgb(255, 255, 255,0.3);
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  padding: 8px;
   opacity: 0.3;
 }
 .publish span{
