@@ -5,6 +5,6 @@ export class AddVideo {
 
 export class addSub{
     lessonName:any;
-    videoLink:any=null;
-    lessonId:any=null;
+    videoLink:any;
+    lessonId:any;
 }

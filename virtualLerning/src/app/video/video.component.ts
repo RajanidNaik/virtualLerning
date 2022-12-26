@@ -65,6 +65,7 @@ export class VideoComponent implements OnInit {
 
   addSubchap = new addSub();
   lessonArray: any = [];
+  
 
   constructor(
     public fb: FormBuilder,
@@ -80,7 +81,9 @@ export class VideoComponent implements OnInit {
   shows: any = [];
   valid = true;
   ngOnInit(): void {
+
     console.log(this.status);
+    
 
     this.response = sessionStorage.getItem('CourseID') || 239;
     console.log(typeof this.response);
@@ -224,8 +227,8 @@ export class VideoComponent implements OnInit {
   newSubChapter(): FormGroup {
     return this.fb.group({
       lessonName: new FormControl(''),
-      lessonDuration: new FormControl('00:30:20'),
-      videoLink: new FormControl(''),
+      lessonDuration: new FormControl('00:00:20'),
+      videoLink: new FormControl(null),
     });
   }
   addSubChapter(chapIndex: number) {
@@ -399,13 +402,15 @@ export class VideoComponent implements OnInit {
             this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink =
               url;
             console.log(url);
+            this.currVideo = url;
           });
         })
       )
       .subscribe();
 
-    this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink =
-      this.currVideo;
+    
+      
+      
   }
 
   select(item: any) {}
@@ -416,6 +421,7 @@ export class VideoComponent implements OnInit {
   // }
   addCourse() {
     const body = {
+     
       courseName: this.videoForm.value.videoTitle,
       categoryName: this.videoForm.value.category,
       subCategoryName: this.videoForm.value.subCategory,
@@ -449,22 +455,25 @@ export class VideoComponent implements OnInit {
       error: (data: any) => {
         console.log(data);
       },
+      complete:()=>{
+        this.videoSer.addChapters(body2).subscribe({
+          next: (data: any) => {
+            // alert('Request Sent Succefully');
+            console.log(data);
+            let response = data;
+            if (response[0] == '{') {
+              response = JSON.parse(response);
+              alert(Object.values(response)[0]);
+            }
+            sessionStorage.setItem('response2', data);
+          },
+          error: (data: any) => {
+            console.log(data);
+          },
+        });
+      }
     });
-    this.videoSer.addChapters(body2).subscribe({
-      next: (data: any) => {
-        // alert('Request Sent Succefully');
-        console.log(data);
-        let response = data;
-        if (response[0] == '{') {
-          response = JSON.parse(response);
-          alert(Object.values(response)[0]);
-        }
-        sessionStorage.setItem('response2', data);
-      },
-      error: (data: any) => {
-        console.log(data);
-      },
-    });
+    
   }
 
   filedrop(event: NgxFileDropEntry[]) {
@@ -512,6 +521,7 @@ export class VideoComponent implements OnInit {
 
   onPublish() {
     const body = {
+      "courseId":sessionStorage.getItem('editCourseId'),
       courseName: this.videoForm.value.videoTitle,
       categoryName: this.videoForm.value.category,
       subCategoryName: this.videoForm.value.subCategory,
@@ -546,25 +556,28 @@ export class VideoComponent implements OnInit {
       error: (data: any) => {
         console.log(data);
       },
+      complete:()=>{
+        this.videoSer.addChapters(body2).subscribe({
+          next: (data: any) => {
+            // alert('Request Sent Succefully');
+            let response = data;
+            if (response[0] == '{') {
+              response = JSON.parse(response);
+              alert(Object.values(response)[0]);
+            }
+            console.log(data);
+            sessionStorage.setItem('response2', data);
+          },
+          error: (data: any) => {
+            console.log(data);
+          },
+          complete: () => {
+            this.addNewChap = false;
+          },
+        });
+      }
     });
-    this.videoSer.addChapters(body2).subscribe({
-      next: (data: any) => {
-        // alert('Request Sent Succefully');
-        let response = data;
-        if (response[0] == '{') {
-          response = JSON.parse(response);
-          alert(Object.values(response)[0]);
-        }
-        console.log(data);
-        sessionStorage.setItem('response2', data);
-      },
-      error: (data: any) => {
-        console.log(data);
-      },
-      complete: () => {
-        this.addNewChap = false;
-      },
-    });
+    
   }
 
   removeAddChapter(i: any) {
