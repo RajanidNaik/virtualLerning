@@ -66,6 +66,7 @@ export class VideoComponent implements OnInit {
 
   addSubchap = new addSub();
   lessonArray: any = [];
+  
 
   constructor(
     public fb: FormBuilder,
@@ -81,7 +82,9 @@ export class VideoComponent implements OnInit {
   shows: any = [];
   valid = true;
   ngOnInit(): void {
+
     console.log(this.status);
+    
 
     this.response = sessionStorage.getItem('CourseID') || 239;
     console.log(typeof this.response);
@@ -98,7 +101,7 @@ export class VideoComponent implements OnInit {
       requirement: new FormControl('', [Validators.required]),
       coursePhoto: new FormControl('', [Validators.required]),
       previewVideo: new FormControl('', [Validators.required]),
-      keyWords: new FormControl('', [Validators.required]),
+      keyWords: new FormControl('', [Validators.required,Validators.pattern("^[a-zA-Z][a-zA-Z ]{2,}")]),
       level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([
         this.fb.group({
@@ -143,15 +146,16 @@ export class VideoComponent implements OnInit {
     console.log(id);
     if (id != '') {
       // console.log(this.category1);
-      let array: any = ([] = this.category1);
-      console.log(array);
-      array = this.category1.filter((item: any) => {
-        return item.categoryName == id;
-      });
-      console.log(array[0].categoryId);
-      sessionStorage.setItem('catId', array[0].categoryId);
-    } else {
-      this.addCategory();
+
+    let array:any=[] =this.category1;
+     array = this.category1.filter((item: any) => {
+      return item.categoryName == id;
+      
+    });
+    console.log(array[0].categoryId);
+    sessionStorage.setItem('catId', array[0].categoryId);
+    }else{
+     this.addCategory();
     }
   }
 
@@ -407,13 +411,15 @@ export class VideoComponent implements OnInit {
             this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink =
               url;
             console.log(url);
+            this.currVideo = url;
           });
         })
       )
       .subscribe();
 
-    this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink =
-      this.currVideo;
+    
+      
+      
   }
 
   select(item: any) {}
@@ -424,6 +430,7 @@ export class VideoComponent implements OnInit {
   // }
   addCourse() {
     const body = {
+     
       courseName: this.videoForm.value.videoTitle,
       categoryName: this.videoForm.value.category,
       subCategoryName: this.videoForm.value.subCategory,
@@ -442,8 +449,13 @@ export class VideoComponent implements OnInit {
     };
     this.videoSer.overview(body).subscribe({
       next: (data: any) => {
-        alert('Request Sent Succefully');
+        // alert('Request Sent Succefully');
         console.log(data);
+        let response = data;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
         sessionStorage.setItem('response2', data);
         this.response = JSON.parse(data);
         this.response = this.response.message.match(/\d+$/)[0];
@@ -453,42 +465,25 @@ export class VideoComponent implements OnInit {
       error: (data: any) => {
         console.log(data);
       },
-      complete: () => {
+      complete:()=>{
         this.videoSer.addChapters(body2).subscribe({
           next: (data: any) => {
             // alert('Request Sent Succefully');
-
             console.log(data);
-
             let response = data;
-
             if (response[0] == '{') {
               response = JSON.parse(response);
-
               alert(Object.values(response)[0]);
             }
-
             sessionStorage.setItem('response2', data);
           },
-
           error: (data: any) => {
             console.log(data);
           },
         });
-      },
-    });
 
-    this.videoSer.addChapters(body2);
-    //   .subscribe({
-    //     next: (data: any) => {
-    //       alert('Chapters Sent Succefully');
-    //       console.log(data);
-    //       sessionStorage.setItem('response2', data);
-    //     },
-    //     error: (data: any) => {
-    //       console.log(data);
-    //     },
-    //   });
+      }
+    });
   }
 
   filedrop(event: NgxFileDropEntry[]) {
@@ -536,6 +531,7 @@ export class VideoComponent implements OnInit {
 
   onPublish() {
     const body = {
+      "courseId":sessionStorage.getItem('editCourseId'),
       courseName: this.videoForm.value.videoTitle,
       categoryName: this.videoForm.value.category,
       subCategoryName: this.videoForm.value.subCategory,
@@ -570,59 +566,27 @@ export class VideoComponent implements OnInit {
       error: (data: any) => {
         console.log(data);
       },
-      complete: () => {
+
+      complete:()=>{
         this.videoSer.addChapters(body2).subscribe({
           next: (data: any) => {
             // alert('Request Sent Succefully');
-
             let response = data;
-
             if (response[0] == '{') {
               response = JSON.parse(response);
-
               alert(Object.values(response)[0]);
             }
-
             console.log(data);
-
             sessionStorage.setItem('response2', data);
           },
-
           error: (data: any) => {
             console.log(data);
           },
-
           complete: () => {
             this.addNewChap = false;
           },
         });
-      },
-    });
-  }
-
-  addLessonList() {
-    const body2 = {
-      courseName: this.videoForm.value.videoTitle,
-      chapterDataRequestList: this.chapterArray,
-    };
-    this.videoSer.addChapters(body2).subscribe({
-      next: (data: any) => {
-        alert('Chapter Sent');
-        this.publishOver = true;
-        let response = data;
-        if (response[0] == '{') {
-          response = JSON.parse(response);
-          alert(Object.values(response)[0]);
-        }
-        console.log(data);
-        sessionStorage.setItem('response2', data);
-      },
-      error: (data: any) => {
-        console.log(data);
-      },
-      complete: () => {
-        this.addNewChap = false;
-      },
+      }
     });
   }
 

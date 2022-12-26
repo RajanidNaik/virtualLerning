@@ -21,7 +21,7 @@
           <option value="" selected (click)="selected()">
             Select Category
           </option>
-          <option *ngFor="let item of category1" [value]="item.categoryName" (click)="storeCatId(item)">
+          <option *ngFor="let item of category1" [value]="item.categoryName" >
             {{ item.categoryName }}
           </option>
           <option value="">Add new +</option>
@@ -118,6 +118,7 @@
     <div *ngIf="videoForm.get('keyWords')?.errors?.['required'] &&videoForm.get('keyWords')?.touched" class="error">
       Required
     </div>
+    <small *ngIf="videoForm.get('keyWords')?.errors?.['pattern']" class="error">  keywords cannot contain number</small>
     <div>
       <input class="titleInput" type="text" formControlName="keyWords" />
     </div>
@@ -357,7 +358,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               {{setlength(chapterArray[i].length-1)}} -->
                   <div class="box">
                     <video width="100%" height="100%" controls="controls">
-                      <source src="{{ lesson.videoLink}}" type="video/mp4" />
+                      <source src="{{ lesson.videoLink || currVideo}}" type="video/mp4" />
                     </video>
                   </div>
                   <!-- <div class="box" *ngIf="!lesson.videoLink"></div> -->

@@ -30,7 +30,7 @@ export class DashBoardComponent implements OnInit {
   sub: any = [];
   course: any;
   progress: boolean = false;
-  courseLimit = 7;
+  courseLimit = 20;
   completeDeatails: any;
   response: any;
   constructor(
