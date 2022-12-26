@@ -28,13 +28,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   position: absolute;
   right: 5%;
-  top: 15%;
+  top: 5%;
 }
 .personImg {
-  /* background-color: rgb(230, 169, 56); */
   border-radius: 50%;
 }
 .personName {
@@ -68,6 +66,16 @@ top: 43px;
   font-size: 18px;
   padding: 8px;
 }
+.pub{
+  background:#EE5C4D;
+  border: none;
+  color: rgb(255, 255, 255,0.3);
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 8px;
+}
 .publish span{
   margin-right: 47px;
+
 }

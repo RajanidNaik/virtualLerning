@@ -92,7 +92,7 @@ export class QuestionService {
   }
   saveCertificate(body: any) {
     var body2 = new FormData();
-    body2.append('template', body.template);
+    body2.append('certificate', body.certificate);
     body2.append('userName', body.userName);
     body2.append('courseId', body.courseId);
 
@@ -104,9 +104,11 @@ export class QuestionService {
     });
   }
 
-  publish(id:any){
+  publish(id:any):Observable<any>{
     return this.http.put(`${baseUrl}/admin/publishToWeb?courseId=${id}`,id);
   }
-
+getChapter(id:any):Observable<any>{
+  return this.http.get(`${baseUrl}/admin/chapterList?courseId=${id}`);
+}
 
 }

@@ -38,7 +38,7 @@ input{
 mat-form-field {
  height: 56.8833px;
  width: 100%;
- -webkit-text-security: disc;
+ /* -webkit-text-security: disc; */
 }
  ::ng-deep .mat-focused .mat-form-field-label {
   color: #7A7A7A !important;

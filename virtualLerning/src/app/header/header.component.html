@@ -3,7 +3,7 @@
     {{ head }}
   </div>
   <div class="publ" *ngIf="show">
-    <button class="publish"[disabled]="!id || !qa" (click)="publish()" ><span>Publish to web</span><mat-icon>cloud_upload</mat-icon></button>
+    <button class="publish" [class.pub]="!hide" (click)="publish()" ><span>Publish to web</span><mat-icon>cloud_upload</mat-icon></button>
   </div>
 
   <div class="person">

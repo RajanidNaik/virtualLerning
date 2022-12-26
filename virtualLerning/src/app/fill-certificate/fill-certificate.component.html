@@ -1,0 +1,14 @@
+<div *ngIf="hide">
+    
+    <div class="head">Course&nbsp;completed&nbsp;Students&nbsp;list</div>
+    <div *ngFor="let name of certificateDetails;let i = index" class="student">
+        <div>Student&nbsp;Name&nbsp;:&nbsp;<span>{{name.fullName}}</span></div>
+        <div>
+            <button (click)="toGet(i)" mat-dialog-close>Get&nbsp;certificate</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!hide">
+    <div ><mat-icon mat-dialog-close>clear</mat-icon></div>
+<div>No&nbsp;one&nbsp;complete&nbsp;the&nbsp;course</div>
+</div>

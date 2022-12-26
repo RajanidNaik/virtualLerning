@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { QuestionService } from '../question.service';
 @Component({
   selector: 'app-on-save',
@@ -8,14 +9,23 @@ import { QuestionService } from '../question.service';
 export class OnSaveComponent implements OnInit {
   imageFile: any;
   completeDetails: any;
-  constructor(public service: QuestionService) {}
-
+  preDetails: any;
+  constructor(public service: QuestionService, private fb: FormBuilder) {}
+  chapForm!: FormGroup;
   ngOnInit(): void {
-    if (sessionStorage.getItem('certificateDetails')) {
-      this.completeDetails = JSON.parse(
-        sessionStorage.getItem('certificateDetails') || '[]'
+    
+    if (sessionStorage.getItem('previewDetails')) {
+      this.preDetails = JSON.parse(
+        sessionStorage.getItem('previewDetails') || '[]'
       );
+      console.log(this.preDetails);
+      
     }
+    this.chapForm = this.fb.group({
+      template:[''],
+      userName:[this.preDetails.name],
+      courseId:[this.preDetails.courseId]
+    })
   }
   onFileSelect(event: any) {
     if (event.target.files.length > 0) {
@@ -26,14 +36,16 @@ export class OnSaveComponent implements OnInit {
   saveCertificate() {
     if (sessionStorage.getItem('certificateDetails')) {
       let data: any = {
-        template: this.imageFile,
-        userName: '',
-        courseId: '',
+        'certificate': this.imageFile,
+        'userName': this.preDetails.name ,
+        'courseId': this.preDetails.courseId,
       };
       console.log(data);
       this.service.saveCertificate(data).subscribe({
         next: (res) => {
-          console.log('res');
+          console.log(res);
+          let response = res;
+        alert(response);
         },
         error: (error) => {
           alert(error.error.message);

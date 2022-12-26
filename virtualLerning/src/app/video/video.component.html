@@ -4,8 +4,10 @@
       <div class="text">Video Title</div>
       <div>
         <input class="titleInput" type="text" formControlName="videoTitle" />
-        <div *ngIf="videoForm.get('videoTitle')?.errors?.['required'] && videoForm.get('videoTitle')?.touched"
-          class="error1">
+        <div
+          *ngIf="videoForm.get('videoTitle')?.errors?.['required'] && videoForm.get('videoTitle')?.touched"
+          class="error1"
+        >
           Required
         </div>
       </div>
@@ -13,31 +15,43 @@
     <div class="category">
       <div class="text">Video Category</div>
       <div class="titleInputV">
-        <select formControlName="category" type="text">
-          <option value="" selected (click)="selected()">Select Category</option>
-          <option *ngFor="let item of category1" [value]="item.categoryName" (click)="storeCatId(item)">
+        <select formControlName="category" type="text"(change)=storeCatId($event) >
+          <option value="" selected (click)="selected()">
+            Select Category
+          </option>
+          <option
+            *ngFor="let item of category1"
+            [value]="item.categoryName"
+            (click)="storeCatId(item)"
+          >
             {{ item.categoryName }}
           </option>
-          <option (click)="addCategory()" value="">Add new +</option>
+          <option  value="">Add new +</option>
         </select>
       </div>
-      <div *ngIf="videoForm.get('category')?.errors?.['required']" class="error1">
+      <div
+        *ngIf="videoForm.get('category')?.errors?.['required']"
+        class="error1"
+      >
         Required
       </div>
     </div>
     <div class="suBcategory">
       <div class="text">Sub Category</div>
       <div class="titleInputV">
-        <select formControlName="subCategory" type="text">
+        <select formControlName="subCategory" type="text" (change)="addSubCategory($event)" >
           <option value="" selected>Sub Category</option>
 
           <option *ngFor="let item of subCa" [value]="item.subCategoryName">
             {{ item.subCategoryName }}
           </option>
-          <option (click)="addSubCategory()" value="">Add new +</option>
+          <option  value="">Add new +</option>
         </select>
       </div>
-      <div *ngIf="videoForm.get('subCategory')?.errors?.['required'] " class="error1">
+      <div
+        *ngIf="videoForm.get('subCategory')?.errors?.['required'] "
+        class="error1"
+      >
         Required
       </div>
     </div>
@@ -46,7 +60,10 @@
   <!-- Top PRT -->
   <div class="userview">
     <div class="uploadSection">Course Tag Line</div>
-    <div *ngIf="videoForm.get('formatText')?.errors?.['required'] &&videoForm.get('formatText')?.touched" class="error">
+    <div
+      *ngIf="videoForm.get('formatText')?.errors?.['required'] &&videoForm.get('formatText')?.touched"
+      class="error"
+    >
       Required
     </div>
     <div>
@@ -56,7 +73,10 @@
   <!--////////////////////////// TEXT EDITOR \\\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="videoDiscription">
     <div class="overview">Add Discription / Overview</div>
-    <div *ngIf="videoForm.get('overview')?.errors?.['required'] &&videoForm.get('overview')?.touched" class="error">
+    <div
+      *ngIf="videoForm.get('overview')?.errors?.['required'] &&videoForm.get('overview')?.touched"
+      class="error"
+    >
       Required
     </div>
     <div class="file">
@@ -69,11 +89,13 @@
   <div class="title2">
     <div class="uploadSection">
       Course Photo *
-      <input id="upload" type="file" accept="image/*" (change)="uploadCoursePhoto($event)" /><label
-        for="upload">Browse</label>
-      <div *ngIf="!videoForm.value.coursePhoto" class="error">
-        Required
-      </div>
+      <input
+        id="upload"
+        type="file"
+        accept="image/*"
+        (change)="uploadCoursePhoto($event)"
+      /><label for="upload">Browse</label>
+      <div *ngIf="!videoForm.value.coursePhoto" class="error">Required</div>
     </div>
   </div>
 
@@ -81,17 +103,22 @@
   <div class="title2">
     <div class="uploadSection">
       Preview Video *
-      <input id="upload2" type="file" accept="video/*" (change)="uploadVideo($event)" /><label
-        for="upload2">Browse</label>
-    <div *ngIf="!videoForm.value.previewVideo" class="error">
-        Required
-      </div>
+      <input
+        id="upload2"
+        type="file"
+        accept="video/*"
+        (change)="uploadVideo($event)"
+      /><label for="upload2">Browse</label>
+      <div *ngIf="!videoForm.value.previewVideo" class="error">Required</div>
     </div>
   </div>
   <!--///////////////////////////// LEARNING \\\\\\\\\\\\\\\\\\\\\\\\\\-->
   <div class="userview">
     <div class="uploadSection">What they gain</div>
-    <div *ngIf="videoForm.get('learning')?.errors?.['required'] &&videoForm.get('learning')?.touched" class="error">
+    <div
+      *ngIf="videoForm.get('learning')?.errors?.['required'] &&videoForm.get('learning')?.touched"
+      class="error"
+    >
       Required
     </div>
     <div>
@@ -102,8 +129,10 @@
 
   <div class="userview">
     <div class="uploadSection">Requirements</div>
-    <div *ngIf="videoForm.get('requirement')?.errors?.['required'] &&videoForm.get('requirement')?.touched"
-      class="error">
+    <div
+      *ngIf="videoForm.get('requirement')?.errors?.['required'] &&videoForm.get('requirement')?.touched"
+      class="error"
+    >
       Required
     </div>
     <div>
@@ -112,7 +141,10 @@
   </div>
   <div class="title">
     <div class="uploadSection">Keywords</div>
-    <div *ngIf="videoForm.get('keyWords')?.errors?.['required'] &&videoForm.get('keyWords')?.touched" class="error">
+    <div
+      *ngIf="videoForm.get('keyWords')?.errors?.['required'] &&videoForm.get('keyWords')?.touched"
+      class="error"
+    >
       Required
     </div>
     <div>
@@ -121,7 +153,10 @@
   </div>
   <div class="userview">
     <div class="uploadSection">Difficulty</div>
-    <div *ngIf="videoForm.get('level')?.errors?.['required'] &&videoForm.get('level')?.touched" class="error">
+    <div
+      *ngIf="videoForm.get('level')?.errors?.['required'] &&videoForm.get('level')?.touched"
+      class="error"
+    >
       Required
     </div>
     <div>
@@ -139,11 +174,14 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
 
 
 \\\\\\\\\\\\\\\\\\\\\\\\-->
+
+<div *ngIf="!hide">
+  
   <div class="videoUpload">
     <div class="options">
       <div class="uploadSection">Video Upload Section</div>
       <div class="addNew">
-        <button class="btn"  [disabled]="videoForm.invalid || !currVal"  (click)="addChapter()">Add New +</button>
+        <button class="btn"  [disabled]="(videoForm.invalid || !currVal) && addNewChap"  (click)="addChapter()">Add New +</button>
       </div>
     </div>
 
@@ -227,14 +265,14 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 <span class="uploadSection"> Subchapter Name </span>
                 <div class="input">
                   {{setcurrVal()}}
-                  <input class="titleInput" type="text" [value]="currVal" #subName (keyup)="setSubChap(subName.value)">
+                  <input class="titleInput" type="text" [value]="currVal" #subName (keyup)="setSubChap(subName.value)" >
                 </div>
               </div>
               <div class="takevalue">
-                <div class="btn">
+                <!-- <div class="btn">
                   <button class="buttonP"[disabled]="sIndex==0" (click)="prev()">Previous</button>
                   <button class="buttonN" [disabled]="sIndex <= length" (click)="next()">Next</button>
-                </div>
+                </div> -->
                 <div class="btn1">
                   <button class="buttonP" (click)="addSubChapter(chapIndex)" [disabled]="videoForm.invalid || !currVal">Add Sub Chapter</button>
                 </div>
@@ -258,5 +296,160 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
   </div>
     <button (click)="preview()">show</button>
   </div>
+
+
+
+
+
+
+  </div>
 </form>
 
+<!--Edit part upload failed thing-->
+
+<!-- /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/? -->
+
+<div *ngIf="hide">
+  <div class="videoUpload">
+    <div class="options">
+      <div class="uploadSection">Video Upload Section</div>
+      <div class="addNew">
+        <button class="btn" (click)="addNewChapter()">Add New +</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="white" *ngFor="let chap of chapterArray; index as i">
+    <div>
+      <div class="top">
+        <div class="chapName">
+          Chapter Name
+          <div class="input">
+            <input
+              class="titleInput"
+              type="text"
+              name="chapterName{{i}}"
+              [(ngModel)]="chap.chapterName"
+            />
+          </div>
+        </div>
+        <div class="center">
+          <div class="icon" *ngIf="uploadSuccess[i]">
+            <div>
+              <mat-icon class="green">check_circle</mat-icon>
+            </div>
+            <div class="green">Videos upload successful</div>
+          </div>
+          <div class="icon" *ngIf="uploadFailed[i]">
+            <div class="green">
+              <mat-icon>error</mat-icon>
+            </div>
+            <div>Upload failed</div>
+          </div>
+        </div>
+        <div class="more" class="center" (click)="show(i)">
+          <mat-icon *ngIf="!shows[i]">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="shows[i]">keyboard_arrow_up</mat-icon>
+        </div>
+      </div>
+      <div class="imgUpload" *ngIf="shows[i]">
+        <div class="left">
+          <div class="preview">
+            <!-- {{storesIndex(sIndex,i)}}
+                  {{setcurrVideo2()}} -->
+            <div class="contain" *ngIf="currVideo">
+              <video width="100%" height="100%" controls="controls">
+                <source
+                  src="{{currVideo}}"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+            <div *ngIf="!currVideo">
+              <div class="notUpload">
+                <div>
+                  <ngx-file-drop (onFileDrop)="filedrop($event)">
+                  </ngx-file-drop>
+                  <img src="assets/add-course/Vector.png" alt="" />
+                </div>
+                <div class="dragAndDrop">Drag and drop multiple files</div>
+                <div class="browse">
+                  or
+                  <input
+                    type="file"
+                    accept="video/*"
+                    name="photo"
+                    id="upload3"
+                    (change)="addSubvideo2($event)"
+                  /><label for="upload3">Browse</label
+                  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+                  choose files
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bottomDisplay">
+            <div class="videoScroll">
+              <div
+                *ngFor="
+                  let lesson of chapterArray[i].lessonList; let id=index"
+              >
+              <!-- {{storesIndex(chapterArray[i].length-1,i)}}
+              {{setcurrVal1()}}
+              {{setlength(chapterArray[i].length-1)}} -->
+                <div class="box" >
+                  <video width="100%" height="100%" controls="controls">
+                    <source src="{{ lesson.videoLink}}" type="video/mp4" />
+                  </video>
+                </div>
+                <!-- <div class="box" *ngIf="!lesson.videoLink"></div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <!-- {{storesIndex(sIndex,i)}} -->
+          <div>
+            <span class="uploadSection"> Subchapter's Name </span>
+            
+            <!-- <div class="input">
+              {{setcurrVal1()}}
+              <input class="titleInput" type="text" [value]="currVal" #subName (keyup)="setSubChap2(subName.value)" >
+            </div> -->
+            <div
+              *ngFor="
+                let lessons of chapterArray[i].lessonList;
+               let id=index
+              "
+            >
+              <div class="inputs">
+                <!-- {{setcurrVal()}} -->
+                <input
+                  class="titleInput"
+                  type="text"
+                  name="lessonName{{id}}"
+                  [(ngModel)]="lessons.lessonName"
+                  
+                />
+              </div>
+            </div>
+            <div class="takevalue">
+              <div class="btn1">
+                <button class="buttonP" (click)="addNewSub(i)">
+                  Add+
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn">
+      <button class="btns" (click)="removeAddChapter(i)">Remove</button>
+    </div>
+  </div>
+
+  <div class="next">
+    <button class="nextbtnp" (click)="onPublish()">Publish</button>
+  </div>
+</div>

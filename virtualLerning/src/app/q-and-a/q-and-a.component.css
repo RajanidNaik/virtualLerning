@@ -219,4 +219,14 @@ select {
 .in {
   outline: none;
   border: none;
+  color: #2b2b2b;
+}
+.qnId{
+  display: flex;
+  align-items: center;
+}
+label{
+  color: #2b2b2b;
+  font-family: "Proxima Nova";
+  font-style: normal;
 }

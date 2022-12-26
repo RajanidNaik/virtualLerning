@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   show=false;
   id:any;
   qa:any;
+  hide:boolean=false;
 
   ngOnInit(): void {
     this.head = localStorage.getItem('curr');
@@ -63,15 +64,31 @@ export class HeaderComponent implements OnInit {
   }
 
   publish(){
-    console.log("Publish");
-    // this.service.publish(this.id).subscribe({
-    //   next:(res)=>{
-    //     alert(res);
-    //   },
-    //   error:(error)=>{
-    //     alert(error.error.message);
-    //   }
-    // });
+    // console.log("Publish");
+    if(sessionStorage.getItem('CourseID')){
+      this.hide=true;
+      this.service.publish(this.id).subscribe({
+        next:(res)=>{
+          // alert(res);
+          console.log(res);
+          let response = res;
+        if (response[0] == '{') {
+          response = JSON.parse(response);
+          alert(Object.values(response)[0]);
+        }
+        },
+        error:(error)=>{
+          alert(error.error.message);
+        },
+        complete:()=>{
+          sessionStorage.removeItem('addCourseDetails');
+           window.location.reload();
+        }
+      });
+      
+     
+    }
+    
     
   }
 }

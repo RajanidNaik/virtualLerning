@@ -1,5 +1,5 @@
 
-<div id="container">
+<div id="container" *ngIf="hide">
   <div class="navbar">
     <div>
       <!-- <app-side-nav></app-side-nav> -->
@@ -8,32 +8,66 @@
     <div class="head">
       <!-- <app-header></app-header> -->
     </div>
-    <div class="contentBox" >
+    <div class="contentBox"  >
      
-      <div class="dialogBox">
+      <div class="dialogBox" >
         <div>
-          <div >
-            <!-- <mat-icon (click)="captureScreenData()">save_alt</mat-icon> -->
+          <div class="delete">
+            <div >
+              <mat-icon (click)="captureScreenData()">save_alt</mat-icon>
+            </div>
+            <div ><mat-icon mat-dialog-close>clear</mat-icon></div>
           </div>
-          <div class="delete"><mat-icon mat-dialog-close>clear</mat-icon></div>
+          
           <div class="cup">
             <img src="/assets/image 1.png">
            </div>
           <div>
           <div class="para">Certificate&nbsp;of&nbsp;completion</div>
-          <div class="name">Mahendra Singh Dhoni</div>
-          <div class="course" >User&nbsp;interface&nbsp;with&nbsp;illustration</div>
+          <div class="name">{{this.preDetails.name}}</div>
+          <div class="course" >{{this.preDetails.course}}</div>
           <div class="time">
-          <div>Joined:</div>  
-          <li>Completed:</li>
-          <li>time</li>
+          <div>Joined:{{this.preDetails.join}}</div>  
+          <li>Completed:{{this.preDetails.end}}</li>
+          <li>time:{{this.preDetails.duration}}</li>
           </div>
-          <div class="time">Certificate&nbsp;No:</div>
+          <div class="time">Certificate&nbsp;No:{{this.preDetails.certificateNumber}}</div>
         </div>
          <div class="footer">
           <img  class="image" src="/assets/img_virtuallearn logo_splash 2.png">
          </div>
         </div>
       </div>
+     
     </div>
+    
+</div>
+
+
+
+<div id="container" *ngIf="!hide">
+  
+    <div class="contentBox"  >
+     
+      <div class="dialogBox" >
+        <div>
+          <div class="delete">
+            <div >
+              <mat-icon (click)="captureScreenData()">save_alt</mat-icon>
+            </div>
+            <div ><mat-icon mat-dialog-close>clear</mat-icon></div>
+          </div>
+          
+          <div class="cup">
+            <img src="/assets/image 1.png">
+           </div>
+          <div class="para">No&nbsp;one&nbsp;complete&nbsp;the&nbsp;course</div>
+         <div class="footer">
+          <img  class="image" src="/assets/img_virtuallearn logo_splash 2.png">
+         </div>
+        </div>
+      </div>
+     
+    </div>
+    
 </div>
