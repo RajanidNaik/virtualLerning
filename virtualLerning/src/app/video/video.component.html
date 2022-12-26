@@ -265,7 +265,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
         <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal" (click)="addCourse()"
           [class.pub]="videoForm.invalid || !currVal">Publish</button>
       </div>
-      <!-- <button (click)="preview()">show</button> -->
+      <button (click)="preview()">show</button>
     </div>
 
 
@@ -356,7 +356,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               {{setlength(chapterArray[i].length-1)}} -->
                   <div class="box">
                     <video width="100%" height="100%" controls="controls">
-                      <source src="{{ lesson.videoLink}}" type="video/mp4" />
+                      <source src="{{ lesson.videoLink || currVideo}}" type="video/mp4" />
                     </video>
                   </div>
                   <!-- <div class="box" *ngIf="!lesson.videoLink"></div> -->

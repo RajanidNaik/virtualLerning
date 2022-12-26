@@ -53,7 +53,7 @@
                 <div class="errorimage">
                   <img src="/assets/error.png" />
                 </div>
-                <div class="errorline">Upload&nbsp;failed</div>
+                <div class="errorline" (click)="getVideoDetails(c.courseId)">Upload&nbsp;failed</div>
               </div>
               <div class="iconclose" *ngIf="!c.uploadedStatus">
                 <mat-icon (click)="getVideoDetails(c.courseId)"
@@ -269,7 +269,7 @@
               <div class="errorimage">
                 <img src="/assets/error.png" />
               </div>
-              <div class="errorline">Upload&nbsp;failed</div>
+              <div class="errorline" (click)="getVideoDetails(c.courseId)">Upload&nbsp;failed</div>
             </div>
             <div class="iconclose" *ngIf="!c.uploadedStatus">
               <mat-icon (click)="getVideoDetails(c.courseId)">refresh</mat-icon>
