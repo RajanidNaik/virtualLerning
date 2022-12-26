@@ -11,7 +11,8 @@ export class LoggedInGuard implements CanActivate {
   constructor(private router:Router){}
   canActivate(){
     if (sessionStorage.getItem('token')) {
-      this.router.navigateByUrl('/dashboard')
+      if(sessionStorage.getItem('role')=='sup') this.router.navigateByUrl('/super');
+      else this.router.navigateByUrl('/dashboard')
       return true;
     }
       else return true;

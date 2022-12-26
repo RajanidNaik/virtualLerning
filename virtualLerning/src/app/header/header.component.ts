@@ -50,7 +50,9 @@ export class HeaderComponent implements OnInit {
   }
   logout(){
     this.router.navigateByUrl('/');
-    sessionStorage.removeItem('token');
+    sessionStorage.clear();
+    localStorage.clear();
+
   }
   getPro(){
     this.service.getProfile().subscribe({

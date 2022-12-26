@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DialogService } from '../dialogService/dialog.service';
 @Component({
   selector: 'app-dialog-category',
@@ -9,7 +11,7 @@ import { DialogService } from '../dialogService/dialog.service';
 export class DialogCategoryComponent implements OnInit {
   category: any;
   selectedFile: any;
-  constructor(private dServ:DialogService) {}
+  constructor(private dServ:DialogService,private dialogRef: MatDialogRef<DialogCategoryComponent>) {}
   image: any;
   categoryForm = new FormGroup({
     categoryName: new FormControl('', [Validators.required]),
@@ -31,6 +33,7 @@ export class DialogCategoryComponent implements OnInit {
     body.append('categoryPhoto', this.selectedFile, this.selectedFile[0]?.name);
     
       this.dServ.addCategory(body).subscribe(data=>console.log(data));
+      this.dialogRef.close();
     }
     else{
       alert('Please select file');
