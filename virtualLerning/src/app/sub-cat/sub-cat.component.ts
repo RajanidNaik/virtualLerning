@@ -30,6 +30,7 @@ export class SubCatComponent implements OnInit {
       this.courseId = sessionStorage.getItem('catId');
       console.log(this.courseId);
     } else {
+      alert('Choose Category')
       this.dialogRef.close();
     }
   }
@@ -40,6 +41,7 @@ export class SubCatComponent implements OnInit {
     };
     this.dServ.addSubCategory(body).subscribe((data) => console.log(data));
     sessionStorage.removeItem('catId');
+    this.dialogRef.close();
   }
 }
 

@@ -11,9 +11,13 @@
       </div>
     </div>
     <div class="category">
-      <div class="text">Video Category</div>
+  <div class="text">Video Category<span class="material-icons-round">
+<mat-icon (click)="reload()" >replay</mat-icon>
+</span></div>
+      
       <div class="titleInputV">
-          <select formControlName="category" type="text" (change)=storeCatId($event)>
+        
+        <select formControlName="category" type="text" (change)=storeCatId($event)>
           <option value="" selected (click)="selected()">
             Select Category
           </option>
@@ -28,15 +32,16 @@
       </div>
     </div>
     <div class="suBcategory">
-      <div class="text">Sub Category</div>
+      <div class="text">Sub Category<span class="material-icons-round">
+        <mat-icon (click)="reloadT()">replay</mat-icon>
+      </span></div>
       <div class="titleInputV">
-        <select formControlName="subCategory"  type="text" (change)="addSubCategory($event)">
+        <select formControlName="subCategory" type="text" (change)="addSubCategory($event)">
           <option value="" selected>Sub Category</option>
-
           <option *ngFor="let item of subCa" [value]="item.subCategoryName">
             {{ item.subCategoryName }}
           </option>
-          <option value="">Add new +</option>
+          <option value="">Add+</option>
         </select>
       </div>
       <div *ngIf="videoForm.get('subCategory')?.errors?.['required'] " class="error1">
@@ -132,10 +137,7 @@
     </div>
   </div>
   <!-- ///////////////////////////////
-
 Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
-
-
 \\\\\\\\\\\\\\\\\\\\\\\\-->
 
   <div *ngIf="!hide">
@@ -144,8 +146,8 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
       <div class="options">
         <div class="uploadSection">Video Upload Section</div>
         <div class="addNew">
-          <button class="btn" [disabled]="(videoForm.invalid || !currVal || publishOver) && addNewChap" (click)="addChapter()"
-            [class.dis]="(videoForm.invalid || !currVal) && addNewChap">Add New +</button>
+          <button class="btn" [disabled]="(videoForm.invalid || !currVal || publishOver) && addNewChap"
+            (click)="addChapter()" [class.dis]="(videoForm.invalid || !currVal) && addNewChap">Add New +</button>
         </div>
       </div>
 
