@@ -24,6 +24,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { FillCertificateComponent } from './fill-certificate/fill-certificate.component';
 import { SubCatComponent } from './sub-cat/sub-cat.component';
 import { LoggedInGuard } from './loggedIn/logged-in.guard';
+import { NFoundComponent } from './nfound/nfound.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent,canActivate:[LoggedInGuard] },
@@ -56,7 +57,9 @@ const routes: Routes = [
   {path:'delete',component:DeleteStudentComponent},
   {path:'onSave',component:OnSaveComponent},
   {path:'complete',component:FillCertificateComponent},
-  {path:'add',component:SubCatComponent}
+  {path:'add',component:SubCatComponent},
+  { path: '**', pathMatch: 'full', 
+        component: NFoundComponent }
 ];
 
 @NgModule({

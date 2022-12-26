@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -17,7 +18,7 @@ import { AdminLoginService } from '../services/admin-login.service';
 export class LoginComponent implements OnInit {
   valid = true;
   login = true;
-  item:any;
+  item: any;
   forgotPassword = false;
   superAdmins = false;
   hide = true;
@@ -34,12 +35,20 @@ export class LoginComponent implements OnInit {
 
   logindata: any;
   message: any;
- 
-  constructor(private router: Router, private al: AdminLoginService, ) {}
+
+  constructor(
+    private router: Router,
+    private al: AdminLoginService,
+    private location: LocationStrategy
+  ) {
+    history.pushState(null, 'null', window.location.href);
+    this.location.onPopState(() => {
+      history.pushState(null, 'null', window.location.href);
+    });
+  }
 
   ngOnInit(): void {
     console.log(this.loginForm);
-    
   }
   forgot() {
     this.login = false;
@@ -84,11 +93,11 @@ export class LoginComponent implements OnInit {
       },
     });
   }
-// const keys = response.headers.keys();
-//   const headers = keys.map(key =>
-//     `${key}: ${response.headers.get(key)}`);
+  // const keys = response.headers.keys();
+  //   const headers = keys.map(key =>
+  //     `${key}: ${response.headers.get(key)}`);
 
-//    console.table(headers);
+  //    console.table(headers);
 
   adminLogin() {
     this.message = '';
@@ -99,14 +108,14 @@ export class LoginComponent implements OnInit {
     console.log(body);
     this.al.adminLogin(body).subscribe({
       next: (data) => {
-         let token: any = data.headers.get('jwt-token');
-        
-         sessionStorage.setItem('token', token);
+        let token: any = data.headers.get('jwt-token');
+
+        sessionStorage.setItem('token', token);
         this.router.navigateByUrl('/dashboard');
         // console.log(data);
       },
       error: (data) => {
-        this.message="Invalid Credential"
+        this.message = 'Invalid Credential';
       },
     });
   }
@@ -120,34 +129,32 @@ export class LoginComponent implements OnInit {
     console.log(body);
     this.al.adminLogin(body).subscribe({
       next: (data) => {
-        let token:any=data.headers.get('jwt-token');
-        sessionStorage.setItem('token',token);
+        let token: any = data.headers.get('jwt-token');
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('role', 'sup');
         this.item = data.body;
         console.log(typeof this.item.role);
 
-        if (this.item.role == '[ROLE_SUPER_ADMIN]'){
+        if (this.item.role == '[ROLE_SUPER_ADMIN]') {
           this.router.navigateByUrl('/super');
+        } else {
+          alert('Not a Super Admin ');
+          this.superAdmins = false;
+          this.login = true;
         }
-        else{
-          alert("Not a Super Admin ");
-           this.superAdmins = false;
-           this.login = true;
-        }
-
       },
       error: (data) => {
         console.log(data);
         alert('Not A Super Admin');
-         this.superAdmins = false;
-         this.login = true ;
+        this.superAdmins = false;
+        this.login = true;
       },
     });
   }
   @HostListener('document:keydown.enter') keydata() {
-    
-    if(this.superAdmins == true && this.login == false){
+    if (this.superAdmins == true && this.login == false) {
       this.supAdminLogin();
-    }else{
+    } else {
       this.adminLogin();
     }
   }

@@ -46,6 +46,7 @@ import { OnSaveComponent } from './on-save/on-save.component';
 import { FillCertificateComponent } from './fill-certificate/fill-certificate.component';
 import { LoggedInGuard } from './loggedIn/logged-in.guard';
 import { PreventGuard } from './prevent/prevent.guard';
+import { NFoundComponent } from './nfound/nfound.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { PreventGuard } from './prevent/prevent.guard';
     SubCatComponent,
     OnSaveComponent,
     FillCertificateComponent,
+    NFoundComponent,
   ],
 
   imports: [
