@@ -41,7 +41,7 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
-
+import { AuthGuard } from './guard/auth.guard';
 import { OnSaveComponent } from './on-save/on-save.component';
 import { FillCertificateComponent } from './fill-certificate/fill-certificate.component';
 
@@ -85,13 +85,13 @@ import { FillCertificateComponent } from './fill-certificate/fill-certificate.co
     CKEditorModule,
     NgxFileDropModule,
     AngularFireModule.initializeApp(environment.firebase),
-      provideFirebaseApp(() => initializeApp(environment.firebase)),
-      provideAnalytics(() => getAnalytics()),
-      provideAuth(() => getAuth()),
-      provideFirestore(() => getFirestore()),
-      provideFunctions(() => getFunctions()),
-      provideMessaging(() => getMessaging()),
-      provideStorage(() => getStorage()),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideMessaging(() => getMessaging()),
+    provideStorage(() => getStorage()),
   ],
   providers: [
     {
@@ -99,7 +99,9 @@ import { FillCertificateComponent } from './fill-certificate/fill-certificate.co
       useClass: AuthserviceInterceptor,
       multi: true,
     },
-    ScreenTrackingService,UserTrackingService,
+    ScreenTrackingService,
+    UserTrackingService,
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })
