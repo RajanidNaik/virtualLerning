@@ -466,6 +466,7 @@ export class VideoComponent implements OnInit {
         console.log(data);
       },
       complete:()=>{
+        console.log(body2)
         this.videoSer.addChapters(body2).subscribe({
           next: (data: any) => {
             // alert('Request Sent Succefully');
@@ -545,13 +546,15 @@ export class VideoComponent implements OnInit {
       courseKeyword: this.videoForm.value.keyWords,
     };
     const body2 = {
+      "courseId":sessionStorage.getItem('editCourseId'),
       courseName: this.videoForm.value.videoTitle,
       chapterDataRequestList: this.chapterArray,
     };
     console.log(body, body2);
     this.videoSer.overview(body).subscribe({
       next: (data: any) => {
-        alert('Overview');
+
+  
         console.log(data);
         let response = data;
         if (response[0] == '{') {
@@ -568,8 +571,11 @@ export class VideoComponent implements OnInit {
       },
 
       complete:()=>{
+        console.log(body2);
         this.videoSer.addChapters(body2).subscribe({
+          
           next: (data: any) => {
+            console.log(body2)
             // alert('Request Sent Succefully');
             let response = data;
             if (response[0] == '{') {

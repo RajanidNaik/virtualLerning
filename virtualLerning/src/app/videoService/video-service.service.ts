@@ -26,7 +26,7 @@ export class VideoServiceService {
   addChapters(body:any){
     console.log(body);
     return this.http.post(`${baseUrl}/admin/chapter`, body, {
-      responseType: 'text',
+      responseType: 'text'
     });
   } 
 }
