@@ -12,8 +12,9 @@ export class VideoServiceService {
       responseType: 'text',
     });
   }
-  getSubCat() {
-    return this.http.get(`${baseUrl}/admin/subCategories`, {
+  getSubCat(id:any) {
+    console.log(id);
+    return this.http.get(`${baseUrl}/admin/subCategories?categoryId=${id}`, {
       responseType: 'text',
     });
   }

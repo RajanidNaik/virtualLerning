@@ -4,7 +4,7 @@
   </div>
   <div class="publ" *ngIf="show">
     {{getId()}}
-    <button class="publish"  (click)="publish()"   ><span>Publish to web</span><mat-icon>cloud_upload</mat-icon></button>
+    <button class="publish"  (click)="publish()" [class.pub]="!hide"  ><span>Publish to web</span><mat-icon>cloud_upload</mat-icon></button>
   </div>
 
   <div class="person">
