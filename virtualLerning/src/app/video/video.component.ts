@@ -66,6 +66,7 @@ export class VideoComponent implements OnInit {
 
   addSubchap = new addSub();
   lessonArray: any = [];
+  subcatId: any;
   
 
   constructor(
@@ -82,11 +83,12 @@ export class VideoComponent implements OnInit {
   shows: any = [];
   valid = true;
   ngOnInit(): void {
+    this.getId();
 
     console.log(this.status);
     
 
-    this.response = sessionStorage.getItem('CourseID') || 239;
+    this.response = sessionStorage.getItem('CourseID');
     console.log(typeof this.response);
 
     this.getCategory();
@@ -96,14 +98,14 @@ export class VideoComponent implements OnInit {
       category: new FormControl('', [Validators.required]),
       subCategory: new FormControl('', [Validators.required]),
       formatText: new FormControl('', [Validators.required]),
-      overview: new FormControl('', [Validators.required]),
+      overview: new FormControl('', [Validators.required,Validators.maxLength(550)]),
       learning: new FormControl('', [Validators.required]),
       requirement: new FormControl('', [Validators.required]),
       coursePhoto: new FormControl('', [Validators.required]),
       previewVideo: new FormControl('', [Validators.required]),
       keyWords: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[a-zA-Z][a-zA-Z ]{2,}'),
+        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{2,}'),Validators.maxLength(30)
       ]),
       level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([
@@ -111,8 +113,8 @@ export class VideoComponent implements OnInit {
           chapterName: new FormControl('', [Validators.required]),
           lessonsList: this.fb.array([
             this.fb.group({
-              lessonName: new FormControl('',[Validators.required]),
-              lessonDuration: new FormControl('00:00:20'),
+              lessonName: new FormControl(''),
+              lessonDuration: new FormControl('00:00:10'),
               videoLink: new FormControl(null),
             }),
           ]),
@@ -129,6 +131,8 @@ export class VideoComponent implements OnInit {
       this.setValue();
 
       this.chapterArray = this.completeDetails.chapter;
+      console.log(this.chapterArray);
+      
     } else {
       this.hide = false;
     }
@@ -137,12 +141,19 @@ export class VideoComponent implements OnInit {
       this.category1 = JSON.parse(data);
       // console.log(this.category1);
     });
-    this.videoSer.getSubCat().subscribe((data) => {
+    this.videoSer.getSubCat(this.subcatId).subscribe((data) => {
       this.subCa = JSON.parse(data);
-      // console.log(this.subCa);
+      console.log(this.subCa);
     });
   }
 
+  getId(){
+    if(sessionStorage.getItem('catId')){
+      
+      this.subcatId = sessionStorage.getItem('catId');
+     }; 
+
+  }
   storeCatId(item: any) {
     let id = item.target.value;
 
@@ -195,7 +206,8 @@ export class VideoComponent implements OnInit {
     });
   }
   getSubCategory() {
-    this.videoSer.getSubCat().subscribe((data) => {
+    this.videoSer.getSubCat(this.subcatId).subscribe((data) => {
+      console.log(data);
       this.subCa = JSON.parse(data);
       console.log(this.subCa);
     });
@@ -236,8 +248,8 @@ export class VideoComponent implements OnInit {
 
   newSubChapter(): FormGroup {
     return this.fb.group({
-      lessonName: new FormControl('', [Validators.required]),
-      lessonDuration: new FormControl('00:00:20'),
+      lessonName: new FormControl(''),
+      lessonDuration: new FormControl('00:00:10'),
       videoLink: new FormControl(null),
     });
   }
@@ -528,14 +540,14 @@ export class VideoComponent implements OnInit {
     this.chapterArray.push(this.addVideo);
   }
   addNewSub(i: any) {
-    this.lessonArray = this.chapterArray[i].lessonList;
+    this.lessonArray = this.chapterArray[i].lessonsList;
     this.addSubchap = new addSub();
     this.lessonArray.push(this.addSubchap);
   }
 
   onPublish() {
     const body = {
-      "courseId":sessionStorage.getItem('editCourseId'),
+      courseId:sessionStorage.getItem('editCourseId'),
       courseName: this.videoForm.value.videoTitle,
       categoryName: this.videoForm.value.category,
       subCategoryName: this.videoForm.value.subCategory,
@@ -549,10 +561,12 @@ export class VideoComponent implements OnInit {
       courseKeyword: this.videoForm.value.keyWords,
     };
     const body2 = {
-      "courseId":sessionStorage.getItem('editCourseId'),
+     
+      courseId:parseInt(sessionStorage.getItem('editCourseId') || '[]'),
       courseName: this.videoForm.value.videoTitle,
       chapterDataRequestList: this.chapterArray,
     };
+   
     console.log(body, body2);
     this.videoSer.overview(body).subscribe({
       next: (data: any) => {

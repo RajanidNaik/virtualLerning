@@ -1,6 +1,8 @@
 export class AddVideo {
     chapterName:any;
-    lessonList:any=[];
+    lessonList:any=[
+      
+    ];
 }
 
 export class addSub{

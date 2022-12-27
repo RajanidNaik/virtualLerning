@@ -25,7 +25,7 @@ export class QAndAComponent implements OnInit {
   array: any = [];
   hide: any;
   testDetails: any;
-  questionlist: any = [];
+  questionlist: any [] = [];
   questions: any;
 
   response: any;
@@ -33,6 +33,7 @@ export class QAndAComponent implements OnInit {
   AddedChapter:any;
   chapterId:any;
   chapterName:any;
+  correct:boolean=false;
  
 
   constructor(public service: QuestionService, private fb: FormBuilder) {}
@@ -47,7 +48,7 @@ export class QAndAComponent implements OnInit {
 
     this.chapForm = this.fb.group({
       chaptername: ['', Validators.required],
-      duration: ['', Validators.required],
+      duration: ['', [Validators.required,Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]')]],
       courseId: ['', Validators.required],
       moduleTest: ['', Validators.required],
       passingGrade: ['', Validators.required],
@@ -130,8 +131,15 @@ export class QAndAComponent implements OnInit {
     this.service.getQuestion(this.array[0].chapterId).subscribe({
       next: (res) => {
         console.log(res);
+        console.log(res.message);
         this.testDetails = res;
-        this.questionlist = this.testDetails.questionRequests;
+        if(res.message == 'null'){
+          this.questionlist = [];
+        }else{
+          this.questionlist = this.testDetails.questionRequests;
+        }
+       
+      
         console.log(this.questionlist)
       },
       error: (error) => {
@@ -152,10 +160,15 @@ export class QAndAComponent implements OnInit {
     });
   }
   newQn() {
+    console.log(this.questionlist);
+    console.log(this.addQn)
     this.addQn = new Add();
     this.questionlist.push(this.addQn);
   }
   deleteQuestion(i:any){
+    // if(this.questionlist.length >1){
+    //   this.questionlist.splice(i);
+    // }
     this.questionlist.splice(i);
     this.questionlist[i].deleteStatus == true;
   }
@@ -208,6 +221,13 @@ export class QAndAComponent implements OnInit {
     })
   }
   
+mustMatch(id:any)  {
   
+  if(this.questionlist[id].correctAnswer === ((this.questionlist[id].option_1) || (this.questionlist[id].option_2) || (this.questionlist[id].option_3) || (this.questionlist[id].option_4))){
+    this.correct = true;
+    // console.log('correct')
+  }
+
+}
 
 }

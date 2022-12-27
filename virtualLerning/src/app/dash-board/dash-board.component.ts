@@ -157,6 +157,7 @@ export class DashBoardComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.completeDeatails = res;
+        console.log(this.completeDeatails)
       },
       error: (error) => {
         alert(error.error.message);
