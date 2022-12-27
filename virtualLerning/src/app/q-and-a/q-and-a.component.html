@@ -42,7 +42,7 @@
       Please select the chapter name
     </div>
 
-    <div class="chapName">ChapterId</div>
+    <!-- <div class="chapName">ChapterId</div>
     <div>
       <input class="titleInput" placeholder="" formControlName="courseId" />
     </div>
@@ -51,11 +51,11 @@
       class="require"
     >
       This is required field*
-    </div>
+    </div> -->
 
     <div class="chapName">Duration</div>
     <div>
-      <input
+      <input 
         class="titleInput"
         placeholder="hh:mm:ss"
         formControlName="duration"
@@ -67,7 +67,12 @@
     >
       This is required field*
     </div>
-
+    <div
+    *ngIf="chapForm.get('duration')?.errors?.['pattern']"
+    class="require"
+  >
+    please fill in time format
+  </div>
     <div class="chapName">Test&nbsp;Name</div>
     <div>
       <input class="titleInput" formControlName="moduleTest" />
@@ -103,7 +108,7 @@
         <!-- <div class="Qnum">Question {{i+1}}</div> -->
         <div class="Qnum">Question {{ i + 1 }}</div>
         
-        <div class="qnId">
+        <!-- <div class="qnId">
           <label >Question Id:</label>
           <input class="in" formControlName="questionId" />
         </div>
@@ -112,7 +117,7 @@
             class="require"
           >
             Please enter the questionId
-          </div>
+          </div> -->
         <div class="details">
           <div class="qn">
             <!-- {{qn?.questionText}}  -->
@@ -205,10 +210,10 @@
   <div class="question" *ngFor="let qn of questionlist; index as i">
     <div>
       <div class="Qnum">Question {{ i + 1 }}</div>
-      <div class="chapName">
+      <!-- <div class="chapName">
         Question Id:
         <input class="in" name="questionId{{i}}" [(ngModel)]="qn.questionId" required/>
-      </div>
+      </div> -->
 
       <div class="details">
         <div class="qn">
@@ -216,11 +221,12 @@
           <input
           
             placeholder="Enter the question"
-            name="question"
+            name="question{{i}}"
             [(ngModel)]="qn.questionName"
             required
           />
         </div>
+       
         <div class="deleteChoice">
           <div style="margin-right: 2vw">
             <mat-icon (click)="deleteQuestion(i)">delete</mat-icon>
@@ -252,6 +258,7 @@
         </div>
 
         <div class="opt">
+          {{mustMatch(i)}}
           <input
             placeholder="choose correct answer"
             name="correctAns{{i}}"
@@ -261,7 +268,7 @@
           <!-- {{qn.correctAnswer}} -->
         </div>
       </div>
-
+<!-- <div *ngIf="!correct" class="require">please select with in entered option</div> -->
       <!-- <div>
         <label>DeleteStatus:</label>
         <input class="in" name="deleteStatus{{i}}" [ngModel]="qn.deleteStatus" />

@@ -11,10 +11,11 @@
       </div>
     </div>
     <div class="category">
-      <div class="text">Video Category<span class="material-icons-round">
-          <mat-icon (click)="reload()">replay</mat-icon>
-        </span></div>
 
+      {{getId()}}
+  <div class="text">Video Category<span class="material-icons-round">
+<mat-icon (click)="reload()" >replay</mat-icon>
+</span></div>
       <div class="titleInputV">
 
         <select formControlName="category" type="text" (change)=storeCatId($event)>
@@ -66,6 +67,9 @@
     <div *ngIf="videoForm.get('overview')?.errors?.['required'] &&videoForm.get('overview')?.touched" class="error">
       Required
     </div>
+    <div *ngIf="videoForm.get('overview')?.errors?.['maxlength']" class="error">
+      maxlength exeded
+    </div>
     <div class="file">
       <ckeditor [editor]="Editor" formControlName="overview" data=""></ckeditor>
     </div>
@@ -115,10 +119,14 @@
   </div>
   <div class="title">
     <div class="uploadSection">Keywords</div>
-    <div *ngIf="videoForm.get('keyWords')?.errors?.['required'] &&videoForm.get('keyWords')?.touched" class="error">
+    <div *ngIf="videoForm.get('keyWords')?.errors?.['required']" class="error">
       Required
     </div>
-    <small *ngIf="videoForm.get('keyWords')?.errors?.['pattern']" class="error"> keywords cannot contain number</small>
+
+    <div *ngIf="videoForm.get('keyWords')?.errors?.['maxlength']" class="error">
+      maxlength exeded
+    </div>
+    <small *ngIf="videoForm.get('keyWords')?.errors?.['pattern']" class="error">  keywords can contain alphabets, space and hypheb(-)</small>
     <div>
       <input class="titleInput" type="text" formControlName="keyWords" />
     </div>
@@ -385,7 +393,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
             <div class="bottomDisplay">
               <div class="videoScroll">
                 <div *ngFor="
-                  let lesson of chapterArray[i].lessonList; let id=index">
+                  let lesson of chapterArray[i].lessonsList; let id=index">
                   <!-- {{storesIndex(chapterArray[i].length-1,i)}}
               {{setcurrVal1()}}
               {{setlength(chapterArray[i].length-1)}} -->
@@ -393,6 +401,9 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                     <video width="100%" height="100%" controls="controls">
                       <source src="{{ lesson.videoLink || currVideo}}" type="video/mp4" />
                     </video>
+                  </div>
+                  <div>
+                    <input name="lessonDuration{{id}}" [(ngModel)]="lesson.lessonDuration">
                   </div>
                   <!-- <div class="box" *ngIf="!lesson.videoLink"></div> -->
                 </div>
@@ -409,7 +420,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
               <input class="titleInput" type="text" [value]="currVal" #subName (keyup)="setSubChap2(subName.value)" >
             </div> -->
               <div *ngFor="
-                let lessons of chapterArray[i].lessonList;
+                let lessons of chapterArray[i].lessonsList;
                let id=index
               ">
                 <div class="inputs">

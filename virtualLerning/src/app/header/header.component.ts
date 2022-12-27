@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   show=false;
   id:any;
   qa:any;
+  hide:boolean=false;
   
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit {
 
   getId(){
     if(sessionStorage.getItem('CourseID')){
+      this.hide =true;
       this.id = sessionStorage.getItem('CourseID');
      }; 
 
