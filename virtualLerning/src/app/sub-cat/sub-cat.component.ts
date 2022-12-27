@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogService } from '../dialogService/dialog.service';
 
@@ -16,7 +16,7 @@ export class SubCatComponent implements OnInit {
   constructor(
     private dServ: DialogService,
     private router: Router,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialogRef<SubCatComponent>
   ) {}
   image: any;
   categoryForm = new FormGroup({
@@ -30,7 +30,8 @@ export class SubCatComponent implements OnInit {
       this.courseId = sessionStorage.getItem('catId');
       console.log(this.courseId);
     } else {
-      this.dialogRef.closeAll();
+      alert('Choose Category')
+      this.dialogRef.close();
     }
   }
   add() {
@@ -40,6 +41,7 @@ export class SubCatComponent implements OnInit {
     };
     this.dServ.addSubCategory(body).subscribe((data) => console.log(data));
     sessionStorage.removeItem('catId');
+    this.dialogRef.close();
   }
 }
 

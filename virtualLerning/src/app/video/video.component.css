@@ -2,6 +2,7 @@
   width: 180px;
   height: 120px;
 }
+
 .videodata {
   display: flex;
   justify-content: flex-start;
@@ -9,6 +10,7 @@
   font-size: 14px;
   line-height: 20px;
 }
+.text may
 .transparent {
   background-color: #ffffff;
   height: 38px;
@@ -59,6 +61,7 @@ label {
   order: 1;
   padding: 12px;
   align-self: stretch;
+ 
 }
 #upload {
   width: 5vw;
@@ -95,6 +98,8 @@ width: 186px;
   padding: 12px;
   padding-top: 0;
   align-self: stretch;
+   padding-left: 4px;
+width: 190px;
 }
 .title {
   margin-right: 25px;
@@ -428,4 +433,7 @@ height: 49px;
   width: 209.81px;
   background-color: #ee5c4d;
   opacity:0.3;
+}
+div.title:nth-child(1) > div:nth-child(1) {
+padding-top: 27px;
 }

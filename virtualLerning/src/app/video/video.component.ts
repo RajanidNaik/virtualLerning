@@ -28,6 +28,7 @@ import { addSub, AddVideo } from '../add-video';
 export class VideoComponent implements OnInit {
   addNewChap: boolean = true;
   plus = false;
+  publishOver = false;
   uploadSuccess = [false];
   uploadFailed = [false];
   isChecked: any;
@@ -125,11 +126,9 @@ export class VideoComponent implements OnInit {
       this.setValue();
 
       this.chapterArray = this.completeDetails.chapter;
-      
-    }else{
+    } else {
       this.hide = false;
     }
-
 
     this.videoSer.getChategory().subscribe((data) => {
       this.category1 = JSON.parse(data);
@@ -140,13 +139,14 @@ export class VideoComponent implements OnInit {
       // console.log(this.subCa);
     });
   }
-  
+
   storeCatId(item: any) {
     let id = item.target.value;
 
-    console.log(id)
-    if(id != ''){
+    console.log(id);
+    if (id != '') {
       // console.log(this.category1);
+
     let array:any=[] =this.category1;
      array = this.category1.filter((item: any) => {
       return item.categoryName == id;
@@ -177,6 +177,14 @@ export class VideoComponent implements OnInit {
     if (e.target.value == '') this.dialog.open(SubCatComponent);
   }
 
+  reload(){
+    this.getCategory();
+  }
+  reloadT(){
+    console.log("2");
+    
+    this.getSubCategory()
+  }
   getCategory() {
     this.videoSer.getChategory().subscribe((data) => {
       this.category1 = JSON.parse(data);
@@ -188,7 +196,6 @@ export class VideoComponent implements OnInit {
       this.subCa = JSON.parse(data);
       console.log(this.subCa);
     });
-
   }
 
   chapters(): FormArray {
@@ -323,6 +330,8 @@ export class VideoComponent implements OnInit {
       )
       .subscribe();
   }
+
+
   uploadVideo(event: any) {
     const id = Math.random().toString(36).substring(2);
     const file = event.target.files[0];
@@ -451,6 +460,7 @@ export class VideoComponent implements OnInit {
         this.response = JSON.parse(data);
         this.response = this.response.message.match(/\d+$/)[0];
         sessionStorage.setItem('CourseID', this.response);
+        this.publishOver = true;
       },
       error: (data: any) => {
         console.log(data);
@@ -472,9 +482,9 @@ export class VideoComponent implements OnInit {
             console.log(data);
           },
         });
+
       }
     });
-    
   }
 
   filedrop(event: NgxFileDropEntry[]) {
@@ -543,8 +553,8 @@ export class VideoComponent implements OnInit {
     console.log(body, body2);
     this.videoSer.overview(body).subscribe({
       next: (data: any) => {
-        // alert('Request Sent Succefully');
-        console.log(body2)
+
+  
         console.log(data);
         let response = data;
         if (response[0] == '{') {
@@ -559,6 +569,7 @@ export class VideoComponent implements OnInit {
       error: (data: any) => {
         console.log(data);
       },
+
       complete:()=>{
         console.log(body2);
         this.videoSer.addChapters(body2).subscribe({
@@ -583,7 +594,6 @@ export class VideoComponent implements OnInit {
         });
       }
     });
-    
   }
 
   removeAddChapter(i: any) {

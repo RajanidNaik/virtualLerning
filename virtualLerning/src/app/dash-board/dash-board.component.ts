@@ -5,6 +5,7 @@ import {
   MatDialogConfig,
 } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { direction } from 'html2canvas/dist/types/css/property-descriptors/direction';
 import { DialogDashboardComponent } from '../dialog-dashboard/dialog-dashboard.component';
 import { HeadDialogComponent } from '../head-dialog/head-dialog.component';
 import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
@@ -33,6 +34,7 @@ export class DashBoardComponent implements OnInit {
   courseLimit = 20;
   completeDeatails: any;
   response: any;
+  desc: boolean=false
   constructor(
     private dialog: MatDialog,
     public service: QuestionService,
@@ -45,9 +47,10 @@ export class DashBoardComponent implements OnInit {
     this.service.getTotal().subscribe((x) => {
       this.data = x;
     });
-
     this.getStudent();
     this.getCourseDetails();
+    console.log(this.student);
+    
   }
 
   onBack() {
@@ -230,4 +233,20 @@ export class DashBoardComponent implements OnInit {
       });
     this.dialog.open(DialogDashboardComponent, dialogConfig);
   }
-}
+
+  assending(item:any){
+    this.desc=!this.desc;
+    let direc=this.desc? 1:-1;
+    this.student.sort(function(a:any,b:any){
+      if(a[item]< b[item]){
+        return -1 * direc;
+      }
+      else if(a[item]> b[item]){
+        return 1 * direc;
+      }
+      else return 0;
+    })
+
+    }
+
+  }
