@@ -10,8 +10,7 @@
   font-size: 14px;
   line-height: 20px;
 }
-.text may
-.transparent {
+.text may .transparent {
   background-color: #ffffff;
   height: 38px;
   width: 128px;
@@ -61,25 +60,43 @@ label {
   order: 1;
   padding: 12px;
   align-self: stretch;
- 
 }
 #upload {
   width: 5vw;
 }
 
 .dragAndDrop {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 20px;
+  font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 20px;
+
+/* identical to box height, or 83% */
+text-align: center;
+letter-spacing: 0.4px;
+
+color: #232323;
+
+
+}
+label{
+border-bottom: 1px solid;
 }
 .browse {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 20px;
+font-size: 18px;
+line-height: 20px;
+
+/* identical to box height, or 111% */
+text-align: center;
+letter-spacing: 0.4px;
+margin-top: 10px;
+color: #232323; 
 }
 
 .uploader {
   color: #1e1af0;
+  border-bottom: 1px solid;
 }
 
 .ck.ckeditor {
@@ -88,7 +105,7 @@ label {
 }
 .titleInputV {
   margin-right: 15px;
-width: 186px;
+  width: 186px;
   font-size: 16px;
   height: 36px;
   background: #ffffff;
@@ -98,8 +115,8 @@ width: 186px;
   padding: 12px;
   padding-top: 0;
   align-self: stretch;
-   padding-left: 4px;
-width: 190px;
+  padding-left: 4px;
+  width: 190px;
 }
 .title {
   margin-right: 25px;
@@ -203,10 +220,11 @@ mat-icon {
 }
 .imgUpload {
   display: flex;
+  position: relative;
   margin-top: 40px;
   width: 100%;
   padding-bottom: 10px;
-  height: 39vw;
+  min-height: 70vh;
 }
 .full {
   width: 47%;
@@ -222,11 +240,13 @@ mat-icon {
   border: 2px solid turquoise;
 }
 .preview {
-  border: 2px dashed rgb(14, 13, 13);
-
-  position: absolute;
-  width: 47%;
-  height: 45%;
+  background-color: white;
+  border: 4px dashed #d5d4dc;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  height: 54vh;
+  width: 1005;
 }
 
 .contain {
@@ -294,7 +314,7 @@ textarea {
   font-size: 18px;
   margin-bottom: 10px;
 }
-.nextbtnp{
+.nextbtnp {
   font-size: 18px;
   color: rgb(255, 255, 255);
   float: right;
@@ -316,14 +336,21 @@ textarea {
   display: flex;
 }
 .bottomDisplay {
+  /* border: 2px solid #1eab0d; */
+  height: 89px;
+  margin-top: 25px;
+  margin-left: 9px;
+  top: 530px;
   position: relative;
-  top: 422px;
-  height: 18%;
-  width: 94%;
+  width: 67%;
 }
 .left {
+  margin-right: 20px;
   width: 68%;
   height: 100%;
+}
+.flex {
+  display: flex;
 }
 .subchapName {
   margin: 10% 0;
@@ -335,7 +362,8 @@ textarea {
   margin-top: 10px;
 }
 .videoScroll {
-  margin: 2% 5%;
+  height: 100%;
+  width: 100%;
   /* border: 2px solid green; */
   display: flex;
   overflow: scroll;
@@ -347,12 +375,10 @@ textarea {
   height: 90px;
   min-width: 90px;
 }
-.contain1{
-  position: relative;
-}
 
 .right {
   width: 32%;
+  margin-left: 17px;
 }
 
 .notUpload > div:nth-child(1) > img:nth-child(2) {
@@ -378,34 +404,26 @@ textarea {
 .head {
   margin-left: 5%;
 }
-.preview{
-position: relative;
-width: 92%;
-height: 82%;
+
+.containers {
+  left: 97px;
+  width: 399.783px;
+  height: 100%;
 }
-.containers{
-  position: absolute;
-left: 97px;
-width: 399.783px;
-height: 100%;
-}
-.containing{
+.containing {
   height: 100%;
   background-color: white;
 }
-.bottomDisplay{
-  position: relative;
-  top: 0;
-}
+
 .next {
-margin-bottom: 30px;
-height: 49px;
+  margin-bottom: 30px;
+  height: 49px;
 }
-.inputs{
+.inputs {
   margin-block-end: 2%;
-  display:flex;
+  display: flex;
 }
-.btns{
+.btns {
   background: rgba(9, 41, 99, 0.11);
   border-radius: 4px;
   border: none;
@@ -414,26 +432,83 @@ height: 49px;
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
- 
 }
-.dis{
+.dis {
   background-color: #ffffff;
   border: 1px solid #d5d4dc;
   width: 10.5vw;
   height: 40px;
   border-radius: 8px;
-  opacity:0.3
-
+  opacity: 0.3;
 }
-.pub{
+.pub {
   font-size: 18px;
   color: rgb(255, 255, 255);
   float: right;
   height: 44px;
   width: 209.81px;
   background-color: #ee5c4d;
-  opacity:0.3;
+  opacity: 0.3;
 }
 div.title:nth-child(1) > div:nth-child(1) {
-padding-top: 27px;
+  padding-top: 27px;
+}
+
+.lessonForm {
+  background-color: white;
+  display: flex;
+  position: absolute;
+  height: 16.5%;
+  width: 91%;
+}
+.subHead {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #232323;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 5px;
+}
+.subInput {
+  margin-bottom: 25px;
+}
+
+.display {
+  min-height: 80%;
+  max-height: 80%;
+  min-width: 79px;
+  max-width: 79px;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed #d5d4dc;
+  border-radius: 4px;
+}
+.contain2 {
+width: 100%;
+display: -webkit-box;
+}
+.bottomDisplay2{
+   height: 89px;
+  margin-top: 25px;
+  margin-left: 9px;
+  top: 530px;
+  position: relative;
+  width: 58%;
+ /* border: 2px solid; */
+top: 0px;
+width: 67%;
+}
+
+.tpwidth{
+  width: 616px;
+}
+.tpmarg{
+  margin-right: 76px;
 }

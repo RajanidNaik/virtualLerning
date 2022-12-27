@@ -47,6 +47,7 @@ import { FillCertificateComponent } from './fill-certificate/fill-certificate.co
 import { LoggedInGuard } from './loggedIn/logged-in.guard';
 import { PreventGuard } from './prevent/prevent.guard';
 import { NFoundComponent } from './nfound/nfound.component';
+import { DragNdropDirective } from './drag-ndrop.directive';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { NFoundComponent } from './nfound/nfound.component';
     OnSaveComponent,
     FillCertificateComponent,
     NFoundComponent,
+    DragNdropDirective,
   ],
 
   imports: [
