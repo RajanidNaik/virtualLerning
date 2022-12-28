@@ -325,7 +325,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
      
       <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal|| publishOver" (click)="addCourse()"
         [class.pub]="videoForm.invalid || !currVal">Publish</button>
-        <button class="nextbtn" [disabled]="videoForm.invalid" (click)="storeIt(this.videoForm)" [class.pub2]="videoForm.invalid">Save</button>
+        <button class="nextbtn" [disabled]="videoForm.invalid || savebtn" (click)="storeIt(this.videoForm)" [class.pub2]="videoForm.invalid">Save</button>
     </div>
   </div>
 

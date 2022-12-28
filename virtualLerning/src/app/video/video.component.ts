@@ -27,7 +27,7 @@ import { addSub, AddVideo } from '../add-video';
 })
 export class VideoComponent implements OnInit {
   addNewChap: boolean = true;
-
+  savebtn=false;
   plus = false;
   publishOver = false;
   uploadSuccess = [false];
@@ -534,6 +534,7 @@ export class VideoComponent implements OnInit {
               alert(Object.values(response)[0]);
             }
             sessionStorage.setItem('response2', data);
+            this.savebtn=true;
           },
           error: (data: any) => {
             console.log(data);
