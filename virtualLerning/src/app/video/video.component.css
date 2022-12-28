@@ -374,6 +374,7 @@ textarea {
   border: 1px dashed #10002e;
   height: 90px;
   min-width: 90px;
+  border-radius: 4px;
 }
 
 .right {
@@ -511,4 +512,14 @@ width: 67%;
 }
 .tpmarg{
   margin-right: 76px;
+}
+.new{
+  margin-block-start: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:1rem;
+}
+.in{
+  border: 1px solid rgba(0,0,0,0.3);
 }
