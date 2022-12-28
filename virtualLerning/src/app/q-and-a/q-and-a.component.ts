@@ -83,9 +83,107 @@ export class QAndAComponent implements OnInit {
       correctAnswer: ['', Validators.required],
       questionId: ['' ,Validators.required],
       deleteStatus: [false],
+    },
+    {
+      validators:[this.mustMatchs('option_1','option_2','option_3','option_4','correctAnswer'),this.doNotMatchOption1('option_2','option_3','option_4','option_1'),this.doNotMatchOption2('option_1','option_3','option_4','option_2'),this.doNotMatchOption3('option_1','option_2','option_4','option_3'),
+      this.doNotMatchOption4('option_1','option_2','option_3','option_4')
+    ]
     });
   }
+  mustMatchs(opt1:string,opt2:string,opt3:string,opt4:string,ans:string,){
+    return(formGroup:FormGroup)=>{
+      const control1 = formGroup.controls[opt1];
+      const control2 = formGroup.controls[opt2];
+      const control3 = formGroup.controls[opt3];
+      const control4 = formGroup.controls[opt4];
+      const matchControl = formGroup.controls[ans];
+      if(matchControl.errors && !matchControl.errors['mustMatchs']){
+        return
+      }
+      if((control1.value != matchControl.value) && (control2.value != matchControl.value)&& (control3.value != matchControl.value)&& (control4.value != matchControl.value)){
+           matchControl.setErrors({mustMatchs:true})
+      } 
+      else{
+        matchControl.setErrors(null)
+      }
+    }
+  }
+  doNotMatchOption1(opt2:string,opt3:string,opt4:string,opt1:string){
+    return(formGroup:FormGroup)=>{
+      const control2 = formGroup.controls[opt2];
+      const control3 = formGroup.controls[opt3];
+      const control4 = formGroup.controls[opt4];
+      const matchControl = formGroup.controls[opt1];
+      if(matchControl.errors && !matchControl.errors['doNotMatchOption1']){
+        return
+      }
+      if( ( (control2.value  == matchControl.value) || (control3.value  == matchControl.value) || (control4.value == matchControl.value) )){
+           matchControl.setErrors({doNotMatchOption1:true})
+      }
+      else{
+        matchControl.setErrors(null)
+      }
+    }
 
+  }
+  doNotMatchOption2(opt1:string,opt3:string,opt4:string,opt2:string){
+    return(formGroup:FormGroup)=>{
+      const control2 = formGroup.controls[opt1];
+      const control3 = formGroup.controls[opt3];
+      const control4 = formGroup.controls[opt4];
+      const matchControl = formGroup.controls[opt2];
+      if(matchControl.errors && !matchControl.errors['doNotMatchOption2']){
+        return
+      }
+      if( ( (control2.value == matchControl.value) || (control3.value == matchControl.value) || (control4.value == matchControl.value) )){
+           matchControl.setErrors({doNotMatchOption2:true})
+      }
+      else{
+        matchControl.setErrors(null)
+      }
+    }
+
+  }
+  doNotMatchOption3(opt1:string,opt2:string,opt4:string,opt3:string){
+    return(formGroup:FormGroup)=>{
+      const control2 = formGroup.controls[opt1];
+      const control3 = formGroup.controls[opt2];
+      const control4 = formGroup.controls[opt4];
+      const matchControl = formGroup.controls[opt3];
+      if(matchControl.errors && !matchControl.errors['doNotMatchOption3']){
+        return
+      }
+      if( ( (control2.value == matchControl.value) || (control3.value == matchControl.value) || (control4.value == matchControl.value) )){
+           matchControl.setErrors({doNotMatchOption3:true})
+      }
+      else{
+        matchControl.setErrors(null)
+      }
+    }
+
+  }
+  doNotMatchOption4(opt1:string,opt2:string,opt3:string,opt4:string){
+    return(formGroup:FormGroup)=>{
+      const control2 = formGroup.controls[opt1];
+      const control3 = formGroup.controls[opt2];
+      const control4 = formGroup.controls[opt3];
+      const matchControl = formGroup.controls[opt4];
+      if(matchControl.errors && !matchControl.errors['doNotMatchOption4']){
+        return
+      }
+      if( ( (control2.value == matchControl.value) || (control3.value == matchControl.value) || (control4.value == matchControl.value) )){
+           matchControl.setErrors({doNotMatchOption4:true})
+      }
+      else{
+        matchControl.setErrors(null)
+      }
+    }
+
+  }
+
+showAns(){
+  console.log(this.questionForm.controls['questionText'].get('option_1')?.value)
+}
   add() {
     this.question.push(this.newQuestion());
   }
@@ -221,13 +319,6 @@ export class QAndAComponent implements OnInit {
     })
   }
   
-mustMatch(id:any)  {
-  
-  if(this.questionlist[id].correctAnswer === ((this.questionlist[id].option_1) || (this.questionlist[id].option_2) || (this.questionlist[id].option_3) || (this.questionlist[id].option_4))){
-    this.correct = true;
-    // console.log('correct')
-  }
 
-}
 
 }

@@ -117,9 +117,9 @@ export class VideoComponent implements OnInit {
               lessonName: new FormControl(''),
 
               lessonDuration: new FormControl(''),
-              videoLink: new FormControl(''),
-
               videoLink: new FormControl(null),
+
+             
             }),
           ]),
         }),
@@ -257,9 +257,9 @@ export class VideoComponent implements OnInit {
       lessonName: new FormControl(''),
 
       lessonDuration: new FormControl(''),
-      videoLink: new FormControl(''),
-
       videoLink: new FormControl(null),
+
+     
     });
   }
   addSubChapter(chapIndex: number) {

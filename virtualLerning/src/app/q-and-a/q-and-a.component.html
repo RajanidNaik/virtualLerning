@@ -178,6 +178,9 @@
       >
         Please select the correct answer
       </div>
+      <div *ngIf="optionForm.get('correctAnswer')?.errors?.['mustMatchs']" class="require">Please select correct answer with in given option</div>
+      <div *ngIf="(optionForm.get('option_1')?.errors?.['doNotMatchOption1']) || (optionForm.get('option_2')?.errors?.['doNotMatchOption2']) || (optionForm.get('option_3')?.errors?.['doNotMatchOption3']) || (optionForm.get('option_4')?.errors?.['doNotMatchOption4'])" class="require">Options cannot be same</div>
+      <!-- <div *ngIf="optionForm.get('option_2')?.errors?.['doNotMatchOption2']" class="require">Options cannot be same</div> -->
       <!-- <div>
         <label>DeleteStatus:</label>
         <input class="in"  formControlName="deleteStatus"/>
@@ -189,6 +192,7 @@
       Please enter the delete status
     </div> -->
       </div>
+      
     </ng-container>
     <div>
       <button class="sub" (click)="add()" [disabled]="!optionForm.valid" [class.dis]="!optionForm.valid">
@@ -257,16 +261,26 @@
           <!-- {{qn.option_4}} -->
         </div>
 
-        <div class="opt">
-          {{mustMatch(i)}}
+        <div class="opt" *ngIf="qn.correctAnswer != null">
+          
           <input
             placeholder="choose correct answer"
             name="correctAns{{i}}"
             [(ngModel)]="qn.correctAnswer"
             required
           />
+          
           <!-- {{qn.correctAnswer}} -->
         </div>
+        <div class="opt" *ngIf="qn.correctAnswer == null">
+          <select name="correctAns{{i}}" id="correctAns{{i}}" [(ngModel)]="qn.correctAnswer" required>
+            <option [value]="qn.option_1">{{qn.option_1}}</option>
+            <option [value]="qn.option_2">{{qn.option_2}}</option>
+            <option [value]="qn.option_3">{{qn.option_3}}</option>
+            <option [value]="qn.option_4">{{qn.option_4}}</option>
+          </select>
+        </div>
+        <div *ngIf="(qn.option_1 == qn.option_2 || qn.option_1 == qn.option_3 || qn.option_1 == qn.option_4 || qn.option_2 == qn.option_3 || qn.option_2 == qn.option_4 || qn.option_3 == qn.option_4)" class="require">options cannot be same</div>
       </div>
 <!-- <div *ngIf="!correct" class="require">please select with in entered option</div> -->
       <!-- <div>
