@@ -8,7 +8,7 @@
   height: 67rem;
   /* height: 87.5%; */
   right: 0;
- top: 134px;
+ top: 8.3rem;
   background: #f9f9f9;
   border-radius: 2rem 0rem 0rem 2rem;
 }
@@ -78,7 +78,7 @@
 }
 .videoBox {
   width: 4em;
-  height: 4em;
+  height: 3em;
   position: relative;
   /* border: 1px solid #000; */
 }
@@ -266,7 +266,8 @@
   justify-content: space-between;
   align-items: center;
   /* gap:6.5rem; */
-  margin-left: 2%;
+  /* margin-left: 2%; */
+  margin:2%;
 }
 .tablehead p:first-child {
   font-family: 'Rubik', sans-serif;

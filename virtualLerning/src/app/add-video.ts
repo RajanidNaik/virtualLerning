@@ -9,5 +9,5 @@ export class addSub{
     lessonName:any;
     videoLink:any =null;
     lessonId:any;
-    lessonDuration ="00:00:20"
+    lessonDuration =null;
 }
