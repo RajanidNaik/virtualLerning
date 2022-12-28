@@ -71,6 +71,7 @@ export class VideoComponent implements OnInit {
   lessonArray: any = [];
 
   subcatId: any;
+  currInd: any;
 
   constructor(
     public fb: FormBuilder,
@@ -99,26 +100,27 @@ export class VideoComponent implements OnInit {
       category: new FormControl('', [Validators.required]),
       subCategory: new FormControl(''),
       formatText: new FormControl('', [Validators.required]),
-      overview: new FormControl('', [Validators.required,Validators.maxLength(550)]),
+      overview: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(550),
+      ]),
       learning: new FormControl('', [Validators.required]),
       requirement: new FormControl('', [Validators.required]),
       coursePhoto: new FormControl('', [Validators.required]),
       previewVideo: new FormControl('', [Validators.required]),
       keyWords: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{2,}'),Validators.maxLength(30)
+        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{2,}'),
+        Validators.maxLength(30),
       ]),
       level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([
         this.fb.group({
-          chapterName: new FormControl('', [Validators.required]),
+          chapterName: new FormControl(''),
           lessonsList: this.fb.array([
             this.fb.group({
               lessonName: new FormControl(''),
-
-              lessonDuration: new FormControl(''),
-              videoLink: new FormControl(''),
-
+              lessonDuration: new FormControl(null),
               videoLink: new FormControl(null),
             }),
           ]),
@@ -256,9 +258,7 @@ export class VideoComponent implements OnInit {
     return this.fb.group({
       lessonName: new FormControl(''),
 
-      lessonDuration: new FormControl(''),
-      videoLink: new FormControl(''),
-
+      lessonDuration: new FormControl(null),
       videoLink: new FormControl(null),
     });
   }
@@ -328,8 +328,8 @@ export class VideoComponent implements OnInit {
     ].lessonName = value;
   }
   setSubChap2(value: any, index: any) {
-    this.subChapters(this.cIndex)
-      .at(this.sIndex)
+    this.subChapters(index)
+      .at(this.currInd)
       .get('lessonName')
       ?.setValue(value);
     this.editName = value;
@@ -422,7 +422,9 @@ export class VideoComponent implements OnInit {
     else alert("Only add Videos");
 
   }
-  addSubvideo(event: any) {
+  addSubvideo(event: any,cInd:any) {
+    console.log(this.currInd);
+    
     console.log(event.target.files[0]);
     const id = Math.random().toString(36).substring(2);
     const file = event.target.files[0];
@@ -438,12 +440,12 @@ export class VideoComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.ref.getDownloadURL().subscribe((url: any) => {
-            this.subChapters(this.cIndex)
+            this.subChapters(cInd)
               .at(this.sIndex)
               .get('videoLink')
               ?.setValue(url);
             this.previewVideo = url;
-            this.subChapters(this.cIndex)
+            this.subChapters(cInd)
               .at(this.sIndex)
               .get('lessonDuration')
               ?.setValue('00:00:20');
@@ -500,6 +502,10 @@ export class VideoComponent implements OnInit {
       courseName: this.videoForm.value.videoTitle,
       chapterDataRequestList: this.videoForm.value.chapter,
     };
+    console.log(body);
+    console.log(body2);
+    
+    
     this.videoSer.overview(body).subscribe({
       next: (data: any) => {
         // alert('Request Sent Succefully');
@@ -579,6 +585,7 @@ export class VideoComponent implements OnInit {
     this.lessonArray = this.chapterArray[i].lessonsList;
     this.addSubchap = new addSub();
     this.lessonArray.push(this.addSubchap);
+    
   }
 
   onPublish() {
@@ -650,15 +657,36 @@ export class VideoComponent implements OnInit {
     this.chapterArray.splice(i);
   }
 
-  clicked(subindex: any) {
+  close(a:any){
+     this.cIndex = a;
+     console.log(this.cIndex);
+     this.status=true
+    
+    for( let i = 0; i < this.shows.length; i++)
+    {
+      if( i == a) continue;
+      else this.shows[i]=false;
+    }
+    
+   
+  }
+
+  ccInd(a:any){
+    console.log(a);
+    
+    
+  }
+
+  clicked(subindex: any,cInd:any) {
     this.status = false;
-    this.sIndex = subindex;
-    this.editName = this.subChapters(this.cIndex)
-      .at(this.sIndex)
+    console.log(cInd+"_--------------------__"+subindex);
+    this.currInd=subindex;
+    this.editName = this.subChapters(cInd)
+      .at(subindex)
       .get('lessonName')?.value;
     console.log(this.editName);
-    this.editurl = this.subChapters(this.cIndex)
-      .at(this.sIndex)
+    this.editurl = this.subChapters(cInd)
+      .at(subindex)
       .get('videoLink')?.value;
     console.log(this.editurl);
   }
@@ -667,7 +695,27 @@ export class VideoComponent implements OnInit {
     this.status = true;
     this.addSubChapter(i);
   }
-  emit(a: any) {
-    console.log(a);
+  deleteChap(a: any,l:any) {
+    console.log("INDEX--"+a+"_____LENGTH--"+l);
+    
+    if(l<2) alert("At least One Chapter is needed")
+    else{
+      this.chapters().removeAt(a);
+    }
+    this.shows.splice(a,1)
   }
+
+  deleteSubChap(a:any,b:any,len:any){
+    console.log("INDEX--"+a+"-"+b+"_____LENGTH--"+len);
+    
+    if(len<2) alert("At least One SubChapter is needed")
+    else{
+      this.subChapters(a).removeAt(b);
+      this.clicked(len-2,a)
+      this.sIndex= len-2
+    }
+
+  }
+
+
 }

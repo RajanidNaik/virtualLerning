@@ -13,9 +13,9 @@
     <div class="category">
 
       {{getId()}}
-  <div class="text">Video Category<span class="material-icons-round">
-<mat-icon (click)="reload()" >replay</mat-icon>
-</span></div>
+      <div class="text">Video Category<span class="material-icons-round">
+          <mat-icon (click)="reload()">replay</mat-icon>
+        </span></div>
       <div class="titleInputV">
 
         <select formControlName="category" type="text" (change)=storeCatId($event)>
@@ -126,7 +126,8 @@
     <div *ngIf="videoForm.get('keyWords')?.errors?.['maxlength']" class="error">
       maxlength exeded
     </div>
-    <small *ngIf="videoForm.get('keyWords')?.errors?.['pattern']" class="error">  keywords can contain alphabets, space and hypheb(-)</small>
+    <small *ngIf="videoForm.get('keyWords')?.errors?.['pattern']" class="error"> keywords can contain alphabets, space
+      and hypheb(-)</small>
     <div>
       <input class="titleInput" type="text" formControlName="keyWords" />
     </div>
@@ -182,8 +183,9 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                 <div>Upload failed</div>
               </div>
             </div>
+            <mat-icon class="del" (click)="deleteChap(chapIndex,chapters().controls.length)" >delete</mat-icon>
             <div class="more" class="center" (click)="show(chapIndex)">
-              <mat-icon *ngIf="!shows[chapIndex]">keyboard_arrow_down</mat-icon>
+              <mat-icon (click)="close(chapIndex)" *ngIf="!shows[chapIndex]">keyboard_arrow_down</mat-icon>
               <mat-icon *ngIf="shows[chapIndex]">keyboard_arrow_up</mat-icon>
             </div>
           </div>
@@ -198,14 +200,14 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   <div class="left tpmarg">
                     <div class="preview tpwidth">
                       <div class="contain">
-                        <div class="contain" *ngIf="previewVideo">
+                        <div class="contain" *ngIf="subItem.value.videoLink">
                           <video width="100%" height="100%" controls="controls">
                             <source [src]="previewVideo" type="video/mp4">
                           </video>
                         </div>
-                        <div *ngIf="!previewVideo">
+                        <div *ngIf="!subItem.value.videoLink">
                           <div class="notUpload">
-                            <div appDragNdrop (fileDropped)="dragAndDrop($event)" >
+                            <div appDragNdrop (fileDropped)="dragAndDrop($event)">
                               <!-- <ngx-file-drop (onFileDrop)="filedrop($event)"> </ngx-file-drop> -->
                               <img src="assets/add-course/Vector.png" alt="" />
                             </div>
@@ -213,7 +215,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                             <div class="browse">
                               or{{storesIndex(subIndex,chapIndex)}}
                               <input type="file" accept="video/*" name="photo" id="upload3"
-                                (change)="addSubvideo($event)" /><label
+                                (change)="addSubvideo($event,chapIndex)" /><label
                                 for="upload3">Browse</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                               choose files
                             </div>
@@ -228,8 +230,11 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                       Sub Chapter Name
                     </div>
                     <input class="titleInput subInput" type="text" formControlName="lessonName">
+                    <div class="flex">
                     <button class="buttonP" (click)="addSubChapter(chapIndex)">Add SubChapter</button>
-                    <button (click)="showIt()">shoow</button>
+                    <button class="buttonN" (click)="deleteSubChap(chapIndex,subIndex,subChapters(chapIndex).controls.length)">Delete SubChapter</button>
+                    </div>
+
                   </div>
                 </ng-container>
               </div>
@@ -238,12 +243,12 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   <div formArrayName="lessonsList"
                     *ngFor=" let vItem of subChapters(chapIndex).controls;let vIndex = index;">
                     <ng-container [formGroupName]="vIndex">
-                      <div class="display" *ngIf="vItem.value.videoLink" (click)="clicked(vIndex)">
+                      <div class="display" *ngIf="vItem.value.videoLink" (click)="clicked(vIndex,chapIndex)">
                         <video width="66px" height="65px" controls="controls">
                           <source [src]="vItem.value.videoLink" type="video/mp4">
                         </video>
                       </div>
-                      <div class="display" *ngIf="!vItem.value.videoLink" (click)="clicked(vIndex)"></div>
+                      <div class="display" *ngIf="!vItem.value.videoLink" (click)="clicked(vIndex,chapIndex)"></div>
                     </ng-container>
                   </div>
                 </div>
@@ -262,13 +267,13 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                       <div *ngIf="!this.editurl">
                         <div class="notUpload">
                           <div appDragNdrop (fileDropped)="dragAndDrop($event)">
-                            
+
                             <img src="assets/add-course/Vector.png" alt="" />
                           </div>
                           <div class="dragAndDrop">Drag and drop multiple files</div>
-                          <div class="browse">
+                          <div class="browse">or
                             <input type="file" accept="video/*" name="photo" id="upload3"
-                              (change)="addSubvideo($event)" /><label
+                              (change)="addSubvideo($event,chapIndex)" /><label
                               for="upload3"><u>Browse</u></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                             choose files
                           </div>
@@ -282,24 +287,28 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   <div class="subHead">
                     Sub Chapter Name
                   </div>
-                  <input class="titleInput subInput" type="text" [value]="editName" #subName (keyup)="setSubChap2(subName.value,chapIndex)">
-                  <button class="buttonP" (click)="goBack(chapIndex)">Add SubChapter</button>
-                  <button (click)="showIt()">shoow</button>
+                  <input class="titleInput subInput" type="text" [value]="editName" #subName
+                    (keyup)="setSubChap2(subName.value,chapIndex)">
+                  <div class="flex">
+                    <button class="buttonP" (click)="goBack(chapIndex)">Add SubChapter</button>
+                    <button class="buttonN" (click)="deleteSubChap(chapIndex,currInd,subChapters(chapIndex).controls.length)">Delete
+                      SubChapter</button>
+                  </div>
                 </div>
               </div>
 
               <div class="bottomDisplay2">
                 <div class="videoScroll">
                   <div formArrayName="lessonsList"
-                    *ngFor=" let vonItem of subChapters(chapIndex).controls;let vOneIndex = index;">
-                    <ng-container [formGroupName]="vOneIndex">
-                      <div class="display" *ngIf="vonItem.value.videoLink" (click)="clicked(vOneIndex)">
+                    *ngFor=" let vOItem of subChapters(chapIndex).controls;let vOeIndex = index;">
+                    <ng-container [formGroupName]="vOeIndex">
+                      <div class="display" *ngIf="vOItem.value.videoLink" (click)="clicked(vOeIndex,chapIndex)">
 
                         <video width="66px" height="65px" controls="controls">
-                          <source [src]="vonItem.value.videoLink" type="video/mp4">
+                          <source [src]="vOItem.value.videoLink" type="video/mp4">
                         </video>
                       </div>
-                      <div class="display" *ngIf="!vonItem.value.videoLink" (click)="clicked(vOneIndex)"></div>
+                      <div class="display" *ngIf="!vOItem.value.videoLink" (click)="clicked(vOeIndex,chapIndex)"></div>
                     </ng-container>
                   </div>
                 </div>
@@ -382,7 +391,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                   <div class="dragAndDrop">Drag and drop multiple files</div>
                   <div class="browse">
                     or
-                    <input type="file" accept="video/*"   name="photo" id="upload3"
+                    <input type="file" accept="video/*" name="photo" id="upload3"
                       (change)="addSubvideo2($event)" /><label
                       for="upload3">Browse</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
                     choose files

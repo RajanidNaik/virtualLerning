@@ -162,7 +162,7 @@ color: #232323;
   padding: 18px;
 }
 .notUpload {
-  margin-top: 123px;
+  margin: 24% 0;
   text-align: center;
 }
 .top {
@@ -261,7 +261,7 @@ mat-icon {
 .buttonN {
   background-color: #ffffff;
   border: 1px solid #d5d4dc;
-  width: 10.5vw;
+  width: 9.5vw;
   height: 40px;
   border-radius: 8px;
 }
@@ -340,7 +340,7 @@ textarea {
   height: 89px;
   margin-top: 25px;
   margin-left: 9px;
-  top: 530px;
+  top: 56vh;
   position: relative;
   width: 67%;
 }
@@ -351,6 +351,7 @@ textarea {
 }
 .flex {
   display: flex;
+  gap: 5px;
 }
 .subchapName {
   margin: 10% 0;
@@ -379,6 +380,8 @@ textarea {
 .right {
   width: 32%;
   margin-left: 17px;
+  height: 184.1px;
+background: white;
 }
 
 .notUpload > div:nth-child(1) > img:nth-child(2) {
@@ -455,7 +458,7 @@ div.title:nth-child(1) > div:nth-child(1) {
 }
 
 .lessonForm {
-  background-color: white;
+  background-color: transparent;
   display: flex;
   position: absolute;
   height: 16.5%;
@@ -507,8 +510,13 @@ width: 67%;
 }
 
 .tpwidth{
-  width: 616px;
+    width: 48vw;
 }
 .tpmarg{
   margin-right: 76px;
+}
+
+.del{
+  margin-left: 38vw;
+margin-top: 23px;
 }
