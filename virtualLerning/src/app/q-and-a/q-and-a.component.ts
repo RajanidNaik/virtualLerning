@@ -81,7 +81,7 @@ export class QAndAComponent implements OnInit {
       option_3: ['', Validators.required],
       option_4: ['', Validators.required],
       correctAnswer: ['', Validators.required],
-      questionId: ['' ,Validators.required],
+      questionId: ['' ],
       deleteStatus: [false],
     },
     {
