@@ -96,23 +96,30 @@ export class VideoComponent implements OnInit {
     this.getCategory();
     this.getSubCategory();
     this.videoForm = new FormGroup({
-      videoTitle: new FormControl(''),
-      category: new FormControl(''),
+      videoTitle: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required]),
       subCategory: new FormControl(''),
-      formatText: new FormControl(''),
-      overview: new FormControl(''),
-      learning: new FormControl(''),
-      requirement: new FormControl(''),
-      coursePhoto: new FormControl(''),
-      previewVideo: new FormControl(''),
-      keyWords: new FormControl(''),
-      level: new FormControl(''),
+      formatText: new FormControl('', [Validators.required]),
+      overview: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(550),
+      ]),
+      learning: new FormControl('', [Validators.required]),
+      requirement: new FormControl('', [Validators.required]),
+      coursePhoto: new FormControl('', [Validators.required]),
+      previewVideo: new FormControl('', [Validators.required]),
+      keyWords: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{2,}'),
+        Validators.maxLength(30),
+      ]),
+      level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([
         this.fb.group({
-          chapterName: new FormControl(''),
+          chapterName: new FormControl('', [Validators.required]),
           lessonsList: this.fb.array([
             this.fb.group({
-              lessonName: new FormControl(''),
+              lessonName: new FormControl('', [Validators.required]),
               lessonDuration: new FormControl(null),
               videoLink: new FormControl(null),
             }),
@@ -221,7 +228,7 @@ export class VideoComponent implements OnInit {
 
   newChapter(): FormGroup {
     return this.fb.group({
-      chapterName: new FormControl(''),
+      chapterName: new FormControl('', [Validators.required]),
       lessonsList: this.fb.array([this.newSubChapter()]),
     });
   }
@@ -250,7 +257,7 @@ export class VideoComponent implements OnInit {
 
   newSubChapter(): FormGroup {
     return this.fb.group({
-      lessonName: new FormControl(''),
+      lessonName: new FormControl('', [Validators.required]),
 
       lessonDuration: new FormControl(null),
       videoLink: new FormControl(null),
