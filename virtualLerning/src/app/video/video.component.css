@@ -566,25 +566,4 @@ font-size: 16px;
 .remove{
   left: 42vw;
 }
-.preview > div:nth-child(1) {
-height: 100%;
-}
-.bottomDisplay {
-top: 37vh;
-}
-.preview {
-height: 25vh;
-}
-/* .white > div:nth-child(1) {
-height: 650.9px;
-} */
-.white{
-  height: fit-content;
-}
-.bottomDisplay {
-top: 377.083px;
-}
-.imgUpload{
-  min-height:  34vh;;
-}
  }
