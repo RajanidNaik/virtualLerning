@@ -223,7 +223,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                         </div>
                       </div>
                     </div>
-
+                    <mat-icon class="remove" (click)="removeVideo(chapIndex,subIndex)" >highlight_off</mat-icon>
                   </div>
                   <div class="right">
                     <div class="subHead">
@@ -281,7 +281,7 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
                       </div>
                     </div>
                   </div>
-
+                  <mat-icon class="remove" (click)="removeVideo(chapIndex,currInd)">highlight_off</mat-icon>
                 </div>
                 <div class="right">
                   <div class="subHead">
@@ -322,8 +322,10 @@ Video Uplioad SECTIONc CHAPTERS AND SUBCHAPTERS
     </div>
 
     <div class="next">
+     
       <button class="nextbtnp" [disabled]="videoForm.invalid || !currVal|| publishOver" (click)="addCourse()"
         [class.pub]="videoForm.invalid || !currVal">Publish</button>
+        <button class="nextbtn" [disabled]="videoForm.invalid" (click)="storeIt(this.videoForm)" [class.pub2]="videoForm.invalid">Save</button>
     </div>
   </div>
 

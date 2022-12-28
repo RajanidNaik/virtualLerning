@@ -82,7 +82,6 @@ export class LoginComponent implements OnInit {
       next: (data) => {
         this.logindata = data;
         console.log(data);
-        localStorage.setItem('save', JSON.stringify(this.logindata));
         alert(this.logindata.body.message);
         console.log('else');
         this.router.navigateByUrl('/otp');
