@@ -2,6 +2,7 @@
   <div class="navPosition">
     {{ head }}
   </div>
+  <div class="align">
   <div class="publ" *ngIf="show">
     {{getId()}}
     <button class="publish"  (click)="publish()" [class.pub]="!hide"  ><span>Publish to web</span><mat-icon>cloud_upload</mat-icon></button>
@@ -16,4 +17,5 @@
       <mat-icon>logout</mat-icon>
     </div>
   </div>
+</div>
 </div>

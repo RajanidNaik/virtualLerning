@@ -3,7 +3,6 @@
   width: 80%;
   /* height: 12vh; */
   height: 7.5rem;
-  /* width: 1582px; */
   right: 0;
   top: 0;
   background: #ffffff;
@@ -28,9 +27,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  /* position: absolute;
   right: 5%;
-  top: 5%;
+  top: 5%; */
 }
 .personImg {
   border-radius: 50%;
@@ -51,11 +50,11 @@
   height: 4.3em;
 }
 
-.publ{
+/* .publ{
   position: absolute;
   left: 64%;
 top: 43px;
-}
+} */
 
 .publish{
   background: #EE5C4D;
@@ -72,5 +71,14 @@ top: 43px;
 }
 .publish span{
   margin-right: 47px;
+
+}
+.align{
+  position: absolute;
+  right: 5%;
+  top:3%;
+  display: flex;
+  align-items: center;
+  gap:5rem;
 
 }
