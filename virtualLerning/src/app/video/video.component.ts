@@ -99,22 +99,29 @@ export class VideoComponent implements OnInit {
       videoTitle: new FormControl(''),
       category: new FormControl(''),
       subCategory: new FormControl(''),
-      formatText: new FormControl(''),
-      overview: new FormControl(''),
-      learning: new FormControl(''),
-      requirement: new FormControl(''),
-      coursePhoto: new FormControl(''),
-      previewVideo: new FormControl(''),
-      keyWords: new FormControl(''),
-      level: new FormControl(''),
+      formatText: new FormControl('', [Validators.required]),
+      overview: new FormControl('', [Validators.required,Validators.maxLength(550)]),
+      learning: new FormControl('', [Validators.required]),
+      requirement: new FormControl('', [Validators.required]),
+      coursePhoto: new FormControl('', [Validators.required]),
+      previewVideo: new FormControl('', [Validators.required]),
+      keyWords: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{1,}'),Validators.maxLength(30)
+      ]),
+      level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([
         this.fb.group({
           chapterName: new FormControl(''),
           lessonsList: this.fb.array([
             this.fb.group({
               lessonName: new FormControl(''),
+
               lessonDuration: new FormControl(null),
+
               videoLink: new FormControl(null),
+
+             
             }),
           ]),
         }),
@@ -252,8 +259,12 @@ export class VideoComponent implements OnInit {
     return this.fb.group({
       lessonName: new FormControl(''),
 
+
       lessonDuration: new FormControl(null),
+
       videoLink: new FormControl(null),
+
+     
     });
   }
   addSubChapter(chapIndex: number) {

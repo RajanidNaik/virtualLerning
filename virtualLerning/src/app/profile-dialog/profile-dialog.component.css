@@ -200,7 +200,7 @@ color: #FFFFFF;
     position: absolute;
     width:10%;
     top:22%;
-    left:57%;
+    left:55%;
     /* border-radius: 50%;
     border:1px solid #fff; */
     /* background-color: #EE5C4D; */
@@ -351,5 +351,14 @@ input[type="file"]{
 }
  .dis{
     opacity: 0.3;
+}
+::ng-deep .mat-form-field.mat-focused{
+    font-family: 'Avenir';
+font-style: normal;
+font-weight: 500;
+font-size: 1.25rem;
+line-height: 1.6875rem;
+letter-spacing: 0.4px;
+color: #FFFFFF;
 }
 
