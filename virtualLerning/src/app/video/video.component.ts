@@ -106,7 +106,7 @@ export class VideoComponent implements OnInit {
       previewVideo: new FormControl('', [Validators.required]),
       keyWords: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{2,}'),Validators.maxLength(30)
+        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{1,}'),Validators.maxLength(30)
       ]),
       level: new FormControl('', [Validators.required]),
       chapter: this.fb.array([

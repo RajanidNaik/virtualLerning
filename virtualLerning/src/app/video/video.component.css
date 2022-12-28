@@ -14,6 +14,7 @@
   background-color: #ffffff;
   height: 38px;
   width: 128px;
+ 
 }
 .videoUpload {
   margin-top: 10px;
@@ -60,6 +61,7 @@ label {
   order: 1;
   padding: 12px;
   align-self: stretch;
+  color: #111111
 }
 #upload {
   width: 5vw;
@@ -255,6 +257,7 @@ mat-icon {
 }
 .text {
   padding: 15px;
+  color: #232323;
 }
 
 .buttonP,
