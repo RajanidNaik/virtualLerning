@@ -65,3 +65,35 @@
             </div>
           </div>  
         </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        videoTitle: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required]),
+      subCategory: new FormControl(''),
+      formatText: new FormControl('', [Validators.required]),
+      overview: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(550),
+      ]),
+      learning: new FormControl('', [Validators.required]),
+      requirement: new FormControl('', [Validators.required]),
+      coursePhoto: new FormControl('', [Validators.required]),
+      previewVideo: new FormControl('', [Validators.required]),
+      keyWords: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[a-zA-Z][-a-zA-Z, ]{2,}'),
+        Validators.maxLength(30),
+      ]),
+      level: new FormControl('', [Validators.required]),

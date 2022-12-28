@@ -10,6 +10,11 @@
   font-size: 14px;
   line-height: 20px;
 }
+.remove{
+  position: absolute;
+left: 600px;
+top: 13px;
+}
 .text may .transparent {
   background-color: #ffffff;
   height: 38px;
@@ -18,6 +23,9 @@
 }
 .videoUpload {
   margin-top: 10px;
+}
+button{
+  border-radius: 8px;
 }
 .error1 {
   color: red;
@@ -28,6 +36,7 @@
   margin: 5px 0;
 }
 select {
+  border-radius: 8px;
   font-size: 19px;
   width: fit-content;
   padding: 5px;
@@ -139,6 +148,7 @@ color: #232323;
   height: 377px;
   width: 60%;
   background-color: #ffffff;
+  border-radius: 15px;
 }
 .uploadSection {
   font-weight: 500;
@@ -159,12 +169,13 @@ color: #232323;
   color: #092963;
 }
 .white {
+  border-radius: 15px;
   background-color: white;
   margin-bottom: 4vh;
   padding: 18px;
 }
 .notUpload {
-  margin-top: 123px;
+  margin: 24% 0;
   text-align: center;
 }
 .top {
@@ -264,7 +275,7 @@ mat-icon {
 .buttonN {
   background-color: #ffffff;
   border: 1px solid #d5d4dc;
-  width: 10.5vw;
+  width: 9.5vw;
   height: 40px;
   border-radius: 8px;
 }
@@ -307,6 +318,7 @@ textarea {
   overflow-y: scroll;
   font-size: 18px;
   margin-bottom: 10px;
+  border-radius: 8px;
 }
 .textarea2 {
   min-width: 510px;
@@ -327,11 +339,11 @@ textarea {
 }
 .nextbtn {
   font-size: 18px;
-  color: white;
+  color: rgb(0, 0, 0);
   float: right;
   height: 44px;
   width: 209.81px;
-  background-color: #8f7774;
+  background-color: #ffffff;
   margin-right: 20px;
 }
 .subChapter {
@@ -343,7 +355,7 @@ textarea {
   height: 89px;
   margin-top: 25px;
   margin-left: 9px;
-  top: 530px;
+  top: 56vh;
   position: relative;
   width: 67%;
 }
@@ -354,6 +366,7 @@ textarea {
 }
 .flex {
   display: flex;
+  gap: 5px;
 }
 .subchapName {
   margin: 10% 0;
@@ -383,6 +396,8 @@ textarea {
 .right {
   width: 32%;
   margin-left: 17px;
+  height: 184.1px;
+background: white;
 }
 
 .notUpload > div:nth-child(1) > img:nth-child(2) {
@@ -445,6 +460,9 @@ textarea {
   border-radius: 8px;
   opacity: 0.3;
 }
+.pub2{
+  opacity: 0.2;
+}
 .pub {
   font-size: 18px;
   color: rgb(255, 255, 255);
@@ -459,7 +477,7 @@ div.title:nth-child(1) > div:nth-child(1) {
 }
 
 .lessonForm {
-  background-color: white;
+  background-color: transparent;
   display: flex;
   position: absolute;
   height: 16.5%;
@@ -511,10 +529,16 @@ width: 67%;
 }
 
 .tpwidth{
-  width: 616px;
+    width: 48vw;
 }
 .tpmarg{
   margin-right: 76px;
+}
+
+
+.del{
+  margin-left: 38vw;
+margin-top: 23px;
 }
 .new{
   margin-block-start: 2%;
