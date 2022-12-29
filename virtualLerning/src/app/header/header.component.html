@@ -10,9 +10,9 @@
 
   <div class="person">
     <div class="personImg" (click)="openDialogProfile()">
-      <img class="image" src="{{profileDetails.profilePhoto}}" />
+      <img class="image" src="{{photo}}" />
     </div>
-    <div class="personName">{{profileDetails.fullName}}</div>
+    <div class="personName">{{name}}</div>
     <div (click)="logout()">
       <mat-icon>logout</mat-icon>
     </div>

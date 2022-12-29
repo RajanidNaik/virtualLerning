@@ -1,13 +1,11 @@
 export class AddVideo {
     chapterName:any;
-    lessonList:any=[
-      
-    ];
+    lessonsList:any=[]
 }
 
 export class addSub{
-    lessonName:any;
-    videoLink:any =null;
+    lessonName=null;
+    videoLink:any = null;
     lessonId:any;
-    lessonDuration =null;
+    lessonDuration:any = null;
 }
