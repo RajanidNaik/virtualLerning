@@ -83,6 +83,8 @@ export class HeaderComponent implements OnInit {
           console.log(res);
           let response = res;
           alert(response.message);
+          sessionStorage.removeItem('addCourseDetails');
+           localStorage.removeItem('saves');
         // if (response == '{') {
         //   response = JSON.parse(response);
         //   alert(Object.values(response));

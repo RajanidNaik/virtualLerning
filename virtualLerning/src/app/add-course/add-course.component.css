@@ -6,6 +6,8 @@ top: 8.3rem;
 left: 20vw;;
   width: 80%; 
   background: #f9f9f9;
+  border-bottom-left-radius: 45px;
+  min-height: 100vh;
 }
 .innerNav {
   margin: 59px 0;
