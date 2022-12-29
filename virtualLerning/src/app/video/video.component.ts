@@ -496,6 +496,7 @@ export class VideoComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         finalize(() => {
+          
           this.ref.getDownloadURL().subscribe((url: any) => {
             // this.chapterArray[this.cIndex].lessonList[this.sIndex].videoLink =
             //   url;
@@ -506,6 +507,7 @@ export class VideoComponent implements OnInit {
         })
       )
       .subscribe();
+
   }
 
 
@@ -650,13 +652,13 @@ export class VideoComponent implements OnInit {
   onclickNew(i:any,id:any){
     this.currentViedo = this.chapterArray[i].lessonsList[id].videoLink;
       // call addSubvideo2
-      // if(this.chapterArray[i].lessonsList[id].videoLink == null){
-      //   console.log(this.currentViedo);
-               // this.addSubvideo2()
-      // this.chapterArray[i].lessonsList[id].videoLink = this.currentViedo;
-      // console.log(this.chapterArray[i].lessonsList[id].videoLink);
-      // this.chapterArray[i].lessonsList[id].lessonDuration = '00:00:10';
-      // }
+      if(this.chapterArray[i].lessonsList[id].videoLink == null){
+        console.log(this.currentViedo);
+              //  this.addSubvideo2()
+      this.chapterArray[i].lessonsList[id].videoLink = this.currentViedo || 'https://firebasestorage.googleapis.com/v0/b/virtualearn-26e6b.appspot.com/o/v57qwoj2g4d?alt=media&token=1f4094e1-9145-413c-9c9c-db251815dada';
+      console.log(this.chapterArray[i].lessonsList[id].videoLink);
+      this.chapterArray[i].lessonsList[id].lessonDuration = '00:00:10';
+      }
     
    
   }
