@@ -57,7 +57,8 @@ table{
     position: absolute;
     top:2%;
     /* left: 2%; */
-    width:93%;
+   width: 91%;
+left: 26px;
     height: 75%;
     /* height: 50rem; */
     overflow: scroll;
