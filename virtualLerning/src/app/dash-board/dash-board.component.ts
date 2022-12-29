@@ -153,6 +153,7 @@ export class DashBoardComponent implements OnInit {
   getVideoDetails(courseId: any) {
     console.log(courseId);
     sessionStorage.setItem('editCourseId',courseId);
+    sessionStorage.setItem('saveStatus', 'old');
     this.service.getAddCourseDetails(courseId).subscribe({
       next: (res) => {
         console.log(res);
