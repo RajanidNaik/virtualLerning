@@ -552,16 +552,17 @@ div.title:nth-child(1) > div:nth-child(1) {
 .in{
   border: 1px solid rgba(0,0,0,0.3);
 }
-.remove{
+.removes{
   opacity: 0.3;
 }
  .c{
   position: absolute;
   z-index:1;
   right:0;
-  color:#fff;
+ 
   margin: 1%;
 }
+
 
 .in {
   border: 1px solid rgba(0, 0, 0, 0.3);

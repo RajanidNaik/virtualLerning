@@ -618,14 +618,15 @@ export class VideoComponent implements OnInit {
     //  }
     this.lessonArray = this.chapterArray[i].lessonsList;
     this.addSubchap = new addSub();
+    this.addSubchap.videoLink = this.currentViedo;
+      this.addSubchap.lessonDuration = '00:00:10';
     // this.lessonArray.push(this.addSubchap);
     if(this.currentViedo !== null){
       this.lessonArray.push(this.addSubchap);
       this.currentViedo = null;
     }else{
       alert('select the video');
-      this.addSubchap.videoLink = this.currentViedo;
-      this.addSubchap.lessonDuration = '00:00:10';
+      
     }
   }
   onClose(){
@@ -648,14 +649,14 @@ export class VideoComponent implements OnInit {
   // }
   onclickNew(i:any,id:any){
     this.currentViedo = this.chapterArray[i].lessonsList[id].videoLink;
-    console.log(this.currentViedo);
       // call addSubvideo2
-      if(this.chapterArray[i].lessonsList[id].videoLink == null){
-        console.log(this.currentViedo);
-      this.chapterArray[i].lessonsList[id].videoLink = this.currentViedo;
-      console.log(this.chapterArray[i].lessonsList[id].videoLink);
-      this.chapterArray[i].lessonsList[id].lessonDuration = '00:00:10';
-      }
+      // if(this.chapterArray[i].lessonsList[id].videoLink == null){
+      //   console.log(this.currentViedo);
+               // this.addSubvideo2()
+      // this.chapterArray[i].lessonsList[id].videoLink = this.currentViedo;
+      // console.log(this.chapterArray[i].lessonsList[id].videoLink);
+      // this.chapterArray[i].lessonsList[id].lessonDuration = '00:00:10';
+      // }
     
    
   }
