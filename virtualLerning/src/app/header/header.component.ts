@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   id:any;
   qa:any;
   hide:boolean=false;
+  photo:any ="/assets/mg 1.png";
+  name:any="jeelan";
   
 
   ngOnInit(): void {
@@ -71,6 +73,10 @@ export class HeaderComponent implements OnInit {
       },
       error:(error)=>{
         alert(error.error.message);
+      },
+      complete:()=>{
+        this.photo =this.profileDetails.profilePhoto;
+        this.name = this.profileDetails.fullName
       }
     })
   }
