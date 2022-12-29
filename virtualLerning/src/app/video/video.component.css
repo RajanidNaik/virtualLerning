@@ -260,6 +260,7 @@ mat-icon {
 }
 
 .contain {
+  position: relative;
   height: 100%;
   width: 100%;
 }
@@ -541,6 +542,27 @@ div.title:nth-child(1) > div:nth-child(1) {
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  gap:1rem;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+
+.in{
+  border: 1px solid rgba(0,0,0,0.3);
+}
+.remove{
+  opacity: 0.3;
+}
+ .c{
+  position: absolute;
+  z-index:1;
+  right:0;
+  color:#fff;
+  margin: 1%;
+}
+
   gap: 1rem;
 }
 .in {
@@ -567,3 +589,4 @@ font-size: 16px;
   left: 42vw;
 }
  }
+
