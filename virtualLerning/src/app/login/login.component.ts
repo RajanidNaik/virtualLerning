@@ -110,6 +110,8 @@ export class LoginComponent implements OnInit {
         let token: any = data.headers.get('jwt-token');
 
         sessionStorage.setItem('token', token);
+        sessionStorage.setItem('saveStatus', 'new');
+        sessionStorage.setItem('count', '1');
         this.router.navigateByUrl('/dashboard');
         // console.log(data);
       },

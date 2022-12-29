@@ -9,6 +9,5 @@ export class AppComponent implements OnInit {
   title = 'virtualLerning';
 
   ngOnInit(): void {
-   
   }
 }
