@@ -111,6 +111,7 @@ export class LoginComponent implements OnInit {
 
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('saveStatus', 'new');
+        sessionStorage.setItem('count', '1');
         this.router.navigateByUrl('/dashboard');
         // console.log(data);
       },

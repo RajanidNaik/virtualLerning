@@ -85,6 +85,7 @@ export class HeaderComponent implements OnInit {
           alert(response.message);
           sessionStorage.removeItem('addCourseDetails');
            localStorage.removeItem('saves');
+           sessionStorage.setItem('saveStatus','new');
         // if (response == '{') {
         //   response = JSON.parse(response);
         //   alert(Object.values(response));

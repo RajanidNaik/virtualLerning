@@ -34,6 +34,7 @@ export class DashBoardComponent implements OnInit {
   courseLimit = 20;
   completeDeatails: any;
   response: any;
+  count:any;
   desc: boolean=false
   constructor(
     private dialog: MatDialog,
@@ -44,6 +45,8 @@ export class DashBoardComponent implements OnInit {
   ngOnInit(): void {
     localStorage.setItem('curr', JSON.stringify('Dashboard'));
     this.token = localStorage.getItem('token');
+    this.count=sessionStorage.getItem('count');
+    this.count = parseInt(this.count);
     this.service.getTotal().subscribe((x) => {
       this.data = x;
     });
@@ -145,7 +148,17 @@ export class DashBoardComponent implements OnInit {
         this.course = res;
       },
       error: (error) => {
-        alert(error.error.message);
+        if (error.error.message == "No course is present"){
+          if(this.count==1){
+            alert(error.error.message);
+             this.count++;
+            console.log( this.count);
+            sessionStorage.setItem('count',this.count);
+          }
+        } 
+        else {
+          alert(error.error.message);
+        }
       },
     });
   }
