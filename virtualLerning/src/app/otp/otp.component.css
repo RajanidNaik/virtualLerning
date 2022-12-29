@@ -6,20 +6,23 @@
 }
 .box {
   width: 31.25%;
-  height: 58.7%;
-  margin: 12.64% 34.37%;
+  height: fit-content;
+padding-bottom: 2vh;
+  position: absolute;
+  left: 31vw;
+  top: 23vh;
   background-color: white;
   border-radius: 4px;
   /* align-items: center;  */
 }
 .logo {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 .logo img {
-  margin: 0 29.5%;
   margin-top: 6.48%;
-  width: 40.33%;
-  height: 23.34%;
+  width: 160px;
+  height: auto;
 }
 .error{
   color: red;
@@ -49,7 +52,7 @@ font-size: 20px;
 cursor: pointer;
 float: right;
  margin-top: 0px;
-color: #EE5C4D;
+/* color: #EE5C4D; */
 }
 .loginButn{
    width: 100%;
@@ -97,11 +100,15 @@ font-size: 20px;
     justify-content: space-between;
     grid-template-columns: repeat(4,auto);
 }
+
 .otpInput{
 width: 59px;
   width: 17%;
 height: 47px;
-    border-bottom: 2px solid darkgreen;
+    border-bottom: 2px solid #072D5B;;
+}
+input:required {
+    box-shadow:none;
 }
 .otpUser{
     text-align: center  ;
@@ -109,6 +116,7 @@ height: 47px;
 height: 4.6vh;
 padding-bottom: 0;
 border: 0; 
+border: none;
 }
 .resend{
     margin-top: 20px;
@@ -123,4 +131,7 @@ span{
 }
 .resend > span:nth-child(1) {
 cursor: default;
+}
+input[type=text]:focus {
+  border: 1px solid rgb(9, 161, 141);
 }

@@ -63,3 +63,22 @@ right: 4vw;
   font-size: 20px;
   line-height: 30px;
 }
+
+@media (max-width: 1100px) {
+  .nav{
+    gap:3vw;
+    
+  }
+  .itemNav{
+      font-size: 19px;
+  }
+}
+  @media (max-width: 800px) {
+
+  .itemNav{
+      font-size: 17px;
+  }
+
+
+ 
+}

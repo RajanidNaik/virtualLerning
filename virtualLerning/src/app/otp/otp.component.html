@@ -12,11 +12,11 @@
           <form [formGroup]="login">
       <div class="otpVal">
         <div class="otpInput">
-          <input class="otpUser" formControlName="val1" #one type="text" maxlength="1" (keypress)="checkNum($event)" (keyup)="jump($event, '',one,two)">
+          <input class="otpUser" formControlName="val1" #one type="text" maxlength="1" required  (keypress)="checkNum($event)" (keyup)="jump($event, '',one,two)">
         </div>
         <div class="otpInput">
 
-          <input class="otpUser" #two type="text"  maxlength="1" formControlName="val2" (keypress)="checkNum($event)" (keyup)="jump($event, one,two,three)" >
+          <input class="otpUser" #two type="text"  maxlength="1"  required formControlName="val2" (keypress)="checkNum($event)" (keyup)="jump($event, one,two,three)" >
         </div>
         <div class="otpInput">
           <input class="otpUser"  formControlName="val3" #three type="text" maxlength="1"  required (keypress)="checkNum($event)" (keyup)="jump($event,two,three,four)">

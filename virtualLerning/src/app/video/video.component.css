@@ -10,14 +10,21 @@
   font-size: 14px;
   line-height: 20px;
 }
+.remove {
+  position: absolute;
+  left: 44vw;
+  top: 13px;
+}
 .text may .transparent {
   background-color: #ffffff;
   height: 38px;
   width: 128px;
- 
 }
 .videoUpload {
   margin-top: 10px;
+}
+button {
+  border-radius: 8px;
 }
 .error1 {
   color: red;
@@ -28,6 +35,7 @@
   margin: 5px 0;
 }
 select {
+  border-radius: 8px;
   font-size: 19px;
   width: fit-content;
   padding: 5px;
@@ -61,7 +69,7 @@ label {
   order: 1;
   padding: 12px;
   align-self: stretch;
-  color: #111111
+  color: #111111;
 }
 #upload {
   width: 5vw;
@@ -69,31 +77,29 @@ label {
 
 .dragAndDrop {
   font-style: normal;
-font-weight: 600;
-font-size: 24px;
-line-height: 20px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 20px;
 
-/* identical to box height, or 83% */
-text-align: center;
-letter-spacing: 0.4px;
+  /* identical to box height, or 83% */
+  text-align: center;
+  letter-spacing: 0.4px;
 
-color: #232323;
-
-
+  color: #232323;
 }
-label{
-border-bottom: 1px solid;
+label {
+  border-bottom: 1px solid;
 }
 .browse {
   font-weight: 400;
-font-size: 18px;
-line-height: 20px;
+  font-size: 18px;
+  line-height: 20px;
 
-/* identical to box height, or 111% */
-text-align: center;
-letter-spacing: 0.4px;
-margin-top: 10px;
-color: #232323; 
+  /* identical to box height, or 111% */
+  text-align: center;
+  letter-spacing: 0.4px;
+  margin-top: 10px;
+  color: #232323;
 }
 
 .uploader {
@@ -139,6 +145,7 @@ color: #232323;
   height: 377px;
   width: 60%;
   background-color: #ffffff;
+  border-radius: 15px;
 }
 .uploadSection {
   font-weight: 500;
@@ -159,12 +166,13 @@ color: #232323;
   color: #092963;
 }
 .white {
+  border-radius: 15px;
   background-color: white;
   margin-bottom: 4vh;
   padding: 18px;
 }
 .notUpload {
-  margin-top: 123px;
+  margin: 24% 0;
   text-align: center;
 }
 .top {
@@ -265,7 +273,7 @@ mat-icon {
 .buttonN {
   background-color: #ffffff;
   border: 1px solid #d5d4dc;
-  width: 10.5vw;
+  width: 9.5vw;
   height: 40px;
   border-radius: 8px;
 }
@@ -308,6 +316,7 @@ textarea {
   overflow-y: scroll;
   font-size: 18px;
   margin-bottom: 10px;
+  border-radius: 8px;
 }
 .textarea2 {
   min-width: 510px;
@@ -328,11 +337,11 @@ textarea {
 }
 .nextbtn {
   font-size: 18px;
-  color: white;
+  color: rgb(0, 0, 0);
   float: right;
   height: 44px;
   width: 209.81px;
-  background-color: #8f7774;
+  background-color: #ffffff;
   margin-right: 20px;
 }
 .subChapter {
@@ -344,7 +353,7 @@ textarea {
   height: 89px;
   margin-top: 25px;
   margin-left: 9px;
-  top: 530px;
+  top: 56vh;
   position: relative;
   width: 67%;
 }
@@ -355,6 +364,7 @@ textarea {
 }
 .flex {
   display: flex;
+  gap: 5px;
 }
 .subchapName {
   margin: 10% 0;
@@ -384,6 +394,8 @@ textarea {
 .right {
   width: 32%;
   margin-left: 17px;
+  height: 184.1px;
+  background: white;
 }
 
 .notUpload > div:nth-child(1) > img:nth-child(2) {
@@ -446,6 +458,9 @@ textarea {
   border-radius: 8px;
   opacity: 0.3;
 }
+.pub2 {
+  opacity: 0.2;
+}
 .pub {
   font-size: 18px;
   color: rgb(255, 255, 255);
@@ -460,7 +475,7 @@ div.title:nth-child(1) > div:nth-child(1) {
 }
 
 .lessonForm {
-  background-color: white;
+  background-color: transparent;
   display: flex;
   position: absolute;
   height: 16.5%;
@@ -496,32 +511,38 @@ div.title:nth-child(1) > div:nth-child(1) {
   border-radius: 4px;
 }
 .contain2 {
-width: 100%;
-display: -webkit-box;
+  width: 100%;
+  display: -webkit-box;
 }
-.bottomDisplay2{
-   height: 89px;
+.bottomDisplay2 {
+  height: 89px;
   margin-top: 25px;
   margin-left: 9px;
   top: 530px;
   position: relative;
   width: 58%;
- /* border: 2px solid; */
-top: 0px;
-width: 67%;
+  /* border: 2px solid; */
+  top: 0px;
+  width: 67%;
 }
 
-.tpwidth{
-  width: 616px;
+.tpwidth {
+  width: 48vw;
 }
-.tpmarg{
+.tpmarg {
   margin-right: 76px;
 }
-.new{
+
+.del {
+  margin-left: 38vw;
+  margin-top: 23px;
+}
+.new {
   margin-block-start: 2%;
   display: flex;
   flex-direction: row;
   align-items: center;
+
   gap:1rem;
   width: 100%;
   overflow-x: scroll;
@@ -541,3 +562,31 @@ width: 67%;
   color:#fff;
   margin: 1%;
 }
+
+  gap: 1rem;
+}
+.in {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+ @media (max-width: 1100px) {
+.textarea2{
+  min-width: 410px;
+max-width: 410px;
+min-height: 100px;
+max-height: 100px;
+overflow-y: scroll;
+font-size: 18px;
+margin-bottom: 10px
+}
+.titleInputV{
+  width: 163px;
+  font-size: 16px;
+}
+.category > div:nth-child(2) > select:nth-child(1) {
+font-size: 16px;
+}
+.remove{
+  left: 42vw;
+}
+ }
+

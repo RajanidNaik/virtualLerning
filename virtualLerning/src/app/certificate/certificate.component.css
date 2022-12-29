@@ -68,14 +68,15 @@ margin-top: 43px; */
   margin-top: 3vh;
   margin-left: 4vw;
 }
+.trophy {
+  position: absolute;
+  top: 441.3px;;
+  left: 52vw;
+}
 
 .cup {
-  position: absolute;
-
-  top: 50vh;
-  width: 361px;
-  height: 375.417px;
-  right: 5.5vw;
+  width: 300px;
+  height: 325px;
 }
 .submisson {
   margin-top: 5vh;
@@ -97,16 +98,16 @@ margin-top: 43px; */
   background: rgba(9, 41, 99, 0.2);
   margin-right: 3vw;
 }
-input.in{
+input.in {
   outline: none !important;
-  border:none !important;
- margin-block-start: 2%!important;
+  border: none !important;
+  margin-block-start: 2% !important;
 }
-.display{
+.display {
   display: flex;
   align-items: center;
 }
-.dis{
+.dis {
   width: 12vw;
   background: #ee5c4d;
   border-radius: 6px;
@@ -115,8 +116,8 @@ input.in{
   cursor: pointer;
   opacity: 0.3;
 }
-.dis1{
+.dis1 {
   background: rgba(9, 41, 99, 0.2);
   margin-right: 3vw;
-  opacity:0.4
+  opacity: 0.4;
 }
